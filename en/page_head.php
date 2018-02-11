@@ -55,8 +55,6 @@
       <li><a>Participate</a>
         <ul>
           <li><a href="/en/support-umkoin.php">Support Umkoin</a>
-          <li><a href="/en/buy.php">Buy Umkoin</a></li>
-          <li><a href="/en/full-node.php">Running a full node</a></li>
           <li><a href="/en/development.php">Development</a></li>
         </ul>
       </li>

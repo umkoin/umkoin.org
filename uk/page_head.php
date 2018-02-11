@@ -24,8 +24,8 @@
 
     <div id="langselect" class="langselect">
       <select onchange="window.location=this.value;">
-        <option value="/en/" selected="selected">English</option>
-        <option value="/uk/">Українська</option>
+        <option value="/en/">English</option>
+        <option value="/uk/" selected="selected">Українська</option>
       </select>
     </div>
 
