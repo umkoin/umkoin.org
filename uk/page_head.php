@@ -6,7 +6,7 @@
   <div>
 
     <ul class="lang">
-      <li><a>English</a>
+      <li><a>Українська</a>
         <ul>
           <li>
             <ul>
