@@ -42,9 +42,6 @@ include 'page_head.php';
       <p class="summary">Support the Umkoin network by running your own full node</p>
 
       <div id="toc" class="toc">
-<!--
-        <div>
-//-->
           <ul id="markdown-toc">
             <li><a href="#what-is-a-full-node" id="markdown-toc-what-is-a-full-node">What Is A Full Node?</a></li>
             <li><a href="#costs-and-warnings" id="markdown-toc-costs-and-warnings">Costs And Warnings</a>
@@ -99,12 +96,7 @@ include 'page_head.php';
               </ul>
             </li>
           </ul>
-
-          <ul class="reportissue"><li><a href="https://github.com/bitcoin-dot-org/bitcoin.org/issues/new">Report An Issue</a></li></ul>
-          <ul class="editsource"><li><a href="https://github.com/bitcoin-dot-org/bitcoin.org/tree/master/en/full-node.md">Edit On GitHub</a></li></ul>
-<!--
-        </div>
-//-->
+          <ul class="reportissue"><li><a href="https://github.com/umkoin/umkoin.org/issues/new">Report An Issue</a></li></ul>
       </div>
 
       <div class="toccontent">
