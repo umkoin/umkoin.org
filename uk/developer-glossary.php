@@ -7,7 +7,7 @@
 <meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-<title>Глосарій Розробника - Умкойн</title>
+<title>Р“Р»РѕСЃР°СЂС–Р№ Р РѕР·СЂРѕР±РЅРёРєР° - РЈРјРєРѕР№РЅ</title>
 
 <link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/main.css">
@@ -30,18 +30,18 @@ include 'page_head.php';
 <div class="body">
 
   <div class="breadcrumbs">
-      <a href="/uk/">Умкойн</a>
+      <a href="/uk/">РЈРјРєРѕР№РЅ</a>
       &gt;
-      <a href="/uk/developer-documentation">Документація Розробника</a>
+      <a href="/uk/developer-documentation">Р”РѕРєСѓРјРµРЅС‚Р°С†С–СЏ Р РѕР·СЂРѕР±РЅРёРєР°</a>
       &gt;
-      Глосарій
+      Р“Р»РѕСЃР°СЂС–Р№
   </div>
 
   <div id="content" class="content">
 
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
-    <h1>Глосарій розробника Умкойн</h1>
+    <h1>Р“Р»РѕСЃР°СЂС–Р№ СЂРѕР·СЂРѕР±РЅРёРєР° РЈРјРєРѕР№РЅ</h1>
     <p class="summary"></p>
 
     <!--Temporary disclaimer BEGIN-->
@@ -52,47 +52,47 @@ include 'page_head.php';
     <!--Temporary disclaimer END-->
 
     <div class="notice">
-      <p><span>Це технічний словник. Звичайним користувачам ми радимо використовувати <a href="/uk/vocabulary">сторінку словнику</a>.</span></p>
+      <p><span>Р¦Рµ С‚РµС…РЅС–С‡РЅРёР№ СЃР»РѕРІРЅРёРє. Р—РІРёС‡Р°Р№РЅРёРј РєРѕСЂРёСЃС‚СѓРІР°С‡Р°Рј РјРё СЂР°РґРёРјРѕ РІРёРєРѕСЂРёСЃС‚РѕРІСѓРІР°С‚Рё <a href="/uk/vocabulary">СЃС‚РѕСЂС–РЅРєСѓ СЃР»РѕРІРЅРёРєСѓ</a>.</span></p>
     </div>
 
-    <h2 id="section">Номери</h2>
+    <h2 id="section">РќРѕРјРµСЂРё</h2>
     <!-- no subhead-links here -->
 
-    <h2 id="section-1">А</h2>
+    <h2 id="section-1">Рђ</h2>
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/uk/glossary/51-percent-attack">Атака 51 відсотка</a></li>
-      <li><a href="/uk/glossary/51-percent-attack">Атака більшості</a></li>
+      <li><a href="/uk/glossary/51-percent-attack">РђС‚Р°РєР° 51 РІС–РґСЃРѕС‚РєР°</a></li>
+      <li><a href="/uk/glossary/51-percent-attack">РђС‚Р°РєР° Р±С–Р»СЊС€РѕСЃС‚С–</a></li>
     </ul>
     <p><br class="clear" /></p>
 
-    <h2 id="section-2">Б</h2>
+    <h2 id="section-2">Р‘</h2>
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/uk/glossary/block-chain">Блок-чейн</a></li>
+      <li><a href="/uk/glossary/block-chain">Р‘Р»РѕРє-С‡РµР№РЅ</a></li>
     </ul>
     <p><br class="clear" /></p>
 
-    <h2 id="section-3">Л</h2>
+    <h2 id="section-3">Р›</h2>
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/uk/glossary/block-chain">Ланцюг блоків</a></li>
+      <li><a href="/uk/glossary/block-chain">Р›Р°РЅС†СЋРі Р±Р»РѕРєС–РІ</a></li>
     </ul>
     <p><br class="clear" /></p>
 
-    <h2 id="section-4">Н</h2>
+    <h2 id="section-4">Рќ</h2>
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/uk/glossary/block-chain">Найкращий ланцюг блоків</a></li>
+      <li><a href="/uk/glossary/block-chain">РќР°Р№РєСЂР°С‰РёР№ Р»Р°РЅС†СЋРі Р±Р»РѕРєС–РІ</a></li>
     </ul>
     <p><br class="clear" /></p>
 
     <div class="notice">
-      <p><span>Не можете знайти, що шукали? <a href="https://github.com/umkoin/umkoin.org/issues/new?title=New%20glossary%20term%20suggestion:">Запропонуйте новий термін</a> для глосарія!</span></p>
+      <p><span>РќРµ РјРѕР¶РµС‚Рµ Р·РЅР°Р№С‚Рё, С‰Рѕ С€СѓРєР°Р»Рё? <a href="https://github.com/umkoin/umkoin.org/issues/new?title=New%20glossary%20term%20suggestion:">Р—Р°РїСЂРѕРїРѕРЅСѓР№С‚Рµ РЅРѕРІРёР№ С‚РµСЂРјС–РЅ</a> РґР»СЏ РіР»РѕСЃР°СЂС–СЏ!</span></p>
     </div>
 
   </div>
