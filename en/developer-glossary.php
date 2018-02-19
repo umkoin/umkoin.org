@@ -31,7 +31,7 @@ include 'page_head.php';
   <div class="breadcrumbs">
       <a href="/en/">Umkoin</a>
       &gt;
-      <a href="/en/developer-documentation">Developer Documentation</a>
+      <a href="/en/developer-documentation.php">Developer Documentation</a>
       &gt;
       Glossary
   </div>
@@ -44,7 +44,7 @@ include 'page_head.php';
     <p class="summary"></p>
 
     <div class="notice">
-      <p><span>This is a technical glossary. Regular users should use the <a href="/en/vocabulary">vocabulary page</a>.</span></p>
+      <p><span>This is a technical glossary. Regular users should use the <a href="/en/vocabulary.php">vocabulary page</a>.</span></p>
     </div>
 
     <h2 id="numbers">Numbers</h2>
@@ -54,7 +54,7 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/en/glossary/51-percent-attack">51 percent attack</a></li>
+      <li><a href="/en/glossary/51-percent-attack.php">51 percent attack</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -62,9 +62,9 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/en/glossary/address">Address</a></li>
-      <li><a href="/en/glossary/cpfp">Ancestor mining</a></li>
-      <li><a href="/en/glossary/node">Archival node</a></li>
+      <li><a href="/en/glossary/address.php">Address</a></li>
+      <li><a href="/en/glossary/cpfp.php">Ancestor mining</a></li>
+      <li><a href="/en/glossary/node.php">Archival node</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -74,19 +74,19 @@ include 'page_head.php';
     <p>See also: <a href="https://github.com/bitcoin/bips#readme">Bitcoin Improvement Proposals (BIPs)</a></p>
 
     <ul class="wrapped_list">
-      <li><a href="/en/glossary/multisig">Bare multisig</a></li>
-      <li><a href="/en/glossary/base58check">Base58check</a></li>
-      <li><a href="/en/glossary/block-chain">Best block chain</a></li>
-      <li><a href="/en/glossary/header-chain">Best header chain</a></li>
-      <li><a href="/en/glossary/denominations">Umkoins</a></li>
-      <li><a href="/en/glossary/block">Block</a></li>
-      <li><a href="/en/glossary/genesis-block">Block 0</a></li>
-      <li><a href="/en/glossary/block-chain">Block chain</a></li>
-      <li><a href="/en/glossary/block-header">Block header</a></li>
-      <li><a href="/en/glossary/block-height">Block height</a></li>
-      <li><a href="/en/glossary/block-reward">Block reward</a></li>
-      <li><a href="/en/glossary/blocks-first-sync">Blocks-first sync</a></li>
-      <li><a href="/en/glossary/bloom-filter">Bloom filter</a></li>
+      <li><a href="/en/glossary/multisig.php">Bare multisig</a></li>
+      <li><a href="/en/glossary/base58check.php">Base58check</a></li>
+      <li><a href="/en/glossary/block-chain.php">Best block chain</a></li>
+      <li><a href="/en/glossary/header-chain.php">Best header chain</a></li>
+      <li><a href="/en/glossary/denominations.php">Umkoins</a></li>
+      <li><a href="/en/glossary/block.php">Block</a></li>
+      <li><a href="/en/glossary/genesis-block.php">Block 0</a></li>
+      <li><a href="/en/glossary/block-chain.php">Block chain</a></li>
+      <li><a href="/en/glossary/block-header.php">Block header</a></li>
+      <li><a href="/en/glossary/block-height.php">Block height</a></li>
+      <li><a href="/en/glossary/block-reward.php">Block reward</a></li>
+      <li><a href="/en/glossary/blocks-first-sync.php">Blocks-first sync</a></li>
+      <li><a href="/en/glossary/bloom-filter.php">Bloom filter</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -94,23 +94,23 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/en/glossary/chain-code">Chain code</a></li>
-      <li><a href="/en/glossary/change-address">Change address</a></li>
-      <li><a href="/en/glossary/change-address">Change output</a></li>
-      <li><a href="/en/glossary/child-key">Child key</a></li>
-      <li><a href="/en/glossary/cpfp">Child pays for parent</a></li>
-      <li><a href="/en/glossary/child-key">Child private key</a></li>
-      <li><a href="/en/glossary/child-key">Child public key</a></li>
-      <li><a href="/en/glossary/coinbase">Coinbase</a></li>
-      <li><a href="/en/glossary/coinbase-transaction">Coinbase transaction</a></li>
-      <li><a href="/en/glossary/compactsize">CompactSize</a></li>
-      <li><a href="/en/glossary/compressed-public-key">Compressed public key</a></li>
-      <li><a href="/en/glossary/confirmation-score">Confirmation score</a></li>
-      <li><a href="/en/glossary/confirmation-score">Confirmations</a></li>
-      <li><a href="/en/glossary/confirmation-score">Confirmed transaction</a></li>
-      <li><a href="/en/glossary/consensus">Consensus</a></li>
-      <li><a href="/en/glossary/consensus-rules">Consensus rules</a></li>
-      <li><a href="/en/glossary/cpfp">CPFP</a></li>
+      <li><a href="/en/glossary/chain-code.php">Chain code</a></li>
+      <li><a href="/en/glossary/change-address.php">Change address</a></li>
+      <li><a href="/en/glossary/change-address.php">Change output</a></li>
+      <li><a href="/en/glossary/child-key.php">Child key</a></li>
+      <li><a href="/en/glossary/cpfp.php">Child pays for parent</a></li>
+      <li><a href="/en/glossary/child-key.php">Child private key</a></li>
+      <li><a href="/en/glossary/child-key.php">Child public key</a></li>
+      <li><a href="/en/glossary/coinbase.php">Coinbase</a></li>
+      <li><a href="/en/glossary/coinbase-transaction.php">Coinbase transaction</a></li>
+      <li><a href="/en/glossary/compactsize.php">CompactSize</a></li>
+      <li><a href="/en/glossary/compressed-public-key.php">Compressed public key</a></li>
+      <li><a href="/en/glossary/confirmation-score.php">Confirmation score</a></li>
+      <li><a href="/en/glossary/confirmation-score.php">Confirmations</a></li>
+      <li><a href="/en/glossary/confirmation-score.php">Confirmed transaction</a></li>
+      <li><a href="/en/glossary/consensus.php">Consensus</a></li>
+      <li><a href="/en/glossary/consensus-rules.php">Consensus rules</a></li>
+      <li><a href="/en/glossary/cpfp.php">CPFP</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -118,243 +118,59 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/en/glossary/null-data-transaction">Data carrier transaction</a></li>
-      <li><a href="/en/glossary/op-code">Data-pushing opcode</a></li>
-      <li><a href="/en/glossary/denominations">Denomination</a></li>
-      <li><a href="/en/glossary/difficulty">Difficulty</a></li>
-      <li><a href="/en/glossary/dns-seed">DNS seed</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/double-spend">Double spend</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="e">E</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/escrow-contract">Escrow contract</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/extended-key">Extended key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="f">F</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/fork">Fork</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/high-priority-transaction">Free transaction</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/node">Full node</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="g">G</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/coinbase-transaction">Generation transaction</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/genesis-block">Genesis block</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="h">H</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/hard-fork">Hard fork</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/hardened-extended-key">Hardened extended key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/hd-protocol">HD protocol</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/hd-protocol">HD wallet</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/hd-wallet-seed">HD wallet seed</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/block-header">Header</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/header-chain">Header chain</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/headers-first-sync">Headers-first sync</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/block-height">Height</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/high-priority-transaction">High-priority transaction</a></li>
- 
- 
+      <li><a href="/en/glossary/null-data-transaction.php">Data carrier transaction</a></li>
+      <li><a href="/en/glossary/op-code.php">Data-pushing opcode</a></li>
+      <li><a href="/en/glossary/denominations.php">Denomination</a></li>
+      <li><a href="/en/glossary/difficulty.php">Difficulty</a></li>
+      <li><a href="/en/glossary/dns-seed.php">DNS seed</a></li>
+      <li><a href="/en/glossary/double-spend.php">Double spend</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="e">E</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/escrow-contract.php">Escrow contract</a></li>
+      <li><a href="/en/glossary/extended-key.php">Extended key</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="f">F</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/fork.php">Fork</a></li>
+      <li><a href="/en/glossary/high-priority-transaction.php">Free transaction</a></li>
+      <li><a href="/en/glossary/node.php">Full node</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="g">G</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/coinbase-transaction.php">Generation transaction</a></li>
+      <li><a href="/en/glossary/genesis-block.php">Genesis block</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="h">H</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/hard-fork.php">Hard fork</a></li>
+      <li><a href="/en/glossary/hardened-extended-key.php">Hardened extended key</a></li>
+      <li><a href="/en/glossary/hd-protocol.php">HD protocol</a></li>
+      <li><a href="/en/glossary/hd-protocol.php">HD wallet</a></li>
+      <li><a href="/en/glossary/hd-wallet-seed.php">HD wallet seed</a></li>
+      <li><a href="/en/glossary/block-header.php">Header</a></li>
+      <li><a href="/en/glossary/header-chain.php">Header chain</a></li>
+      <li><a href="/en/glossary/headers-first-sync.php">Headers-first sync</a></li>
+      <li><a href="/en/glossary/block-height.php">Height</a></li>
+      <li><a href="/en/glossary/high-priority-transaction.php">High-priority transaction</a></li>
+
+<!-- CONTINUE FROM HERE //-->
 
 
 
