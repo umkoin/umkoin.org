@@ -169,208 +169,43 @@ include 'page_head.php';
       <li><a href="/en/glossary/headers-first-sync.php">Headers-first sync</a></li>
       <li><a href="/en/glossary/block-height.php">Height</a></li>
       <li><a href="/en/glossary/high-priority-transaction.php">High-priority transaction</a></li>
-
-<!-- CONTINUE FROM HERE //-->
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="i">I</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/initial-block-download">IBD</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/initial-block-download">Initial block download</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/input">Input</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/internal-byte-order">Internal byte order</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/inventory">Inventory</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="l">L</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/simplified-payment-verification">Lightweight client</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/locktime">Locktime</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="m">M</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/mainnet">Mainnet</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/51-percent-attack">Majority attack</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/masf">MASF</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/master-chain-code-and-private-key">Master chain code</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/master-chain-code-and-private-key">Master private key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/block-size-limit">Maximum Block Size</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/merkle-block">Merkle block</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/merkle-root">Merkle root</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/merkle-tree">Merkle tree</a></li>
- 
- 
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="i">I</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/initial-block-download.php">IBD</a></li>
+      <li><a href="/en/glossary/initial-block-download.php">Initial block download</a></li>
+      <li><a href="/en/glossary/input.php">Input</a></li>
+      <li><a href="/en/glossary/internal-byte-order.php">Internal byte order</a></li>
+      <li><a href="/en/glossary/inventory.php">Inventory</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="l">L</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/simplified-payment-verification.php">Lightweight client</a></li>
+      <li><a href="/en/glossary/locktime.php">Locktime</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="m">M</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/mainnet.php">Mainnet</a></li>
+      <li><a href="/en/glossary/51-percent-attack.php">Majority attack</a></li>
+      <li><a href="/en/glossary/masf.php">MASF</a></li>
+      <li><a href="/en/glossary/master-chain-code-and-private-key.php">Master chain code</a></li>
+      <li><a href="/en/glossary/master-chain-code-and-private-key.php">Master private key</a></li>
+      <li><a href="/en/glossary/block-size-limit.php">Maximum Block Size</a></li>
+      <li><a href="/en/glossary/merkle-block.php">Merkle block</a></li>
+      <li><a href="/en/glossary/merkle-root.php">Merkle root</a></li>
+      <li><a href="/en/glossary/merkle-tree.php">Merkle tree</a></li>
 
 
 
