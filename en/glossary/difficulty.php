@@ -42,15 +42,8 @@ include '../page_head.php';
 
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
-    <div class="subhead-links sourcefile" data-sourcefile="_data/glossary/en/difficulty.yaml"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/glossary/en/difficulty.yaml">Edit</a>
-      | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/glossary/en/difficulty.yaml">History</a>
-      | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/glossary/en/difficulty.yaml%0A%0A">Report Issue</a>
-    </div>
-
     <h1>Difficulty, Network Difficulty</h1>
-    <div class="notice">
-      <p><span>This definition comes from the <a href="/en/developer-glossary.php">technical glossary</a>.</span></p>
-    </div>
+    <?php include 'notice.php'; ?>
 
     <h2 id="definition">Definition</h2>
     <p>How difficult it is to find a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> relative to the <a href="/en/glossary/difficulty.php" title="How difficult it is to find a block relative to the difficulty of finding the easiest possible block. The easiest possible block has a proof-of-work difficulty of 1." class="auto-link">difficulty</a> of finding the easiest possible <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>. The easiest possible <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> has a proof-of-work <a href="/en/glossary/difficulty.php" title="How difficult it is to find a block relative to the difficulty of finding the easiest possible block. The easiest possible block has a proof-of-work difficulty of 1." class="auto-link">difficulty</a> of 1.</p>

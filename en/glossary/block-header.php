@@ -7,7 +7,7 @@
 <meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-<title>51% Attack, Majority Hash Rate Attack - Umkoin Glossary</title>
+<title>Block Header - Umkoin Glossary</title>
 
 <link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/main.css">
@@ -35,33 +35,33 @@ include '../page_head.php';
       &gt;
       <a href="/en/developer-glossary.php">Glossary</a>
       &gt;
-      51 percent attack
+      Block header
   </div>
 
   <div id="content" class="content">
 
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
-    <h1>51% Attack, Majority Hash Rate Attack</h1>
+    <h1>Block Header</h1>
     <?php include 'notice.php'; ?>
 
     <h2 id="definition">Definition</h2>
-    <p>The ability of someone controlling a majority of <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> hash rate to revise transaction history and prevent new transactions from confirming.</p>
+    <p>An 80-byte <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> belonging to a single <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> which is hashed repeatedly to create <a href="/en/glossary/proof-of-work.php" title="A hash below a target value which can only be obtained, on average, by performing a certain amount of brute force work---therefore demonstrating proof of work." class="auto-link">proof of work</a>.</p>
 
     <h3 id="synonyms">Synonyms</h3>
     <ul>
       <li>
-        <p>51 percent attack</p>
+        <p>Block header</p>
       </li>
       <li>
-        <p>Majority attack</p>
+        <p>Header</p>
       </li>
     </ul>
 
     <h3 id="links">Links</h3>
     <ul>
       <li>
-        <p><a href="/en/developer-guide.php#term-51-attack">51% attack</a> — Umkoin.org Developer Guide</p>
+        <p><a href="/en/developer-reference.php#block-headers">Block header</a> — Umkoin.org Developer Reference</p>
       </li>
     </ul>
 

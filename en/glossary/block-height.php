@@ -7,7 +7,7 @@
 <meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-<title>51% Attack, Majority Hash Rate Attack - Umkoin Glossary</title>
+<title>Block Chain Height, Block Height - Umkoin Glossary</title>
 
 <link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/main.css">
@@ -35,33 +35,33 @@ include '../page_head.php';
       &gt;
       <a href="/en/developer-glossary.php">Glossary</a>
       &gt;
-      51 percent attack
+      Height
   </div>
 
   <div id="content" class="content">
 
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
-    <h1>51% Attack, Majority Hash Rate Attack</h1>
+    <h1>Block Chain Height, Block Height</h1>
     <?php include 'notice.php'; ?>
 
     <h2 id="definition">Definition</h2>
-    <p>The ability of someone controlling a majority of <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> hash rate to revise transaction history and prevent new transactions from confirming.</p>
+    <p>The number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> preceding a particular <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on a <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>. For example, the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> has a <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of zero because zero <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> preceded it.</p>
 
     <h3 id="synonyms">Synonyms</h3>
     <ul>
       <li>
-        <p>51 percent attack</p>
+        <p>Height</p>
       </li>
       <li>
-        <p>Majority attack</p>
+        <p>Block height</p>
       </li>
     </ul>
 
     <h3 id="links">Links</h3>
     <ul>
       <li>
-        <p><a href="/en/developer-guide.php#term-51-attack">51% attack</a> — Umkoin.org Developer Guide</p>
+        <p><a href="/en/developer-guide.php#term-block-height">Block height</a> — Umkoin.org Developer Guide</p>
       </li>
     </ul>
 

@@ -43,9 +43,7 @@ include '../page_head.php';
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
     <h1>Child Pays For Parent, CPFP</h1>
-    <div class="notice">
-      <p><span>This definition comes from the <a href="/en/developer-glossary.php">technical glossary</a>.</span></p>
-    </div>
+    <?php include 'notice.php'; ?>
 
     <h2 id="definition">Definition</h2>
     <p>Selecting transactions for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> not just based on their fees but also based on the fees of their ancestors (parents) and descendants (children).</p>

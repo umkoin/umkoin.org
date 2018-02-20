@@ -42,15 +42,8 @@ include '../page_head.php';
 
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
-    <div class="subhead-links sourcefile" data-sourcefile="_data/glossary/en/consensus-rules.yaml"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/glossary/en/consensus-rules.yaml">Edit</a>
-      | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/glossary/en/consensus-rules.yaml">History</a>
-      | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/glossary/en/consensus-rules.yaml%0A%0A">Report Issue</a>
-    </div>
-
     <h1>Consensus Rules, Validation Rules</h1>
-    <div class="notice">
-      <p><span>This definition comes from the <a href="/en/developer-glossary.php">technical glossary</a>.</span></p>
-    </div>
+    <?php include 'notice.php'; ?>
 
     <h2 id="definition">Definition</h2>
     <p>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> <a href="/en/glossary/consensus-rules.php" title="The block validation rules that full nodes follow to stay in consensus with other nodes." class="auto-link">validation rules</a> that full <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> follow to stay in <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a> with other <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</p>

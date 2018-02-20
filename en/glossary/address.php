@@ -43,9 +43,7 @@ include '../page_head.php';
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
     <h1>Payment Addresses</h1>
-    <div class="notice">
-      <p><span>This definition comes from the <a href="/en/developer-glossary.php">technical glossary</a>.</span></p>
-    </div>
+    <?php include 'notice.php'; ?>
 
     <h2 id="definition">Definition</h2>
     <p>A 20-byte hash formatted using <a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses. Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format. Not the same as other base58 implementations." class="auto-link">base58check</a> to produce either a P2PKH or P2SH Umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.  Currently the most common way users exchange payment information.</p>

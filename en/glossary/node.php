@@ -43,9 +43,7 @@ include '../page_head.php';
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
     <h1>Node</h1>
-    <div class="notice">
-      <p><span>This definition comes from the <a href="/en/developer-glossary.php">technical glossary</a>.</span></p>
-    </div>
+    <?php include 'notice.php'; ?>
 
     <h2 id="definition">Definition</h2>
     <p>A computer that connects to the Umkoin <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
