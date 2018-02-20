@@ -29,13 +29,8 @@ include '../page_head.php';
 <div class="body">
 
   <div class="breadcrumbs">
-      <a href="/en/">Umkoin</a>
-      &gt;
-      <a href="/en/developer-documentation.php">Developer Documentation</a>
-      &gt;
-      <a href="/en/developer-glossary.php">Glossary</a>
-      &gt;
-      Difficulty
+    <?php include 'breadcrumbs.php'; ?>
+    Difficulty
   </div>
 
   <div id="content" class="content">

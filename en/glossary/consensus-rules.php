@@ -29,13 +29,8 @@ include '../page_head.php';
 <div class="body">
 
   <div class="breadcrumbs">
-      <a href="/en/">Umkoin</a>
-      &gt;
-      <a href="/en/developer-documentation.php">Developer Documentation</a>
-      &gt;
-      <a href="/en/developer-glossary.php">Glossary</a>
-      &gt;
-      Consensus rules
+    <?php include 'breadcrumbs.php'; ?>
+    Consensus rules
   </div>
 
   <div id="content" class="content">

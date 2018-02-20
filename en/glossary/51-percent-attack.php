@@ -29,13 +29,8 @@ include '../page_head.php';
 <div class="body">
 
   <div class="breadcrumbs">
-      <a href="/en/">Umkoin</a>
-      &gt;
-      <a href="/en/developer-documentation.php">Developer Documentation</a>
-      &gt;
-      <a href="/en/developer-glossary.php">Glossary</a>
-      &gt;
-      51 percent attack
+    <?php include 'breadcrumbs.php'; ?>
+    51 percent attack
   </div>
 
   <div id="content" class="content">
