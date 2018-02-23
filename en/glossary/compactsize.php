@@ -12,9 +12,6 @@
 <link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="shortcut icon" href="/favicon.png">
-
-<script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
 </head>
 
 
@@ -34,8 +31,6 @@ include '../page_head.php';
   </div>
 
   <div id="content" class="content">
-
-    <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
     <h1>CompactSize Unsigned Integer</h1>
     <?php include 'notice.php'; ?>
@@ -70,22 +65,9 @@ include '../page_head.php';
 </div>
 
 
-<script type="text/javascript">
-  fallbackSVG();
-  addAnchorLinks();
-  trackOutgoingLinks();
-</script>
-
-
 <?php
 include '../page_footer.php';
 ?>
-
-
-<script src="/js/jquery/jquery-1.11.2.min.js"></script>
-<script src="/js/jquery/jquery-ui.min.js"></script>
-<script src="/js/devsearch.js"></script>
-<script>updateToc();</script>
 
 
 </body>
