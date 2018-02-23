@@ -206,779 +206,115 @@ include 'page_head.php';
       <li><a href="/en/glossary/merkle-block.php">Merkle block</a></li>
       <li><a href="/en/glossary/merkle-root.php">Merkle root</a></li>
       <li><a href="/en/glossary/merkle-tree.php">Merkle tree</a></li>
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/message-header">Message header</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/mining">Miner</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/masf">Miner-activated soft fork</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/transaction-fee">Miners fee</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/minimum-relay-fee">Minimum relay fee</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/mining">Mining</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/multisig">Multisig</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="n">N</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/nbits">nBits</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/difficulty">Network difficulty</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/start-string">Network magic</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/locktime">nLockTime</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/node">Node</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/op-code">Non-data-pushing opcode</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/null-data-transaction">Null data transaction</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="o">O</h2>
-<!-- no subhead-links here -->
-
-<p>See also: <a href="https://en.bitcoin.it/wiki/Script#Words">Opcodes</a></p>
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/null-data-transaction">OP_RETURN transaction</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/op-code">Opcode</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/rbf">Opt-in replace by fee</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/orphan-block">Orphan block</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/outpoint">Outpoint</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/output">Output</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="p">P</h2>
-<!-- no subhead-links here -->
-
-<p>See also: <a href="/en/developer-reference#data-messages">P2P protocol messages</a></p>
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/p2pkh-address">P2PKH address</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/p2pkh-address">P2PKH output</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/p2sh-address">P2SH address</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/p2sh-multisig">P2SH multisig</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/p2sh-address">P2SH output</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/parent-key">Parent key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/parent-key">Parent private key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/parent-key">Parent public key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/payment-protocol">Payment protocol</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/payment-protocol">Payment request</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/node">Peer</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/proof-of-work">POW</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/extended-key">Private extended key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/private-key">Private key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/proof-of-work">Proof of work</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/node">Pruned node</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/pubkey-script">Pubkey script</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/extended-key">Public extended key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/public-key">Public key</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="r">R</h2>
-<!-- no subhead-links here -->
-
-<p>See also: <a href="/en/developer-reference#rpc-quick-reference">Umkoin Core RPCs</a></p>
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/serialized-transaction">Raw transaction</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/rbf">RBF</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/redeem-script">Redeem script</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/redeem-script">RedeemScript</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/regression-test-mode">Regression test mode</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/regression-test-mode">Regtest</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/minimum-relay-fee">Relay fee</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/rbf">Replace by fee</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/hd-wallet-seed">Root seed</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/rpc-byte-order">RPC byte order</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  
-   </ul>
-<p><br class="clear" /></p>
-
-<h2 id="s">S</h2>
-<!-- no subhead-links here -->
-
-<ul class="wrapped_list">
-  <li><a href="/en/glossary/denominations">Satoshis</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/pubkey-script">ScriptPubKey</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/signature-script">ScriptSig</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/sequence-number">Sequence number</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/serialized-block">Serialized block</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/serialized-transaction">Serialized transaction</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/signature-hash">Sighash</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/sighash-all">SIGHASH_ALL</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/sighash-anyonecanpay">SIGHASH_ANYONECANPAY</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/sighash-none">SIGHASH_NONE</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/sighash-single">SIGHASH_SINGLE</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/signature">Signature</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/signature-hash">Signature hash</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/signature-script">Signature script</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/simplified-payment-verification">Simplified Payment Verification</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-  <li><a href="/en/glossary/soft-fork">Soft fork</a></li>
- 
- 
-
-
-
-
- 
- 
- 
- 
-      <li><a href="/en/glossary/simplified-payment-verification">SPV</a></li>
-      <li><a href="/en/glossary/stale-block">Stale block</a></li>
-      <li><a href="/en/glossary/standard-transaction">Standard Transaction</a></li>
-      <li><a href="/en/glossary/start-string">Start string</a></li>
+      <li><a href="/en/glossary/message-header.php">Message header</a></li>
+      <li><a href="/en/glossary/mining.php">Miner</a></li>
+      <li><a href="/en/glossary/masf.php">Miner-activated soft fork</a></li>
+      <li><a href="/en/glossary/transaction-fee.php">Miners fee</a></li>
+      <li><a href="/en/glossary/minimum-relay-fee.php">Minimum relay fee</a></li>
+      <li><a href="/en/glossary/mining.php">Mining</a></li>
+      <li><a href="/en/glossary/multisig.php">Multisig</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="n">N</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/nbits.php">nBits</a></li>
+      <li><a href="/en/glossary/difficulty.php">Network difficulty</a></li>
+      <li><a href="/en/glossary/start-string.php">Network magic</a></li>
+      <li><a href="/en/glossary/locktime.php">nLockTime</a></li>
+      <li><a href="/en/glossary/node.php">Node</a></li>
+      <li><a href="/en/glossary/op-code.php">Non-data-pushing opcode</a></li>
+      <li><a href="/en/glossary/null-data-transaction.php">Null data transaction</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="o">O</h2>
+    <!-- no subhead-links here -->
+
+    <p>See also: <a href="https://en.bitcoin.it/wiki/Script#Words">Opcodes</a></p>
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/null-data-transaction.php">OP_RETURN transaction</a></li>
+      <li><a href="/en/glossary/op-code.php">Opcode</a></li>
+      <li><a href="/en/glossary/rbf.php">Opt-in replace by fee</a></li>
+      <li><a href="/en/glossary/orphan-block.php">Orphan block</a></li>
+      <li><a href="/en/glossary/outpoint.php">Outpoint</a></li>
+      <li><a href="/en/glossary/output.php">Output</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="p">P</h2>
+    <!-- no subhead-links here -->
+
+    <p>See also: <a href="/en/developer-reference.php#data-messages">P2P protocol messages</a></p>
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/p2pkh-address.php">P2PKH address</a></li>
+      <li><a href="/en/glossary/p2pkh-address.php">P2PKH output</a></li>
+      <li><a href="/en/glossary/p2sh-address.php">P2SH address</a></li>
+      <li><a href="/en/glossary/p2sh-multisig.php">P2SH multisig</a></li>
+      <li><a href="/en/glossary/p2sh-address.php">P2SH output</a></li>
+      <li><a href="/en/glossary/parent-key.php">Parent key</a></li>
+      <li><a href="/en/glossary/parent-key.php">Parent private key</a></li>
+      <li><a href="/en/glossary/parent-key.php">Parent public key</a></li>
+      <li><a href="/en/glossary/payment-protocol.php">Payment protocol</a></li>
+      <li><a href="/en/glossary/payment-protocol.php">Payment request</a></li>
+      <li><a href="/en/glossary/node.php">Peer</a></li>
+      <li><a href="/en/glossary/proof-of-work.php">POW</a></li>
+      <li><a href="/en/glossary/extended-key.php">Private extended key</a></li>
+      <li><a href="/en/glossary/private-key.php">Private key</a></li>
+      <li><a href="/en/glossary/proof-of-work.php">Proof of work</a></li>
+      <li><a href="/en/glossary/node.php">Pruned node</a></li>
+      <li><a href="/en/glossary/pubkey-script.php">Pubkey script</a></li>
+      <li><a href="/en/glossary/extended-key.php">Public extended key</a></li>
+      <li><a href="/en/glossary/public-key.php">Public key</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="r">R</h2>
+    <!-- no subhead-links here -->
+    <p>See also: <a href="/en/developer-reference.php#rpc-quick-reference">Umkoin Core RPCs</a></p>
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/serialized-transaction.php">Raw transaction</a></li>
+      <li><a href="/en/glossary/rbf.php">RBF</a></li>
+      <li><a href="/en/glossary/redeem-script.php">Redeem script</a></li>
+      <li><a href="/en/glossary/redeem-script.php">RedeemScript</a></li>
+      <li><a href="/en/glossary/regression-test-mode.php">Regression test mode</a></li>
+      <li><a href="/en/glossary/regression-test-mode.php">Regtest</a></li>
+      <li><a href="/en/glossary/minimum-relay-fee.php">Relay fee</a></li>
+      <li><a href="/en/glossary/rbf.php">Replace by fee</a></li>
+      <li><a href="/en/glossary/hd-wallet-seed.php">Root seed</a></li>
+      <li><a href="/en/glossary/rpc-byte-order.php">RPC byte order</a></li>
+    </ul>
+    <p><br class="clear" /></p>
+
+    <h2 id="s">S</h2>
+    <!-- no subhead-links here -->
+
+    <ul class="wrapped_list">
+      <li><a href="/en/glossary/denominations.php">Satoshis</a></li>
+      <li><a href="/en/glossary/pubkey-script.php">ScriptPubKey</a></li>
+      <li><a href="/en/glossary/signature-script.php">ScriptSig</a></li>
+      <li><a href="/en/glossary/sequence-number.php">Sequence number</a></li>
+      <li><a href="/en/glossary/serialized-block.php">Serialized block</a></li>
+      <li><a href="/en/glossary/serialized-transaction.php">Serialized transaction</a></li>
+      <li><a href="/en/glossary/signature-hash.php">Sighash</a></li>
+      <li><a href="/en/glossary/sighash-all.php">SIGHASH_ALL</a></li>
+      <li><a href="/en/glossary/sighash-anyonecanpay.php">SIGHASH_ANYONECANPAY</a></li>
+      <li><a href="/en/glossary/sighash-none.php">SIGHASH_NONE</a></li>
+      <li><a href="/en/glossary/sighash-single.php">SIGHASH_SINGLE</a></li>
+      <li><a href="/en/glossary/signature.php">Signature</a></li>
+      <li><a href="/en/glossary/signature-hash.php">Signature hash</a></li>
+      <li><a href="/en/glossary/signature-script.php">Signature script</a></li>
+      <li><a href="/en/glossary/simplified-payment-verification.php">Simplified Payment Verification</a></li>
+      <li><a href="/en/glossary/soft-fork.php">Soft fork</a></li>
+      <li><a href="/en/glossary/simplified-payment-verification.php">SPV</a></li>
+      <li><a href="/en/glossary/stale-block.php">Stale block</a></li>
+      <li><a href="/en/glossary/standard-transaction.php">Standard Transaction</a></li>
+      <li><a href="/en/glossary/start-string.php">Start string</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -986,15 +322,15 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/en/glossary/nbits">Target</a></li>
-      <li><a href="/en/glossary/testnet">Testnet</a></li>
-      <li><a href="/en/glossary/simplified-payment-verification">Thin client</a></li>
-      <li><a href="/en/glossary/transaction-fee">Transaction fee</a></li>
-      <li><a href="/en/glossary/malleability">Transaction malleability</a></li>
-      <li><a href="/en/glossary/malleability">Transaction mutability</a></li>
-      <li><a href="/en/glossary/txid">Txid</a></li>
-      <li><a href="/en/glossary/input">TxIn</a></li>
-      <li><a href="/en/glossary/output">TxOut</a></li>
+      <li><a href="/en/glossary/nbits.php">Target</a></li>
+      <li><a href="/en/glossary/testnet.php">Testnet</a></li>
+      <li><a href="/en/glossary/simplified-payment-verification.php">Thin client</a></li>
+      <li><a href="/en/glossary/transaction-fee.php">Transaction fee</a></li>
+      <li><a href="/en/glossary/malleability.php">Transaction malleability</a></li>
+      <li><a href="/en/glossary/malleability.php">Transaction mutability</a></li>
+      <li><a href="/en/glossary/txid.php">Txid</a></li>
+      <li><a href="/en/glossary/input.php">TxIn</a></li>
+      <li><a href="/en/glossary/output.php">TxOut</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -1002,10 +338,10 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/en/glossary/uasf">UASF</a></li>
-      <li><a href="/en/glossary/confirmation-score">Unconfirmed transaction</a></li>
-      <li><a href="/en/glossary/uasf">User-activated soft fork</a></li>
-      <li><a href="/en/glossary/unspent-transaction-output">UTXO</a></li>
+      <li><a href="/en/glossary/uasf.php">UASF</a></li>
+      <li><a href="/en/glossary/confirmation-score.php">Unconfirmed transaction</a></li>
+      <li><a href="/en/glossary/uasf.php">User-activated soft fork</a></li>
+      <li><a href="/en/glossary/unspent-transaction-output.php">UTXO</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -1013,10 +349,10 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/en/glossary/wallet">Wallet</a></li>
-      <li><a href="/en/glossary/wallet-import-format">Wallet Import Format</a></li>
-      <li><a href="/en/glossary/watch-only-address">Watch-only address</a></li>
-      <li><a href="/en/glossary/wallet-import-format">WIF</a></li>
+      <li><a href="/en/glossary/wallet.php">Wallet</a></li>
+      <li><a href="/en/glossary/wallet-import-format.php">Wallet Import Format</a></li>
+      <li><a href="/en/glossary/watch-only-address.php">Watch-only address</a></li>
+      <li><a href="/en/glossary/wallet-import-format.php">WIF</a></li>
     </ul>
     <p><br class="clear" /></p>
 
