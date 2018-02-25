@@ -32,7 +32,7 @@ include 'page_head.php';
   <div class="breadcrumbs">
       <a href="/uk/">Умкойн</a>
       &gt;
-      <a href="/uk/developer-documentation">Документація Розробника</a>
+      <a href="/uk/developer-documentation.php">Документація Розробника</a>
       &gt;
       Глосарій
   </div>
@@ -52,7 +52,7 @@ include 'page_head.php';
     <!--Temporary disclaimer END-->
 
     <div class="notice">
-      <p><span>Це технічний словник. Звичайним користувачам ми радимо використовувати <a href="/uk/vocabulary">сторінку словнику</a>.</span></p>
+      <p><span>Це технічний словник. Звичайним користувачам ми радимо використовувати <a href="/uk/vocabulary.php">сторінку словнику</a>.</span></p>
     </div>
 
     <h2 id="section">Номери</h2>
@@ -62,8 +62,8 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/uk/glossary/51-percent-attack">Атака 51 відсотка</a></li>
-      <li><a href="/uk/glossary/51-percent-attack">Атака більшості</a></li>
+      <li><a href="/uk/glossary/51-percent-attack.php">Атака 51 відсотка</a></li>
+      <li><a href="/uk/glossary/51-percent-attack.php">Атака більшості</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -71,7 +71,7 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/uk/glossary/block-chain">Блок-чейн</a></li>
+      <li><a href="/uk/glossary/block-chain.php">Блок-чейн</a></li>
     </ul>
     <p><br class="clear" /></p>
 
@@ -79,7 +79,7 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/uk/glossary/block-chain">Ланцюг блоків</a></li>
+      <li><a href="/uk/glossary/block-chain.php">Ланцюг блоків</a></li>
     </ul>
     <p><br class="clear" /></p>
 

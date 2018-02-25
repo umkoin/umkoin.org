@@ -4,7 +4,7 @@
 
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta property="og:image" content="http://bitcoin.org/img/icons/opengraph.png" />
+<meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <title>Developer Documentation - Umkoin</title>

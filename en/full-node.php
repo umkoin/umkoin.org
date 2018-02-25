@@ -524,7 +524,7 @@ include 'page_head.php';
       <p>Ubuntu also comes with its firewall disabled by default, but if you have enabled it, see the <a href="https://help.ubuntu.com/community/Gufw">Ubuntu wiki page</a> for information about adding port forwarding rules.</p>
       <p>Once you have allowed inbound connections to port 6333, start Umkoin Core (if you haven’t already) and follow the <a href="#testing-connections">Testing Connections</a> instructions to test your connection.</p>
       <p>If something else went wrong re-read the DHCP, port forwarding, and firewall instructions above to see if you missed anything, search the web for help with “port forwarding” and “opening firewall ports”, and ask for help on sites like <a href="http://superuser.com">SuperUser</a>.</p>
-      <p>We can’t provide direct support, but if you see a way to improve these instructions, please <a href="https://github.com/bitcoin-dot-org/bitcoin.org/issues/new">open an issue.</a></p>
+      <p>We can’t provide direct support, but if you see a way to improve these instructions, please <a href="https://github.com/umkoin/umkoin.org/issues/new">open an issue.</a></p>
 
       <h2 id="configuration-tuning">Configuration Tuning</h2>
       <p>This section contains advice about how to change your Umkoin Core configuration to adapt it to your needs.</p>

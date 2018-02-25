@@ -97,20 +97,18 @@ include 'page_head.php';
       </div>
     </div>
 
-    <!--Temporary disclaimer BEGIN-->
     <div class="toccontent">
+
+      <!--Temporary disclaimer BEGIN-->
       <div id="develdocdisclaimer" class="develdocdisclaimer">
-      <div>
-        <b>BETA</b>: This documentation has not been extensively reviewed by Umkoin experts and so likely contains numerous errors. Please use the <em>Issue</em> and <em>Edit</em> links on the bottom left menu to help us improve. To close this disclaimer
-
-        <a href="#" onclick="disclaimerClose(event);">click here</a>
-        <a class="develdocdisclaimerclose" onclick="disclaimerClose(event);">X</a>
+        <div>
+          <b>BETA</b>: This documentation has not been extensively reviewed by Umkoin experts and so likely contains numerous errors. Please use the <em>Issue</em> and <em>Edit</em> links on the bottom left menu to help us improve. To close this disclaimer <a href="#" onclick="disclaimerClose(event);">click here</a>
+          <a class="develdocdisclaimerclose" onclick="disclaimerClose(event);">X</a>
+        </div>
       </div>
-    </div>
-    <script>disclaimerAutoClose();</script>
-    <!--Temporary disclaimer END-->
+      <script>disclaimerAutoClose();</script>
+      <!--Temporary disclaimer END-->
 
-    <p><input id="glossary_term" class="glossary_term" placeholder="Search the glossary, RPCs, and more" /></p>
     <p>The following guide aims to provide examples to help you start building Umkoin-based applications. To make the best use of this document, you may want to install the current version of Umkoin Core, either from <a href="https://github.com/umkoin/umkoin">source</a> or from a <a href="/en/download.php">pre-compiled executable</a>.</p>
     <p>Once installed, you’ll have access to three programs: <code>umkoind</code>, <code>umkoin-qt</code>, and <code>umkoin-cli</code>.</p>
 
