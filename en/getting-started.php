@@ -98,7 +98,7 @@ include 'page_head.php';
         <div>
           <h2 id="tax"><span>3.</span> Accounting and taxes</h2>
           <p>Merchants often deposit and display prices in their local currency. In other cases, Umkoin works similarly to a foreign currency. To get appropriate guidance regarding tax compliance for your own jurisdiction, you should contact a qualified accountant.</p>
-          <div><a href="https://en.bitcoin.it/wiki/How_to_accept_Bitcoin,_for_small_businesses#Setting_Prices">Read more</a></div>
+          <div><a href="/en/accounting_and_taxes.php">Read more</a></div>
         </div>
 
         <div>
