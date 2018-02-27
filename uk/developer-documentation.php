@@ -59,9 +59,9 @@ include 'page_head.php';
         </div>
         <div>
           <h2 id="transactions"><span class="fa fa-exchange fa-lg"></span> Транзакції</h2>
-          <p><a href="/uk/developer-guide#transactions.php">Транзакції - Керівництво</a></p>
-          <p><a href="/uk/developer-reference#transactions.php">Транзакції - Довідка</a></p>
-          <p><a href="/uk/developer-examples#transactions.php">Транзакції - Приклади</a></p>
+          <p><a href="/uk/developer-guide.php#transactions">Транзакції - Керівництво</a></p>
+          <p><a href="/uk/developer-reference.php#transactions">Транзакції - Довідка</a></p>
+          <p><a href="/uk/developer-examples.php#transactions">Транзакції - Приклади</a></p>
         </div>
       </div>
 

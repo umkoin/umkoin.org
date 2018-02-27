@@ -2,10 +2,9 @@
 <html lang="uk">
 
 
-
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta property="og:image" content="https://umkoin.org/img/icons/opengraph.png" />
+<meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 <title>Приклади розробки - Умкойн</title>
@@ -31,9 +30,9 @@ include 'page_head.php';
 <div class="body">
 
   <div class="breadcrumbs">
-      <a href="/uk/">Біткойн</a>
+      <a href="/uk/">Умкойн</a>
       &gt;
-      <a href="/uk/developer-documentation">Документація Розробника</a>
+      <a href="/uk/developer-documentation.php">Документація Розробника</a>
       &gt;
       Приклади
   </div>
@@ -71,29 +70,31 @@ include 'page_head.php';
           <li><a href="#payment-processing" id="markdown-toc-payment-processing">Payment Processing</a>
             <ul>
               <li><a href="#payment-protocol" id="markdown-toc-payment-protocol">Payment Protocol</a>
-        <ul>
-          <li><a href="#paymentrequest--paymentdetails" id="markdown-toc-paymentrequest--paymentdetails">PaymentRequest &amp; PaymentDetails</a>            <ul>
-              <li><a href="#initialization-code" id="markdown-toc-initialization-code">Initialization Code</a></li>
-              <li><a href="#configuration-code" id="markdown-toc-configuration-code">Configuration Code</a></li>
-              <li><a href="#code-variables" id="markdown-toc-code-variables">Code Variables</a></li>
-              <li><a href="#derivable-data" id="markdown-toc-derivable-data">Derivable Data</a></li>
-              <li><a href="#output-code" id="markdown-toc-output-code">Output Code</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#p2p-network" id="markdown-toc-p2p-network">P2P Network</a>    <ul>
-      <li><a href="#creating-a-bloom-filter" id="markdown-toc-creating-a-bloom-filter">Creating A Bloom Filter</a></li>
-      <li><a href="#evaluating-a-bloom-filter" id="markdown-toc-evaluating-a-bloom-filter">Evaluating A Bloom Filter</a></li>
-      <li><a href="#retrieving-a-merkleblock" id="markdown-toc-retrieving-a-merkleblock">Retrieving A MerkleBlock</a></li>
-      <li><a href="#parsing-a-merkleblock" id="markdown-toc-parsing-a-merkleblock">Parsing A MerkleBlock</a></li>
-    </ul>
-  </li>
-</ul>
+              <ul>
+                <li><a href="#paymentrequest--paymentdetails" id="markdown-toc-paymentrequest--paymentdetails">PaymentRequest &amp; PaymentDetails</a>
+                  <ul>
+                    <li><a href="#initialization-code" id="markdown-toc-initialization-code">Initialization Code</a></li>
+                    <li><a href="#configuration-code" id="markdown-toc-configuration-code">Configuration Code</a></li>
+                    <li><a href="#code-variables" id="markdown-toc-code-variables">Code Variables</a></li>
+                    <li><a href="#derivable-data" id="markdown-toc-derivable-data">Derivable Data</a></li>
+                    <li><a href="#output-code" id="markdown-toc-output-code">Output Code</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#p2p-network" id="markdown-toc-p2p-network">P2P Network</a>
+          <ul>
+            <li><a href="#creating-a-bloom-filter" id="markdown-toc-creating-a-bloom-filter">Creating A Bloom Filter</a></li>
+            <li><a href="#evaluating-a-bloom-filter" id="markdown-toc-evaluating-a-bloom-filter">Evaluating A Bloom Filter</a></li>
+            <li><a href="#retrieving-a-merkleblock" id="markdown-toc-retrieving-a-merkleblock">Retrieving A MerkleBlock</a></li>
+            <li><a href="#parsing-a-merkleblock" id="markdown-toc-parsing-a-merkleblock">Parsing A MerkleBlock</a></li>
+          </ul>
+        </li>
+      </ul>
 
-    <ul class="goback"><li><a href="/uk/developer-documentation">Повернутись до змісту</a></li></ul>
+    <ul class="goback"><li><a href="/uk/developer-documentation.php">Повернутись до змісту</a></li></ul>
     <ul class="reportissue"><li><a href="https://github.com/umkoin/umkoin.org/issues/new" onmouseover="updateIssue(event);">Повідомити про помилку</a></li></ul>
     <ul class="editsource"><li><a href="https://github.com/umkoin/umkoin.org/tree/master/_includes" onmouseover="updateSource(event);">Редагувати на GitHub</a></li></ul>
 
@@ -103,88 +104,83 @@ include 'page_head.php';
 
   <!--Temporary disclaimer BEGIN-->
   <div id="develdocdisclaimer" class="develdocdisclaimer">
-  <div>
-    <b>BETA</b>: This documentation has not been extensively reviewed by Bitcoin experts and so likely contains numerous errors. Please use the <em>Issue</em> and <em>Edit</em> links on the bottom left menu to help us improve. To close this disclaimer
-
-    <a href="#" onclick="disclaimerClose(event);">click here</a>
-    <a class="develdocdisclaimerclose" onclick="disclaimerClose(event);">X</a>
+    <div>
+      <b>BETA</b>: This documentation has not been extensively reviewed by Umkoin experts and so likely contains numerous errors. Please use the <em>Issue</em> and <em>Edit</em> links on the bottom left menu to help us improve. To close this disclaimer
+      <a href="#" onclick="disclaimerClose(event);">click here</a>
+      <a class="develdocdisclaimerclose" onclick="disclaimerClose(event);">X</a>
+    </div>
   </div>
-</div>
   <script>disclaimerAutoClose();</script>
-
   <!--Temporary disclaimer END-->
-
-  <p><input id="glossary_term" class="glossary_term" placeholder="Шукайте в глосарію, RPC тощо" /></p>
 
   <!--Temporary disclaimer BEGIN-->
   <p class="devdoc_translation_warning">
     <b>BETA</b>: This version of the documentation may contain English (original) parts, if you wish to contribute to translating this document to your language, please use the appropriate links under the headings, or visit
-
     <a href="https://github.com/umkoin/umkoin.org/docs/assisting-with-translation#translate">this link</a>
-</p>
+  </p>
   <!--Temporary disclaimer END-->
 
   <p>The following guide aims to provide examples to help you start
-building Bitcoin-based applications. To make the best use of this document,
-you may want to install the current version of Bitcoin Core, either from
-<a href="https://github.com/bitcoin/bitcoin">source</a> or from a <a href="/en/download">pre-compiled executable</a>.</p>
+building Umkoin-based applications. To make the best use of this document,
+you may want to install the current version of Umkoin Core, either from
+<a href="https://github.com/umkoin/umkoin">source</a> or from a <a href="/en/download">pre-compiled executable</a>.</p>
 
-  <p>Once installed, you’ll have access to three programs: <code>bitcoind</code>,
-<code>bitcoin-qt</code>, and <code>bitcoin-cli</code>.</p>
+  <p>Once installed, you’ll have access to three programs: <code>umkoind</code>,
+<code>umkoin-qt</code>, and <code>umkoin-cli</code>.</p>
 
   <ul>
     <li>
-      <p><code>bitcoin-qt</code> provides a combination full Bitcoin <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">peer</a> and <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>
+      <p><code>umkoin-qt</code> provides a combination full Umkoin <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> and <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>
 frontend. From the Help menu, you can access a console where you can
 enter the <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> commands used throughout this document.</p>
     </li>
     <li>
-      <p><code>bitcoind</code> is more useful for programming: it provides a full <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">peer</a>
+      <p><code>umkoind</code> is more useful for programming: it provides a full <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>
 which you can interact with through <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> to port 8332 (or 18332
-for <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a>).</p>
+for <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a>).</p>
     </li>
     <li>
-      <p><code>bitcoin-cli</code> allows you to send <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> commands to <code>bitcoind</code> from the
-command line.  For example, <code>bitcoin-cli help</code></p>
+      <p><code>umkoin-cli</code> allows you to send <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> commands to <code>umkoind</code> from the
+command line.  For example, <code>umkoin-cli help</code></p>
     </li>
   </ul>
 
-  <p>All three programs get settings from <code>bitcoin.conf</code> in the <code>Bitcoin</code>
+  <p>All three programs get settings from <code>umkoin.conf</code> in the <code>Umkoin</code>
 application directory:</p>
 
   <ul>
     <li>
-      <p>Windows: <code>%APPDATA%\Bitcoin\</code></p>
+      <p>Windows: <code>%APPDATA%\Umkoin\</code></p>
     </li>
     <li>
-      <p>OSX: <code>$HOME/Library/Application Support/Bitcoin/</code></p>
+      <p>OSX: <code>$HOME/Library/Application Support/Umkoin/</code></p>
     </li>
     <li>
-      <p>Linux: <code>$HOME/.bitcoin/</code></p>
+      <p>Linux: <code>$HOME/.umkoin/</code></p>
     </li>
   </ul>
 
-  <p>To use <code>bitcoind</code> and <code>bitcoin-cli</code>, you will need to add a <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> password
-to your <code>bitcoin.conf</code> file. Both programs will read from the same file
+  <p>To use <code>umkoind</code> and <code>umkoin-cli</code>, you will need to add a <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> password
+to your <code>umkoin.conf</code> file. Both programs will read from the same file
 if both run on the same system as the same user, so any long random
 password will work:</p>
 
   <pre><code>rpcpassword=change_this_to_a_long_random_password
 </code></pre>
 
-  <p>You should also make the <code>bitcoin.conf</code> file only readable to its
+  <p>You should also make the <code>umkoin.conf</code> file only readable to its
 owner.  On Linux, Mac OSX, and other Unix-like systems, this can be
-accomplished by running the following command in the Bitcoin application
+accomplished by running the following command in the Umkoin application
 directory:</p>
 
-  <pre><code>chmod 0600 bitcoin.conf
+  <pre><code>chmod 0600 umkoin.conf
 </code></pre>
 
-  <p>For development, it’s safer and cheaper to use Bitcoin’s test <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> (<a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a>)
+  <p>For development, it’s safer and cheaper to use Umkoin’s test <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> (<a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a>)
 or <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regression test mode</a> (<a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest</a>) described below.</p>
 
-  <p>Questions about Bitcoin use are best sent to the <a href="https://bitcointalk.org/index.php?board=4.0">BitcoinTalk forum</a> and <a href="https://en.bitcoin.it/wiki/IRC_channels">IRC channels</a>. Errors or suggestions related to
-documentation on Bitcoin.org can be <a href="https://github.com/umkoin/umkoin.org/issues">submitted as an issue</a>
+  <p>Questions about Umkoin use are best sent to the <a href="https://bitcointalk.org/index.php?board=4.0">UmkoinTalk forum</a> and <a href="https://en.bitcoin.it/wiki/IRC_channels">IRC channels</a>. Errors or suggestions related to
+documentation on Umkoin.org can be <a href="https://github.com/umkoin/umkoin.org/issues">submitted as an issue</a>
 or posted to the <a href="https://groups.google.com/forum/#!forum/bitcoin-documentation">bitcoin-documentation mailing list</a>.</p>
 
   <p>In the following documentation, some strings have been shortened or wrapped: “[…]”
@@ -203,7 +199,7 @@ definition of the term will be displayed in a tooltip.</p>
 
 </div>
 
-  <p>Bitcoin Core provides testing tools designed to let developers
+  <p>Umkoin Core provides testing tools designed to let developers
 test their applications with reduced risks and limitations.</p>
 
   <h3 id="testnet">Testnet</h3>
@@ -216,17 +212,17 @@ test their applications with reduced risks and limitations.</p>
 
 </div>
 
-  <p>When run with no arguments, all Bitcoin Core programs default to Bitcoin’s main
-<a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> (<a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." id="term-mainnet" class="term">mainnet</a>). However, for development,
-it’s safer and cheaper to use Bitcoin’s test <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> (<a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a>)
-where the <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> spent have no real-world value. <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">Testnet</a> also relaxes some
-restrictions (such as <a href="/en/glossary/standard-transaction" title="A transaction that passes Bitcoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Bitcoin Core software." class="auto-link">standard transaction</a> checks) so you can test functions
-which might currently be disabled by default on <a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.</p>
+  <p>When run with no arguments, all Umkoin Core programs default to Umkoin’s main
+<a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> (<a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." id="term-mainnet" class="term">mainnet</a>). However, for development,
+it’s safer and cheaper to use Umkoin’s test <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> (<a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a>)
+where the <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> spent have no real-world value. <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">Testnet</a> also relaxes some
+restrictions (such as <a href="/en/glossary/standard-transaction" title="A transaction that passes Umkoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Umkoin Core software." class="auto-link">standard transaction</a> checks) so you can test functions
+which might currently be disabled by default on <a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.</p>
 
-  <p>To use <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a>, use the argument <code>-testnet</code> with <code>bitcoin-cli</code>, <code>bitcoind</code> or <code>bitcoin-qt</code> or add
-<code>testnet=1</code> to your <code>bitcoin.conf</code> file as <a href="/en/developer-examples">described earlier</a>.  To get
-free <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> for testing, use <a href="https://tpfaucet.appspot.com/">Piotr Piasecki’s testnet faucet</a>.
-<a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">Testnet</a> is a public resource provided for free by members of the
+  <p>To use <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a>, use the argument <code>-testnet</code> with <code>umkoin-cli</code>, <code>umkoind</code> or <code>umkoin-qt</code> or add
+<code>testnet=1</code> to your <code>umkoin.conf</code> file as <a href="/en/developer-examples">described earlier</a>.  To get
+free <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> for testing, use <a href="https://tpfaucet.appspot.com/">Piotr Piasecki’s testnet faucet</a>.
+<a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">Testnet</a> is a public resource provided for free by members of the
 community, so please don’t abuse it.</p>
 
   <h3 id="regtest-mode">Regtest Mode</h3>
@@ -240,50 +236,50 @@ community, so please don’t abuse it.</p>
 </div>
 
   <p>For situations
-where interaction with random <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">peers</a> and <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> is unnecessary or
-unwanted, Bitcoin Core’s <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regression test mode</a> (<a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>) lets you
+where interaction with random <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> and <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> is unnecessary or
+unwanted, Umkoin Core’s <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regression test mode</a> (<a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>) lets you
 instantly create a brand-new private <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> with the same basic
-rules as <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a>—but one major difference: you choose when to create
+rules as <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a>—but one major difference: you choose when to create
 new <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>, so you have complete control over the environment.</p>
 
   <p>Many developers consider <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a> the preferred way to develop new
 applications. The following example will let you create a <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest</a>
-environment after you first <a href="/en/developer-examples">configure bitcoind</a>.</p>
+environment after you first <a href="/en/developer-examples">configure umkoind</a>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoind -regtest -daemon
-Bitcoin server starting</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoind -regtest -daemon
+Umkoin server starting</code></pre></figure>
 
-  <p>Start <code>bitcoind</code> in <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a> to create a private <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>.</p>
+  <p>Start <code>umkoind</code> in <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a> to create a private <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>.</p>
 
-  <pre><code>## Bitcoin Core 0.10.1 and earlier
-bitcoin-cli -regtest setgenerate true 101
+  <pre><code>## Umkoin Core 0.10.1 and earlier
+umkoin-cli -regtest setgenerate true 101
 
-## Bitcoin Core master (as of commit 48265f3)
-bitcoin-cli -regtest generate 101
+## Umkoin Core master (as of commit 48265f3)
+umkoin-cli -regtest generate 101
 </code></pre>
 
   <p>Generate 101 <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> using a special <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>
 which is only available in <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>. This takes less than a second on
-a generic PC. Because this is a new <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> using Bitcoin’s default
-rules, the first <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> pay a <a href="/en/glossary/block-reward" title="The amount that miners may claim as a reward for creating a block. Equal to the sum of the block subsidy (newly available satoshis) plus the transactions fees paid by transactions included in the block." class="auto-link">block reward</a> of 50 <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>.  Unlike
-<a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>, in <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a> only the first 150 <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> pay a reward of 50 <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>.
+a generic PC. Because this is a new <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> using Umkoin’s default
+rules, the first <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> pay a <a href="/en/glossary/block-reward" title="The amount that miners may claim as a reward for creating a block. Equal to the sum of the block subsidy (newly available satoshis) plus the transactions fees paid by transactions included in the block." class="auto-link">block reward</a> of 50 <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>.  Unlike
+<a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>, in <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a> only the first 150 <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> pay a reward of 50 <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>.
 However, a <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> must have 100 <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> before that reward can be
 spent, so we generate 101 <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> to get access to the <a href="/en/glossary/coinbase-transaction" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase
 transaction</a> from <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> #1.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -regtest getbalance
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">umkoin-cli -regtest getbalance
 50.00000000</code></pre></figure>
 
-  <p>Verify that we now have 50 <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> available to spend.</p>
+  <p>Verify that we now have 50 <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> available to spend.</p>
 
-  <p>You can now use Bitcoin Core <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> prefixed with <code>bitcoin-cli -regtest</code>.</p>
+  <p>You can now use Umkoin Core <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> prefixed with <code>umkoin-cli -regtest</code>.</p>
 
   <p><a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">Regtest</a> <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallets</a> and <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> state (chainstate) are saved in the <code>regtest</code>
-subdirectory of the Bitcoin Core configuration directory. You can safely
-delete the <code>regtest</code> subdirectory and restart Bitcoin Core to
+subdirectory of the Umkoin Core configuration directory. You can safely
+delete the <code>regtest</code> subdirectory and restart Umkoin Core to
 start a new <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest</a>. (See the <a href="/en/developer-examples">Developer Examples Introduction</a> for default
 configuration directory locations on various operating systems. Always back up
-<a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallets</a> before performing dangerous operations such as deleting.)</p>
+<a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallets</a> before performing dangerous operations such as deleting.)</p>
 
   <h2 id="transactions">Transactions</h2>
   <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/examples/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/examples/transactions.md">Редагувати</a>
@@ -305,16 +301,16 @@ configuration directory locations on various operating systems. Always back up
 
 </div>
 
-  <p>Creating transactions is something most Bitcoin applications do.
-This section describes how to use Bitcoin Core’s <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface to
+  <p>Creating transactions is something most Umkoin applications do.
+This section describes how to use Umkoin Core’s <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface to
 create transactions with various attributes.</p>
 
-  <p>Your applications may use something besides Bitcoin Core to create
+  <p>Your applications may use something besides Umkoin Core to create
 transactions, but in any system, you will need to provide the same kinds
 of data to create transactions with the same attributes as those
 described below.</p>
 
-  <p>In order to use this tutorial, you will need to setup <a href="/en/download">Bitcoin Core</a>
+  <p>In order to use this tutorial, you will need to setup <a href="/en/download">Umkoin Core</a>
 and create a <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regression test mode</a> environment with 50 BTC in your test
 <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
 
@@ -328,31 +324,31 @@ and create a <a href="/en/glossary/regression-test-mode" title="A local testing 
 
 </div>
 
-  <p>Bitcoin Core provides several <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> which handle all the details of
+  <p>Umkoin Core provides several <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> which handle all the details of
 spending, including creating <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change outputs</a> and paying appropriate fees.
 Even advanced users should use these <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> whenever possible to decrease
-the chance that <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> will be lost by mistake.</p>
+the chance that <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> will be lost by mistake.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest getnewaddress
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest getnewaddress
 mvbnrCX3bg1cDRUu8pkecrvP6vQkSLDSou
 
 <span class="gp">&gt; </span><span class="nv">NEW_ADDRESS</span><span class="o">=</span>mvbnrCX3bg1cDRUu8pkecrvP6vQkSLDSou</code></pre></figure>
 
-  <p>Get a new Bitcoin <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> and save it in the shell variable <code>$NEW_ADDRESS</code>.</p>
+  <p>Get a new Umkoin <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> and save it in the shell variable <code>$NEW_ADDRESS</code>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest sendtoaddress <span class="nv">$NEW_ADDRESS</span> 10.00
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest sendtoaddress <span class="nv">$NEW_ADDRESS</span> 10.00
 263c018582731ff54dc72c7d67e858c002ae298835501d80200f05753de0edf0</code></pre></figure>
 
-  <p>Send 10 <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> to the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> using the <a href="/en/developer-reference#sendtoaddress" class="auto-link"><code>sendtoaddress</code> RPC</a>.  The
+  <p>Send 10 <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> to the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> using the <a href="/en/developer-reference#sendtoaddress" class="auto-link"><code>sendtoaddress</code> RPC</a>.  The
 returned hex string is the <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">transaction identifier</a> (<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a>).</p>
 
   <p>The <a href="/en/developer-reference#sendtoaddress" class="auto-link"><code>sendtoaddress</code> RPC</a> automatically selects an unspent transaction
-<a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> (<a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>) from which to spend the <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>. In this case, it
-withdrew the <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> from our only available <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>, the <a href="/en/glossary/coinbase-transaction" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase
+<a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> (<a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>) from which to spend the <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>. In this case, it
+withdrew the <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> from our only available <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>, the <a href="/en/glossary/coinbase-transaction" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase
 transaction</a> for <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> #1 which matured with the creation of <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> #101.
 To spend a specific <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>, you could use the <a href="/en/developer-reference#sendfrom" class="auto-link"><code>sendfrom</code> RPC</a> instead.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest listunspent
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest listunspent
 <span class="o">[</span>
 <span class="o">]</span></code></pre></figure>
 
@@ -361,7 +357,7 @@ The list is empty because it defaults to only showing <a href="/en/glossary/conf
 <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a> and we just spent our only <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed</a> <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest listunspent 0</code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest listunspent 0</code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"txid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"263c018582731ff54dc72c7d67e858c002ae298835501d\
@@ -394,12 +390,12 @@ The list is empty because it defaults to only showing <a href="/en/glossary/conf
   <p>Re-running the <a href="/en/developer-reference#listunspent" class="auto-link"><code>listunspent</code> RPC</a> with the argument “0” to also display
 <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> shows that we have two <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a>, both with the
 same <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a>. The first <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> shown is a <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a> that <a href="/en/developer-reference#sendtoaddress" class="auto-link"><code>sendtoaddress</code></a>
-created using a new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> from the key pool. The second <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> shown is
-the spend to the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> we provided. If we had spent those <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> to
+created using a new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> from the key pool. The second <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> shown is
+the spend to the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> we provided. If we had spent those <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> to
 someone else, that second transaction would not be displayed in our
 list of <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest generate 1
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest generate 1
 
 <span class="gp">&gt; </span><span class="nb">unset </span>NEW_ADDRESS</code></pre></figure>
 
@@ -416,16 +412,16 @@ second) and clear the shell variable.</p>
 
 </div>
 
-  <p>The <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> allow users to create custom transactions and
-delay broadcasting those transactions. However, mistakes made in <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw
-transactions</a> may not be detected by Bitcoin Core, and a number of <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw
-transaction</a> users have permanently lost large numbers of <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>, so
-please be careful using <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a> on <a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.</p>
+  <p>The <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> <a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> allow users to create custom transactions and
+delay broadcasting those transactions. However, mistakes made in <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw
+transactions</a> may not be detected by Umkoin Core, and a number of <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw
+transaction</a> users have permanently lost large numbers of <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>, so
+please be careful using <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a> on <a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.</p>
 
-  <p>This subsection covers one of the simplest possible <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a>.</p>
+  <p>This subsection covers one of the simplest possible <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a>.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest listunspent</code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest listunspent</code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"txid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"263c018582731ff54dc72c7d67e858c002ae298835501d\
@@ -475,15 +471,15 @@ created before plus the <a href="/en/glossary/coinbase-transaction" title="The f
 <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a> and <a href="/en/developer-guide#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) of that <a href="/en/glossary/coinbase" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> to shell
 variables.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">&gt; bitcoin-cli -regtest getnewaddress
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">&gt; umkoin-cli -regtest getnewaddress
 mz6KvC4aoUeo6wSxtiVQTo7FDwPnkp6URG
 
 <span class="gp">&gt; </span><span class="nv">NEW_ADDRESS</span><span class="o">=</span>mz6KvC4aoUeo6wSxtiVQTo7FDwPnkp6URG</code></pre></figure>
 
-  <p>Get a new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to use in the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>.</p>
+  <p>Get a new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to use in the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>.</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">## Outputs - inputs = transaction fee, so always double-check your math!</span>
-<span class="gp">&gt; </span>bitcoin-cli -regtest createrawtransaction <span class="s1">'''
+<span class="gp">&gt; </span>umkoin-cli -regtest createrawtransaction <span class="s1">'''
     [
       {
         "txid": "'</span><span class="nv">$UTXO_TXID</span><span class="s1">'",
@@ -501,26 +497,26 @@ f2f69e5355aa427045bc15e7c6c77288ac00000000
 <span class="gp">&gt; </span><span class="nv">RAW_TX</span><span class="o">=</span>01000000017b1eabe0209b1fe794124575ef807057c77ada2138ae4[...]</code></pre></figure>
 
   <p>Using two arguments to the <a href="/en/developer-reference#createrawtransaction" class="auto-link"><code>createrawtransaction</code> RPC</a>, we create a new
-<a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw format transaction</a>. The first argument (a JSON array) references
+<a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw format transaction</a>. The first argument (a JSON array) references
 the <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a> of the <a href="/en/glossary/coinbase-transaction" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a> from <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> #2 and the index
 number (0) of the <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> from that transaction we want to spend. The
-second argument (a JSON object) creates the <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> with the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>
-(<a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a> hash) and number of <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> we want to transfer.
-We save the resulting <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw format transaction</a> to a shell variable.</p>
+second argument (a JSON object) creates the <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> with the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>
+(<a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a> hash) and number of <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> we want to transfer.
+We save the resulting <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw format transaction</a> to a shell variable.</p>
 
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" />
  <strong>Warning:</strong> <a href="/en/developer-reference#createrawtransaction" class="auto-link"><code>createrawtransaction</code></a> does not automatically create <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change
 outputs</a>, so you can easily accidentally pay a large <a href="/en/glossary/transaction-fee" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a>. In
-this example, our <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> had 50.0000 <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> and our <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>
-(<code>$NEW_ADDRESS</code>) is being paid 49.9999 <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>, so the transaction will
-include a fee of 0.0001 <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>. If we had paid <code>$NEW_ADDRESS</code> only 10
-<a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> with no other changes to this transaction, the <a href="/en/glossary/transaction-fee" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a>
-would be a whopping 40 <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>. See the Complex <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw Transaction</a>
+this example, our <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> had 50.0000 <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> and our <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>
+(<code>$NEW_ADDRESS</code>) is being paid 49.9999 <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>, so the transaction will
+include a fee of 0.0001 <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>. If we had paid <code>$NEW_ADDRESS</code> only 10
+<a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> with no other changes to this transaction, the <a href="/en/glossary/transaction-fee" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a>
+would be a whopping 40 <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a>. See the Complex <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw Transaction</a>
 subsection below for how to create a transaction with multiple <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> so you
 can send the change back to yourself.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest decoderawtransaction <span class="nv">$RAW_TX</span></code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest decoderawtransaction <span class="nv">$RAW_TX</span></code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
     </span><span class="nt">"txid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"c80b343d2ce2b5d829c2de9854c7c8d423c0e33bda264c4013\
               8d834aab4c0638"</span><span class="p">,</span><span class="w">
@@ -565,7 +561,7 @@ can send the change back to yourself.</p>
 we just created does.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span></code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span></code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
     </span><span class="nt">"hex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"01000000017b1eabe0209b1fe794124575ef807057c77ada213\
              8ae4fa8d6c4de0398a14f3f00000000494830450221008949f0\
@@ -584,21 +580,21 @@ we just created does.</p>
 <a href="/en/developer-reference#createrawtransaction" class="auto-link"><code>createrawtransaction</code></a> and save the returned “hex” raw format signed
 transaction to a shell variable.</p>
 
-  <p>Even though the transaction is now complete, the Bitcoin Core <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> we’re
+  <p>Even though the transaction is now complete, the Umkoin Core <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> we’re
 connected to doesn’t know anything about the transaction, nor does any
-other part of the <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. We’ve created a spend, but we haven’t
+other part of the <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. We’ve created a spend, but we haven’t
 actually spent anything because we could simply unset the
 <code>$SIGNED_RAW_TX</code> variable to eliminate the transaction.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest sendrawtransaction <span class="nv">$SIGNED_RAW_TX</span>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest sendrawtransaction <span class="nv">$SIGNED_RAW_TX</span>
 c7736a0a0046d5a8cc61c8c3c2821d4d7517f5de2bc66a966011aaa79965ffba</code></pre></figure>
 
-  <p>Send the signed transaction to the connected <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> using the
-<a href="/en/developer-reference#sendrawtransaction" class="auto-link"><code>sendrawtransaction</code> RPC</a>. After accepting the transaction, the <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>
-would usually then broadcast it to other <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">peers</a>, but we’re not currently
-connected to other <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">peers</a> because we started in <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>.</p>
+  <p>Send the signed transaction to the connected <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> using the
+<a href="/en/developer-reference#sendrawtransaction" class="auto-link"><code>sendrawtransaction</code> RPC</a>. After accepting the transaction, the <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>
+would usually then broadcast it to other <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">peers</a>, but we’re not currently
+connected to other <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> because we started in <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest generate 1
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest generate 1
 
 <span class="gp">&gt; </span><span class="nb">unset </span>UTXO_TXID UTXO_VOUT NEW_ADDRESS RAW_TX SIGNED_RAW_TX</code></pre></figure>
 
@@ -621,7 +617,7 @@ the two <a href="/en/glossary/input" title="An input in a transaction which cont
 transaction together (such as a CoinJoin transaction).</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest listunspent</code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest listunspent</code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"txid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"263c018582731ff54dc72c7d67e858c002ae298835501d\
@@ -685,15 +681,15 @@ transaction together (such as a CoinJoin transaction).</p>
   </div>
 
   <p>For our two <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a>, we select two <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a> by placing the <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a> and <a href="/en/developer-guide#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output
-index</a> numbers (vouts) in shell variables.  We also save the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a>
+index</a> numbers (vouts) in shell variables.  We also save the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a>
 corresponding to the <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> (hashed or unhashed) used in those
-transactions. We need the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> so we can get the corresponding
+transactions. We need the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> so we can get the corresponding
 <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> from our <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest dumpprivkey <span class="nv">$UTXO1_ADDRESS</span>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest dumpprivkey <span class="nv">$UTXO1_ADDRESS</span>
 cSp57iWuu5APuzrPGyGc4PGUeCg23PjenZPBPoUs24HtJawccHPm
 
-<span class="gp">&gt; </span>bitcoin-cli -regtest dumpprivkey <span class="nv">$UTXO2_ADDRESS</span>
+<span class="gp">&gt; </span>umkoin-cli -regtest dumpprivkey <span class="nv">$UTXO2_ADDRESS</span>
 cT26DX6Ctco7pxaUptJujRfbMS2PJvdqiSMaGaoSktHyon8kQUSg
 
 <span class="gp">&gt; </span><span class="nv">UTXO1_PRIVATE_KEY</span><span class="o">=</span>cSp57iWuu5APuzrPGyGc4PGUeCg23PjenZPBPoUs24Ht[...]
@@ -705,25 +701,25 @@ cT26DX6Ctco7pxaUptJujRfbMS2PJvdqiSMaGaoSktHyon8kQUSg
 the <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> so we can sign each of the <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> separately.</p>
 
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" />
- <strong>Warning:</strong> Users should never manually manage <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> on <a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.
-As dangerous as <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a> are (see warnings above), making a
+ <strong>Warning:</strong> Users should never manually manage <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> on <a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.
+As dangerous as <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a> are (see warnings above), making a
 mistake with a <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private key</a> can be much worse—as in the case of a <a href="/en/glossary/hd-protocol" title="The Hierarchical Deterministic (HD) key creation and transfer protocol (BIP32), which allows creating child keys from parent keys in a hierarchy. Wallets using the HD protocol are called HD wallets." class="auto-link">HD
 wallet</a> <a href="/en/developer-guide#hardened-keys">cross-generational key compromise</a>.
 These examples are to help you learn, not for you to emulate on
-<a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.</p>
+<a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest getnewaddress
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest getnewaddress
 n4puhBEeEWD2VvjdRC9kQuX2abKxSCMNqN
-<span class="gp">&gt; </span>bitcoin-cli -regtest getnewaddress
+<span class="gp">&gt; </span>umkoin-cli -regtest getnewaddress
 n4LWXU59yM5MzQev7Jx7VNeq1BqZ85ZbLj
 
 <span class="gp">&gt; </span><span class="nv">NEW_ADDRESS1</span><span class="o">=</span>n4puhBEeEWD2VvjdRC9kQuX2abKxSCMNqN
 <span class="gp">&gt; </span><span class="nv">NEW_ADDRESS2</span><span class="o">=</span>n4LWXU59yM5MzQev7Jx7VNeq1BqZ85ZbLj</code></pre></figure>
 
-  <p>For our two <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>, get two new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a>.</p>
+  <p>For our two <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>, get two new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a>.</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">## Outputs - inputs = transaction fee, so always double-check your math!</span>
-<span class="gp">&gt; </span>bitcoin-cli -regtest createrawtransaction <span class="s1">'''
+<span class="gp">&gt; </span>umkoin-cli -regtest createrawtransaction <span class="s1">'''
     [
       {
         "txid": "'</span><span class="nv">$UTXO1_TXID</span><span class="s1">'", 
@@ -747,11 +743,11 @@ e8677d2cc74df51f738285013c260000000000ffffffff02f028d6dc01000000<span class="se"
 
 <span class="gp">&gt; </span><span class="nv">RAW_TX</span><span class="o">=</span>0100000002f327e86da3e66bd20e1129b1fb36d07056f0b9a117199[...]</code></pre></figure>
 
-  <p>Create the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> using <a href="/en/developer-reference#createrawtransaction" class="auto-link"><code>createrawtransaction</code></a> much the same as
+  <p>Create the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> using <a href="/en/developer-reference#createrawtransaction" class="auto-link"><code>createrawtransaction</code></a> much the same as
 before, except now we have two <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> and two <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span> <span class="s1">'[]'</span> <span class="s1">'''
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span> <span class="s1">'[]'</span> <span class="s1">'''
     [
       "'</span><span class="nv">$UTXO1_PRIVATE_KEY</span><span class="s1">'"
     ]'''</span></code></pre></figure>
@@ -781,12 +777,12 @@ before, except now we have two <a href="/en/glossary/input" title="An input in a
 <span class="gp">&gt; </span><span class="nv">PARTLY_SIGNED_RAW_TX</span><span class="o">=</span>0100000002f327e86da3e66bd20e1129b1fb36d07[...]</code></pre></figure>
   </div>
 
-  <p>Signing the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> with <a href="/en/developer-reference#signrawtransaction" class="auto-link"><code>signrawtransaction</code></a> gets more
+  <p>Signing the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> with <a href="/en/developer-reference#signrawtransaction" class="auto-link"><code>signrawtransaction</code></a> gets more
 complicated as we now have three arguments:</p>
 
   <ol>
     <li>
-      <p>The unsigned <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>.</p>
+      <p>The unsigned <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>.</p>
     </li>
     <li>
       <p>An empty array. We don’t do anything with this argument in this
@@ -798,13 +794,13 @@ later positional arguments.</p>
     </li>
   </ol>
 
-  <p>The result is a <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> with only one <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> signed; the fact
+  <p>The result is a <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> with only one <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> signed; the fact
 that the transaction isn’t fully signed is indicated by value of the
-<code>complete</code> JSON field.  We save the incomplete, partly-signed <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw
+<code>complete</code> JSON field.  We save the incomplete, partly-signed <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw
 transaction</a> hex to a shell variable.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest signrawtransaction <span class="nv">$PARTLY_SIGNED_RAW_TX</span> <span class="s1">'[]'</span> <span class="s1">'''
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest signrawtransaction <span class="nv">$PARTLY_SIGNED_RAW_TX</span> <span class="s1">'[]'</span> <span class="s1">'''
     [
       "'</span><span class="nv">$UTXO2_PRIVATE_KEY</span><span class="s1">'"
     ]'''</span></code></pre></figure>
@@ -834,7 +830,7 @@ signed, the <code>complete</code> result is <em>true</em>.</p>
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span><span class="nb">unset </span>PARTLY_SIGNED_RAW_TX RAW_TX NEW_ADDRESS1 <span class="o">[</span>...]</code></pre></figure>
 
   <p>Clean up the shell variables used. Unlike previous subsections, we’re
-not going to send this transaction to the connected <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> with
+not going to send this transaction to the connected <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with
 <a href="/en/developer-reference#sendrawtransaction" class="auto-link"><code>sendrawtransaction</code></a>. This will allow us to illustrate in the Offline
 Signing subsection below how to spend a transaction which is not yet in
 the <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> or memory pool.</p>
@@ -849,8 +845,8 @@ the <a href="/en/glossary/block-chain" title="A chain of blocks with each block 
 
 </div>
 
-  <p>We will now spend the transaction created in the Complex <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw Transaction</a>
-subsection above without sending it to the local <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> first. This is the
+  <p>We will now spend the transaction created in the Complex <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw Transaction</a>
+subsection above without sending it to the local <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> first. This is the
 same basic process used by <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> programs for offline
 signing—which generally means signing a transaction without access
 to the current <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> set.</p>
@@ -863,7 +859,7 @@ transaction containing it has never been broadcast. That can be unsafe:</p>
  <strong>Warning:</strong> Transactions which spend <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> from <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed
 transactions</a> are vulnerable to <a href="/en/glossary/malleability" title="The ability of someone to change (mutate) unconfirmed transactions without making them invalid, which changes the transaction's txid, making child transactions invalid." class="auto-link">transaction malleability</a>. Be sure to read
 about <a href="/en/glossary/malleability" title="The ability of someone to change (mutate) unconfirmed transactions without making them invalid, which changes the transaction's txid, making child transactions invalid." class="auto-link">transaction malleability</a> and adopt good practices before spending
-<a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> on <a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.</p>
+<a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> on <a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>.</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span><span class="nv">OLD_SIGNED_RAW_TX</span><span class="o">=</span>0100000002f327e86da3e66bd20e1129b1fb36d07056<span class="se">\</span>
       f0b9a117199e759396526b8f3a20780000000049483045022100fce442<span class="se">\</span>
@@ -882,7 +878,7 @@ about <a href="/en/glossary/malleability" title="The ability of someone to chang
 variable.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest decoderawtransaction <span class="nv">$OLD_SIGNED_RAW_TX</span></code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest decoderawtransaction <span class="nv">$OLD_SIGNED_RAW_TX</span></code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
     </span><span class="nt">"txid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad\
               40cf18ffbb8e09"</span><span class="p">,</span><span class="w">
@@ -968,19 +964,19 @@ variable.</p>
 <span class="gp">&gt; </span><span class="nv">UTXO_OUTPUT_SCRIPT</span><span class="o">=</span>76a914fa5139067622fd7e1e722a05c17c2bb7d5fd6[...]</code></pre></figure>
   </div>
 
-  <p>Decode the signed <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> so we can get its <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a>. Also, choose a
+  <p>Decode the signed <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> so we can get its <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a>. Also, choose a
 specific one of its <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a> to spend and save that <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO’s</a> <a href="/en/developer-guide#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number
 (vout) and hex <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> (<a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">scriptPubKey</a>) into shell variables.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest getnewaddress
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest getnewaddress
 mfdCHEFL2tW9eEUpizk7XLZJcnFM4hrp78
 
 <span class="gp">&gt; </span><span class="nv">NEW_ADDRESS</span><span class="o">=</span>mfdCHEFL2tW9eEUpizk7XLZJcnFM4hrp78</code></pre></figure>
 
-  <p>Get a new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to spend the <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> to.</p>
+  <p>Get a new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to spend the <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> to.</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">## Outputs - inputs = transaction fee, so always double-check your math!</span>
-<span class="gp">&gt; </span>bitcoin-cli -regtest createrawtransaction <span class="s1">'''
+<span class="gp">&gt; </span>umkoin-cli -regtest createrawtransaction <span class="s1">'''
     [
       {
         "txid": "'</span><span class="nv">$UTXO_TXID</span><span class="s1">'",
@@ -997,11 +993,11 @@ mfdCHEFL2tW9eEUpizk7XLZJcnFM4hrp78
 
 <span class="gp">&gt; </span><span class="nv">RAW_TX</span><span class="o">=</span>0100000001098ebbff18cf40ad3ba02ded7d3558d7ca6ee96c990c8[...]</code></pre></figure>
 
-  <p>Create the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> the same way we’ve done in the previous
+  <p>Create the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> the same way we’ve done in the previous
 subsections.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash">    &gt; bitcoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span></code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash">    &gt; umkoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span></code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="w">    </span><span class="p">{</span><span class="w">
         </span><span class="nt">"hex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001098ebbff18cf40ad3ba02ded7d3558d7ca6ee\
                  96c990c8fdfb99cf61d88ad2c680100000000ffffffff01\
@@ -1011,21 +1007,21 @@ subsections.</p>
     </span><span class="p">}</span></code></pre></figure>
   </div>
 
-  <p>Attempt to sign the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> without any special arguments, the
-way we successfully signed the the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> in the Simple <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw
+  <p>Attempt to sign the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> without any special arguments, the
+way we successfully signed the the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> in the Simple <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw
 Transaction</a> subsection. If you’ve read the <a href="/en/developer-guide#transactions" title="A transaction spending satoshis">Transaction section</a> of
-the guide, you may know why the call fails and leaves the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw
+the guide, you may know why the call fails and leaves the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw
 transaction</a> hex unchanged.</p>
 
   <p><img src="/img/dev/en-signing-output-to-spend.svg" alt="Old Transaction Data Required To Be Signed" /></p>
 
   <p>As illustrated above, the data that gets signed includes the <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a> and
 vout from the previous transaction.  That information is included in the
-<a href="/en/developer-reference#createrawtransaction" class="auto-link"><code>createrawtransaction</code></a> <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>.  But the data that gets signed
+<a href="/en/developer-reference#createrawtransaction" class="auto-link"><code>createrawtransaction</code></a> <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>.  But the data that gets signed
 also includes the <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> from the previous transaction, even
 though it doesn’t appear in either the unsigned or signed transaction.</p>
 
-  <p>In the other <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> subsections above, the previous <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> was
+  <p>In the other <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> subsections above, the previous <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> was
 part of the <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> set known to the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, so the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> was able to use
 the <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a> and <a href="/en/developer-guide#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number to find the previous <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> and
 insert it automatically.</p>
@@ -1034,7 +1030,7 @@ insert it automatically.</p>
 so it can’t automatically insert the previous <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span> <span class="s1">'''
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span> <span class="s1">'''
     [
       {
         "txid": "'</span><span class="nv">$UTXO_TXID</span><span class="s1">'", 
@@ -1061,7 +1057,7 @@ so it can’t automatically insert the previous <a href="/en/glossary/pubkey-scr
 script</a> and other required <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> data.</p>
 
   <p>This specific operation is typically what offline signing <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallets</a> do.
-The online <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> creates the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> and gets the previous
+The online <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> creates the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> and gets the previous
 <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey scripts</a> for all the <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a>. The user brings this information to
 the offline <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>. After displaying the transaction details to the
 user, the offline <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> signs the transaction as we did above. The
@@ -1069,25 +1065,25 @@ user takes the signed transaction back to the online <a href="/en/glossary/walle
 broadcasts it.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest sendrawtransaction <span class="nv">$SIGNED_RAW_TX</span></code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest sendrawtransaction <span class="nv">$SIGNED_RAW_TX</span></code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">error:</span><span class="w"> </span><span class="p">{</span><span class="nt">"code"</span><span class="p">:</span><span class="mi">-22</span><span class="p">,</span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"TX rejected"</span><span class="p">}</span></code></pre></figure>
   </div>
 
   <p>Attempt to broadcast the second transaction before we’ve broadcast the
-first transaction.  The <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> rejects this attempt because the second
-transaction spends an <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> which is not a <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> the <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> knows about.</p>
+first transaction.  The <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> rejects this attempt because the second
+transaction spends an <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> which is not a <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> the <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> knows about.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest sendrawtransaction <span class="nv">$OLD_SIGNED_RAW_TX</span>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest sendrawtransaction <span class="nv">$OLD_SIGNED_RAW_TX</span>
 682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad40cf18ffbb8e09
-<span class="gp">&gt; </span>bitcoin-cli -regtest sendrawtransaction <span class="nv">$SIGNED_RAW_TX</span>
+<span class="gp">&gt; </span>umkoin-cli -regtest sendrawtransaction <span class="nv">$SIGNED_RAW_TX</span>
 67d53afa1a8167ca093d30be7fb9dcb8a64a5fdecacec9d93396330c47052c57</code></pre></figure>
 
   <p>Broadcast the first transaction, which succeeds, and then broadcast the
-second transaction—which also now succeeds because the <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> now sees
+second transaction—which also now succeeds because the <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> now sees
 the <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest getrawmempool</code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest getrawmempool</code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">[</span><span class="w">
     </span><span class="s2">"67d53afa1a8167ca093d30be7fb9dcb8a64a5fdecacec9d93396330c47052c57"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"682cad881df69cb9df8f0c996ce96ecad758357ded2da03bad40cf18ffbb8e09"</span><span class="w">
@@ -1096,7 +1092,7 @@ the <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transact
 
   <p>We have once again not generated an additional <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, so the transactions
 above have not yet become part of the <a href="/en/glossary/regression-test-mode" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest</a> <a href="/en/glossary/block-chain" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>.  However, they
-are part of the local <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node’s</a> memory pool.</p>
+are part of the local <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> memory pool.</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span><span class="nb">unset </span>OLD_SIGNED_RAW_TX SIGNED_RAW_TX RAW_TX <span class="o">[</span>...]</code></pre></figure>
 
@@ -1112,41 +1108,41 @@ are part of the local <a href="/en/glossary/node" title="A computer that connect
 
 </div>
 
-  <p>In this subsection, we will create a <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Bitcoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>, spend
-<a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> to it, and then spend those <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> from it to another
-<a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
+  <p>In this subsection, we will create a <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>, spend
+<a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> to it, and then spend those <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> from it to another
+<a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
 
-  <p>Creating a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> is easy. <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">Multisig</a> <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> have two
-parameters, the <em>minimum</em> number of <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required (<em>m</em>) and the
-<em>number</em> of <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> to use to validate those <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a>. This is
+  <p>Creating a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> is easy. <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">Multisig</a> <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> have two
+parameters, the <em>minimum</em> number of <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required (<em>m</em>) and the
+<em>number</em> of <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> to use to validate those <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a>. This is
 called <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">m-of-n</a>, and in this case we’ll be using 2-of-3.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">    &gt; bitcoin-cli -regtest getnewaddress
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">    &gt; umkoin-cli -regtest getnewaddress
     mhAXF4Eq7iRyvbYk1mpDVBiGdLP3YbY6Dm
-    &gt; bitcoin-cli -regtest getnewaddress
+    &gt; umkoin-cli -regtest getnewaddress
     moaCrnRfP5zzyhW8k65f6Rf2z5QpvJzSKe
-    &gt; bitcoin-cli -regtest getnewaddress
+    &gt; umkoin-cli -regtest getnewaddress
     mk2QpYatsKicvFVuTAQLBryyccRXMUaGHP
 
     &gt; <span class="nv">NEW_ADDRESS1</span><span class="o">=</span>mhAXF4Eq7iRyvbYk1mpDVBiGdLP3YbY6Dm
     &gt; <span class="nv">NEW_ADDRESS2</span><span class="o">=</span>moaCrnRfP5zzyhW8k65f6Rf2z5QpvJzSKe
     &gt; <span class="nv">NEW_ADDRESS3</span><span class="o">=</span>mk2QpYatsKicvFVuTAQLBryyccRXMUaGHP</code></pre></figure>
 
-  <p>Generate three new <a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a>. <a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> cannot be used with
+  <p>Generate three new <a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a>. <a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> cannot be used with
 the <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> created below. (Hashing each <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a> is
 unnecessary anyway—all the <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> are protected by a hash when
-the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> is hashed.) However, Bitcoin Core uses <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> as a
+the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> is hashed.) However, Umkoin Core uses <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> as a
 way to reference the underlying full (unhashed) <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> it knows
-about, so we get the three new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> above in order to use their
+about, so we get the three new <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> above in order to use their
 <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a>.</p>
 
-  <p>Recall from the Guide that the hashed <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> used in <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a>
-obfuscate the full <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a>, so you cannot give an <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to another
-person or device as part of creating a typical <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig output</a> or <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Bitcoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig
+  <p>Recall from the Guide that the hashed <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> used in <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a>
+obfuscate the full <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a>, so you cannot give an <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to another
+person or device as part of creating a typical <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig output</a> or <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig
 redeem script</a>. You must give them a full <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a>.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest validateaddress <span class="nv">$NEW_ADDRESS3</span></code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest validateaddress <span class="nv">$NEW_ADDRESS3</span></code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
     </span><span class="nt">"isvalid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"mk2QpYatsKicvFVuTAQLBryyccRXMUaGHP"</span><span class="p">,</span><span class="w">
@@ -1164,15 +1160,15 @@ redeem script</a>. You must give them a full <a href="/en/glossary/public-key" t
   </div>
 
   <p>Use the <a href="/en/developer-reference#validateaddress" class="auto-link"><code>validateaddress</code> RPC</a> to display the full (unhashed) <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a>
-for one of the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a>.  This is the information which will 
+for one of the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a>.  This is the information which will 
 actually be included in the <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>.  This is also the
 information you would give another person or device as part of creating
-a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig output</a> or <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Bitcoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig redeem script</a>.</p>
+a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig output</a> or <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig redeem script</a>.</p>
 
-  <p>We save the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> returned to a shell variable.</p>
+  <p>We save the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> returned to a shell variable.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest createmultisig 2 <span class="s1">'''
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest createmultisig 2 <span class="s1">'''
     [
       "'</span><span class="nv">$NEW_ADDRESS1</span><span class="s1">'",
       "'</span><span class="nv">$NEW_ADDRESS2</span><span class="s1">'", 
@@ -1191,47 +1187,47 @@ a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* numbe
   </div>
 
   <p>Use the <a href="/en/developer-reference#createmultisig" class="auto-link"><code>createmultisig</code> RPC</a> with two arguments, the number (<em>n</em>) of
-<a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required and a list of <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> or <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a>.  Because
-<a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> can’t be used in the <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> created by this
-<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>, the only <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> which can be provided are those belonging to a
-<a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a> in the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.  In this case, we provide two <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> and
+<a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required and a list of <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> or <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a>.  Because
+<a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> can’t be used in the <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> created by this
+<a href="/en/developer-reference#remote-procedure-calls-rpcs" class="auto-link">RPC</a>, the only <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> which can be provided are those belonging to a
+<a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a> in the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.  In this case, we provide two <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> and
 one <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a>—all of which will be converted to <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> in the
 <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>.</p>
 
-  <p>The <a href="/en/glossary/p2sh-address" title="A Bitcoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> is returned along with the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> which must be
-provided when we spend <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> sent to the <a href="/en/glossary/p2sh-address" title="A Bitcoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a>.</p>
+  <p>The <a href="/en/glossary/p2sh-address" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> is returned along with the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> which must be
+provided when we spend <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> sent to the <a href="/en/glossary/p2sh-address" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a>.</p>
 
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" />
  <strong>Warning:</strong> You must not lose the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>, especially if you
-don’t have a record of which <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> you used to create the <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Bitcoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH
-multisig</a> <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>. You need the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> to spend any <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> sent
-to the <a href="/en/glossary/p2sh-address" title="A Bitcoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a>. If you lose the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>, you can recreate it
+don’t have a record of which <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> you used to create the <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH
+multisig</a> <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>. You need the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> to spend any <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">bitcoins</a> sent
+to the <a href="/en/glossary/p2sh-address" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a>. If you lose the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>, you can recreate it
 by running the same command above, with the <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> listed in the
 same order. However, if you lose both the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> and even one of
-the <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a>, you will never be able to spend <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> sent to that
-<a href="/en/glossary/p2sh-address" title="A Bitcoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a>.</p>
+the <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a>, you will never be able to spend <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> sent to that
+<a href="/en/glossary/p2sh-address" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a>.</p>
 
-  <p>Neither the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> nor the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> are stored in the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> when
+  <p>Neither the <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> nor the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> are stored in the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> when
 you use <a href="/en/developer-reference#createmultisig" class="auto-link"><code>createmultisig</code></a>. To store them in the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, use the
-<a href="/en/developer-reference#addmultisigaddress" class="auto-link"><code>addmultisigaddress</code> RPC</a> instead.  If you add an <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>,
+<a href="/en/developer-reference#addmultisigaddress" class="auto-link"><code>addmultisigaddress</code> RPC</a> instead.  If you add an <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>,
 you should also make a new backup.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest sendtoaddress <span class="nv">$P2SH_ADDRESS</span> 10.00
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest sendtoaddress <span class="nv">$P2SH_ADDRESS</span> 10.00
 7278d7d030f042ebe633732b512bcb31fff14a697675a1fe1884db139876e175
 
 <span class="gp">&gt; </span><span class="nv">UTXO_TXID</span><span class="o">=</span>7278d7d030f042ebe633732b512bcb31fff14a697675a1fe1884[...]</code></pre></figure>
 
-  <p>Paying the <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Bitcoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> with Bitcoin Core is as simple as
-paying a more common <a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a>. Here we use the same command (but
+  <p>Paying the <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> with Umkoin Core is as simple as
+paying a more common <a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a>. Here we use the same command (but
 different variable) we used in the Simple Spending subsection. As
 before, this command automatically selects an <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>, creates a <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change
-output</a> to a new one of our <a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> if necessary, and pays a
+output</a> to a new one of our <a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> if necessary, and pays a
 <a href="/en/glossary/transaction-fee" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> if necessary.</p>
 
   <p>We save that <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a> to a shell variable as the <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a> of the <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> we plan to spend next.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest getrawtransaction <span class="nv">$UTXO_TXID</span> 1</code></pre></figure>
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest getrawtransaction <span class="nv">$UTXO_TXID</span> 1</code></pre></figure>
     <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
     </span><span class="nt">"hex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0100000001f0ede03d75050f20801d50358829ae02c058e8677\
              d2cc74df51f738285013c26010000006a47304402203c375959\
@@ -1298,16 +1294,16 @@ output</a> to a new one of our <a href="/en/glossary/p2pkh-address" title="A Bit
 <a href="/en/developer-reference#sendtoaddress" class="auto-link"><code>sendtoaddress</code></a>. We choose one of the <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> to be our <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> and get
 its <a href="/en/developer-guide#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) and <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> (<a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">scriptPubKey</a>).</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest getnewaddress
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest getnewaddress
 mxCNLtKxzgjg8yyNHeuFSXvxCvagkWdfGU
 
 <span class="gp">&gt; </span><span class="nv">NEW_ADDRESS4</span><span class="o">=</span>mxCNLtKxzgjg8yyNHeuFSXvxCvagkWdfGU</code></pre></figure>
 
-  <p>We generate a new <a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a> to use in the <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> we’re about to
+  <p>We generate a new <a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a> to use in the <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> we’re about to
 create.</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">## Outputs - inputs = transaction fee, so always double-check your math!</span>
-<span class="gp">&gt; </span>bitcoin-cli -regtest createrawtransaction <span class="s1">'''
+<span class="gp">&gt; </span>umkoin-cli -regtest createrawtransaction <span class="s1">'''
     [
       {
         "txid": "'</span><span class="nv">$UTXO_TXID</span><span class="s1">'",
@@ -1325,28 +1321,28 @@ e38f25ead28817df7929c06fe847ee88ac00000000
 
 <span class="gp">&gt; </span><span class="nv">RAW_TX</span><span class="o">=</span>010000000175e1769813db8418fea17576694af1ff31cb2b512b733[...]</code></pre></figure>
 
-  <p>We generate the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> the same way we did in the Simple <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw
+  <p>We generate the <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> the same way we did in the Simple <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw
 Transaction</a> subsection.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest dumpprivkey <span class="nv">$NEW_ADDRESS1</span>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest dumpprivkey <span class="nv">$NEW_ADDRESS1</span>
 cVinshabsALz5Wg4tGDiBuqEGq4i6WCKWXRQdM8RFxLbALvNSHw7
-<span class="gp">&gt; </span>bitcoin-cli -regtest dumpprivkey <span class="nv">$NEW_ADDRESS3</span>
+<span class="gp">&gt; </span>umkoin-cli -regtest dumpprivkey <span class="nv">$NEW_ADDRESS3</span>
 cNmbnwwGzEghMMe1vBwH34DFHShEj5bcXD1QpFRPHgG9Mj1xc5hq
 
 <span class="gp">&gt; </span><span class="nv">NEW_ADDRESS1_PRIVATE_KEY</span><span class="o">=</span>cVinshabsALz5Wg4tGDiBuqEGq4i6WCKWXRQd[...]
 <span class="gp">&gt; </span><span class="nv">NEW_ADDRESS3_PRIVATE_KEY</span><span class="o">=</span>cNmbnwwGzEghMMe1vBwH34DFHShEj5bcXD1Qp[...]</code></pre></figure>
 
   <p>We get the <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> for two of the <a href="/en/glossary/public-key" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> we used to create the
-transaction, the same way we got <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> in the Complex <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Bitcoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw
+transaction, the same way we got <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> in the Complex <a href="/en/glossary/serialized-transaction" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">Raw
 Transaction</a> subsection. Recall that we created a 2-of-3 <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>,
-so <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> from two <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> are needed.</p>
+so <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> from two <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> are needed.</p>
 
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" />
  <strong>Reminder:</strong> Users should never manually manage <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> on
-<a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>. See the warning in the <a href="/en/developer-examples#complex-raw-transaction">complex raw transaction section</a>.</p>
+<a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>. See the warning in the <a href="/en/developer-examples#complex-raw-transaction">complex raw transaction section</a>.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span> <span class="s1">'''
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest signrawtransaction <span class="nv">$RAW_TX</span> <span class="s1">'''
     [
       {
         "txid": "'</span><span class="nv">$UTXO_TXID</span><span class="s1">'", 
@@ -1377,12 +1373,12 @@ so <a href="/en/glossary/signature" title="A value related to a public key which
 <span class="gp">&gt; </span><span class="nv">PARTLY_SIGNED_RAW_TX</span><span class="o">=</span>010000000175e1769813db8418fea17576694af1f[...]</code></pre></figure>
   </div>
 
-  <p>We make the first <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a>. The <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> argument (JSON object) takes the
+  <p>We make the first <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a>. The <a href="/en/glossary/input" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> argument (JSON object) takes the
 additional <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> parameter so that it can append the <a href="/en/glossary/redeem-script" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>
-to the <a href="/en/glossary/signature-script" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> after the two <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a>.</p>
+to the <a href="/en/glossary/signature-script" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> after the two <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a>.</p>
 
   <div class="multicode">
-    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest signrawtransaction <span class="nv">$PARTLY_SIGNED_RAW_TX</span> <span class="s1">'''
+    <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest signrawtransaction <span class="nv">$PARTLY_SIGNED_RAW_TX</span> <span class="s1">'''
     [
       {
         "txid": "'</span><span class="nv">$UTXO_TXID</span><span class="s1">'",
@@ -1418,14 +1414,14 @@ to the <a href="/en/glossary/signature-script" title="Data generated by a spende
 
   <p>The <a href="/en/developer-reference#signrawtransaction" class="auto-link"><code>signrawtransaction</code></a> call used here is nearly identical to the one
 used above.  The only difference is the <a href="/en/glossary/private-key" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private key</a> used.  Now that the
-two required <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> have been provided, the transaction is marked as
+two required <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> have been provided, the transaction is marked as
 complete.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>bitcoin-cli -regtest sendrawtransaction <span class="nv">$SIGNED_RAW_TX</span>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="gp">&gt; </span>umkoin-cli -regtest sendrawtransaction <span class="nv">$SIGNED_RAW_TX</span>
 430a4cee3a55efb04cbb8718713cab18dea7f2521039aa660ffb5aae14ff3f50</code></pre></figure>
 
-  <p>We send the transaction spending the <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Bitcoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig output</a> to the local
-<a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>, which accepts it.</p>
+  <p>We send the transaction spending the <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig output</a> to the local
+<a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, which accepts it.</p>
 
   <h2 id="payment-processing">Payment Processing</h2>
   <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/examples/payment_processing.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/examples/payment_processing.md">Редагувати</a>
@@ -1458,13 +1454,13 @@ backwards-compatible) <a href="/en/developer-guide#term-bitcoin-uri" title="A UR
 </code></pre>
 
   <p>The browser, QR code reader, or other program processing the URI opens
-the spender’s Bitcoin <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> program on the URI. If the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> program is
+the spender’s Umkoin <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> program on the URI. If the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> program is
 aware of the <a href="/en/glossary/payment-protocol" title="The protocol defined in BIP70 (and other BIPs) which lets spenders get signed payment details from receivers." class="auto-link">payment protocol</a>, it accesses the URL specified in the <a href="/en/developer-guide#term-r-parameter" title="The payment request parameter in a bitcoin: URI" class="auto-link"><code>r</code></a>
 parameter, which should provide it with a serialized <a href="/en/developer-examples#term-paymentrequest" title="The PaymentRequest of the payment protocol which contains and allows signing of the PaymentDetails" class="auto-link">PaymentRequest</a>
 served with the <a href="https://en.wikipedia.org/wiki/Internet_media_type">MIME</a> type <code>application/bitcoin-paymentrequest</code>.</p>
 
   <p><strong>Resource:</strong> Gavin Andresen’s <a href="https://github.com/gavinandresen/paymentrequest/blob/master/php/demo_website/createpaymentrequest.php">Payment Request Generator</a> generates
-custom example URIs and <a href="/en/glossary/payment-protocol" title="The protocol defined in BIP70 (and other BIPs) which lets spenders get signed payment details from receivers." class="auto-link">payment requests</a> for use with <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a>.</p>
+custom example URIs and <a href="/en/glossary/payment-protocol" title="The protocol defined in BIP70 (and other BIPs) which lets spenders get signed payment details from receivers." class="auto-link">payment requests</a> for use with <a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a>.</p>
 
   <h4 id="paymentrequest--paymentdetails">PaymentRequest &amp; PaymentDetails</h4>
   <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/examples/payment_processing.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/examples/payment_processing.md">Редагувати</a>
@@ -1494,7 +1490,7 @@ Google’s <a href="https://developers.google.com/protocol-buffers/" class="auto
 modern Linux package managers and <a href="https://developers.google.com/protocol-buffers/">directly from Google.</a> Non-Google
 <a href="https://developers.google.com/protocol-buffers/" class="auto-link">protocol buffer</a> compilers are available for a variety of
 programming languages. You will also need a copy of the <a href="/en/developer-examples#term-paymentrequest" title="The PaymentRequest of the payment protocol which contains and allows signing of the PaymentDetails" class="auto-link">PaymentRequest</a>
-<a href="https://github.com/bitcoin/bitcoin/blob/master/src/qt/paymentrequest.proto">Protocol Buffer description</a> from the Bitcoin Core source code.</p>
+<a href="https://github.com/bitcoin/bitcoin/blob/master/src/qt/paymentrequest.proto">Protocol Buffer description</a> from the Umkoin Core source code.</p>
 
   <h5 id="initialization-code">Initialization Code</h5>
   <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/examples/payment_processing.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/examples/payment_processing.md">Редагувати</a>
@@ -1597,10 +1593,10 @@ your webserver, it will work for your <a href="/en/developer-examples#term-payme
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">details</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="s">"test"</span>  <span class="c">## Default: main</span></code></pre></figure>
 
-  <p><code>network</code>: (optional) tell the spender’s <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> program what Bitcoin <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> you’re
-using; <a href="https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki" class="auto-link">BIP70</a> defines “main” for <a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> (actual payments) and “test” for
-<a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Bitcoin mainnet." class="auto-link">testnet</a> (like <a href="/en/glossary/mainnet" title="The original and main network for Bitcoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>, but fake <a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> are used). If the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>
-program doesn’t run on the <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> you indicate, it will reject the
+  <p><code>network</code>: (optional) tell the spender’s <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> program what Umkoin <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> you’re
+using; <a href="https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki" class="auto-link">BIP70</a> defines “main” for <a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> (actual payments) and “test” for
+<a href="/en/glossary/testnet" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a> (like <a href="/en/glossary/mainnet" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a>, but fake <a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> are used). If the <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>
+program doesn’t run on the <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> you indicate, it will reject the
 <a href="/en/developer-examples#term-paymentrequest" title="The PaymentRequest of the payment protocol which contains and allows signing of the PaymentDetails" class="auto-link">PaymentRequest</a>.</p>
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">details</span><span class="o">.</span><span class="n">payment_url</span> <span class="o">=</span> <span class="s">"https://example.com/pay.py"</span></code></pre></figure>
@@ -1608,7 +1604,7 @@ program doesn’t run on the <a href="/en/developer-guide#term-network" title="T
   <p><code>payment_url</code>: (required) tell the spender’s <a href="/en/glossary/wallet" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> program where to send the Payment
 message (described later). This can be a static URL, as in this example,
 or a variable URL such as <code>https://example.com/pay.py?invoice=123.</code>
-It should usually be an HTTPS <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to prevent <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" class="auto-link">man-in-the-middle</a>
+It should usually be an HTTPS <a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to prevent <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" class="auto-link">man-in-the-middle</a>
 attacks from modifying the message.</p>
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">request</span><span class="o">.</span><span class="n">payment_details_version</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c">## Default: 1</span></code></pre></figure>
@@ -1718,13 +1714,13 @@ each payment.</p>
 
   <p><a href="/en/developer-examples#term-pp-script" title="The script field of a PaymentDetails where the receiver tells the spender what pubkey scripts to pay" class="auto-link"><code>script</code></a>: (required) You must specify the <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> you want the spender to
 pay—any valid <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> is acceptable. In this example, we’ll request
-payment to a <a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH pubkey script</a>.</p>
+payment to a <a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH pubkey script</a>.</p>
 
-  <p>First we get a <a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">pubkey hash</a>. The hash above is the hash form of the
-<a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Bitcoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> used in the URI examples throughout this section,
+  <p>First we get a <a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">pubkey hash</a>. The hash above is the hash form of the
+<a href="/en/glossary/address" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> used in the URI examples throughout this section,
 mjSk1Ny9spzU2fouzYgLqGUD8U41iR35QN.</p>
 
-  <p>Next, we plug that hash into the standard <a href="/en/glossary/p2pkh-address" title="A Bitcoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH pubkey script</a> using hex,
+  <p>Next, we plug that hash into the standard <a href="/en/glossary/p2pkh-address" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH pubkey script</a> using hex,
 as illustrated by the code comments.</p>
 
   <p>Finally, we convert the <a href="/en/glossary/pubkey-script" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> from hex into its serialized form.</p>
@@ -1806,7 +1802,7 @@ epoch time</a> format).</p>
 which they’re no longer valid. You probably want to give receivers
 the ability to configure the expiration time delta; here we used the
 reasonable choice of 10 minutes. If this request is tied to an order
-total based on a <a href="/en/developer-guide#term-fiat" title="National currencies such as the dollar or euro" class="auto-link">fiat</a>-to-<a href="/en/glossary/denominations" title="Denominations of Bitcoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> exchange rate, you probably want to
+total based on a <a href="/en/developer-guide#term-fiat" title="National currencies such as the dollar or euro" class="auto-link">fiat</a>-to-<a href="/en/glossary/denominations" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi.  One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> exchange rate, you probably want to
 base this on a delta from the time you got the exchange rate.</p>
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">request</span><span class="o">.</span><span class="n">serialized_payment_details</span> <span class="o">=</span> <span class="n">details</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">()</span></code></pre></figure>
@@ -1824,8 +1820,8 @@ field of the <a href="/en/developer-examples#term-paymentrequest" title="The Pay
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">request</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="s">""</span></code></pre></figure>
 
-  <p>We’ve filled out everything in the <a href="/en/developer-examples#term-paymentrequest" title="The PaymentRequest of the payment protocol which contains and allows signing of the PaymentDetails" class="auto-link">PaymentRequest</a> except the <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a>,
-but before we sign it, we have to initialize the <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Bitcoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a> field by
+  <p>We’ve filled out everything in the <a href="/en/developer-examples#term-paymentrequest" title="The PaymentRequest of the payment protocol which contains and allows signing of the PaymentDetails" class="auto-link">PaymentRequest</a> except the <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a>,
+but before we sign it, we have to initialize the <a href="/en/glossary/signature" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a> field by
 setting it to a zero-byte placeholder.</p>
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">request</span><span class="o">.</span><span class="n">signature</span> <span class="o">=</span> <span class="n">sign</span><span class="p">(</span><span class="n">private_key</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">(),</span> <span class="s">"sha256"</span><span class="p">)</span></code></pre></figure>
@@ -1864,9 +1860,9 @@ serialized data is in binary, so we can’t use Python’s print()
 because it would add an extraneous newline.</p>
 
   <p>The following screenshot shows how the authenticated <a href="/en/developer-examples#term-paymentdetails" title="The PaymentDetails of the payment protocol which allows the receiver to specify the payment details to the spender" class="auto-link">PaymentDetails</a>
-created by the program above appears in the GUI from Bitcoin Core 0.9.</p>
+created by the program above appears in the GUI from Umkoin Core 0.9.</p>
 
-  <p><img src="/img/dev/en-btcc-payment-request.png" alt="Bitcoin Core Showing Validated Payment Request" /></p>
+  <p><img src="/img/dev/en-btcc-payment-request.png" alt="Umkoin Core Showing Validated Payment Request" /></p>
 
   <h2 id="p2p-network">P2P Network</h2>
   <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/examples/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/examples/p2p_networking.md">Редагувати</a>
@@ -1902,7 +1898,7 @@ Each code <a href="/en/glossary/block" title="One or more transactions prefaced 
   <p>We start by setting some maximum values defined in <a href="https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>: the maximum
 number of bytes allowed in a filter and the maximum number of hash
 functions used to hash each piece of data.  We also set nFlags to zero,
-indicating we don’t want the remote <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> to update the filter for us.
+indicating we don’t want the remote <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to update the filter for us.
 (We won’t use nFlags again in the sample program, but real programs will
 need to use it.)</p>
 
@@ -2007,7 +2003,7 @@ larger filter size as computed earlier.)</p>
 
   <p>Note: for a more optimized Python implementation with fewer external
 dependencies, see <a href="https://github.com/petertodd/python-bitcoinlib">python-bitcoinlib’s</a> <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>
-module which is based directly on Bitcoin Core’s C++ implementation.</p>
+module which is based directly on Umkoin Core’s C++ implementation.</p>
 
   <p>Using the <a href="/en/developer-reference#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> format, the complete filter created above 
 would be the binary form of the annotated hexdump shown below:</p>
@@ -2097,9 +2093,9 @@ match failure:</p>
 </div>
 
   <p>For the <a href="/en/developer-reference#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> documentation on the reference page, an
-actual <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle block</a> was retrieved from the <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> and manually
+actual <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle block</a> was retrieved from the <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> and manually
 processed.  This section walks through each step of the process,
-demonstrating basic <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> communication and <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle block</a> processing.</p>
+demonstrating basic <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> communication and <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle block</a> processing.</p>
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
 
@@ -2130,8 +2126,8 @@ demonstrating basic <a href="/en/developer-guide#term-network" title="The Bitcoi
     <span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></code></pre></figure>
 
-  <p>To connect to the P2P <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>, the trivial Python function above was
-developed to compute <a href="/en/glossary/message-header" title="The four header fields prefixed to all messages on the Bitcoin P2P network." class="auto-link">message headers</a> and send payloads decoded from hex.</p>
+  <p>To connect to the P2P <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>, the trivial Python function above was
+developed to compute <a href="/en/glossary/message-header" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message headers</a> and send payloads decoded from hex.</p>
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">## Create a version message</span>
 <span class="n">send</span><span class="p">(</span><span class="s">"version"</span><span class="p">,</span>
@@ -2150,8 +2146,8 @@ developed to compute <a href="/en/glossary/message-header" title="The four heade
     <span class="o">+</span> <span class="s">"00"</span> <span class="c"># .............................. Relay transactions: false</span>
 <span class="p">)</span></code></pre></figure>
 
-  <p><a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">Peers</a> on the <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> will not accept any requests until you send them a
-<a href="/en/developer-reference#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>. The receiving <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> will reply with their <a href="/en/developer-reference#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code>
+  <p><a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">Peers</a> on the <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> will not accept any requests until you send them a
+<a href="/en/developer-reference#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>. The receiving <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> will reply with their <a href="/en/developer-reference#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code>
 message</a> and a <a href="/en/developer-reference#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a>.</p>
 
   <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -2187,7 +2183,7 @@ command</a> or one of its many clones, one of which is available
 for practically any platform. For example, with the original netcat and
 using hexdump (<code>hd</code>) to display the <a href="/en/glossary/output" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">## Connect to the Bitcoin Core peer running on localhost</span>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">## Connect to the Umkoin Core peer running on localhost</span>
 python get-merkle.py | nc localhost 8333 | hd</code></pre></figure>
 
   <p>Part of the response is shown in the section below.</p>
@@ -2202,7 +2198,7 @@ python get-merkle.py | nc localhost 8333 | hd</code></pre></figure>
 
 </div>
 
-  <p>In the section above, we retrieved a <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle block</a> from the <a href="/en/developer-guide#term-network" title="The Bitcoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>; now
+  <p>In the section above, we retrieved a <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle block</a> from the <a href="/en/developer-guide#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>; now
 we will parse it. Most of the <a href="/en/glossary/block-header" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> has been omitted. For
 a more complete hexdump, see the example in the <a href="/en/developer-reference#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs"><code>merkleblock</code> message
 section</a>.</p>
@@ -2230,61 +2226,61 @@ instructions.  Each illustration is described in the paragraph below it.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-001.svg" alt="Parsing A MerkleBlock" /></p>
 
-  <p>We start by building the structure of a <a href="/en/glossary/merkle-tree" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root.  In Bitcoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> based on the number
+  <p>We start by building the structure of a <a href="/en/glossary/merkle-tree" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root.  In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> based on the number
 of transactions in the <a href="/en/glossary/block" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-002.svg" alt="Parsing A MerkleBlock" /></p>
 
   <p>The first flag is a 1 and the <a href="/en/glossary/merkle-root" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> is (as always) a non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>
-<a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>, so we will need to compute the hash later based on this <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node’s</a>
+<a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, so we will need to compute the hash later based on this <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a>
 children. Accordingly, we descend into the <a href="/en/glossary/merkle-root" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root’s</a> left child and
 look at the next flag for instructions.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-003.svg" alt="Parsing A MerkleBlock" /></p>
 
-  <p>The next flag in the example is a 0 and this is also a non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>, so
-we apply the first hash from the <a href="/en/developer-reference#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> to this <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>. We
-also don’t process any child <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">nodes</a>—according to the <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">peer</a> which created
-the <a href="/en/developer-reference#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>, none of those <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">nodes</a> will lead to <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of
+  <p>The next flag in the example is a 0 and this is also a non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, so
+we apply the first hash from the <a href="/en/developer-reference#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> to this <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. We
+also don’t process any child <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>—according to the <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> which created
+the <a href="/en/developer-reference#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>, none of those <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> will lead to <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of
 transactions that match our filter, so we don’t need them. We go back up
 to the <a href="/en/glossary/merkle-root" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> and then descend into its right child and look at the
 next (third) flag for instructions.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-004.svg" alt="Parsing A MerkleBlock" /></p>
 
-  <p>The third flag in the example is another 1 on another non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>, so
+  <p>The third flag in the example is another 1 on another non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, so
 we descend into its left child.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-005.svg" alt="Parsing A MerkleBlock" /></p>
 
-  <p>The fourth flag is also a 1 on another non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>, so we descend
-again—we will always continue descending until we reach a <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> or
-a non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> with a 0 flag (or we finish filling out the tree).</p>
+  <p>The fourth flag is also a 1 on another non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, so we descend
+again—we will always continue descending until we reach a <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or
+a non-<a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a 0 flag (or we finish filling out the tree).</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-006.svg" alt="Parsing A MerkleBlock" /></p>
 
-  <p>Finally, on the fifth flag in the example (a 1), we reach a <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>.
+  <p>Finally, on the fifth flag in the example (a 1), we reach a <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.
 The 1 flag indicates this <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID’s</a> transaction matches our filter and
-that we should take the next (second) hash and use it as this <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node’s</a>
+that we should take the next (second) hash and use it as this <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a>
 <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-007.svg" alt="Parsing A MerkleBlock" /></p>
 
   <p>The sixth flag also applies to a <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>, but it’s a 0 flag, so this
 <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID’s</a> transaction doesn’t match our filter; still, we take the next
-(third) hash and use it as this <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</p>
+(third) hash and use it as this <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-008.svg" alt="Parsing A MerkleBlock" /></p>
 
-  <p>We now have enough information to compute the hash for the fourth <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a>
+  <p>We now have enough information to compute the hash for the fourth <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a>
 we encountered—it’s the hash of the concatenated hashes of the two
 <a href="/en/glossary/txid" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> we filled out.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-009.svg" alt="Parsing A MerkleBlock" /></p>
 
-  <p>Moving to the right child of the third <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">node</a> we encountered, we fill it
+  <p>Moving to the right child of the third <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">node</a> we encountered, we fill it
 out using the seventh flag and final hash—and discover there are no
-more child <a href="/en/glossary/node" title="A computer that connects to the Bitcoin network." class="auto-link">nodes</a> to process.</p>
+more child <a href="/en/glossary/node" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> to process.</p>
 
   <p><img src="/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-011.svg" alt="Parsing A MerkleBlock" /></p>
 

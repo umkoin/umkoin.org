@@ -82,7 +82,7 @@ include 'page_head.php';
         <div>
           <h2 id="tax"><span>3.</span> Облік та податки</h2>
           <p>Компанії часто зберігають кошти та відображають ціни у своїй місцевій валюті. У інших випадках, Умкойн працює подібно до іноземної валюти. Для отримання відповідної консультації щодо податків для вашої країни, вам слід звернутись до кваліфікованого бухгалтера.</p>
-          <div><a href="https://en.bitcoin.it/wiki/How_to_accept_Bitcoin,_for_small_businesses#Setting_Prices">Читати далі</a></div>
+          <div><a href="/uk/accounting_and_taxes.php">Читати далі</a></div>
         </div>
         <div>
           <h2 id="visibility"><span>4.</span> Заявіть про себе</h2>

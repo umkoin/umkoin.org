@@ -87,7 +87,7 @@ include 'page_head.php';
     <!-- no subhead-links here -->
 
     <ul class="wrapped_list">
-      <li><a href="/uk/glossary/block-chain">Найкращий ланцюг блоків</a></li>
+      <li><a href="/uk/glossary/block-chain.php">Найкращий ланцюг блоків</a></li>
     </ul>
     <p><br class="clear" /></p>
 
