@@ -336,7 +336,7 @@ include 'page_head.php';
                 "<div title='Unique fingerprint of the transaction.'><i class='fa fa-paw'></i> Hash: " . $block->getTxHash($reqval) . "</div>" .
                 (isset($blockconfirmed) ? $blockconfirmed : "<div><i class='fa fa-refresh'></i> Transaction is unconfirmed.</div>") .
                 "<div title='Money that goes to the miner, who included this transaction into block.'><i class='fa fa-money'></i> Fee: " . $block->getTxFee($reqval) . "</div>" .
-                "<div title='Total amount of all outputs in transaction. Note that this does not necessarily reflect the exact amount transferred between peers, since change is considered an output as weel, even though it is sent back to the transaction initiator.'><i class='fa fa-money'></i> Sum of outputs: " . $block->getTxSum($reqval) . "</div>" .
+                "<div title='Total amount of all outputs in transaction. Note that this does not necessarily reflect the exact amount transferred between peers, since change is considered an output as well, even though it is sent back to the transaction initiator.'><i class='fa fa-money'></i> Sum of outputs: " . $block->getTxSum($reqval) . "</div>" .
                 "<div title='Size of the transaction in bytes.'><i class='fa fa-arrows-h'></i> Size: " . $block->getTxSize($reqval) . "</div>" .
 
                 "<h3><i class='fa fa-cube'></i> In block</h3>" .
