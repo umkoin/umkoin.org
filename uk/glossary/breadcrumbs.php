@@ -2,5 +2,5 @@
       &gt;
       <a href="/uk/developer-documentation.php">Документація Розробника</a>
       &gt;
-      <a href="/uk/developer-glossary,php">Глосарій</a>
+      <a href="/uk/developer-glossary.php">Глосарій</a>
       &gt;
