@@ -109,7 +109,7 @@ function displayTxTableInOut($block, $hash, $flag = "vout") {
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="description" content="Umkoin is an innovative payment network and a new kind of money. Find all you need to know and get started with Umkoin on umkoin.org.">
 
-<title>Blockexplorer - Umkoin</title>
+<title>Block Explorer - Umkoin</title>
 
 <link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/main.css">
@@ -281,11 +281,60 @@ include 'page_head.php';
           $reqval = $_GET["txid"];
         }
 
+        // Check if block holding txid was mined and confirmed.
+        if ($block->isConfirmed($reqval, "txid")) {
+          $confirmtime = $block->getTxConfirmTime($reqval);
+          $currenttime = time();
+          $elapsed = $currenttime - $confirmtime;
+          switch ($elapsed) {
+            case $elapsed > 31536000:
+              $elapsed = floor($elapsed / 31536000);
+              if ($elapsed == 1)
+                $elapsed_str = $elapsed . " year ago";
+              else
+                $elapsed_str = $elapsed . " years ago";
+              break;
+            case $elapsed > 86400:
+              $elapsed = floor($elapsed / 86400);
+              if ($elapsed == 1)
+                $elapsed_str = $elapsed . " day ago";
+              else
+                $elapsed_str = $elapsed . " days ago";
+              break;
+            case $elapsed > 3600:
+              $elapsed = floor($elapsed / 3600);
+              if ($elapsed == 1)
+                $elapsed_str = $elapsed . " hour ago";
+              else
+                $elapsed_str = $elapsed . " hours ago";
+              break;
+            case $elapsed > 60:
+              $elapsed = floor($elapsed / 60);
+              if ($elapsed == 1)
+                $elapsed_str = $elapsed . " minute ago";
+              else
+                $elapsed_str = $elapsed . " minutes ago";
+              break;
+            default:
+              if ($elapsed == 1)
+                $elapsed_str = $elapsed . " second ago";
+              else
+                $elapsed_str = $elapsed . " seconds ago";
+              break;
+          }
+          $blockconfirmed = "<div title='The number of network confirmations.'>" .
+                            "<i class='fa fa-legal'></i> Confirmations: " .
+                            $block->getTxConfirmCount($reqval) .
+                            ", since: <i class='fa fa-clock-o'></i> " .
+                            date("M d, Y H:i:s", $block->getTxConfirmTime($reqval)) .
+                            " (" . (isset($elapsed_str) ? $elapsed_str : "") . ")</div>";
+        }
+
         $str .= "<div id='viewer' width='100%'>" .
 
                 "<h2><i class='fa fa-exchange'></i> Transaction " . $reqval . "</h2>" .
                 "<div title='Unique fingerprint of the transaction.'><i class='fa fa-paw'></i> Hash: " . $block->getTxHash($reqval) . "</div>" .
-                "<div>Confirmations: </div>" .
+                (isset($blockconfirmed) ? $blockconfirmed : "<div><i class='fa fa-refresh'></i> Transaction is unconfirmed.</div>") .
                 "<div title='Money that goes to the miner, who included this transaction into block.'><i class='fa fa-money'></i> Fee: " . $block->getTxFee($reqval) . "</div>" .
                 "<div title='Total amount of all outputs in transaction. Note that this does not necessarily reflect the exact amount transferred between peers, since change is considered an output as weel, even though it is sent back to the transaction initiator.'><i class='fa fa-money'></i> Sum of outputs: " . $block->getTxSum($reqval) . "</div>" .
                 "<div title='Size of the transaction in bytes.'><i class='fa fa-arrows-h'></i> Size: " . $block->getTxSize($reqval) . "</div>" .
