@@ -1,3 +1,4 @@
 .htaccess
 cfields
 releases
+include/config.php
