@@ -337,7 +337,7 @@ include 'page_head.php';
                 "<div title='Унікальний відбиток транзакції.'><i class='fa fa-paw'></i> Хеш: " . $block->getTxHash($reqval) . "</div>" .
                 (isset($blockconfirmed) ? $blockconfirmed : "<div><i class='fa fa-refresh'></i> Непідтверджена транзакція.</div>") .
                 "<div title='Гроші, які йдуть на оплату майнера з видобутку блоку, в який включено цю транзакцію.'><i class='fa fa-money'></i> Комісія: " . $block->getTxFee($reqval) . "</div>" .
-                "<div title='Загальна сума всіх виходів в транзакції. Зауважте, ця сума не обов'язково відображає суму сплачену між учасниками, оскільки в ній також враховується здача, яка повертається ініціатору платежу.'><i class='fa fa-money'></i> Вихідна сума: " . $block->getTxSum($reqval) . "</div>" .
+                "<div title='Загальна сума всіх виходів в транзакції. Зауважте, ця сума не обов&#39;язково відображає суму сплачену між учасниками, оскільки в ній також враховується здача, яка повертається ініціатору платежу.'><i class='fa fa-money'></i> Вихідна сума: " . $block->getTxSum($reqval) . "</div>" .
                 "<div title='Розмір транзакції в байтах.'><i class='fa fa-arrows-h'></i> Розмір: " . $block->getTxSize($reqval) . "</div>" .
 
                 "<h3><i class='fa fa-cube'></i> В блоку</h3>" .
