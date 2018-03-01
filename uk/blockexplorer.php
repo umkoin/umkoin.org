@@ -181,7 +181,7 @@ include 'page_head.php';
     <tbody>
       <tr>
         <td>
-          <span title="Поточна кількість видобутих блоків починаючи з нульового."><i class="fa fa-signal"></i> <?php print($block->getblockcount()); ?></span>
+          <span title="Поточна кількість видобутих блоків починаючи з нульового."><i class="fa fa-signal"></i> <?php print("<a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?block=" . $block->getblockcount() . "'>" . $block->getblockcount() . "</a>"); ?></span>
         </td>
         <td>
           <span title="Кількість транзакцій в мережі за секунду."><i class="fa fa-dashboard"></i> <?php print(round($block->getTxRate(), 4)); ?></span>

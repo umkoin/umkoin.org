@@ -180,7 +180,7 @@ include 'page_head.php';
     <tbody>
       <tr>
         <td>
-          <span title="Blockchain height, total amount of blocks starting from zero."><i class="fa fa-signal"></i> Height - <?php print($block->getblockcount()); ?></span>
+          <span title="Blockchain height, total amount of blocks starting from zero."><i class="fa fa-signal"></i> Height - <?php print("<a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?block=" . $block->getblockcount() . " '>" . $block->getblockcount() . "</a>"); ?></span>
         </td>
         <td>
           <span title="The number of transactions per seconds in the network."><i class="fa fa-dashboard"></i> Rate - <?php print(round($block->getTxRate(), 4)); ?></span>
