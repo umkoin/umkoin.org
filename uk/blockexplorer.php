@@ -63,7 +63,7 @@ function displayTxTableInOut($block, $hash, $flag = "vout") {
       if (!isset($res[$flag][$i]["coinbase"])) {
         $addresses = $block->getTxVinAddress($res[$flag][$i]["txid"], $res[$flag][$i]["vout"]);
         for ($j = 0; $j < count($addresses); $j++) {
-          $addresses_str .= "<div>" . $addresses[$j] . "</div>";
+          $addresses_str = "<div>" . $addresses[$j] . "</div>";
         }
         $str .= "<tr>" .
                 "<td style='word-wrap: normal;'>" . $block->getTxVinAmount($res[$flag][$i]["txid"], $res[$flag][$i]["vout"]) . " УМК</td>" .
