@@ -83,7 +83,7 @@ function displayTxTableInOut($block, $hash, $flag = "vout") {
     for ($i = 0; $i < $block->getTxCountInOut($hash, $flag); $i++) {
       if (isset($res[$flag][$i]["scriptPubKey"]["addresses"])) {
         for ($j = 0; $j < count($res[$flag][$i]["scriptPubKey"]["addresses"]); $j++) {
-          $addresses_str .= "<div>" . $res[$flag][$i]["scriptPubKey"]["addresses"][$j] . "</div>";
+          $addresses_str = "<div>" . $res[$flag][$i]["scriptPubKey"]["addresses"][$j] . "</div>";
         }
       }
       $str .= "<tr>" .
