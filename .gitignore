@@ -1,4 +1,6 @@
 .htaccess
+bin
+bin/*
 cfields
-releases
+cfields/*
 include/config.php

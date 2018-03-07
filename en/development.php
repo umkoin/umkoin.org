@@ -39,7 +39,7 @@ include 'page_head.php';
     <h1>Umkoin development</h1>
     <p>Umkoin is free software and any developer can contribute to the project. Everything you need is in the <a href="https://github.com/umkoin/umkoin">GitHub repository</a>. Please make sure to read and follow the development process described in the README, as well as to provide good quality code and respect all guidelines.</p>
     <p>Development discussion takes place on GitHub.</p>
-    <p><span class="fa fa-exclamation-triangle"></span> <em>To report an issue, please see the <a href="https://github.com/umkoin/umkoin.org/issues" target="_blank">bug reporting</a> page.</em></p>
+    <p><span class="fa fa-exclamation-triangle"></span> <em>To report an issue, please see the <a href="https://github.com/umkoin/umkoin/issues" target="_blank">bug reporting</a> page.</em></p>
 
     <h2 id="code-review">Code Review</h2>
     <p>Umkoin Core is security software that helps protect assets worth billions of dollars, so every code change needs to be reviewed by experienced developers.</p>

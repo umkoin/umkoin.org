@@ -29,7 +29,7 @@ include 'page_head.php';
   <div class="breadcrumbs">
       <a href="/en/">Umkoin</a>
       &gt;
-      Core
+      <a href="/en/umkoin-core.php">Core</a>
       &gt;
       Download
   </div>
