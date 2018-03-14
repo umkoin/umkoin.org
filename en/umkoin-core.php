@@ -72,10 +72,10 @@ include 'page_head.php';
       <h3>News</h3>
       <ul>
         <li>
-          <p>2018-01-22 - <a href="/en/release/v0.16.0">Umkoin Core version 0.16.0 released</a></p>
+          <p>2018-01-22 - Umkoin Core version 0.16.0 released</p>
         </li>
         <li>
-          <p>2017-12-13 - <a href="/en/release/v0.15.0">Umkoin Core version 0.15.0 released</a></p>
+          <p>2017-12-13 - Umkoin Core version 0.15.0 released</p>
         </li>
       </ul>
 
