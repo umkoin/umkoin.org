@@ -277,7 +277,7 @@ include 'page_head.php';
     <p>Mining creates the equivalent of a competitive lottery that makes it very difficult for anyone to consecutively add new blocks of transactions into the block chain. This protects the neutrality of the network by preventing any individual from gaining the power to block certain transactions. This also prevents any individual from replacing parts of the block chain to roll back their own spends, which could be used to defraud other users. Mining makes it exponentially more difficult to reverse a past transaction by requiring the rewriting of all blocks following this transaction.</p>
 
     <h3 id="what-do-i-need-to-start-mining">What do I need to start mining?</h3>
-    <p>In the early days of Umkoin, anyone could find a new block using their computer's CPU. As more and more people started mining, the difficulty of finding new blocks increased greatly to the point where the only cost-effective method of mining todayng specialized hardware. You can visit <a href="http://pool.umkoin.org/">Pool Umkoin.org</a> for more information.</p>
+    <p>In the early days of Umkoin, anyone could find a new block using their computer's CPU. As more and more people started mining, the difficulty of finding new blocks increased greatly to the point where the only cost-effective method of mining today is on specialized hardware.</p>
 
     <h2 id="security">Security</h2>
 
