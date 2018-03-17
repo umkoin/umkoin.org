@@ -35,4 +35,13 @@ $halving = 210000;
  */
  $debug = false;
 
+/*
+ * Pool Mining
+ *
+ * $poolhost - specify host IP or FQDN
+ * $poolport - specify port to connect to
+ */
+$poolhost = "127.0.0.1";
+$poolport = 8080;
+
 ?>

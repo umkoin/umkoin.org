@@ -1,13 +1,16 @@
 <?php
 
-$url = 'http://192.168.1.22:8080/api/stats';
+/* Load configuration file */
+require "../include/config.php";
+
+$url = "http://" . $poolhost . ":" . $poolport . "/api/stats";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_FRESH_CONNECT, TRUE);
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_HEADER, FALSE);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_PORT, 8080);
+curl_setopt($ch, CURLOPT_PORT, $poolport);
 $str = curl_exec($ch);
 curl_close($ch);
 
