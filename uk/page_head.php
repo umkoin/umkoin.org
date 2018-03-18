@@ -48,6 +48,8 @@
           <li><a href="/uk/vocabulary.php">Словник</a></li>
           <li>&nbsp;</li>
           <li><a href="/uk/blockexplorer.php">Дослідження Блоку</a></li>
+          <li><a href="/uk/blockmining.php">Видобуток Блоку</a></li>
+          <li>&nbsp;</li>
           <li><a href="/uk/umkoin-core.php">Umkoin Core</a></li>
         </ul>
       </li>

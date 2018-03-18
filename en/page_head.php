@@ -48,6 +48,8 @@
           <li><a href="/en/vocabulary.php">Vocabulary</a></li>
           <li>&nbsp;</li>
           <li><a href="/en/blockexplorer.php">Block Explorer</a></li>
+          <li><a href="/en/blockmining.php">Block Mining</a></li>
+          <li>&nbsp;</li>
           <li><a href="/en/umkoin-core.php">Umkoin Core</a></li>
         </ul>
       </li>
