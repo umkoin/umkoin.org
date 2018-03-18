@@ -64,12 +64,12 @@ include 'page_head.php';
     <table>
     <thead>
       <tr style="text-align: center">
-        <th>Workers</th>
+        <th>Miners</th>
         <th>Hashrate</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr style="text-align: center">
         <td><?php echo $workercount; ?></td>
         <td><?php echo $poolhashrate; ?></td>
       </tr>
@@ -78,33 +78,45 @@ include 'page_head.php';
 
     <h2>Start Mining</h2>
     <p>You can start mining umkoins to help processing transactions. In order to protect the network, you should join smaller mining pools and prefer decentralized pools with getblocktemplate (GBT) support.</p>
-    <p>Use configuration for you miner:</p>
     <table>
-    <tr>
-      <td>Username:</td>
-      <td>your umkoin wallet address</td>
-    </tr>
-    <tr>
-      <td>Password:</td>
-      <td>anything</td>
-    </tr>
-    <tr>
-      <td>Algorithm:</td>
-      <td>sha256</td>
-    </tr>
-    <tr>
-      <td>URL (difficulty 16):</td>
-      <td>stratum+tcp://pool.umkoin.org:3335</td>
-    </tr>
-    <tr>
-      <td>URL (difficulty 512):</td>
-      <td>stratum+tcp://pool.umkoin.org:5335</td>
-    </tr>
+    <thead>
+     <tr>
+       <th colspan=2 style="text-align: center">Miner configuration</th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Username:</td>
+        <td>your umkoin wallet address</td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td>anything</td>
+      </tr>
+      <tr>
+        <td>Algorithm:</td>
+        <td>sha256</td>
+      </tr>
+      <tr>
+        <td>URL (difficulty 16):</td>
+        <td>stratum+tcp://pool.umkoin.org:3335</td>
+      </tr>
+      <tr>
+        <td>URL (difficulty 512):</td>
+        <td>stratum+tcp://pool.umkoin.org:5335</td>
+      </tr>
+    </tbody>
     </table>
 
     <h2>Top Miners</h2>
     <table width="100%">
-    <tr>
+    <thead>
+      <tr style="text-align: center">
+        <th>Miner</th>
+        <th>Hashrate</th>
+      </tr>
+    </thead>
+    <tbody>
 <?php
 
 $minershares = [];
@@ -120,12 +132,12 @@ arsort($minershares);
 for ($i = 0; $i < (($workercount < 10) ? $workercount : 9); $i++) {
   echo "<tr>";
   echo "<td>" . array_keys($minershares)[$i] . "</td>";
-  echo "<td>" . $minerhashrate[array_keys($minershares)[$i]] . "</td>";
+  echo "<td style='text-align: center'>" . $minerhashrate[array_keys($minershares)[$i]] . "</td>";
   echo "</tr>";
 }
 
 ?>
-    </tr>
+    </tbody>
     </table>
 
   </div>
