@@ -45,10 +45,9 @@ include 'page_head.php';
 
       <p>Умкойн Core запрограмований визначати, який ланцюжок блоків містить дійсні транзакції. Користувачі Умкойн Core приймають лише транзакції для такого ланцюжка блоків, що робить цей ланцюжок блоків Умкойн таким, що всі інші хочуть використовувати саме його.</p>
       <p>Ці користувачі <b>підтримують децентралізацію Умкойн</b>. Вони індивідуально утримують власні вузли Умкойн Core, і кожен з цих вузлів окремо керується точно такими ж правилами визначення дійсного ланцюжка блоків.</p>
-      <p>There’s no voting or other corruptible process involved: there’s just individual software following identical rules—”math”—to evaluate identical blocks and coming to identical conclusions about which block chain is valid.</p>
-      <p>This shared agreement (called consensus) allows people like you to only accept valid umkoins, <b>enforcing Umkoin’s rules</b> against even the most powerful miners.</p>
-      <p>In addition to improving Umkoin’s decentralization, Umkoin Core users get <a href="/en/umkoin-core/features/validation.php">better security</a> for their umkoins, <a href="/en/umkoin-core/features/privacy.php">privacy features</a> not available in other wallets, a choice of <a href="/en/umkoin-core/features/user-interface.php">user interfaces</a> and several other powerful features.</p>
-
+      <p>В Умкойн Core немає жодного голосування чи іншого процесу, що піддається тлумаченням: існує лише індивідуальне програмне забезпечення, що відповідає однаковим правилам - "математика" - для оцінки блоків і прийняття однакових висновків про те, який ланцюжок блоків є дійсним.</p>
+      <p>Ця спільна угода (називається консенсусом) дозволяє таким людям, як ви, приймати тільки дійсні умкоїни, дотримуючись правил Умкойн навіть найпотужнішими добувачами.</p>
+      <p>Окрім покращення децентралізації Умкойн, користувачі Умкойн Core покращують безпеку своїх умкоїнів, функції конфіденційності, недоступні в інших гаманцях, вибір користувацьких інтерфейсів та декілька інших потужних функцій.</p>
       <p><br /></p>
 
       <div class="two-column-list">
