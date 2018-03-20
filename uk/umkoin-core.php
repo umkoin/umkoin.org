@@ -33,7 +33,7 @@ include 'page_head.php';
     <div class="one-column">
 
       <h1>Умкойн Core</h1>
-      <p class="summary">Helping You Keep Umkoin Decentralized</p>
+      <p class="summary">Підтримка Децентралізації Умкойн</p>
 
       <div class="callout">
         <p><a href="/uk/download.php">Завантажити Умкойн Core</a>
@@ -63,20 +63,20 @@ include 'page_head.php';
           </li>
           <li>
             <p><span class="fa-li fa fa-code-fork fa-2x"></span>
-            <b><a href="/en/umkoin-core/contribute.php">Contribute</a></b><br />Code, translations, and more</p>
+            <b><a href="/en/umkoin-core/contribute.php">Внесок</a></b><br />Код, переклад та інше</p>
           </li>
         </ul>
       </div>
 
       <p><br class="clear" /></p>
 
-      <h3>News</h3>
+      <h3>Новини</h3>
       <ul>
         <li>
-          <p>2018-01-22 - Umkoin Core version 0.16.0 released</p>
+          <p>2018-01-22 - випуск Умкойн Core версії 0.16.0</p>
         </li>
         <li>
-          <p>2017-12-13 - Umkoin Core version 0.15.0 released</p>
+          <p>2017-12-13 - випуск Умкойн Core версії 0.15.0</p>
         </li>
       </ul>
 
