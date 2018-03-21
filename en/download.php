@@ -19,7 +19,7 @@
 
 <?php
 $version = "0.16.0";
-$build =  ".8";
+$build =  "";
 include 'page_head.php';
 ?>
 
@@ -45,20 +45,18 @@ include 'page_head.php';
       <div class="downloadbox">
       <p>Choose your operating system</p>
       <div>
-<!--
         <div>
           <img src="/img/os/med_win.png" alt="windows">
           <span>
-            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64-setup.exe"><i class="fa fa-windows"></i> Windows</a>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64-setup.exe">Windows</a>
             <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64-setup.exe">64 bit</a> -
               <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win32-setup.exe">32 bit</a></span>
           </span>
         </div>
-//-->
         <div>
           <img src="/img/os/med_win.png" alt="windows">
           <span>
-            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64.zip"><i class="fa fa-windows"></i> Windows (zip)</a>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64.zip">Windows (zip)</a>
             <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64.zip">64 bit</a> -
               <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win32.zip">32 bit</a></span>
           </span>
@@ -67,7 +65,7 @@ include 'page_head.php';
         <div>
           <img src="/img/os/med_osx.png" alt="osx">
           <span>
-            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx.dmg"><i class="fa fa-apple"></i> Mac OS X</a>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx.dmg">Mac OS X</a>
             <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx.dmg">dmg</a> -
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx64.tar.gz">tar.gz</a></span>
           </span>
@@ -78,7 +76,7 @@ include 'page_head.php';
         <div>
           <img src="/img/os/med_linux.png" alt="linux">
           <span>
-            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz"><i class="fa fa-linux"></i> Linux (tgz)</a>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">Linux (tgz)</a>
             <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">64 bit</a> -
               <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-i686-pc-linux-gnu.tar.gz">32 bit</a></span>
           </span>
