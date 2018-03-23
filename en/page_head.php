@@ -13,13 +13,10 @@
               <li><a href="/en/" class="active">English</a></li>
               <?php
               $transition_from = "/en/";
-              $transition_to = "/uk/";
+              $transition_to_uk = "/uk/";
               $str = "";
-              if ($_SERVER['PHP_SELF'] != "") {
-                $str = str_replace($transition_from, $transition_to, $_SERVER['PHP_SELF']);
-                if ($_SERVER['QUERY_STRING'] != "") {
-                  $str .= "?" . $_SERVER['QUERY_STRING'];
-                }
+              if ($_SERVER['REQUEST_URI'] != "") {
+                $str = str_replace($transition_from, $transition_to_uk, $_SERVER['REQUEST_URI']);
               }
               echo "<li><a href='" . $str . "'>Українська</a></li>";
               ?>
