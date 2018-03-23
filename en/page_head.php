@@ -11,7 +11,18 @@
           <li>
             <ul>
               <li><a href="/en/" class="active">English</a></li>
-              <li><a href="/uk/">Українська</a></li>
+              <?php
+              $transition_from = "/en/";
+              $transition_to = "/uk/";
+              $str = "";
+              if ($_SERVER['PHP_SELF'] != "") {
+                $str = str_replace($transition_from, $transition_to, $_SERVER['PHP_SELF']);
+                if ($_SERVER['QUERY_STRING'] != "") {
+                  $str .= "?" . $_SERVER['QUERY_STRING'];
+                }
+              }
+              echo "<li><a href='" . $str . "'>Українська</a></li>";
+              ?>
             </ul>
           </li>
         </ul>
