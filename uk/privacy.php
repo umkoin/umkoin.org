@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="uk">
 
 
 <head>
@@ -7,11 +7,12 @@
 <meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-<title>Privacy Policy - Umkoin</title>
+<title>Конфіденційність - Умкойн</title>
 
 <link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/main.css">
 <link rel="shortcut icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/sans.css">
 
 <script type="text/javascript" src="/js/base.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
@@ -32,33 +33,33 @@ include 'page_head.php';
 
   <div id="content" class="content">
 
-    <h1>Privacy Policy</h1>
-    <p>This page informs you of our policies regarding the collection, use and disclosure of personal information we receive from users of our site (<a href="http://umkoin.org">http://umkoin.org</a>). We use your personal information to better understand your usage of the site, and to collect traffic statistics.</p>
-    <p>By using the site, you agree to the collection and use of information in accordance with this policy.</p>
+    <h1>Конфіденційність</h1>
+    <p>Ця сторінка містить інформацію про нашу політику щодо збору, використання та розголошення особистої інформації, яку ми отримуємо від користувачів нашого сайту (<a href="http://umkoin.org">http://umkoin.org</a>). Ми використовуємо вашу особисту інформацію, щоб краще зрозуміти ваше використання сайту та збирати статистику трафіку.</p>
+    <p>Використовуючи цей сайт, ви погоджуєтеся на збір та використання зібранной інформації відповідно до цієї політики.</p>
 
-    <h2 id="logdata">Log Data</h2>
-    <p>Like many site operators, we collect information that your browser sends whenever you visit our site ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address (with replaced last byte), browser type, browser version, the pages of our site that you visit, the time and date of your visit, the time spent on those pages and other statistics.</p>
+    <h2 id="logdata">Журнальні данні</h2>
+    <p>Як і багато інших операторів сайтів, ми збираємо інформацію, яку ваш веб-переглядач надсилає щоразу, коли ви відвідуєте наш сайт ("Журнальні дані"). Дані журналу можуть містити таку інформацію, як адресу Інтернет-протоколу ("IP") Вашого комп'ютера (з заміною останнього байта), тип браузера, версію браузера, сторінки нашого сайту, які ви відвідуєте, час і дату вашого відвідування, час, що ви витрачаєте на цих сторінках та інші статистичні дані.</p>
 
-    <h2 id="cookies">Cookies</h2>
-    <p>Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a web site and stored on your computer's hard drive. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our site.</p>
+    <h2 id="cookies">Файли cookie</h2>
+    <p>Файли cookie - це файли з невеликою кількістю даних, які можуть містити анонімний унікальний ідентифікатор. Файли cookie надсилаються у ваш браузер із веб-сайту та зберігаються на жорсткому диску вашого комп'ютера. Ви можете наказати своєму браузеру відмовитися від всіх файлів cookie або вказати, коли файли cookie надсилаються. Однак, якщо ви не приймаєте файли cookie, можливо, ви не зможете користуватись деякими частинами нашого сайту.</p>
 
-    <p>We use cookies for the following purposes:</p>
+    <p>Ми використовуємо файли cookie для наступних цілей:</p>
     <ul>
-      <li>To keep track of whether you have pressed the "OK" button on the cookie disclaimer, so we don't bother you with the notification if you have.</li>
-      <li>Our Analytics software (Google Analytics) uses cookies to measure and better understand user-interactions on our Site. You can read more about how Google Analytics uses cookies <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">here</a>.</li>
+      <li>Щоб відстежити, чи ви натиснули кнопку "ОК" на відмову від конфіденційності файлів cookie, щоб ми вас не турбували, якщо натиснули.</li>
+      <li>Наше програмне забезпечення для аналітики (Google Analytics) використовує файли cookie для вимірювання та кращого розуміння взаємодії користувачів на нашому сайті. Ви можете дізнатись більше про те, як Google Analytics використовує файли cookie <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage">тут</a>.</li>
     </ul>
 
     <h2 id="analytics">Google Analytics</h2>
-    <p>We use a third-party JavaScript plug-in provided by Google called "Google Analytics" to provide us with useful traffic statistics and to better understand how you use our site. We do not have direct access to the information obtained from Google Analytics, but Google provides us with a summary through their dashboard.</p>
-    <p>We may share the information obtained from Google Analytics with business partners who are interested in advertising on our website. The information shared with these business partners will not contain any personally identifying information (Google does not provide us with direct access to the data and therefore we cannot see this information).</p>
-    <p>You can opt-out of having your information collected by Google Analytics by downloading the Google Analytics opt-out browser add-on provided by Google. This will prevent your information being used by Google Analytics. Doing this will not affect your ability to use our Site in any way. You can download the opt-out browser add-on <a href="https://tools.google.com/dlpage/gaoptout">here</a>.</p>
+    <p>Ми використовуємо сторонній плагін JavaScript, який Google називає "Google Analytics", щоб надати нам корисну статистику трафіку та краще зрозуміти, як ви використовуєте наш сайт. Ми не маємо прямого доступу до інформації, отриманої від Google Analytics, але Google надає нам звіт через свою інформаційну панель.</p>
+    <p>Ми можемо ділитися інформацією, отриманою з Google Analytics, з діловими партнерами, які зацікавлені в рекламі на нашому веб-сайті. Інформація, що надається цим діловим партнерам, не міститиме жодної особистої інформації (Google не надає нам прямого доступу до даних, тому ми не можемо побачити цю інформацію).</p>
+    <p>Ви можете відмовитися від того, щоб ваша інформація була зібрана Google Analytics, завантаживши додаток Google Analytics для відключення браузера Google. Це запобігає використанню вашої інформації в Google Analytics. Це не вплине на вашу здатність використовувати наш Сайт ніяким чином. Ви можете завантажити додаток для браузера <a href="https://tools.google.com/dlpage/gaoptout">тут</a>. Ми також поважаємо заголовок "Do Not Track" і не відстежуватимемо відвідувачів, в яких його ввімкнено.</p>
 
-    <h2 id="changes">Changes to this Privacy Policy</h2>
-    <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on the Site. You are advised to review this privacy policy periodically for any changes.</p>
-    <p>This Privacy Policy was last updated on <?php print(date("F d, Y", filemtime("privacy.php")));?>.</p>
+    <h2 id="changes">Зміни до цієї політики конфіденційності</h2>
+    <p>Час від часу ми можемо оновлювати цю політику конфіденційності. Ми повідомимо вас про будь-які зміни, опублікувавши нову політику конфіденційності на сайті. Рекомендується періодично переглядати цю політику конфіденційності для будь-яких змін.</p>
+    <p>Політика конфіденційності (україномовна редакція) була змінена востаннє: <?php print(date("F d, Y", filemtime("privacy.php")));?>.</p>
 
-    <h2 id="contact">Contact Us</h2>
-    <p>If you have any questions about our privacy policy, or how your data is being collected and processed, please e-mail <a href="mailto:privacy@umkoin.org?Subject=Privacy">privacy@umkoin.org</a>.</p>
+    <h2 id="contact">Зворотній зв'язок</h2>
+    <p>Якщо у вас є будь-які питання щодо нашої політики конфіденційності або як ваші дані збираються та обробляються, будь ласка, надішліть електронний лист до <a href="mailto:privacy@umkoin.org?Subject=Privacy">privacy@umkoin.org</a>.</p>
 
   </div>
 

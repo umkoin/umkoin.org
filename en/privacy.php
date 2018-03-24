@@ -55,7 +55,7 @@ include 'page_head.php';
 
     <h2 id="changes">Changes to this Privacy Policy</h2>
     <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on the Site. You are advised to review this privacy policy periodically for any changes.</p>
-    <p>This Privacy Policy was last updated on <?php print(date("F d, Y", filemtime("privacy.php")));?>.</p>
+    <p>Privacy Policy (English edition) was last updated on <?php print(date("F d, Y", filemtime("privacy.php")));?>.</p>
 
     <h2 id="contact">Contact Us</h2>
     <p>If you have any questions about our privacy policy, or how your data is being collected and processed, please e-mail <a href="mailto:privacy@umkoin.org?Subject=Privacy">privacy@umkoin.org</a>.</p>
