@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
 <div class="head">
   <div>
 
@@ -10,7 +6,18 @@
         <ul>
           <li>
             <ul>
+              <?php
+              $transition_from = "/en/";
+              $transition_to_uk = "/de/";
+              $str = "";
+              if ($_SERVER['REQUEST_URI'] != "") {
+                $str = str_replace($transition_from, $transition_to_uk, $_SERVER['REQUEST_URI']);
+              }
+              echo "<li><a href='" . $str . "'>Deutsch</a></li>";
+              ?>
+
               <li><a href="/en/" class="active">English</a></li>
+
               <?php
               $transition_from = "/en/";
               $transition_to_uk = "/uk/";
@@ -32,6 +39,7 @@
 
     <div id="langselect" class="langselect">
       <select onchange="window.location=this.value;">
+        <option value="/de/">Deutsch</option>
         <option value="/en/" selected="selected">English</option>
         <option value="/uk/">Українська</option>
       </select>
