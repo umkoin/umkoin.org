@@ -78,6 +78,7 @@ include 'page_head.php';
     <h3 id="service_contributors">Service Contributors</h3>
     <div class="credit">
       <p><a href="https://github.com/">GitHub</a><span>Repository hosting</span></p>
+      <p><a href="https://www.transifex.com/">Transifex</a><span>Translation tools</span></p>
       <p><a href="https://travis-ci.org/">Travis CI</a><span>Continuous integration</span></p>
     </div>
 
@@ -106,13 +107,6 @@ include 'page_head.php';
 <?php
 include 'page_footer.php';
 ?>
-
-
-<script type="text/javascript">
-  fallbackSVG();
-  addAnchorLinks();
-  trackOutgoingLinks();
-</script>
 
 
 </body>
