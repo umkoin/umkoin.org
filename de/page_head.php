@@ -49,18 +49,18 @@
 
       <li><a>Einführung</a>
         <ul>
-          <li><a href="/de/umkoin-fuer-einzelpersonen.php">Einzelpersonen</a></li>
-          <li><a href="/de/umkoin-fuer-unternehmen.php">Unternehmen</a></li>
-          <li><a href="/de/umkoin-fuer-entwickler.php">Entwickler</a></li>
-          <li><a href="/de/erste-schritte.php">Erste Schritte</a></li>
-          <li><a href="/de/wie-es-funktioniert.php">Wie es funktioniert</a></li>
-          <li><a href="/de/das-sollten-sie-wissen.php">Das sollten Sie wissen</a></li>
+          <li><a href="/de/umkoin-for-individuals.php">Einzelpersonen</a></li>
+          <li><a href="/de/umkoin-for-businesses.php">Unternehmen</a></li>
+          <li><a href="/de/umkoin-for-developers.php">Entwickler</a></li>
+          <li><a href="/de/getting-started.php">Erste Schritte</a></li>
+          <li><a href="/de/how-it-works.php">Wie es funktioniert</a></li>
+          <li><a href="/de/you-need-to-know.php">Das sollten Sie wissen</a></li>
         </ul>
       </li>
 
       <li><a>Ressourcen</a>
         <ul>
-          <li><a href="/de/glossar.php">Glossar</a></li>
+          <li><a href="/de/vocabulary.php">Glossar</a></li>
           <li>&nbsp;</li>
           <li><a href="/de/blockexplorer.php">Block Explorer</a></li>
           <li><a href="/de/blockmining.php">Block Mining</a></li>
@@ -73,8 +73,8 @@
 
       <li><a>Mitmachen</a>
         <ul>
-          <li><a href="/de/umkoin-unterstuetzen.php">Umkoin unterstützen</a>
-          <li><a href="/de/entwicklung.php">Entwicklung</a></li>
+          <li><a href="/de/support-umkoin.php">Umkoin unterstützen</a>
+          <li><a href="/de/development.php">Entwicklung</a></li>
         </ul>
       </li>
 
