@@ -66,12 +66,5 @@ include 'page_footer.php';
 ?>
 
 
-<script type="text/javascript">
-  fallbackSVG();
-  addAnchorLinks();
-  trackOutgoingLinks();
-</script>
-
-
 </body>
 </html>
