@@ -235,7 +235,7 @@ include 'page_head.php';
 
                 "<h2><i class='fa fa-cube'></i> Block " . $reqval . "</h2>" .
                 "<div title='Block index in the chain, counting from zero (i.e. genesis block).'><i class='fa fa-signal'></i> Height: " . $block->getBlockHeight($reqval) . "</div>" .
-                "<div title='Block timestamp displayed as UTC. The timestamp correctness it up to miner, who mined the block.'><i class='fa fa-clock-o'></i> Timestamp: " . date("M d, Y H:i:s", $block->getBlockTime($reqval)) . "</div>" .
+                "<div title='Block timestamp displayed as UTC. The timestamp correctness is up to miner, who mined the block.'><i class='fa fa-clock-o'></i> Timestamp: " . date("M d, Y H:i:s", $block->getBlockTime($reqval)) . "</div>" .
                 "<div title='How difficult it is to find a solution for the block. More specifically, it`s mathematical expectation for number of hashes someone needs to calculate in order to find a correct nonce value solving the block.'><i class='fa fa-lock'></i> Difficulty: " . $block->getBlockDifficulty($reqval) . "</div>" .
                 "<div title='Number of transactions in the block, including coinbase transaction (which transfers block reward to the miner).'><i class='fa fa-exchange'></i> Transactions: " .  $block->getBlockTxCount($reqval) . "</div>" .
                 "<div title='Cumulative size of all transactions in the block, including coinbase.'><i class='fa fa-arrows-h'></i> Total transactions size, bytes: " . $block->getblocktransactionssize($reqval) . "</div>" .

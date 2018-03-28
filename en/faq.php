@@ -120,9 +120,9 @@ include 'page_head.php';
     <h3 id="how-does-one-acquire-umkoins">How does one acquire umkoins?</h3>
     <ul>
       <li>As payment for goods or services.</li>
-      <li>Purchase umkoins at a <a href="https://www.buyumkoinworldwide.com">Umkoin exchange</a>.</li>
-      <li>Exchange umkoins with <a href="https://localumkoins.com/">someone near you</a>.</li>
-      <li>Earn umkoins through competitive <a href="http://pool.umkoin.org:8080/">mining</a>.</li>
+      <li>Purchase umkoins at a Umkoin exchange.</li>
+      <li>Exchange umkoins with someone near you.</li>
+      <li>Earn umkoins through competitive <a href="/en/blockmining.php">mining</a>.</li>
     </ul>
     <p>While it may be possible to find individuals who wish to sell umkoins in exchange for a credit card or PayPal payment, most exchanges do not allow funding via these payment methods. This is due to cases where someone buys umkoins with PayPal, and then reverses their half of the transaction. This is commonly referred to as a chargeback.</p>
 

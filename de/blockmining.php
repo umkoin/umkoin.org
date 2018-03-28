@@ -50,9 +50,9 @@ include 'page_head.php';
     <h1><img src="/img/icons/ico_mining.svg"> Umkoin Block Mining</h1>
 
     <h2>Mining Pool</h2>
-    <p>In order to process transactions and secure the Umkoin network, we have set up a mining pool for general public. Feel free to join and contribute to the Umkoin network and get some umkoins.</p>
+    <p>Um Transaktionen abzuwickeln und das Umkoin-Netzwerk zu sichern, haben wir einen Mining-Pool für die breite Öffentlichkeit eingerichtet. Fühlen Sie sich frei, dem Umkoin-Netzwerk beizutreten und beizutragen und einige Umkoins zu bekommen.</p>
 
-    <h2>Quick Statistics</h2>
+    <h2>Schnelle Statistiken</h2>
     <table>
     <thead>
       <tr style="text-align: center">
@@ -69,32 +69,32 @@ include 'page_head.php';
     </table>
 
     <h2>Start Mining</h2>
-    <p>You can start mining umkoins to help processing transactions. In order to protect the network, you should join smaller mining pools and prefer decentralized pools with getblocktemplate (GBT) support.</p>
+    <p>Sie können mit umkoins arbeiten, um Transaktionen zu verarbeiten. Um das Netzwerk zu schützen, sollten Sie kleineren Miningpools beitreten und dezentrale Pools mit GetBlockTemplate (GBT) unterstützen.</p>
     <table>
     <thead>
      <tr>
-       <th colspan=2 style="text-align: center">Miner configuration</th>
+       <th colspan=2 style="text-align: center">Miner-Konfiguration</th>
      </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Username:</td>
-        <td>your umkoin wallet address</td>
+        <td>Nutzername:</td>
+        <td>Ihre umkoin Brieftasche Adresse</td>
       </tr>
       <tr>
-        <td>Password:</td>
-        <td>anything</td>
+        <td>Passwort:</td>
+        <td>etwas</td>
       </tr>
       <tr>
-        <td>Algorithm:</td>
+        <td>Algorithmus:</td>
         <td>sha256</td>
       </tr>
       <tr>
-        <td>URL (difficulty 16):</td>
+        <td>URL (Schwierigkeit 16):</td>
         <td>stratum+tcp://pool.umkoin.org:3335</td>
       </tr>
       <tr>
-        <td>URL (difficulty 512):</td>
+        <td>URL (Schwierigkeit 512):</td>
         <td>stratum+tcp://pool.umkoin.org:5335</td>
       </tr>
     </tbody>
