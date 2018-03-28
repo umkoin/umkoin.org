@@ -3,19 +3,8 @@
 
 
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="description" content="Umkoin ist ein innovatives Zahlungsnetzwerk und eine neue Form von Geld. Finden Sie alles was sie wissen müssen und legen Sie los mit Umkoin auf umkoin.org.">
-
+<?php include 'head'; ?>
 <title>Umkoin für Einzelpersonen - Umkoin</title>
-
-<link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="shortcut icon" href="/favicon.png">
-
-<script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
 </head>
 
 

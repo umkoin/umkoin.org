@@ -3,18 +3,8 @@
 
 
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
+<?php include 'head'; ?>
 <title>Developer Guide - Umkoin</title>
-
-<link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="shortcut icon" href="/favicon.png">
-
-<script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
 </head>
 
 
@@ -499,71 +489,38 @@ Signature script: &lt;sig&gt;</code></pre>
       <p>Umkoin Core 0.12.0 defaults to relaying and mining null data outputs with up to 83 bytes with any number of data pushes, provided the total byte limit is not exceeded. There must still only be a single null data output and it must still pay exactly 0 satoshis.</p>
       <p>The <code>-datacarriersize</code> Umkoin Core configuration option allows you to set the maximum number of bytes in null data outputs that you will relay or mine.</p>
 
+      <h4 id="non-standard-transactions">Non-Standard Transactions</h4>
+      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/guides/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/guides/transactions.md">Edit</a>
+        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/guides/transactions.md">History</a>
+        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/guides/transactions.md%0A%0A">Report Issue</a>
+      </div>
+      <p>If you use anything besides a standard <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> in an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> and <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> using the default Umkoin Core settings will neither accept, broadcast, nor <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mine</a> your transaction. When you try to broadcast your transaction to a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> running the default settings, you will receive an error.</p>
+      <p>If you create a <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>, hash it, and use the hash in a <a href="/en/glossary/p2sh-address" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH output</a>, the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> sees only the hash, so it will accept the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must belled for those satoshis to be further spent." class="auto-link">output</a> as valid no matter what the <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> says. This allows payment to non-standard scripts, and as of Umkoin Core 0.11, almost all valid <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem scripts</a> can be spent. The exception is scripts that use unassigned <a href="https://en.umkoin.it/wiki/Script#Reserved_words">NOP opcodes</a>; these <a href="/en/glossary/op-code" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">opcodes</a> are reserved for future <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft forks</a> and can only be relayed or mined by <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> that don’t follow the standard mempool policy.</p>
+      <p>Note: <a href="/en/glossary/standard-transaction.php" title="A transaction that passes Umkoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Umkoin Core software." class="auto-link">standard transactions</a> are designed to protect and help the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>, not prevent you from making mistakes. It’s easy to create <a href="/en/glossary/standard-transaction.php" title="A transaction that passes Umkoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Umkoin Core software." class="auto-link">standard transactions</a> which make the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> sent to them unspendable.</p>
+      <p>As of <a href="/en/release/v0.9.3" class="auto-link">Umkoin Core 0.9.3</a>, <a href="/en/glossary/standard-transaction.php" title="A transaction that passes Umkoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Umkoin Core software." class="auto-link">standard transactions</a> must also meet the following conditions:</p>
+
+      <ul>
+        <li>
+          <p>The transaction must be finalized: either its <a href="/en/glossary/locktime.php" title="Part of a transaction which indicates the earliest time or earliest block when that transaction may be added to the block chain." class="auto-link">locktime</a> must be in the past (or less than or equal to the current <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a>), or all of its <a href="/en/glossary/sequence-number" title="Part of all transactions. A number intended to allow unconfirmed time-locked transactions to be updated before being finalized; not currently used except to disable locktime in a transaction" class="auto-link">sequence numbers</a> must be 0xffffffff.</p>
+        </li>
+        <li>
+          <p>The transaction must be smaller than 100,000 bytes. That’s around 200 times larger than a typical single-<a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, single-<a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> P2PKH transaction.</p>
+        </li>
+        <li>
+          <p>Each of the transaction’s <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature scripts</a> must be smaller than 1,650 bytes. That’s large enough to allow 15-of-15 <a href="/en/glossary/multisig.php" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> transactions in P2SH using <a href="/en/glossary/compressed-public-key" title="An ECDSA public key that is 33 bytes long rather than the 65 bytes of an uncompressed public key." class="auto-link">compressed public keys</a>.</p>
+        </li>
+        <li>
+          <p>Bare (non-P2SH) <a href="/en/glossary/multisig.php" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> transactions which require more than 3 <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> are currently non-standard.</p>
+        </li>
+        <li>
+          <p>The transaction’s <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> must only push data to the script evaluation stack. It cannot push new <a href="/en/glossary/op-code" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">opcodes</a>, with the exception of <a href="/en/glossary/op-code" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">opcodes</a> which solely push data to the stack.</p>
+        </li>
+        <li>
+          <p>The transaction must not include any <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> which receive fewer than 1/3 as many <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> as it would take to spend it in a typical <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>. That’s <a href="https://github.com/umkoin/umkoin/commit/6a4c196dd64da2fd33dc7ae77a8cdd3e4cf0eff1">currently 546 satoshis</a> for a P2PKH or <a href="/en/glossary/p2sh-address" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script tat Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH output</a> on a Umkoin Core <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with the default <a href="/en/glossary/minimum-relay-fee" title="The minimum transaction fee a transaction must pay (if it isn't a high-priority transaction) for a full node to relay that transaction to other nodes. There is no one minimum relay fee---each node chooses its own policy." class="auto-link">relay fee</a>. Exception: standard null data <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> must receive zero <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>.</p>
+        </li>
+      </ul>
+
 <!-- CONTINUE FROM HERE //-->
-
-  <h4 id="non-standard-transactions">Non-Standard Transactions</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/guides/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/guides/transactions.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/guides/transactions.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/guides/transactions.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p>If you use anything besides a standard <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> in an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a>
-and <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> using the default Umkoin Core settings will neither
-accept, broadcast, nor <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mine</a> your transaction. When you try to broadcast
-your transaction to a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> running the default settings, you will
-receive an error.</p>
-
-  <p>If you create a <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>, hash it, and use the hash
-in a <a href="/en/glossary/p2sh-address" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH output</a>, the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> sees only the hash, so it will accept the
-<a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must belled for those satoshis to be further spent." class="auto-link">output</a> as valid no matter what the <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> says.
-This allows payment to non-standard scripts, and as of Umkoin Core
-0.11, almost all valid <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem scripts</a> can be spent. The exception is
-scripts that use unassigned <a href="https://en.umkoin.it/wiki/Script#Reserved_words">NOP opcodes</a>; these <a href="/en/glossary/op-code" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">opcodes</a> are
-reserved for future <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft forks</a> and can only be relayed or mined by <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>
-that don’t follow the standard mempool policy.</p>
-
-  <p>Note: <a href="/en/glossary/standard-transaction.php" title="A transaction that passes Umkoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Umkoin Core software." class="auto-link">standard transactions</a> are designed to protect and help the
-<a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>, not prevent you from making mistakes. It’s easy to create
-<a href="/en/glossary/standard-transaction.php" title="A transaction that passes Umkoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Umkoin Core software." class="auto-link">standard transactions</a> which make the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> sent to them unspendable.</p>
-
-  <p>As of <a href="/en/release/v0.9.3" class="auto-link">Umkoin Core 0.9.3</a>, <a href="/en/glossary/standard-transaction.php" title="A transaction that passes Umkoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Umkoin Core software." class="auto-link">standard transactions</a> must also meet the following
-conditions:</p>
-
-  <ul>
-    <li>
-      <p>The transaction must be finalized: either its <a href="/en/glossary/locktime.php" title="Part of a transaction which indicates the earliest time or earliest block when that transaction may be added to the block chain." class="auto-link">locktime</a> must be in the
-past (or less than or equal to the current <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a>), or all of its <a href="/en/glossary/sequence-number" title="Part of all transactions. A number intended to allow unconfirmed time-locked transactions to be updated before being finalized; not currently used except to disable locktime in a transaction" class="auto-link">sequence
-numbers</a> must be 0xffffffff.</p>
-    </li>
-    <li>
-      <p>The transaction must be smaller than 100,000 bytes. That’s around 200
-times larger than a typical single-<a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, single-<a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> P2PKH
-transaction.</p>
-    </li>
-    <li>
-      <p>Each of the transaction’s <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature scripts</a> must be smaller than 1,650 bytes.
-That’s large enough to allow 15-of-15 <a href="/en/glossary/multisig.php" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> transactions in P2SH
-using <a href="/en/glossary/compressed-public-key" title="An ECDSA public key that is 33 bytes long rather than the 65 bytes of an uncompressed public key." class="auto-link">compressed public keys</a>.</p>
-    </li>
-    <li>
-      <p>Bare (non-P2SH) <a href="/en/glossary/multisig.php" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> transactions which require more than 3 <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> are
-currently non-standard.</p>
-    </li>
-    <li>
-      <p>The transaction’s <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> must only push data to the script
-evaluation stack. It cannot push new <a href="/en/glossary/op-code" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">opcodes</a>, with the exception of
-<a href="/en/glossary/op-code" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">opcodes</a> which solely push data to the stack.</p>
-    </li>
-    <li>
-      <p>The transaction must not include any <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> which receive fewer than
-1/3 as many <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> as it would take to spend it in a typical <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>.
-That’s <a href="https://github.com/umkoin/umkoin/commit/6a4c196dd64da2fd33dc7ae77a8cdd3e4cf0eff1">currently 546 satoshis</a> for a
-P2PKH or <a href="/en/glossary/p2sh-address" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script tat Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH output</a> on a Umkoin Core <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with the default <a href="/en/glossary/minimum-relay-fee" title="The minimum transaction fee a transaction must pay (if it isn't a high-priority transaction) for a full node to relay that transaction to other nodes. There is no one minimum relay fee---each node chooses its own policy." class="auto-link">relay fee</a>.
-Exception: standard null data <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> must receive zero <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>.</p>
-    </li>
-  </ul>
 
   <h3 id="signature-hash-types">Signature Hash Types</h3>
   <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/guides/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/guides/transactions.md">Edit</a>
@@ -3695,13 +3652,6 @@ different reward distribution systems based on this basic share system.</p>
   </div>
 
 </div>
-
-
-<script type="text/javascript">
-  fallbackSVG();
-  addAnchorLinks();
-  trackOutgoingLinks();
-</script>
 
 
 <?php

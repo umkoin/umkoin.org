@@ -3,16 +3,10 @@
 
 
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
+<?php include '../head'; ?>
 <title>Contribute to Umkoin Core</title>
 
-<link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="/css/jquery-ui.min.css">
-<link rel="shortcut icon" href="/favicon.png">
 </head>
 
 

@@ -3,18 +3,8 @@
 
 
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
+<?php include 'head'; ?>
 <title>Umkoin Developer Reference - Umkoin</title>
-
-<link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="shortcut icon" href="/favicon.png">
-
-<script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
 </head>
 
 
@@ -17948,13 +17938,6 @@ cb6a325d2903b726980865210d2127de09710121023ee7a6437e9ad2957cd032\
   </div>
 
 </div>
-
-
-<script type="text/javascript">
-  fallbackSVG();
-  addAnchorLinks();
-  trackOutgoingLinks();
-</script>
 
 
 <?php

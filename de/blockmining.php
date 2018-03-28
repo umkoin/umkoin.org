@@ -24,7 +24,7 @@ $poolhashrate = $strdecoded["pools"]["umkoin"]["hashrateString"];
 
 
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="de">
 
 
 <head>

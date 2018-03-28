@@ -3,18 +3,8 @@
 
 
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta property="og:image" content="http://umkoin.org/img/icons/opengraph.png" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
+<?php include 'head'; ?>
 <title>Innovation - Umkoin</title>
-
-<link rel="stylesheet" href="/css/font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/main.css">
-<link rel="shortcut icon" href="/favicon.png">
-
-<script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
 </head>
 
 
@@ -72,29 +62,31 @@ include 'page_head.php';
         <p>Umkoin can be used to develop innovative dispute mediation services using multiple signatures. Such services could make it possible for a third party to approve or reject a transaction in case of disagreement between the other parties without having control on their money. Since these services would be compatible with any user and merchant using Umkoin, this would likely lead to free competition and higher quality standards.</p>
       </div>
 
-<div>
-<h2 id="multisig"><img class="titleicon" src="/img/icons/ico_multisig.svg" alt="Icon" />Multi-signature accounts</h2>
-<p>Multiple signatures allow a transaction to be accepted by the network only if a certain number of a defined group of persons agree to sign the transaction. This could be used by a board of directors to prevent any member to spend parts of their treasury without other members' consent. This can also be used by banks to prevent theft by blocking payments above a threshold if the user does not provide additional credentials.</p>
-</div>
+      <div>
+        <h2 id="multisig"><img class="titleicon" src="/img/icons/ico_multisig.svg" alt="Icon" />Multi-signature accounts</h2>
+        <p>Multiple signatures allow a transaction to be accepted by the network only if a certain number of a defined group of persons agree to sign the transaction. This could be used by a board of directors to prevent any member to spend parts of their treasury without other members' consent. This can also be used by banks to prevent theft by blocking payments above a threshold if the user does not provide additional credentials.</p>
+      </div>
 
-<div>
-<h2 id="trust"><img class="titleicon" src="/img/icons/ico_law.svg" alt="Icon" />Trust and integrity</h2>
-<p>Umkoin offers solutions to many of the trust problems that plague banks. With selective accounting transparency, digital contracts, and irreversible transactions, Umkoin can be used as a ground to restore trust and agreement. Crooked banks cannot cheat the system to make a profit at the expense of other banks or the public. A future in which major banks would support Umkoin could help to reinstate integrity and trust in financial institutions.</p>
-</div>
+      <div>
+        <h2 id="trust"><img class="titleicon" src="/img/icons/ico_law.svg" alt="Icon" />Trust and integrity</h2>
+        <p>Umkoin offers solutions to many of the trust problems that plague banks. With selective accounting transparency, digital contracts, and irreversible transactions, Umkoin can be used as a ground to restore trust and agreement. Crooked banks cannot cheat the system to make a profit at the expense of other banks or the public. A future in which major banks would support Umkoin could help to reinstate integrity and trust in financial institutions.</p>
+      </div>
 
-<div>
-<h2 id="resiliency"><img class="titleicon" src="/img/icons/ico_network.svg" alt="Icon" />Resilience and decentralization</h2>
-<p>By its high decentralization, Umkoin created a different form of payment network with an increased level of resilience and redundancy. Umkoin can handle millions of dollars in trades without requiring military protection. With no central point of failure such as a data center, attacking the network is a more difficult project. Umkoin could represent an interesting step forward in securing local and global financial systems.</p>
-</div>
+      <div>
+        <h2 id="resiliency"><img class="titleicon" src="/img/icons/ico_network.svg" alt="Icon" />Resilience and decentralization</h2>
+        <p>By its high decentralization, Umkoin created a different form of payment network with an increased level of resilience and redundancy. Umkoin can handle millions of dollars in trades without requiring military protection. With no central point of failure such as a data center, attacking the network is a more difficult project. Umkoin could represent an interesting step forward in securing local and global financial systems.</p>
+      </div>
 
-<div>
-<h2 id="transparency"><img class="titleicon" src="/img/icons/ico_transparency.svg" alt="Icon" />Flexible transparency</h2>
-<p>All Umkoin transactions are public and transparent and the identity of the people behind the payments is private by default. This allows individuals and organizations to work with flexible transparency rules. For instance, a business can choose to reveal certain transactions and balances only to certain employees just like a non-profit organization is free to allow the public to see how much they receive in daily and monthly donations.</p>
-</div>
+      <div>
+        <h2 id="transparency"><img class="titleicon" src="/img/icons/ico_transparency.svg" alt="Icon" />Flexible transparency</h2>
+        <p>All Umkoin transactions are public and transparent and the identity of the people behind the payments is private by default. This allows individuals and organizations to work with flexible transparency rules. For instance, a business can choose to reveal certain transactions and balances only to certain employees just like a non-profit organization is free to allow the public to see how much they receive in daily and monthly donations.</p>
+      </div>
 
-    <div>
-      <h2 id="automation"><img class="titleicon" src="/img/icons/ico_solve.svg" alt="Icon" />Automated solutions</h2>
-      <p>Automated services usually have to deal with costs and limitations of cash or credit card payments. This includes all kinds of vending machines, from bus ticket booths to coffee machines. Umkoin is suited to be used in a new generation of automated services as well as to cut their operating costs. Imagine self-driving taxis, or a store where your basket lets you pay your purchases without waiting at the queue. Many ideas are possible.</p>
+      <div>
+        <h2 id="automation"><img class="titleicon" src="/img/icons/ico_solve.svg" alt="Icon" />Automated solutions</h2>
+        <p>Automated services usually have to deal with costs and limitations of cash or credit card payments. This includes all kinds of vending machines, from bus ticket booths to coffee machines. Umkoin is suited to be used in a new generation of automated services as well as to cut their operating costs. Imagine self-driving taxis, or a store where your basket lets you pay your purchases without waiting at the queue. Many ideas are possible.</p>
+      </div>
+
     </div>
 
   </div>
@@ -105,13 +97,6 @@ include 'page_head.php';
 <?php
 include 'page_footer.php';
 ?>
-
-
-<script type="text/javascript">
-  fallbackSVG();
-  addAnchorLinks();
-  trackOutgoingLinks();
-</script>
 
 
 </body>

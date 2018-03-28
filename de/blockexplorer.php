@@ -100,7 +100,7 @@ function displayTxTableInOut($block, $hash, $flag = "vout") {
 ?>
 
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="de">
 
 
 <head>
