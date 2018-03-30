@@ -35,7 +35,7 @@ include 'page_head.php';
         </p>
       </div>
 
-      <p>Umkoin Core is programmed to decide which block chain contains valid transactions. The users of Umkoin Core only accept transactions for that block chain, making it the Umkoin block chain that everyone else wants to use</p>
+      <p>Umkoin Core is programmed to decide which block chain contains valid transactions. The users of Umkoin Core only accept transactions for that block chain, making it the Umkoin block chain that everyone else wants to use.</p>
       <p>It is these users who <b>keep Umkoin decentralized.</b> They individually run their own Umkoin Core full nodes, and each of those full nodes separately follows the exact same rules to decide which block chain is valid.</p>
       <p>There’s no voting or other corruptible process involved: there’s just individual software following identical rules—”math”—to evaluate identical blocks and coming to identical conclusions about which block chain is valid.</p>
       <p>This shared agreement (called consensus) allows people like you to only accept valid umkoins, <b>enforcing Umkoin’s rules</b> against even the most powerful miners.</p>
