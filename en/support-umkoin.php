@@ -32,7 +32,7 @@ include 'page_head.php';
     <p>If you have a good Internet connection, you can strengthen the Umkoin network by keeping <a href="/en/full-node.php">full node software</a> running on your computer or server with port 6333 open. Full nodes are securing and relaying all transactions.</p>
 
     <h2 id="mining"><img class="titleicon" src="/img/icons/ico_mining.svg" alt="Icon" />Mining</h2>
-    <p>You can start <a href="http://pool.umkoin.org:8080/" target="_blank">mining umkoins</a> to help processing transactions. In order to protect the network, you should join smaller mining pools and prefer decentralized pools with getblocktemplate (GBT) support.</p>
+    <p>You can start <a href="/en/blockmining.php">mining umkoins</a> to help processing transactions. In order to protect the network, you should join smaller mining pools and prefer decentralized pools with getblocktemplate (GBT) support.</p>
 
     <h2 id="translate"><img class="titleicon" src="/img/icons/ico_translate.svg" alt="Icon" />Translate</h2>
     <p>You can help to increase Umkoin availability by translating or improving translations inside important parts of the Umkoin ecosystem. Just pick a project you would like to help.</p>
