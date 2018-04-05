@@ -74,7 +74,7 @@
 
       <li><a>Взяти участь</a>
         <ul>
-          <li><a href="/uk/support-umkoin.php">Підтримка Umkoin</a>
+          <li><a href="/uk/support-umkoin.php">Підтримка Умкойн</a>
           <li><a href="/uk/development.php">Розробка</a></li>
         </ul>
       </li>
