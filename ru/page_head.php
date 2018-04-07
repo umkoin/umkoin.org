@@ -26,7 +26,7 @@
               echo "<li><a href='" . $str . "'>English</a></li>";
               ?>
 
-              <li><a href="/uk/" class="active">Русский</a></li>
+              <li><a href="/ru/" class="active">Русский</a></li>
 
               <?php
               $transition_from = "/ru/";
@@ -45,7 +45,7 @@
 
     <a id="menumobile" class="menumobile" onclick="mobileMenuShow(event);" ontouchstart="mobileMenuShow(event);"></a>
 
-    <a class="logo" href="/uk/"><img src="/img/icons/logotop.png" alt="Umkoin"></a>
+    <a class="logo" href="/ru/"><img src="/img/icons/logotop.png" alt="Umkoin"></a>
 
     <div id="langselect" class="langselect">
       <select onchange="window.location=this.value;">
