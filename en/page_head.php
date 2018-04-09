@@ -20,6 +20,14 @@
 
               <?php
               $transition_from = "/en/";
+              $transition_to_ru = "/ru/";
+              $str = "";
+              if ($_SERVER['REQUEST_URI'] != "") {
+                $str = str_replace($transition_from, $transition_to_ru, $_SERVER['REQUEST_URI']);
+              }
+              echo "<li><a href='" . $str . "'>Русский</a></li>";
+
+              $transition_from = "/en/";
               $transition_to_uk = "/uk/";
               $str = "";
               if ($_SERVER['REQUEST_URI'] != "") {
