@@ -165,7 +165,7 @@ include 'page_head.php';
       <tr style="text-align: center">
         <th onclick="displaySearch('block');"><i class="fa fa-cubes"></i> Блок</th>
         <th onclick="displaySearch('txid');"><i class="fa fa-exchange"></i> Транзакция</th>
-        <th><i class="fa fa-bank"></i> Емиссия</th>
+        <th><i class="fa fa-bank"></i> Эмиссия</th>
         <th><i class="fa fa-industry"></i> Вознаграждение</th>
       </tr>
     </thead>
