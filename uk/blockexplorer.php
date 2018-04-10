@@ -314,7 +314,7 @@ include 'page_head.php';
                 $elapsed_str = $elapsed . " секунд тому";
               break;
           }
-          $blockconfirmed = "<div title='Кількість підтвердженб мережею.'>" .
+          $blockconfirmed = "<div title='Кількість підтверджень мережею.'>" .
                             "<i class='fa fa-legal'></i> Підтверджень: " .
                             $block->getTxConfirmCount($reqval) .
                             ", з <i class='fa fa-clock-o'></i> " .
