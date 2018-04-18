@@ -57,7 +57,7 @@ include 'page_head.php';
     <thead>
       <tr style="text-align: center">
         <th>Количество майнеров</th>
-        <th>Скоростьт майнинга</th>
+        <th>Скорость майнинга</th>
       </tr>
     </thead>
     <tbody>
