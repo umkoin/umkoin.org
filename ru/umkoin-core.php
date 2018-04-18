@@ -28,7 +28,7 @@ include 'page_head.php';
       <p class="summary">Поддержка Децентрализации Умкойн</p>
 
       <div class="callout">
-        <p><a href="/uk/download.php">Загрузить Умкойн Core</a>
+        <p><a href="/ru/download.php">Загрузить Умкойн Core</a>
         <img src="/img/os/windows.png" alt="Windows" />
 <!--        <img src="/img/os/mac.png" alt="Mac" /> //-->
         <img src="/img/os/linux.png" alt="Linux" />
