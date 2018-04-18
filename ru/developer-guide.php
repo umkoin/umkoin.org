@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
-<html lang="uk">
+<html lang="ru">
 
 
 <head>
 <?php include 'head'; ?>
-<title>Керівництво Розробника - Умкойн</title>
+<title>Руководство Разработчика - Умкойн</title>
 </head>
 
 
@@ -19,19 +19,19 @@ include 'page_head.php';
 <div class="body">
 
   <div class="breadcrumbs">
-      <a href="/uk/">Умкойн</a>
+      <a href="/ru/">Умкойн</a>
       &gt;
-      <a href="/uk/developer-documentation.php">Документація Розробника</a>
+      <a href="/ru/developer-documentation.php">Документация Разработчика</a>
       &gt;
-      Керівництво
+      Руководство
   </div>
 
   <div id="content" class="content">
 
     <link rel="stylesheet" href="/css/jquery-ui.min.css">
 
-    <h1>Керівництво розробника Умкойн</h1>
-    <p class="summary">Тут ви знайдете докладну інформацію про протокол Умкойн та відповідні специфікації.</p>
+    <h1>Руководство разработчика Умкойн</h1>
+    <p class="summary">Здесь вы найдете подробную информацию о протоколе Умкойн и соответствующие спецификации.</p>
 
     <div id="toc" class="toc">
       <div>
@@ -162,8 +162,8 @@ include 'page_head.php';
   </li>
 </ul>
 
-    <ul class="goback"><li><a href="/uk/developer-documentation">Повернутись до змісту</a></li></ul>
-    <ul class="reportissue"><li><a href="https://github.com/umkoin/umkoin.org/issues/new" onmouseover="updateIssue(event);">Повідомити про помилку</a></li></ul>
+    <ul class="goback"><li><a href="/ru/developer-documentation.php">Вернуться к содержанию</a></li></ul>
+    <ul class="reportissue"><li><a href="https://github.com/umkoin/umkoin.org/issues/new" onmouseover="updateIssue(event);">Сообщить об ошибке</a></li></ul>
 
   </div>
 </div>
