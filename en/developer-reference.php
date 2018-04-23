@@ -33,7 +33,6 @@ include 'page_head.php';
     <h1>Umkoin Developer Reference</h1>
     <p class="summary">Find technical details and API documentation.</p>
 
-
     <div id="toc" class="toc">
       <div>
 
@@ -245,10 +244,8 @@ include 'page_head.php';
         </ul>
         <ul class="goback"><li><a href="/en/developer-documentation.php">Return To Overview</a></li></ul>
         <ul class="reportissue"><li><a href="https://github.com/umkoin/umkoin.org/issues/new" onmouseover="updateIssue(event);">Report An Issue</a></li></ul>
-        <ul class="editsource"><li><a href="https://github.com/umkoin/umkoin.org/tree/master/_includes" onmouseover="updateSource(event);">Edit On GitHub</a></li></ul>
       </div>
     </div>
-
 
     <div class="toccontent">
 
@@ -263,33 +260,21 @@ include 'page_head.php';
       <script>disclaimerAutoClose();</script>
       <!--Temporary disclaimer END-->
 
-      <p>The Developer Reference aims to provide technical details and API information to help you start building Umkoin-based applications, but it is <a href="/en/developer-reference.php#not-a-specification">not a specification</a>. To make the best use of this documentation, you may want to install the current version of Umkoin Core, either from <a href="https://github.com/umkoin/umkoin">source</a> or from a <a href="/en/download">pre-compiled executable</a>.</p>
+      <p>The Developer Reference aims to provide technical details and API information to help you start building Umkoin-based applications, but it is <a href="/en/developer-reference.php#not-a-specification">not a specification</a>. To make the best use of this documentation, you may want to install the current version of Umkoin Core, either from <a href="https://github.com/umkoin/umkoin">source</a> or from a <a href="/en/download.php">pre-compiled executable</a>.</p>
+      <p>Errors or suggestions related to documentation on umkoin.org can be <a href="https://github.com/umkoin/umkoin.org/issues">submitted as an issue</a>.</p>
       <p>In the following documentation, some strings have been shortened or wrapped: “[…]” indicates extra data was removed, and lines ending in a single backslash “\” are continued below. If you hover your mouse over a paragraph, cross-reference links will be shown in blue. If you hover over a cross-reference link, a brief definition of the term will be displayed in a tooltip.</p>
 
       <h4 class="no_toc" id="not-a-specification">Not A Specification</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/intro.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/intro.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/intro.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/intro.md%0A%0A">Report Issue</a>
-      </div>
-
       <p>The Umkoin.org Developer Documentation describes how Umkoin works to help educate new Umkoin developers, but it is not a specification—and it never will be.</p>
-      <p>Umkoin security depends on <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a>. Should your program diverge from <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a>, its security is weakened or destroyed. The cause of the divergence doesn’t matter: it could be a bug in your program, it could be an <a href="https://github.com/umkoin/umkoin.org/issues?q=is%3Aissue+label%3A%22Dev+Docs%22">error in this documentation</a> which you implemented as described, or it could be you do everything right but other software on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> <a href="/en/alert/2013-03-11-chain-fork">behaves unexpectedly</a>. The specific cause will not matter to the users of your software whose wealth is lost.</p>
+      <p>Umkoin security depends on <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a>. Should your program diverge from <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a>, its security is weakened or destroyed. The cause of the divergence doesn’t matter: it could be a bug in your program, it could be an <a href="https://github.com/umkoin/umkoin.org/issues?q=is%3Aissue+label%3A%22Dev+Docs%22">error in this documentation</a> which you implemented as described, or it could be you do everything right but other software on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> behaves unexpectedly. The specific cause will not matter to the users of your software whose wealth is lost.</p>
       <p>The only correct specification of <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a> behavior is the actual behavior of programs on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> which maintain <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a>. As that behavior is subject to arbitrary inputs in a large variety of unique environments, it cannot ever be fully documented here or anywhere else.</p>
       <p>However, the Umkoin Core developers are working on making their <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a> code portable so other implementations can use it. <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a> will provide <code>libumkoinconsensus</code>, a first attempt at exporting some <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a> code. Future versions of Umkoin Core will likely provide <a href="/en/glossary/consensus.php" title="When several nodes (usually most nodes on the network) all have the same blocks in their locally-validated best block chain." class="auto-link">consensus</a> code that is more complete, more portable, and more consistent in diverse environments.</p>
       <p>In addition, we also warn you that this documentation has not been extensively reviewed by Umkoin experts and so likely contains numerous errors. At the bottom of the menu on the left, you will find links that allow you to report an issue or to edit the documentation on GitHube use those links if you find any errors or important missing information.</p>
 
       <h2 id="block-chain">Block Chain</h2>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/block_chain.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/block_chain.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/block_chain.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/block_chain.md%0A%0A">Report Issue</a>
-      </div>
       <p>The following subsections briefly document core block details.</p>
 
       <h3 id="block-headers">Block Headers</h3>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/block_chain.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/block_chain.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/block_chain.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/block_chain.md%0A%0A">Report Issue</a>
-      </div>
       <p><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">Block headers</a> are serialized in the 80-byte format described below and then hashed as part of Umkoin’s proof-of-work algorithm, making the serialized <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> format part of the <a href="/en/glossary/consensus-rules.php" title="The block validation rules that full nodes follow to stay in consensus with other nodes." class="auto-link">consensus rules</a>.</p>
 
       <table>
@@ -324,7 +309,7 @@ include 'page_head.php';
             <td>4</td>
             <td>time</td>
             <td>uint32_t</td>
-            <td>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> time is a <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miner</a> started hashing the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> (according to the <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miner</a>). Must be strictly greater than the median time of the previous 11 <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>. Full <a href="/en/glossarynode" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> will not accept <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> with <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> more than two hours in the future according to their clock.</td>
+            <td>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> time is a <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miner</a> started hashing the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> (according to the <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miner</a>). Must be strictly greater than the median time of the previous 11 <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>. Full <a href="/en/glossarynode" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> will not accept <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> with <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> more than two hours in the future according to their clock.</td>
           </tr>
           <tr>
             <td>4</td>
@@ -336,7 +321,7 @@ include 'page_head.php';
             <td>4</td>
             <td>nonce</td>
             <td>uint32_t</td>
-            <td>An arbitrary number <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> change to modify the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash in order to produce a hash less than or equal to the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target threshold</a>. If all 32-bit values are tested, the time can be updated or the <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a> can be changed and the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> updated.</td>
+            <td>An arbitrary number <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> change to modify the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash in order to produce a hash less than or equal to the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target threshold</a>. If all 32-bit values are tested, the time can be updated or the <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a> can be changed and the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> updated.</td>
           </tr>
         </tbody>
       </table>
@@ -355,14 +340,9 @@ b6ff0b1b1680a2862a30ca44d346d9e8
 fe9f0864 ........................... Nonce</code></pre></figure>
 
       <h4 id="block-versions">Block Versions</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/block_chain.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/block_chain.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/block_chain.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/block_chain.md%0A%0A">Report Issue</a>
-      </div>
-
       <ul>
         <li>
-          <p><strong>Version 1</strong> was introduced in the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> (January 2009).</p>
+          <p><strong>Version 1</strong> was introduced in the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> (November 2017).</p>
         </li>
         <li>
           <p><strong><a href="/en/developer-reference.php#term-v2-block" title="The current version of Umkoin blocks" id="term-v2-block" class="term">Version 2</a></strong> was introduced in <a href="/en/release/v0.7.0" class="auto-link">Umkoin Core 0.7.0</a> (September 2012) as a <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the Umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft fork</a>. As described in <a href="https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki" class="auto-link">BIP34</a>, valid <a href="/en/developer-reference.php#term-v2-block" title="The current version of Umkoin blocks" class="auto-link">version 2 blocks</a> require a <a href="/en/developer-reference.php#term-coinbase-block-height" title="The current block's height encoded into the first bytes of the coinbase field">block height parameter in the coinbase</a>. Also described in <a href="https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki" class="auto-link">BIP34</a> are rules for rejecting certain <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>; based on those rules, <a href="/en/release/v0.7.0" class="auto-link">Umkoin Core 0.7.0</a> and later versions began to reject <a href="/en/developer-reference.php#term-v2-block" title="The current version of Umkoin blocks" class="auto-link">version 2 blocks</a> without the <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> in <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> at <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> 224,412 (March 2013) and began to reject new version 1 <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> three weeks later at <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> 227,930.</p>
@@ -379,11 +359,6 @@ fe9f0864 ........................... Nonce</code></pre></figure>
       <p>As of this writing, a newer method called <em>version bits</em> is being designed to manage future soft forking changes, although it’s not known whether version 4 will be the last <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft fork</a> to use the IsSuperMajority() function. Draft <a href="https://github.com/bitcoin/bips/blob/master/bip-0009.mediawiki" class="auto-link">BIP9</a> describes the version bits design as of this writing, although it is still being actively edited and may substantially le in the draft state.</p>
 
       <h4 id="merkle-trees">Merkle Trees</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/block_chain.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/block_chain.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/block_chain.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/block_chain.md%0A%0A">Report Issue</a>
-      </div>
-
       <p>The <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> is constructed using all the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of transactions in this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, but first the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> are placed in order as required by the <a href="/en/glossary/consensus-rules.php" title="The block validation rules that full nodes follow to stay in consensus with other nodes." class="auto-link">consensus rules</a>:</p>
 
       <ul>
@@ -397,15 +372,11 @@ fe9f0864 ........................... Nonce</code></pre></figure>
 
       <p>If a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> only has a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a>, the <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> is used as the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> hash.</p>
       <p>If a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> only has a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a> and one other transaction, the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of those two transactions are placed in order, concatenated as 64 raw bytes, and then SHA256(SHA256()) hashed together to form the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a>.</p>
-      <p>If a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> has three or more transactions, intermediate <a href="/en/glossary/merkle-tree" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> rows are formed. The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> are placed in order and paired, starting with the <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." clas="auto-link">coinbase transaction’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>. Each pair is concatenated together as 64 raw bytes and SHA256(SHA256()) hashed to form a second row of hashes. If there are an odd (non-even) number of <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>, the last <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> is concatenated with a copy of itself and hashed. If there are more than two hashes in the second row, the process is repeated to create a third row (and, if necessary, repeated further to create additional rows). Once a row is obtained with only two hashes, those hashes are concatenated and hashed to produce the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a>.</p>
+      <p>If a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> has three or more transactions, intermediate <a href="/en/glossary/merkle-tree.php" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> rows are formed. The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> are placed in order and paired, starting with the <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." clas="auto-link">coinbase transaction’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>. Each pair is concatenated together as 64 raw bytes and SHA256(SHA256()) hashed to form a second row of hashes. If there are an odd (non-even) number of <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>, the last <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> is concatenated with a copy of itself and hashed. If there are more than two hashes in the second row, the process is repeated to create a third row (and, if necessary, repeated further to create additional rows). Once a row is obtained with only two hashes, those hashes are concatenated and hashed to produce the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a>.</p>
       <p><img src="/img/dev/en-merkle-tree-construction.svg" alt="Example Merkle Tree Construction" /></p>
       <p><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> and intermediate hashes are always in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a> when they’re concatenated, and the resulting <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> is also in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a> when it’s placed in the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a>.</p>
 
       <h4 id="target-nbits">Target nBits</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/block_chain.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/block_chain.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/block_chain.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/block_chain.md%0A%0A">Report Issue</a>
-      </div>
       <p>The <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target threshold</a> is a 256-bit unsigned integer which a <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash must be equal to or below in order for that <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> to be a valid part of the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-tocreate chain is the best block chain." class="auto-link">block chain</a>. However, the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> field <em><a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">nBits</a></em> provides only 32 bits of space, so the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a> number uses a less precise format called “compact” which works like a base-256 version of scientific notation:</p>
       <p><img src="/img/dev/en-nbits-overview.svg" alt="Converting nBits Into A Target Threshold" /></p>
       <p>As a base-256 number, <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">nBits</a> can be quickly parsed as bytes the same way you might parse a decimal number in base-10 scientific notation:</p>
@@ -468,10 +439,6 @@ fe9f0864 ........................... Nonce</code></pre></figure>
       <p><a href="/en/glossary/difficulty.php" title="How difficult it is to find a block relative to the difficulty of finding the easiest possible block. The easiest possible block has a proof-of-work difficulty of 1." class="auto-link">Difficulty</a> 1, the minimum allowed <a href="/en/glossary/difficulty.php" title="How difficult it is to find a block relative to the difficulty of finding the easiest possible block. The easiest possible block has a proof-of-work difficulty of 1." class="auto-link">difficulty</a>, is represented on <a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> and the current <a href="/en/glossary/testnet.php" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a> by the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">nBits</a> value 0x1d00ffff. <a href="/en/glossary/regression-test-mode.php" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">Regtest mode</a> uses a different <a href="/en/glossary/difficulty.php" title="How difficult it is to find a block relative to the difficulty of finding the easiest possible block. The easiest possible block has a proof-of-work difficulty of 1." class="auto-link">difficulty</a> 1 value—0x207fffff, the highest possible value below uint32_max which can be encoded; this allows near-instant building of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> in <a href="/en/glossary/regression-test-mode.php" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>.</p>
 
       <h3 id="serialized-blocks">Serialized Blocks</h3>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/block_chain.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/block_chain.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/block_chain.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/block_chain.md%0A%0A">Report Issue</a>
-      </div>
       <p>Under current <a href="/en/glossary/consensus-rules.php" title="The block validation rules that full nodes follow to stay in consensus with other nodes." class="auto-link">consensus rules</a>, a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> is not valid unless its serialized size is less than or equal to 1 MB. All fields described below are counted towards the serialized size.</p>
 
       <table>
@@ -498,7 +465,7 @@ fe9f0864 ........................... Nonce</code></pre></figure>
             <td><em>Varies</em></td>
             <td>txns</td>
             <td><a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a></td>
-            <td>Every transaction in this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, one after another, in <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> format. Transactions must appear in the daa stream in the same order their <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> appeared in the first row of the <a href="/en/glossary/merkle-tree" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a>. See the <a href="/en/developer-reference.php#merkle-trees">merkle tree section</a> for details.</td>
+            <td>Every transaction in this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, one after another, in <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> format. Transactions must appear in the daa stream in the same order their <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> appeared in the first row of the <a href="/en/glossary/merkle-tree.php" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a>. See the <a href="/en/developer-reference.php#merkle-trees">merkle tree section</a> for details.</td>
           </tr>
         </tbody>
      </table>
@@ -508,17 +475,9 @@ fe9f0864 ........................... Nonce</code></pre></figure>
       <p>Together, the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fees</a> and <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> subsidy are called the <a href="/en/glossary/block-reward" title="The amount that miners may claim as a reward for creating a block. Equal to the sum of the block subsidy (newly available satoshis) plus the transactions fees paid by transactions included in the block." id="term-block-reward" class="term">block reward</a>. A <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a> is invalid if it tries to spend more value than is available from the <a href="/en/glossary/block-reward" title="The amount that miners may claim as a reward for creating a block. Equal to the sum of the block subsidy (newly available satoshis) plus the transactions fees paid by transactions included in the block." class="auto-link">block reward</a>.</p>
 
       <h2 id="transactions">Transactions</h2>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
       <p>The following subsections briefly document core transaction details.</p>
 
       <h4 id="opcodes">OpCodes</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
       <p>The <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">opcodes</a> used in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey scripts</a> of <a href="/en/glossary/standard-transaction" title="A transaction that passes Umkoin Core's IsStandard() and IsStandardTx() tests. Only standard transactions are mined or broadcast by peers running the default Umkoin Core software." class="auto-link">standard transactions</a> are:</p>
 
       <ul>
@@ -559,7 +518,7 @@ fe9f0864 ........................... Nonce</code></pre></figure>
 
       <p>A complete list of <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">opcodes</a> can be found on the Umkoin Wiki <a href="https://en.bitcoin.it/wiki/Script">Script Page</a>, with an authoritative list in the <code>opcodetype</code> enum of the Umkoin Core <a href="https://github.com/umkoin/umkoin/blob/master/src/script/script.h">script header file</a></p>
       <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" /> <strong><span id="signature_script_modification_warning"><a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">Signature script</a> modification warning</span>:</strong> <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">Signature scripts</a> are not signed, so anyone can modify them. This means <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature scripts</a> should only contain data and <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or ignature script." class="auto-link">data-pushing opcodes</a> which can’t be modified without causing the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> to fail. Placing <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">non-data-pushing opcodes</a> in the <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> currently makes a transaction non-standard, and future <a href="/en/glossary/consensus-rules.php" title="The block validation rules that full nodes follow to stay in consensus with other nodes." class="auto-link">consensus rules</a> may forbid such transactions altogether. (<a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">Non-data-pushing opcodes</a> are already forbidden in <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature scripts</a> when spending a <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH pubkey script</a>.)</p>
-      <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" /><strong><a href="/en/developer-reference.php#term-op-checkmultisig" title="Opcode which returns true if one or more provided signatures (m) sign the correct parts of a transaction and match one or more provided public keys (n)" class="auto-link"><code>OP_CHECKMULTISIG</code></a> warning:</strong> The <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> verification process described above requires that <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> in the <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> be provided in the same order as their corresponding <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> or <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>. For example, the following combined <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a> and <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> will produce the stack and comparisons shown:</p>
+      <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" /> <strong><a href="/en/developer-reference.php#term-op-checkmultisig" title="Opcode which returns true if one or more provided signatures (m) sign the correct parts of a transaction and match one or more provided public keys (n)" class="auto-link"><code>OP_CHECKMULTISIG</code></a> warning:</strong> The <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> verification process described above requires that <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> in the <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> be provided in the same order as their corresponding <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> or <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>. For example, the following combined <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a> and <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> will produce the stack and comparisons shown:</p>
       <figure class="highlight"><pre><code class="language-text" data-lang="text">OP_0 &lt;A sig&gt; &lt;B sig&gt; OP_2 &lt;A pubkey&gt; &lt;B pubkey&gt; &lt;C pubkey&gt; OP_3
 
 Sig Stack       Pubkey Stack  (Actually a single stack)
@@ -587,13 +546,9 @@ OP_0            A pubkey
 2. A sig compared to B pubkey (no match)
 
 Failure, aborted: two signature matches required but none found so
-                  far, and there's only one pubkey remaining</code></pre></figure>
+far, and there's only one pubkey remaining</code></pre></figure>
 
       <h4 id="address-conversion">Address Conversion</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
       <p>The hashes used in P2PKH and <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH outputs</a> are commonly encoded as Umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">addresses</a>. This is the procedure to encode those hashes and decode the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">addresses</a>.</p>
       <p>First, get your hash. For P2PKH, you RIPEMD-160(SHA256()) hash a <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">ECDSA public key</a> derived from your 256-bit <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">ECDSA private key</a> (random data). For P2SH, you RIPEMD-160(SHA256()) hash a <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> serialized in the format used in <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a> (described in a <a href="/en/developer-reference.php#raw-transaction-format">following sub-section</a>). Taking the resulting hash:</p>
 
@@ -644,11 +599,6 @@ Failure, aborted: two signature matches required but none found so
       <p>To convert <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">addresses</a> back into hashes, reverse the <a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses. Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format. Not the same as other base58 implementations." class="auto-link">base58</a> encoding, extract the checksum, repeat the steps to create the checksum and compare it against the extracted checksum, and then remove the version byte.</p>
 
       <h4 id="raw-transaction-format">Raw Transaction Format</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
-
       <p>Umkoin transactions are broadcast between <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> in a serialized byte format, called <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." id="term-raw-format" class="term">raw format</a>. It is this form of a transaction which is SHA256(SHA256()) hashed to create the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> and, ultimately, the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> containing the transaction—making the transaction format part of the <a href="/en/glossary/consensus-rules.php" title="The block validation rules that full nodes follow to stay in consensus with other nodes." class="auto-link">consensus rules</a>.</p>
       <p>Umkoin Core and many other tools print and accept <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a> encoded as hex.</p>
       <p>As of <a href="/en/release/v0.9.3" class="auto-link">Umkoin Core 0.9.3</a> (October 2014), all transactions use the version 1 format described below. (Note: transactions in the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> are allowed to list a higher version number to permit <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft forks</a>, but they are treated as version 1 transactions by current software.)</p>
@@ -706,10 +656,6 @@ Failure, aborted: two signature matches required but none found so
       <p>A transaction may have multiple <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> and <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>, so the <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">txIn</a> and <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">txOut</a> structures may recur within a transaction. <a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">CompactSize unsigned integers</a> are a form of variable-length integers; they are described in the <a href="/en/developer-reference.php#compactsize-unsigned-integers">CompactSize section</a>.</p>
 
       <h5 id="txin" class="no_toc">TxIn: A Transaction Input (Non-Coinbase)</h5>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
       <p>Each non-<a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> spends an <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> from a previous transaction. (<a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">Coinbase</a> <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> are described separately after the example section below.)</p>
 
       <table>
@@ -750,10 +696,6 @@ Failure, aborted: two signature matches required but none found so
       </table>
 
       <h5 id="outpoint" class="no_toc">Outpoint: The Specific Part Of A Specific Output</h5>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
       <p>Because a single transaction can include multiple <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>, the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> structure includes both a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> and an <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number to refer to specific <a href="/en/glossary/output.php" title="An output in tion which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>.</p>
 
       <table>
@@ -782,10 +724,6 @@ Failure, aborted: two signature matches required but none found so
       </table>
 
       <h5 id="txout" class="no_toc">TxOut: A Transaction Output</h5>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
       <p>Each <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> spends a certain number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>, placing them under control of anyone who can satisfy the provided <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>.</p>
 
       <table>
@@ -853,10 +791,6 @@ Failure, aborted: two signature matches required but none found so
 00000000 ................................... locktime: 0 (a block height)</code></pre></figure>
 
       <h5 id="coinbase" class="no_toc">Coinbase Input: The Input Of The First Transaction In A Block</h5>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
       <p>The first transaction in a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, called the <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a>, must have exactly one <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, called a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a>. The <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase alclaiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> currently has the following format.</p>
 
       <table>
@@ -897,7 +831,7 @@ Failure, aborted: two signature matches required but none found so
             <td><em>Varies</em></td>
             <td><a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> script</td>
             <td><em>None</em></td>
-            <td>The <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." id="term-coinbase-field" class="term">coinbase field</a>: Arbitrary data not exceeding 100 bytes minus the (4) <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> bytes. <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">Miners</a> commonly place an extra nonce in this field to update the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> during hashing.</td>
+            <td>The <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." id="term-coinbase-field" class="term">coinbase field</a>: Arbitrary data not exceeding 100 bytes minus the (4) <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> bytes. <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">Miners</a> commonly place an extra nonce in this field to update the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> during hashing.</td>
           </tr>
           <tr>
             <td>4</td>
@@ -934,10 +868,6 @@ Failure, aborted: two signature matches required but none found so
 | 00000000 ............................ Locktime</code></pre></figure>
 
       <h3 id="compactsize-unsigned-integers">CompactSize Unsigned Integers</h3>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/transactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/transactions.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/transactions.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/transactions.md%0A%0A">Report Issue</a>
-      </div>
       <p>The <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> format and several <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">peer-to-peer network</a> messages use a type of variable-length integer to indicate the number of bytes in a following piece of data.</p>
       <p>Umkoin Core code ais document refers to these variable length integers as <a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize</a>. Many other documents refer to them as var_int or varInt, but this risks conflation with other variable-length integer encodings—such as the CVarInt class used in Umkoin Core for serializing data to disk. Because it’s used in the transaction format, the format of <a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize unsigned integers</a> is part of the <a href="/en/glossary/consensus-rules.php" title="The block validation rules that full nodes follow to stay in consensus with other nodes." class="auto-link">consensus rules</a>.</p>
       <p>For numbers from 0 to 252, <a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize unsigned integers</a> look like regular unsigned integers. For other numbers up to 0xffffffffffffffff, a byte is prefixed to the number to indicate its length—but otherwise the numbers look like regular unsigned integers in little-endian order.</p>
@@ -976,10 +906,6 @@ Failure, aborted: two signature matches required but none found so
       <p>For example, the number 515 is encoded as 0xfd0302.</p>
 
       <h2 id="wallets">Wallets</h2>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/wallets.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/wallets.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/wallets.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/wallets.md%0A%0A">Report Issue</a>
-      </div>
 
       <h3 id="deterministic-wallet-formats">Deterministic Wallet Formats</h3>
       <!-- no subhead-links here -->
@@ -996,19 +922,11 @@ Failure, aborted: two signature matches required but none found so
       <p>For an overview of <a href="/en/glossary/hd-protocol.php" title="The Hierarchical Deterministic (HD) key creation and transfer protocol (BIP32), which allows creating child keys from parent keys in a hierarchy. Wallets using the HD protocol are called HD wallets." class="auto-link">HD wallets</a>, please see the <a href="/en/developer-guide.php#wallets">developer guide section</a>. For details, please see <a href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki" class="auto-link">BIP32</a>.</p>
 
       <h2 id="p2p-network">P2P Network</h2>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-      </div>
       <p>This section describes the Umkoin P2P <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> protocol (but it is <a href="/en/developer-reference.php#not-a-specification">not a specification</a>). It does not describe the discontinued direct <a href="https://en.bitcoin.it/wiki/IP_Transactions">IP-to-IP payment protocol</a>, the <a href="/en/glossary/payment-protocol.php" title="The protocol defined in BIP70 (and other BIPs) which lets spenders get signed payment details from receivers.">BIP70 payment protocol</a>, the <a href="/en/developer-guide.php#getblocktemplate-rpc">GetBlockTemplate mining protocol</a>, or any <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> protocol never implemented in an official version of Umkoin Core.</p>
       <p>All <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">peer-to-peer</a> communication occurs entirely over TCP.</p>
       <p><strong>Note:</strong> unless their description says otherwise, all multi-byte integers mentioned in this section are transmitted in little-endian order.</p>
 
       <h3 id="constants-and-defaults">Constants And Defaults</h3>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-      </div>
       <p>The following constants and defaults are taken from Umkoin Core’s <a href="https://github.com/umkoin/umkoin/blob/master/src/chainparams.cpp">chainparams.cpp</a> source code file.</p>
 
       <table>
@@ -1047,105 +965,10 @@ Failure, aborted: two signature matches required but none found so
       <p>Umkoin Core’s <a href="https://github.com/umkoin/umkoin/blob/master/src/chainparams.cpp">chainparams.cpp</a> also includes other constants useful to programs, such as the hash of the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis blocks</a> for the different networks.</p>
 
       <h3 id="protocol-versions">Protocol Versions</h3>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/bitcdot-org/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-      </div>
       <p>The table below lists some notable versions of the P2P <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> protocol, with the most recent versions listed first. (If you know of a protocol version that implemented a major change but which is not listed here, please <a href="https://github.com/umkoin/umkoin.org/issues">open an issue</a>.)</p>
-      <p>As of <a href="/en/release/v0.14.2" class="auto-link">Umkoin Core 0.14.2</a>, the most recent protocol version is 70015.</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Version</th>
-            <th>Initial Release</th>
-            <th>Major Changes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>70015</td>
-            <td><a href="/en/release/v0.13.2" class="auto-link">Umkoin Core 0.13.2</a> <br />(Jan 2017)</td>
-            <td>• New banning behavior for invalid compact <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> <a href="https://github.com/umkoin/umkoin/pull/9026">#9026</a> in v0.14.0, Backported to v0.13.2 in <a href="https://github.com/bitcoin/bitcoin/pull/9048">#9048</a>.</td>
-          </tr>
-          <tr>
-            <td>70014</td>
-            <td><a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a> <br />(Aug 2016)</td>
-            <td><a href="https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki">BIP152</a>: <br />• Added <code>sendcmpct</code>, <code>cmpctblock</code>, <code>getblocktxn</code>, <code>blocktxn</code> messages <br /> • Added <code>MSG_CMPCT_BLOCK</code> <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type to <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a>.</td>
-          </tr>
-          <tr>
-            <td>70013</td>
-            <td><a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a> <br />(Aug 2016)</td>
-            <td><a href="https://github.com/bitcoin/bips/blob/master/bip-0133.mediawiki">BIP133</a>: <br />• Added <a href="/en/developer-reference.php#feefilter" title="The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate" class="auto-link"><code>feefilter</code> message</a>.<br /> • Removed <a href="/en/developer-reference.php#alert" title="The P2P network message which sends alerts in case of major software problems." class="auto-link"><code>alert</code> message</a> system. See <a href="https://umkoin.org/en/alert/2016-11-01-alert-retirement">Alert System Retirement</a></td>
-          </tr>
-          <tr>
-            <td>70012</td>
-            <td><a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a> <br />(Feb 2016)</td>
-            <td><a href="https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki">BIP130</a>: <br />• Added <a href="/en/developer-reference.php#sendheaders" title="A P2P network message used to request new blocks be announced through headers messages rather than inv messages" class="auto-link"><code>sendheaders</code> message</a>.</td>
-          </tr>
-          <tr>
-            <td>70011</td>
-            <td><a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a> <br />(Feb 2016)</td>
-            <td><a href="https://github.com/bitcoin/bips/blob/master/bip-0111.mediawiki">BIP111</a>: <br />• <code>filter*</code> messages are disabled without NODE_BLOOM after and including this version.</td>
-          </tr>
-          <tr>
-            <td>70002</td>
-            <td><a href="/en/release/v0.9.0" class="auto-link">Umkoin Core 0.9.0</a> <br />(Mar 2014)</td>
-            <td>• Send multiple <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> in response to a <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> if necessary <br /><br /><a href="https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki">BIP61</a>: <br />• Added <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> message</a></td>
-          </tr>
-          <tr>
-            <td>70001</td>
-            <td><a href="/en/release/v0.8.0" class="auto-link">Umkoin Core 0.8.0</a> <br />(Feb 2013)</td>
-            <td>• Added <a href="/en/developer-reference.php#notfound" title="A P2P protocol message sent to indicate that the requested data was not available" class="auto-link"><code>notfound</code> message</a>. <br /><br /><a href="https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki">BIP37</a>: <br />• Added <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a>. <br />• Added <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a>. <br />• Added <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a>. <br />• Added <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>. <br />• Added relay field to <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> <br />• Added <a href="/en/developer-reference.php#term-msg_block" title="An alternative to the block header hash data type identifier of an inventory on the P2P network used to request a merkle block" class="auto-link"><code>MSG_FILTERED_BLOCK</code></a> <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type to <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a>.</td>
-          </tr>
-          <tr>
-            <td>60002</td>
-            <td><a href="/en/release/v0.7.0" class="auto-link">Umkoin Core 0.7.0</a> <br />(Sep 2012)</td>
-            <td><a href="https://github.com/bitcoin/bips/blob/master/bip-0035.mediawiki">BIP35</a>: <br />• Added <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a>. <br />• Extended <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> to allow download of memory pool transactions</td>
-          </tr>
-          <tr>
-            <td>60001</td>
-            <td><a href="/en/release/v0.6.1" class="auto-link">Umkoin Core 0.6.1</a> <br />(May 2012)</td>
-            <td><a href="https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki">BIP31</a>: <br />• Added nonce field to <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> <br />• Added <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a></td>
-          </tr>
-          <tr>
-            <td>60000</td>
-            <td><a href="/en/release/v0.6.0" class="auto-link">Umkoin Core 0.6.0</a> <br />(Mar 2012)</td>
-            <td><a href="https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki">BIP14</a>: <br />• Separated protocol version from Umkoin Core version</td>
-          </tr>
-          <tr>
-            <td>31800</td>
-            <td><a href="https://github.com/umkoin/umkoin/commit/82201801336f64ee77851b9eaab9383ee4e442f0" class="auto-link">Umkoin Core 0.3.18</a> <br />(Dec 2010)</td>
-            <td>• Added <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a> and <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a>.</td>
-          </tr>
-          <tr>
-            <td>31402</td>
-            <td><a href="https://github.com/umkoin/umkoin/commit/c891967b6fcab2e8dc4ce0c787312b36c07efa4d" class="auto-link">Umkoin Core 0.3.15</a> <br />(Oct 2010)</td>
-            <td>• Added time field to <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a>.</td>
-          </tr>
-          <tr>
-            <td>311</td>
-            <td><a href="https://github.com/umkoin/umkoin/commit/343328c6b8db85e58a1feea85f0d10e62967fa19" class="auto-link">Umkoin Core 0.3.11</a> <br />(Aug 2010)</td>
-            <td>• Added <a href="/en/developer-reference.php#alert" title="The P2P network message which sends alerts in case of major software problems." class="auto-link"><code>alert</code> message</a>.</td>
-          </tr>
-          <tr>
-            <td>209</td>
-            <td><a href="https://github.com/umkoin/umkoin/commit/42605ce8bcc9bd01b86491c74fee14de77960868" class="auto-link">Umkoin Core 0.2.9</a> <br />(May 2010)</td>
-            <td>• Added checksum field to <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message headers</a>, added <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a>, and added starting <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> field to <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>.</td>
-          </tr>
-          <tr>
-            <td>106</td>
-            <td><a href="https://github.com/umkoin/umkoin/commit/cc0b4c3b62367a2aebe5fc1f4d0ed4b97e9c2ac9" class="auto-link">Umkoin Core 0.1.6</a> <br />(Oct 2009)</td>
-            <td>• Added transmitter IP address fields, nonce, and User Agent (subVer) to <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>.</td>
-          </tr>
-        </tbody>
-      </table>
+      <p>As of <a href="/en/release/v0.16.0" class="auto-link">Umkoin Core 0.16.0</a>, the most recent protocol version is 70015.</p>
 
       <h3 id="message-headers">Message Headers</h3>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networkin<a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-      </div>
       <p>All messages in the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> protocol use the same container format, which provides a required multi-field <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> and an optional payload. The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> format is:</p>
 
       <table>
@@ -1192,10 +1015,6 @@ Failure, aborted: two signature matches required but none found so
 5df6e0e2 ................... Checksum: SHA256(SHA256(&lt;empty&gt;))</code></pre></figure>
 
       <h3 id="data-messages">Data Messages</h3>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-      </div>
       <p>The following <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> messages all request or provide data related to transactions and <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</p>
       <p><img src="/img/dev/en-p2p-data-messages.svg" alt="Overview Of P2P Protocol Data Request And Reply Messages" /></p>
       <p>Many of the data messages use <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." id="term-inventory" class="term">inventories</a> as unique identifiers for transactions and <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>. <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">Inventories</a> have a simple 36-byte structure:</p>
@@ -1257,10 +1076,6 @@ Failure, aborted: two signature matches required but none found so
       <p>Type identifier zero and type identifiers greater than three are reserved for future implementations. Umkoin Core ignores all <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a> with one of these unknown types.</p>
 
       <h4 id="block">Block</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-      </div>
       <p>The <a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> message</a> transmits a single <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a> in the format described in the <a href="/en/developer-reference.php#serialized-blocks">serialized blocks section</a>. See that section for an example hexdump. It can be sent for two different reasons:</p>
 
       <ol>
@@ -1268,15 +1083,11 @@ Failure, aborted: two signature matches required but none found so
           <p><strong>GetData Response:</strong> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> will always send it in response to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> that requests the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> with an <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type of <a href="/en/developer-reference.php#term-msg_block" title="The block header hash data type identifier of an inventory on the P2P network" class="auto-link"><code>MSG_BLOCK</code></a> (provided the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> has that <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> available for relay).</p>
         </li>
         <li>
-          <p><strong>Unsolicited:</strong> Some <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> will send unsolicited <a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> messages</a> broadcasting their newly-mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> to all of their <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a>. Many <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools do the same thing, although some may be misconfigured to send the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> from multiple <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>, possibly sending the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> to some <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> more than once.</p>
+          <p><strong>Unsolicited:</strong> Some <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> will send unsolicited <a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> messages</a> broadcasting their newly-mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> to all of their <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a>. Many <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools do the same thing, although some may be misconfigured to send the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> from multiple <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>, possibly sending the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> to some <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> more than once.</p>
         </li>
       </ol>
 
       <h4 id="getblocks">GetBlocks</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-      </div>
       <p>The <a href="/en/developer-reference.php#getblocks" title="A P2P protocol message used to request an inv message containing a range of block header hashes" class="auto-link"><code>getblocks</code> message</a> requests an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> that provides <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes starting from a particular point in the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-torecreate chain is the best block chain." class="auto-link">block chain</a>. It allows a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> which has been disconnected or started for the first time to get the data it needs to request the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> it hasn’t seen.</p>
       <p><a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Peers</a> which have been disconnected may have <a href="/en/glossary/stale-block" title="Blocks which were successfully mined but which aren't included on the current best block chain, likely because some other block at the same height had its chain extended first." class="auto-link">stale blocks</a> in their locally-stored <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, so the <a href="/en/developer-reference.php#getblocks" title="A P2P protocol message used to request an inv message containing a range of block header hashes" class="auto-link"><code>getblocks</code> message</a> allows the requesting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to provide the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> with multiple <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hashes at various <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">heights</a> on their local chain. This allows the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to find, within that list, the last <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash they had in common and reply with all subsequent <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hashes.</p>
       <p>Note: the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> itself may respond with an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> containing <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hashes of <a href="/en/glossary/stale-block" title="Blocks which were successfully mined but which aren't included on the current best block chain, likely because some other block at the same height had its chain extended first." class="auto-link">stale blocks</a>. It is up to the requesting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to poll all of its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> to find the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>.</p>
@@ -1333,93 +1144,47 @@ d39f608a7775b537729884d4e6633bb2
 00000000000000000000000000000000 ... Stop hash</code></pre></figure>
 
       <h4 id="getdata">GetData</h4>
-      <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-        | <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-        | <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-      </div>
+      <p>The <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message<a> requests one or more data objects from another <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. The objects are requested by an <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a>, which the requesting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> typically received previously by way of an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>.</p>
+      <p>The response to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> can be a <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a>, <a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> message</a>, <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>, or <a href="/en/developer-reference.php#notfound" title="A P2P protocol message sent to indicate that the requested data was not available" class="auto-link"><code>notfound</code> message</a>.</p>
+      <p>This message cannot be used to request arbitrary data, such as historic transactions no longer in the memory pool or relay set. Full <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> may not even be able to provide older <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> if they’ve pruned old transactions from their <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> database. For this reason, the <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> should usually only be used to request data from a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> which previously advertised it had that data by sending an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>.</p>
+      <p>The format and maximum size limitations of the <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> are identical to the <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>; only the <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> differs.</p>
 
-<!-- CONTINUE FROM HERE //-->
+      <h4 id="getheaders">GetHeaders</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 31800</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a> requests a <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> that provides <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a> starting from a particular point in the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>. It allows a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> which has been disconnected or started for the first time to get the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> it hasn’t seen yet.</p>
+      <p>The <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a> is nearly identical to the <a href="/en/developer-reference.php#getblocks" title="A P2P protocol message used to request an inv message containing a range of block header hashes" class="auto-link"><code>getblocks</code> message</a>, with one minor difference: the <code>inv</code> reply to the <a href="/en/developer-reference.php#getblocks" title="A P2P protocol message used to request an inv message containing a range of block header hashes" class="auto-link"><code>getblocks</code> message</a> will include no more than 500 <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes; the <code>headers</code> reply to the <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a> will include as many as 2,000 <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a>.</p>
 
-  <p>The <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message<a> requests one or more data objects from another
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. The objects are requested by an <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a>, which the requesting
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> typically received previously by way of an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>.</p>
+      <h4 id="headers">Headers</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 31800</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> sends <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a> to a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> which previously requested certain <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> with a <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a>. A <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> message can be empty.</p>
 
-  <p>The response to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> can be a <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a>, <a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code>
-message</a>, <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>, or <a href="/en/developer-reference.php#notfound" title="A P2P protocol message sent to indicate that the requested data was not available" class="auto-link"><code>notfound</code> message</a>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>count</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>Number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a> up to a maximum of 2,000. Note: <a href="/en/glossary/headers-first-sync" title="Synchronizing the block chain by downloading block headers before downloading the full blocks." class="auto-link">headers-first sync</a> assumes the sending <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> will send the maximum number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> whenever possible.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a></td>
+            <td>block_header</td>
+            <td><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">Block headers</a>: each 80-byte <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> is in the format described in the <a href="/en/developer-reference.php#block-headers">block headers section</a> with an additional 0x00 suffixed. This 0x00 is called the transaction count, but because the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> message doesn’t include any transactions, the transaction count is always zero.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>This message cannot be used to request arbitrary data, such as historic
-transactions no longer in the memory pool or relay set. Full <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> may
-not even be able to provide older <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> if they’ve pruned old
-transactions from their <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> database. For this reason, the <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code>
-message</a> should usually only be used to request data from a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> which
-previously advertised it had that data by sending an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>.</p>
-
-  <p>The format and maximum size limitations of the <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> are
-identical to the <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>; only the <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> differs.</p>
-
-  <h4 id="getheaders">GetHeaders</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_nrking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 31800</a>.</em></p>
-
-  <p>The <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a> requests a <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> that provides <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a>
-starting from a particular point in the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>. It allows a
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> which has been disconnected or started for the first time to get
-the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> it hasn’t seen yet.</p>
-
-  <p>The <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a> is nearly identical to the <a href="/en/developer-reference.php#getblocks" title="A P2P protocol message used to request an inv message containing a range of block header hashes" class="auto-link"><code>getblocks</code> message</a>,
-with one minor difference: the <code>inv</code> reply to the <a href="/en/developer-reference.php#getblocks" title="A P2P protocol message used to request an inv message containing a range of block header hashes" class="auto-link"><code>getblocks</code> message</a>
-will include no more than 500 <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes; the <code>headers</code> reply
-to the <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a> will include as many as 2,000 <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a>.</p>
-
-  <h4 id="headers">Headers</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 31800</a>.</em></p>
-
-  <p>The <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> sends <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a> to a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> which
-previously requested certain <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> with a <a href="/en/developer-reference.php#getheaders" title="A P2P protocol message used to request a range of block headers" class="auto-link"><code>getheaders</code> message</a>. A <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a>
-message can be empty.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>count</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>Number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a> up to a maximum of 2,000. Note: <a href="/en/glossary/headers-first-sync" title="Synchronizing the block chain by downloading block headers before downloading the full blocks." class="auto-link">headers-first sync</a> assumes the sending <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> will send the maximum number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> whenever possible.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a></td>
-        <td>block_header</td>
-        <td><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">Block headers</a>: each 80-byte <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> is in the format described in the <a href="/en/developer-reference.php#block-headers">block headers section</a> with an additional 0x00 suffixed. This 0x00 is called the transaction count, but because the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> message doesn’t include any transactions, the transaction count is always zero.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The following annotated hexdump shows a <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message
-header</a> has been omitted.)</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">01 ................................. Header count: 1
+      <p>The following annotated hexdump shows a <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.)</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">01 ................................. Header count: 1
 
 02000000 ........................... Block version: 2
 b6ff0b1b1680a2862a30ca44d346d9e8
@@ -1432,52 +1197,37 @@ fe9f0864 ........................... Nonce
 
 00 ................................. Transaction count (0x00)</code></pre></figure>
 
-  <h4 id="inv">Inv</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
+      <h4 id="inv">Inv</h4>
+      <p>The <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> (<a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> message) transmits one or more <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a> of objects known to the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>. It can be sent unsolicited to announce new transactions or <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>, or it can be sent in reply to a <a href="/en/developer-reference.php#getblocks" title="A P2P protocol message used to request an inv message containing a range of block header hashes" class="auto-link"><code>getblocks</code> message</a> or <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a>.</p>
+      <p>The receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> can compare the <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a> from an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> against the <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a> it has already seen, and then use a follow-up message to request unseen objects.</p>
 
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td><em>Varies</em></td>
+            <td>count</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>The number of <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> entries.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td><a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a></td>
+            <td><a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a></td>
+            <td>One or more <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> entries up to a maximum of 50,000 entries.</td>
+          </tr>
+        </tbody>
+      </table>
 
-</div>
-
-  <p>The <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> (<a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> message) transmits one or more <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a> of
-objects known to the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>. It can be sent unsolicited to
-announce new transactions or <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>, or it can be sent in reply to a
-<a href="/en/developer-reference.php#getblocks" title="A P2P protocol message used to request an inv message containing a range of block header hashes" class="auto-link"><code>getblocks</code> message</a> or <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a>.</p>
-
-  <p>The receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> can compare the <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a> from an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>
-against the <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a> it has already seen, and then use a follow-up
-message to request unseen objects.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>count</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>The number of <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> entries.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td><a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a></td>
-        <td><a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a></td>
-        <td>One or more <a href="/ensary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> entries up to a maximum of 50,000 entries.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The following annotated hexdump shows an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> with two
-<a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> entries. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.)</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">02 ................................. Count: 2
+      <p>The following annotated hexdump shows an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> with two <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> entries. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.)</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">02 ................................. Count: 2
 
 01000000 ........................... Type: MSG_TX
 de55ffd709ac1f5dc509a0925d0b1fc4
@@ -1487,138 +1237,79 @@ de55ffd709ac1f5dc509a0925d0b1fc4
 91d36d997037e08018262978766f24b8
 a055aaf1d872e94ae85e9817b2c68dc7 ... Hash (TXID)</code></pre></figure>
 
-  <h4 id="mempool">MemPool</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
+      <h4 id="mempool">MemPool</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60002</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> requests the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of transactions that the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> has verified as valid but which have not yet appeared in a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>. That is, transactions which are in the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> memory pool. The response to the <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> is one or more <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> containing the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> in the usual <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> format.</p>
+      <p>Sending the <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> is mostly useful when a program first connects to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Full <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> can use it to quickly gather most or all of the <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> available on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>; this is especially useful for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> trying to gather transactions for their <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fees</a>. <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block. The method is used by some lightweight Umkoin clients." class="auto-link">SPV clients</a> can set a filter before sending a <code>mempool</code> to only receive transactions that match that filter; this allows a recently-started client to get most or all <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> related to its <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
+      <p>The <code>inv</code> response to the <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> is, at best, one <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> view of the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>—not a complete list of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Here are some additional reasons the list might not be complete:</p>
 
+      <ul>
+        <li>
+          <p>Before <a href="/en/release/v0.9.0" class="auto-link">Umkoin Core 0.9.0</a>, the response to the <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> was only one <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> mssage</a>. An <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> is limited to 50,000 <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a>, so a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a memory pool larger than 50,000 entries would not send everything. Later versions of Umkoin Core send as many <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> as needed to reference its complete memory pool.</p>
+        </li>
+        <li>
+          <p>The <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> is not currently fully compatible with the <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message’s</a> <code>BLOOM_UPDATE_ALL</code> and <code>BLOOM_UPDATE_P2PUBKEY_ONLY</code> flags. Mempool transactions are not sorted like in-<a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> transactions, so a transaction (tx2) spending an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> can appear before the transaction (tx1) containing that <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, which means the automatic filter update mechanism won’t operate until the second-appearing transaction (tx1) is seen—missing the first-appearing transaction (tx2). It has been proposed in <a href="https://github.com/bitcoin/bitcoin/issues/2381">Umkoin Core issue #2381</a> that the transactions should be sorted before being processed by the filter.</p>
+        </li>
+      </ul>
 
-</div>
+      <p>There is no payload in a <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a>. See the <a href="/en/developer-reference.php#message-headers">message header section</a> for an example of a message without a payload.</p>
 
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60002</a>.</em></p>
+      <h4 id="merkleblock">MerkleBlock</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> is a reply to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> which requested a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> using the <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type <code>MSG_MERKLEBLOCK</code>. It is only part of the reply: if any matching transactions are found, they will be sent separately as <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> messages</a>.</p>
+      <p>If a filter has been previously set with the <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a>, the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> will contain the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of any transactions in the requested <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> that matched the filter, as well as any parts of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block’s</a> <a href="/en/glossary/merkle-tree.php" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> necessary to connect those transactions to the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header’s</a> <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a>. The message also contains a complete copy of the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> to allow the client to hash it and confirm its <a href="/en/glossary/proof-of-work.php" title="A hash below a target value which can only be obtained, on average, by performing a certain amount of brute force work---therefore demonstrating proof of work." class="auto-link">proof of work</a>.</p>
 
-  <p>The <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> requests the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of transactions that the
-receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> has verified as valid but which have not yet appeared in
-a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>. That is, transactions which are in the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> memory
-pool. The response to the <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> is one or more <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code>
-messages</a> containing the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> in the usual <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> format.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>80</td>
+            <td><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a></td>
+            <td>block_header</td>
+            <td>The <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> in the format described in the <a href="/en/developer-reference.php#block-headers">block header section</a>.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>transaction count</td>
+            <td>uint32_t</td>
+            <td>The number of transactions in the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> (including ones that don’t match the filter).</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>hash count</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>The number of hashes in the following field.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>hashes</td>
+            <td>char[32]</td>
+            <td>One or more hashes of both transactions and merkle <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a>. Each hash is 32 bytes.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>flag byte count</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>The number of flag bytes in the following field.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>flags</td>
+            <td>byte[]</td>
+            <td>A sequence of bits packed eight in a byte with the least significant bit first. May be padded to the nearest byte boundary but must not contain any more bits than that. Used to assign the hashes to particular <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> in the <a href="/en/glossary/merkle-tree.php" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> as described below.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>Sending the <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> is mostly useful when a program first
-connects to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Full <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> can use it to quickly gather most or
-all of the <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> available on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>; this is
-especially useful for <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> trying to gather transactions for their
-<a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fees</a>. <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block. The method is used by some lightweight Umkoin clients." class="auto-link">SPV clients</a> can set a filter before sending a
-<code>mempool</code> to only receive transactions that match that filter; this
-allows a recently-started client to get most or all <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed
-transactions</a> related to its <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
-
-  <p>The <code>inv</code> response to the <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> is, at best, one <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a>
-view of the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>—not a complete list of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a>
-on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Here are some additional reasons the list might not
-be complete:</p>
-
-  <ul>
-    <li>
-      <p>Before <a href="/en/release/v0.9.0" class="auto-link">Umkoin Core 0.9.0</a>, the response to the <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> was
-only one <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> mssage</a>. An <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a> is limited to 50,000
-<a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventories</a>, so a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a memory pool larger than 50,000 entries
-would not send everything. Later versions of Umkoin Core send as
-many <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> as needed to reference its complete memory pool.</p>
-    </li>
-    <li>
-      <p>The <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a> is not currently fully compatible with the
-<a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message’s</a> <code>BLOOM_UPDATE_ALL</code> and
-<code>BLOOM_UPDATE_P2PUBKEY_ONLY</code> flags. Mempool transactions are not
-sorted like in-<a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> transactions, so a transaction (tx2) spending an
-<a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> can appear before the transaction (tx1) containing that <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>,
-which means the automatic filter update mechanism won’t operate until
-the second-appearing transaction (tx1) is seen—missing the
-first-appearing transaction (tx2). It has been proposed in <a href="https://github.com/bitcoin/bitcoin/issues/2381">Umkoin
-Core issue #2381</a> that the transactions should be sorted before
-being processed by the filter.</p>
-    </li>
-  </ul>
-
-  <p>There is no payload in a <a href="/en/developer-reference.php#mempool" title="A P2P protocol message used to request one or more inv messages with currently-unconfirmed transactions" class="auto-link"><code>mempool</code> message</a>. See the <a href="/en/developer-reference.php#message-headers">message header
-section</a> for an example of a message without a payload.</p>
-
-  <h4 id="merkleblock">MerkleBlock</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
-
-  <p>The <a href="/en/develoreference#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> is a reply to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> which
-requested a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> using the <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type <code>MSG_MERKLEBLOCK</code>. It is
-only part of the reply: if any matching transactions are found, they will
-be sent separately as <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> messages</a>.</p>
-
-  <p>If a filter has been previously set with the <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a>, the
-<a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> will contain the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of any transactions in the
-requested <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> that matched the filter, as well as any parts of the
-<a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block’s</a> <a href="/en/glossary/merkle-tree" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> necessary to connect those transactions to the
-<a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header’s</a> <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a>. The message also contains a complete copy
-of the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> to allow the client to hash it and confirm its
-<a href="/en/glossary/proof-of-work" title="A hash below a target value which can only be obtained, on average, by performing a certain amount of brute force work---therefore demonstrating proof of work." class="auto-link">proof of work</a>.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>80</td>
-        <td><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a></td>
-        <td>block_header</td>
-        <td>The <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> in the format described in the <a href="/en/developer-reference.php#block-headers">block header section</a>.</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>transaction count</td>
-        <td>uint32_t</td>
-        <td>The number of transactions in the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> (including ones that don’t match the filter).</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>hash count</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>The number of hashes in the following field.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>hashes</td>
-        <td>char[32]</td>
-        <td>One or more hashes of both transactions and merkle <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a>. Each hash is 32 bytes.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>flag byte count</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>The number of flag bytes in the following field.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>flags</td>
-        <td>byte[]</td>
-        <td>A sequence of bits packed eight in a byte with the least significant bit first. May be padded to the nearest byte boundary but must not contain any more bits than that. Used to assign the hashes to particular <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> in the <a href="/en/glossary/merkle-tree" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> as described below.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> which
-corresponds to the examples below. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been
-omitted.)</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">01000000 ........................... Block version: 1
+      <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> which corresponds to the examples below. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.)</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">01000000 ........................... Block version: 1
 82bb869cf3a793432a66e826e05a6fc3
 7469f8efb7421dc88067010000000000 ... Hash of previous block's header
 7f16c5962e8bd963659c793ce370d95f
@@ -1642,157 +1333,87 @@ bb3183301d7a1fb3bd174fcfa40a2b65 ... Hash #2
 01 ................................. Flag bytes: 1
 1d ................................. Flags: 1 0 1 1 1 0 0 0</code></pre></figure>
 
-  <p>Note: when fully decoded, the above <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> provided the
-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> for a single transaction that matched the filter. In the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>
-traffic dump this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> was taken from, the full transaction belonging
-to that <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> was sent immediately after the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> as
-a <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a>.</p>
+      <p>Note: when fully decoded, the above <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> provided the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> for a single transaction that matched the filter. In the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> traffic dump this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> was taken from, the full transaction belonging to that <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> was sent immediately after the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> as a <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a>.</p>
 
-  <h5 class="no_toc" id="parsing-a-merkleblock-message">Parsing A MerkleBlock Message</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
+      <h5 class="no_toc" id="parsing-a-merkleblock-message">Parsing A MerkleBlock Message</h5>
+      <p>As seen in the annotated hexdump above, the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> provides three special data types: a transaction count, a list of hashes, and a list of one-bit flags.</p>
+      <p>You can use the transaction count to construct an empty <a href="/en/glossary/merkle-tree.php" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a>. We’ll call each entry in the tree a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>; on the bottom are <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>—the hashes for these <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> are <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>; the remaining <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> (including the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended  all transactions in that block." class="auto-link">merkle root</a>) are non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>—they may actually have the same hash as a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>, but we treat them differently.</p>
+      <p><img src="/img/dev/animated-en-merkleblock-parsing.gif" alt="Example Of Parsing A MerkleBlock Message" /></p>
+      <p>Keep the hashes and flags in the order they appear in the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>. When we say “next flag” or “next hash”, we mean the next flag or hash on the list, even if it’s the first one we’ve used so far.</p>
+      <p>Start with the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> and the first flag. The table below describes how to evaluate a flag based on whether the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> being processed is a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. Once you apply a flag to a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, never apply another flag to that same <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or reuse that same flag again.</p>
 
+      <table>
+        <thead>
+          <tr>
+            <th>Flag</th>
+            <th><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Node</a></th>
+            <th>Non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Node</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>0</strong></td>
+            <td>Use the next hash as this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>, but this transaction didn’t match the filter.</td>
+            <td>Use the next hash as this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> hash. Don’t process any descendant <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</td>
+          </tr>
+          <tr>
+            <td><strong>1</strong></td>
+            <td>Use the next hash as this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>, and mark this transaction as matching the filter.</td>
+            <td>The hash needs to be computed. Process the left child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to get its hash; process the right child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to get its hash; then concatenate the two hashes as 64 raw bytes and hash them to get this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> hash.</td>
+          </tr>
+        </tbody>
+      </table>
 
-</div>
+      <p>Any time you begin processing a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> for the first time, evaluate the next flag. Never use a flag at any other time.</p>
+      <p>When processing a child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, you may need to process its children (the grandchildren of the original <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) or further-descended <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> before returning to the parent <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. This is expected—keep processing depth first until you reach a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a flag of 0.</p>
+      <p>After you process a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a flag of 0, stop processing flags and begin to ascend the tree. As you ascend, compute the hash of any <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> for which you now have both child hashes or for which you now have the sole child hash. See the <a href="/en/developer-reference.php#merkle-trees">merkle tree section</a> for hashing instructions. If you reach a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> where only the left hash is known, descend into its right child (if present) and further descendants as necessary.</p>
+      <p>However, if you find a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> whose left and right children both have the same hash, fail. This is related to < href="https://en.bitcoin.it/wiki/CVEs#CVE-2012-2459" class="auto-link">CVE-2012-2459</a>.</p>
+      <p>Continue descending and ascending until you have enough information to obtain the hash of the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. If you run out of flags or hashes before that condition is reached, fail. Then perform the following checks (order doesn’t matter):</p>
 
-  <p>As seen in the annotated hexdump above, the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>
-provides three special data types: a transaction count, a list of
-hashes, and a list of one-bit flags.</p>
+      <ul>
+        <li>
+          <p>Fail if there are unused hashes in the hashes list.</p>
+        </li>
+        <li>
+          <p>Fail if there are unused flag bits—except for the minimum number of bits necessary to pad up to the next full byte.</p>
+        </li>
+        <li>
+          <p>Fail if the hash of the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is not identical to the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> in the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a>.</p>
+        </li>
+        <li>
+          <p>Fail if the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> is invalid. Remember to ensure that the hash of the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> is less than or equal to the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target threshold</a> encoded by the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">nBits</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> field. Your program should also, of course, attempt to ensure the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> belongs to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> and that the user knows how many <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> has.</p>
+        </li>
+      </ul>
 
-  <p>You can use the transaction count to construct an empty <a href="/en/glossary/merkle-tree" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a>.
-We’ll call each entry in the tree a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>; on the bottom are <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>—the hashes for these <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> are <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>; the remaining <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>
-(including the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended  all transactions in that block." class="auto-link">merkle root</a>) are non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>—they may actually have
-the same hash as a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>, but we treat them differently.</p>
+      <p>For a detailed example of parsing a <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>, please see the corresponding <a href="/en/developer-examples#parsing-a-merkleblock">merkle block examples section</a>.</p>
 
-  <p><img src="/img/dev/animated-en-merkleblock-parsing.gif" alt="Example Of Parsing A MerkleBlock Message" /></p>
+      <h5 class="no_toc" id="creating-a-merkleblock-message">Creating A MerkleBlock Message</h5>
+      <p>It’s easier to understand how to create a <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> after you understand how to parse an already-created message, so we recommend you read the parsing section above first.</p>
+      <p>Create a complete <a href="/en/glossary/merkle-tree.php" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> with <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> on the bottom row and all the other hashes calculated up to the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> on the top row. For each transaction that matches the filter, track its <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> and all of its ancestor <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</p>
+      <p><img src="/img/dev/animated-en-merkleblock-creation.gif" alt="Example Of Creating A MerkleBlock Message" /></p>
+      <p>Start processing the tree with the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. The table below describes how to process both <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> and non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> based on whether the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is a match, a match ancestor, or neither a match nor a match ancestor.</p>
 
-  <p>Keep the hashes and flags in the order they appear in the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code>
-message</a>. When we say “next flag” or “next hash”, we mean the next flag
-or hash on the list, even if it’s the first one we’ve used so far.</p>
-
-  <p>Start with the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> and the first flag. The table below
-describes how to evaluate a flag based on whether the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> being
-processed is a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. Once you apply a flag to a
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, never apply another flag to that same <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or reuse that same
-flag again.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Flag</th>
-        <th><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Node</a></th>
-        <th>Non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Node</a></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>0</strong></td>
-        <td>Use the next hash as this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>, but this transaction didn’t match the filter.</td>
-        <td>Use the next hash as this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> hash. Don’t process any descendant <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</td>
-      </tr>
-      <tr>
-        <td><strong>1</strong></td>
-        <td>Use the next hash as this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>, and mark this transaction as matching the filter.</td>
-        <td>The hash needs to be computed. Process the left child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to get its hash; process the right child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to get its hash; then concatenate the two hashes as 64 raw bytes and hash them to get this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> hash.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>Any time you begin processing a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> for the first time, evaluate the next
-flag. Never use a flag at any other time.</p>
-
-  <p>When processing a child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, you may need to process its children (the
-grandchildren of the original <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) or further-descended <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> before
-returning to the parent <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. This is expected—keep processing depth
-first until you reach a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a flag of 0.</p>
-
-  <p>After you process a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a flag of 0, stop
-processing flags and begin to ascend the tree. As you ascend, compute
-the hash of any <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> for which you now have both child hashes or for
-which you now have the sole child hash. See the <a href="/en/developer-reference.php#merkle-trees">merkle tree
-section</a> for hashing instructions. If you reach a
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> where only the left hash is known, descend into its right child (if
-present) and further descendants as necessary.</p>
-
-  <p>However, if you find a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> whose left and right children both have the
-same hash, fail. This is related to < href="https://en.bitcoin.it/wiki/CVEs#CVE-2012-2459" class="auto-link">CVE-2012-2459</a>.</p>
-
-  <p>Continue descending and ascending until you have enough information to
-obtain the hash of the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. If you run out of flags or
-hashes before that condition is reached, fail. Then perform the
-following checks (order doesn’t matter):</p>
-
-  <ul>
-    <li>
-      <p>Fail if there are unused hashes in the hashes list.</p>
-    </li>
-    <li>
-      <p>Fail if there are unused flag bits—except for the minimum number of
-bits necessary to pad up to the next full byte.</p>
-    </li>
-    <li>
-      <p>Fail if the hash of the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is not identical to the
-<a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> in the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a>.</p>
-    </li>
-    <li>
-      <p>Fail if the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> is invalid. Remember to ensure that the hash
-of the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> is less than or equal to the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target threshold</a> encoded by
-the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">nBits</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> field. Your program should also, of course, attempt
-to ensure the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> belongs to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> and that the user
-knows how many <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> has.</p>
-    </li>
-  </ul>
-
-  <p>For a detailed example of parsing a <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>, please see
-the corresponding <a href="/en/developer-examples#parsing-a-merkleblock">merkle block examples section</a>.</p>
-
-  <h5 class="no_toc" id="creating-a-merkleblock-message">Creating A MerkleBlock Message</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p>It’s easier to understand how to create a <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> after
-you understand how to parse an already-created message, so we recommend
-you read the parsing section above first.</p>
-
-  <p>Create a complete <a href="/en/glossary/merkle-tree" title="A tree constructed by hashing paired data (the leaves), then pairing and hashing the results until a single hash remains, the merkle root. In Umkoin, the leaves are almost always transactions from a single block." class="auto-link">merkle tree</a> with <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> on the bottom row and all the
-other hashes calculated up to the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> on the top row. For each
-transaction that matches the filter, track its <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> and all of its
-ancestor <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</p>
-
-  <p><img src="/img/dev/animated-en-merkleblock-creation.gif" alt="Example Of Creating A MerkleBlock Message" /></p>
-
-  <p>Start processing the tree with the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree. Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. The table below
-describes how to process both <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> and non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> based on
-whether the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is a match, a match ancestor, or neither a match nor a
-match ancestor.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th> </th>
-        <th><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Node</a></th>
-        <th>Non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Node</a></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Neither Match Nor Match Ancestor</strong></td>
-        <td>Append a 0 to the flag list; append this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> to the hash list.</td>
-        <td>Append a 0 to the flag list; append this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> hash to the hash list. Do not descend into its child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</td>
-      </tr>
-      <tr>
-        <td><strong>Match Or Match Ancestor</strong></td>
-        <td>Append a 1 to the flag list; append this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> to the hash list.</td>
-        <td>Append a 1 to the flag list; process the left child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. Then, if the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> has a right child, process the right child. Do not append a hash to the hash list for this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</td>
-      </tr>
-    </tbody>
-  </table>
+      <table>
+        <thead>
+          <tr>
+            <th> </th>
+            <th><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Node</a></th>
+            <th>Non-<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Node</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Neither Match Nor Match Ancestor</strong></td>
+            <td>Append a 0 to the flag list; append this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> to the hash list.</td>
+            <td>Append a 0 to the flag list; append this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> hash to the hash list. Do not descend into its child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</td>
+          </tr>
+          <tr>
+            <td><strong>Match Or Match Ancestor</strong></td>
+            <td>Append a 1 to the flag list; append this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> to the hash list.</td>
+            <td>Append a 1 to the flag list; process the left child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. Then, if the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> has a right child, process the right child. Do not append a hash to the hash list for this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</td>
+          </tr>
+        </tbody>
+      </table>
 
   <p>Any time you begin processing a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> for the first time, a flag should be
 appended to the flag list. Never put a flag on the list at any other
@@ -1816,13 +1437,6 @@ list to a byte boundary and construct the <a href="/en/developer-reference.php#m
 template near the beginning of this subsection.</p>
 
   <h4 id="notfound">NotFound</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#notfound" title="A P2P protocol message sent to indicate that the requested data was not available" class="auto-link"><code>notfound</code> message</a> is a reply to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> which
@@ -1836,13 +1450,6 @@ send those <a href="/en/glossary/block.php" title="One or more transactions pref
 identical to the <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>; only the <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> differs.</p>
 
   <h4 id="tx">Tx</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a> transmits a single transaction in the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>
 format. It can be sent in a variety of situations;</p>
 
@@ -1869,13 +1476,6 @@ transactions it originates.</p>
 transaction section</a>.</p>
 
   <h3 id="control-messages">Control Messages</h3>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The following <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> messages all help control the connection between
 two <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> or allow them to advise each other about the rest of the
 <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
@@ -1889,13 +1489,6 @@ operation over the <a href="https://en.wikipedia.org/wiki/Tor_%28anonymity_netwo
 information about Tor, please <a href="https://github.com/umkoin/umkoin.org/issues">open an issue</a>.</p>
 
   <h4 id="addr">Addr</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>addr</code> (IP address) message relays connection information
 for <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Each <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> which wants to accept incoming
 connections creates an <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a> providing its connection
@@ -1979,31 +1572,17 @@ replaced with a <a href="http://tools.ietf.org/html/rfc5737">RFC5737</a> reserve
 d91f4854 ........................... Epoch time: 1414012889
 0100000000000000 ................... Service bits: 01 (network node)
 00000000000000000000ffffc0000233 ... IP Address: ::ffff:192.0.2.51
-208d ............................... Port: 8333
+208d ............................... Port: 6333
 
 [...] .............................. (999 more addresses omitted)</code></pre></figure>
 
   <h4 id="alert">Alert</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 311</a>.</em>
 <em>Removed in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70013</a> and released in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p>The legacy p2p <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> alert messaging system has been retired; however, internal alerts, partition detection warnings and the <code>-alertnotify</code> option features remain. See <a href="https://umkoin.org/en/alert/2016-11-01-alert-retirement">Alert System Retirement</a> for details.</p>
 
   <h4 id="feefilter">FeeFilter</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/bitcoin-dot-orn.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70013</a> as described by <a href="https://github.com/bitcoin/bips/blob/master/bip-0133.mediawiki" class="auto-link">BIP133</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#feefilter" title="The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate" class="auto-link"><code>feefilter</code> message</a> is a request to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to not relay any
@@ -2059,13 +1638,6 @@ header</a> has been omitted.)</p>
   <figure class="highlight"><pre><code class="language-text" data-lang="text">7cbd000000000000 ... satoshis per kilobyte: 48,508</code></pre></figure>
 
   <h4 id="filteradd">FilterAdd</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to add a single element to
@@ -2118,13 +1690,6 @@ fdacf9b3eb077412e7a968d2e4f11b9a
 9dee312d666187ed77ee7d26af16cb0b ... Element (A TXID)</code></pre></figure>
 
   <h4 id="filterclear">FilterClear</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to remove a
@@ -2140,13 +1705,6 @@ a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol messag
 section</a> for an example of a message without a payload.</p>
 
   <h4 id="filterload">FilterLoad</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to filter all relayed
@@ -2449,13 +2007,6 @@ updates need to monitor the actual false positive rate and send a new
 filter when the rate gets too high.</p>
 
   <h4 id="getaddr">GetAddr</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getaddr" title="A P2P protool message used to request an addr message containing connection information for other nodes" class="auto-link"><code>getaddr</code> message</a> requests an <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a> from the receiving
 <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, preferably one with lots of IP addresses of other receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.
 The transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> can use those IP addresses to quickly update its
@@ -2466,13 +2017,6 @@ messages</a> to arrive over time.</p>
 section</a> for an example of a message without a payload.</p>
 
   <h4 id="ping">Ping</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#ping" title="A P2P netwok message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> helps confirm that the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> is still
 connected. If a TCP/IP error is encountered when sending the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code>
 message</a> (such as a connection timeout), the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> can assume
@@ -2508,13 +2052,6 @@ header</a> has been omitted.)</p>
   <figure class="highlight"><pre><code class="language-text" data-lang="text">0094102111e2af4d ... Nonce</code></pre></figure>
 
   <h4 id="pong">Pong</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60001</a> as described by <a href="https://github.com/bitcoin/bips/blob/master/bip-0031.mediawiki" class="auto-link">BIP31</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> replies to a <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>, proving to the pinging
@@ -2529,13 +2066,6 @@ the same nonce received in the <a href="/en/developer-reference.php#ping" title=
 only the <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> differs.</p>
 
   <h4 id="reject">Reject</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70002</a> as described by <a href="https://github.com/bitcoin/bips/blob/master/bip-0061.mediawiki" class="auto-link">BIP61</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> message</a> informs the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> that one of its previous
@@ -2698,13 +2228,6 @@ header</a> has been omitted.)</p>
 947baf86a31017939575fb2354222821 ... TXID</code></pre></figure>
 
   <h4 id="sendheaders">SendHeaders</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#sendheaders" title="A P2P network message used to request new blocks be announced through headers messages rather than inv messages" class="auto-link"><code>sendheaders</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to send new <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>
 announcements using a <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> rather than an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>.</p>
 
@@ -2712,13 +2235,6 @@ announcements using a <a href="/en/developer-reference.php#headers" title="A P2P
 section</a> for an example of a message without a payload.</p>
 
   <h4 id="verack">VerAck</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 209</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a> acknowledges a previously-received <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code>
@@ -2728,13 +2244,6 @@ of a message with no payload, see the <a href="/en/developer-reference.php#messa
 section</a>.</p>
 
   <h4 id="version">Version</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/references/p2p_networking.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/references/p2p_networking.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/references/p2p_networking.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/references/p2p_networking.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> provides information about the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>
 to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> at the beginning of a connection. Until both <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a>
 have exchanged <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> messages</a>, no other messages will be accepted.</p>
@@ -2905,21 +2414,8 @@ cf050500 ........................... Start height: 329167
 01 ................................. Relay flag: true</code></pre></figure>
 
   <h2 id="umkoin-core-apis">Umkoin Core APIs</h2>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/api-intro.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/api-intro.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/api-intro.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/api-intro.md%0A%0A">Report Issue</a>
-
-
-</div>
 
   <h3 id="hash-byte-order">Hash Byte Order</h3>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/api-intro.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/api-intro.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/api-intro.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/api-intro.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> accept and return the byte-wise reverse of computed
 SHA-256 hash values. For example, the Unix <code>sha256sum</code> command displays the
 SHA256(SHA256()) hash of <a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> 300,000’s <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> as:</p>
@@ -3034,13 +2530,6 @@ from raw hex.</p>
 <span class="k">print</span> <span class="s">"RPC-Byte-Order Hash:      "</span><span class="p">,</span> <span class="nb">hash</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'hex_codec'</span><span class="p">)</span></code></pre></figure>
 
   <h3 id="remote-procedure-calls-rpcs">Remote Procedure Calls (RPCs)</h3>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/intro.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/intro.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/intro.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/intro.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>Umkoin Core provides a remote procedure call (<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>) interface for various
 administrative tasks, <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> operations, and queries about <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> and <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block
 chain</a> data.</p>
@@ -3066,8 +2555,8 @@ scratch. Umkoin Core also ships with its own compiled C++ <a href="/en/developer
 languages lacking a suitable native client. The remainder of this section
 describes the Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> protocol in detail.</p>
 
-  <p>The Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service listens for HTTP <code>POST</code> requests on port 8332 in
-<a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> mode or 18332 in <a href="/en/glossary/testnet.php" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a> or <a href="/en/glossary/regression-test-mode.php" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>. The port number can be changed
+  <p>The Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service listens for HTTP <code>POST</code> requests on port 6332 in
+<a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> mode or 16332 in <a href="/en/glossary/testnet.php" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a> or <a href="/en/glossary/regression-test-mode.php" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>. The port number can be changed
 by setting <code>rpcport</code> in <code>umkoin.conf</code>. By default the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service binds to your
 server’s <a href="https://en.wikipedia.org/wiki/Localhost">localhost</a> loopback
 network interface so it’s not accessible from other servers.
@@ -3236,7 +2725,7 @@ as follows:</p>
       "params": [0],
       "id": "foo"
   }'''</span> <span class="se">\</span>
-  --header <span class="s1">'Content-Type: text/plain;'</span> localhost:8332</code></pre></figure>
+  --header <span class="s1">'Content-Type: text/plain;'</span> localhost:6332</code></pre></figure>
 
   <p>The HTTP response data for this request would be:</p>
 
@@ -3312,34 +2801,6 @@ real numbers correctly. See the <a href="https://en.bitcoin.it/wiki/Proper_Money
 Umkoin Wiki article for details and example code.</p>
 
   <h4 id="rpc-quick-reference">Quick Reference</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/quick-reference.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/quick-reference.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/quick-reference.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/quick-reference.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <!-- Deprecated -->
-
-  <!-- Umkoin Core 0.14.1 April 2017 -->
-
-  <!-- Umkoin Core 0.14.0 March 2017 -->
-
-  <!-- Umkoin Core 0.13.1 September 2016 -->
-
-  <!-- Umkoin Core 0.13.0 August 2016 -->
-
-  <!-- Umkoin Core 0.12.1 April 2016 -->
-
-  <!-- Umkoin Core 0.12.0 February 2016 -->
-
-  <!-- Umkoin Core 0.11.0 July 2015 -->
-
-  <!-- the summaries used below are defined in the files for the
-     particular RPC and aggregated into this helper file by the makefile
-     function manual-update-summaries-file. For example, to edit the
-     summary for GetBestBlockHash, edit
-     _includes/rpc/getbestblockhash.md and run `make manual-update-summaries`. -->
 
   <h4 class="no_toc" id="block-chain-rpcs">Block Chain RPCs</h4>
   <!-- no subhead-links here -->
@@ -3388,11 +2849,11 @@ Umkoin Wiki article for details and example code.</p>
   <!-- no subhead-links here -->
 
   <ul>
-    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information. <strong><abbr title="Updated in Umkoin Core v0.14.0">Updated in 0.14.0</abbr></strong></li>
+    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information. <strong><abbr title="Updated in Umkoin Core v0.14.0">Updated in 0.14.0</abbr></strong></li>
     <li><a href="/en/developer-reference.php#getnetworkhashps">GetNetworkHashPS</a>: returns the estimated current or historical <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> hashes per second based on the last <em>n</em> <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</li>
-    <li><a href="/en/developer-reference.php#prioritisetransaction">PrioritiseTransaction</a>: adds virtual priority or fee to a transaction, allowing it to be accepted into <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> mined by this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> (or <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> which use this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.)</li>
-    <li><a href="/en/developer-reference.php#submitblock">SubmitBlock</a>: accepts a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, verifies it is a valid addition to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Extra parameters are ignored by Umkoin Core but may be used by <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools or other programs.</li>
+    <li><a href="/en/developer-reference.php#prioritisetransaction">PrioritiseTransaction</a>: adds virtual priority or fee to a transaction, allowing it to be accepted into <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> mined by this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> (or <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> which use this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.)</li>
+    <li><a href="/en/developer-reference.php#submitblock">SubmitBlock</a>: accepts a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, verifies it is a valid addition to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Extra parameters are ignored by Umkoin Core but may be used by <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools or other programs.</li>
   </ul>
 
   <h4 class="no_toc" id="network-rpcs">Network RPCs</h4>
@@ -3517,13 +2978,6 @@ treat block chain and memory pool data as an arbitrary input from an
 untrusted source.</p>
 
   <h5 id="abandontransaction">AbandonTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/abandontransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/abandontransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/abandontransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/abandontransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.12.0" class="auto-link"tcoin Core 0.12.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#abandontransaction" class="auto-link"><code>abandontransaction</code> RPC</a> marks an in-<a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> transaction and all its in-<a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> descendants as abandoned. This allows their <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> to be respent.</p>
@@ -3585,13 +3039,6 @@ untrusted source.</p>
   </ul>
 
   <h5 id="addmultisigaddress">AddMultiSigAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/addmultisigaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/addmultisigaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/addmultisigaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/addmultisigaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#addmultisigaddress" class="auto-link"><code>addmultisigaddress</code> RPC</a> adds a <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes. Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> to the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
@@ -3717,13 +3164,6 @@ two <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address com
   </ul>
 
   <h5 id="addnode">AddNode</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/addnode.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/addnode.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/addnode.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/addnode.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#addnode" class="auto-link"><code>addnode</code> RPC</a> attempts to add or remove a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> from the addnode list, or to try a connection to a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> once.</p>
 
   <p><em>Parameter #1—hostname/IP address and port of <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to add or remove</em></p>
@@ -3793,7 +3233,7 @@ two <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address com
 
   <p>Try connecting to the following <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">umkoin-cli -testnet addnode 192.0.2.113:18333 onetry</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">umkoin-cli -testnet addnode 192.0.2.113:16333 onetry</code></pre></figure>
 
   <p>Result (no <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> from <code>umkoin-cli</code> because result is set to <code>null</code>).</p>
 
@@ -3804,13 +3244,6 @@ two <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address com
   </ul>
 
   <h5 id="addwitnessaddress">AddWitnessAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/addwitnessaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/addwitnessaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/addwitnessaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/addwitnessaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted wallet</a>.</em></p>
@@ -3878,13 +3311,6 @@ two <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address com
   </ul>
 
   <h5 id="backupwallet">BackupWallet</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/backupwallet.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/backupwallet.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/backupwallet.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/backupwallet.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#backupwallet" class="auto-link"><code>backupwallet</code> RPC</a> safely copies <code>wallet.dat</code> to the specified file, which can be a directory or a path with filename.</p>
@@ -3945,13 +3371,6 @@ two <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address com
   <p>﻿</p>
 
   <h5 id="bumpfee">BumpFee</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/bumpfee.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/bumpfee.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/bumpfee.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/bumpfee.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a></em></p>
 
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">Wallet</a> must be unlocked.</em></p>
@@ -4006,9 +3425,9 @@ if the <a href="/en/glossary/wallet.php" title="Software that stores private key
       </tr>
       <tr>
         <td>→ <br /><code>totalFee</code></td>
-        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>)</td>
+        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>)</td>
         <td>Optional<br />(0 or 1)</td>
-        <td>The total fee to pay in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> (not the feerate). The actual fee can be higher in rare cases if the <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a> is close to the dust limit</td>
+        <td>The total fee to pay in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> (not the feerate). The actual fee can be higher in rare cases if the <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a> is close to the dust limit</td>
       </tr>
       <tr>
         <td>→ <br /><code>replaceable</code></td>
@@ -4045,13 +3464,13 @@ if the <a href="/en/glossary/wallet.php" title="Software that stores private key
       </tr>
       <tr>
         <td>→ <br /><code>origfee</code></td>
-        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
+        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The fee of the replaced transaction</td>
       </tr>
       <tr>
         <td>→ <br /><code>fee</code></td>
-        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
+        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The fee of the new transaction</td>
       </tr>
@@ -4093,13 +3512,6 @@ if the <a href="/en/glossary/wallet.php" title="Software that stores private key
   </ul>
 
   <h5 id="clearbanned">ClearBanned</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/clearbanned.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/clearbanned.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/clearbanned.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/clearbanned.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#clearbanned" class="auto-link"><code>clearbanned</code> RPC</a> clears list of banned <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</p>
@@ -4143,13 +3555,6 @@ if the <a href="/en/glossary/wallet.php" title="Software that stores private key
   </ul>
 
   <h5 id="createmultisig">CreateMultiSig</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/createmultisig.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/createmultisig.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/createmultisig.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/createmultisig.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#createmultisig" class="auto-link"><code>createmultisig</code> RPC</a> creates a P2SH multi-<a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a> <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
 
   <p><em>Parameter #1—the number of <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required</em></p>
@@ -4262,13 +3667,6 @@ one full <a href="/en/glossary/public-key.php" title="The public portion of a ke
   </ul>
 
   <h5 id="createrawtransaction">CreateRawTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/createrawtransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/createrawtransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/createrawtransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/createrawtransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#createrawtransaction" class="auto-link"><code>createrawtransaction</code> RPC</a> creates an unsigned <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> that spends a previous <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> to a new <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> with a P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a>. The transaction is not stored in the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> or transmitted to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
 
   <p><em>Parameter #1—<a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">Inputs</a></em></p>
@@ -4338,7 +3736,7 @@ one full <a href="/en/glossary/public-key.php" title="The public portion of a ke
         <td>→<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">Address</a>/Amount</td>
         <td>string : <a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(1 or more)</td>
-        <td>A key/value pair with the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> to pay as a string (key) and the amount to pay that <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> (value) in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>A key/value pair with the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> to pay as a string (key) and the amount to pay that <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> (value) in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
     </tbody>
   </table>
@@ -4411,13 +3809,6 @@ one full <a href="/en/glossary/public-key.php" title="The public portion of a ke
   </ul>
 
   <h5 id="decoderawtransaction">DecodeRawTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/decoderawtransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/decoderawtransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/decoderawtransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/decoderawtransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#decoderawtransaction" class="auto-link"><code>decoderawtransaction</code> RPC</a> decodes a <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> hex string into a JSON object describing the transaction.</p>
 
   <p><em>Parameter #1—<a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quotraw&quot; in their names." class="auto-link">serialized transaction</a> in hex</em></p>
@@ -4521,13 +3912,6 @@ ffb10d4b8ffffffff01b0a86a00000000001976a91401b81d5fa1e55e069e3cc<span class="se"
   </ul>
 
   <h5 id="decodescript">DecodeScript</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/decodescript.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/decodescript.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/decodescript.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/decodescript.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#decodescript" class="auto-link"><code>decodescript</code> RPC</a> decodes a hex-encoded P2SH <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>.</p>
 
   <p><em>Parameter #1—a hex-encoded <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a></em></p>
@@ -4638,13 +4022,6 @@ c0e5d0ea20ff9f5d3396cb5b1906aa9c56a0e7b5edc0c5d553ae</code></pre></figure>
   </ul>
 
   <h5 id="disconnectnode">DisconnectNode</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/disconnectnode.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/disconnectnode.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/disconnectnode.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/disconnectnode.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#disconnectnode" class="auto-link"><code>disconnectnode</code> RPC</a> immediately disconnects from a specified <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
@@ -4695,7 +4072,7 @@ c0e5d0ea20ff9f5d3396cb5b1906aa9c56a0e7b5edc0c5d553ae</code></pre></figure>
 
   <p>Disconnects following <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> from your <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet disconnectnode 192.0.2.113:18333</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet disconnectnode 192.0.2.113:16333</code></pre></figure>
 
   <p>Result (no <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> from <code>bitcoin-cli</code> because result is set to <code>null</code>).</p>
 
@@ -4707,13 +4084,6 @@ c0e5d0ea20ff9f5d3396cb5b1906aa9c56a0e7b5edc0c5d553ae</code></pre></figure>
   </ul>
 
   <h5 id="dumpprivkey">DumpPrivKey</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/dumpprivkey.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/dumpprivkey.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/dumpprivkey.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/dumpprivkey.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an
 <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted wallet</a>.</em></p>
 
@@ -4777,13 +4147,6 @@ c0e5d0ea20ff9f5d3396cb5b1906aa9c56a0e7b5edc0c5d553ae</code></pre></figure>
   </ul>
 
   <h5 id="dumpwallet">DumpWallet</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/dumpwallet.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/dumpwallet.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/dumpwallet.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/dumpwallet.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted
 wallet</a>.</em></p>
 
@@ -4859,13 +4222,6 @@ cNCD679B4xi17jb4XeLpbRbZCbYUugptD7dCtUTfSU4KPuK2DyKT 2014-02-05T16:58:41Z <span 
   </ul>
 
   <h5 id="encryptwallet">EncryptWallet</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/encryptwallet.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/encryptwallet.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/encryptwallet.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/encryptwallet.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#encryptwallet" class="auto-link"><code>encryptwallet</code> RPC</a> encrypts the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> with a passphrase. This is only to enable encryption for the first time. After encryption is enabled, you will need to enter the passphrase to use <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a>.</p>
@@ -4937,13 +4293,6 @@ wallet. The keypool has been flushed, you need to make a new backup.</code></pre
   </ul>
 
   <h5 id="estimatefee">EstimateFee</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/estimatefee.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/estimatefee.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/estimatefee.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/estimatefee.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#estimatefee" class="auto-link"><code>estimatefee</code> RPC</a> estimates the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> per kilobyte that needs to be paid for a transaction to be included within a certain number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</p>
 
   <p><em>Parameter #1—how many <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> the transaction may wait before being included</em></p>
@@ -5011,13 +4360,6 @@ wallet. The keypool has been flushed, you need to make a new backup.</code></pre
   </ul>
 
   <h5 id="estimatepriority">EstimatePriority</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/estimatepriority.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/estimatepriority.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/estimatepriority.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/estimatepriority.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#estimatepriority" class="auto-link"><code>estimatepriority</code> RPC</a> estimates the priority (coin age) that a transaction needs in order to be included within a certain number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> as a free <a href="/en/glossary/high-priority-transaction" title="Transactions that don't have to pay a transaction fee because their inputs have been idle long enough to accumulated large amounts of priority. Note: miners choose whether to accept free transactions." class="auto-link">high-priority transaction</a>. This should not to be confused with the <a href="/en/developer-reference.php#prioritisetransaction" class="auto-link"><code>prioritisetransaction</code> RPC</a> which will remain supported for adding fee deltas to transactions.</p>
@@ -5093,13 +4435,6 @@ wallet. The keypool has been flushed, you need to make a new backup.</code></pre
   <p>﻿</p>
 
   <h5 id="fundrawtransaction">FundRawTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/fundrawtransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/fundrawtransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/fundrawtransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/fundrawtransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#fundrawtransaction" class="auto-link"><code>fundrawtransaction</code> RPC</a> adds <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> to a transaction until it has enough in value to meet its out value. This will not modify existing <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a>, and will add one <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a> to the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>.
@@ -5149,7 +4484,7 @@ All existing <a href="/en/glossary/input.php" title="An input in a transaction w
         <td>→ <br /><code>changeAddress</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
-        <td>The bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> to receive the change. If not set, the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> is chosen from <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> pool</td>
+        <td>The umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> to receive the change. If not set, the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> is chosen from <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> pool</td>
       </tr>
       <tr>
         <td>→ <br /><code>changePosition</code></td>
@@ -5177,7 +4512,7 @@ All existing <a href="/en/glossary/input.php" title="An input in a transaction w
       </tr>
       <tr>
         <td>→ <br /><code>feeRate</code></td>
-        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
+        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The specific feerate  you are willing to pay(BTC per KB). If not set, the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> determines the fee</td>
       </tr>
@@ -5222,7 +4557,7 @@ All existing <a href="/en/glossary/input.php" title="An input in a transaction w
       </tr>
       <tr>
         <td>→ <br />fee</td>
-        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
+        <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
         <td>Required<br />(Exactly 1)</td>
         <td>Fee in BTC the resulting transaction pays</td>
       </tr>
@@ -5268,13 +4603,6 @@ ffff01405dc600000000001976a9140dfc8bafc8419853b34d5e072ad37d1a51<span class="se"
   </ul>
 
   <h5 id="generate">Generate</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/generate.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/generate.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/generate.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/generate.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#generate" class="auto-link"><code>generate</code> RPC</a> nearly instantly generates <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</p>
@@ -5365,18 +4693,11 @@ ffff01405dc600000000001976a9140dfc8bafc8419853b34d5e072ad37d1a51<span class="se"
 
   <ul>
     <li><a href="/en/developer-reference.php#generatetoaddress">GenerateToAddress</a>: mines <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> immediately to a specified <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
-    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
   </ul>
 
   <h5 id="generatetoaddress">GenerateToAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/generatetoaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/generatetoaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/generatetoaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/generatetoaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
@@ -5491,18 +4812,11 @@ eBdYAyTMXW75"</span> 500000</code></pre></figure>
 
   <ul>
     <li><a href="/en/developer-reference.php#generate">Generate</a>: nearly instantly generates <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
-    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
   </ul>
 
   <h5 id="getaccountaddress">GetAccountAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaccountaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/enn-core/rpcs/rpcs/getaccountaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaccountaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaccountaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getaccountaddress" class="auto-link"><code>getaccountaddress</code> RPC</a> returns the current Umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> for receiving payments to this account. If the account doesn’t exist, it creates both the account and a new <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> for receiving payment. Once a payment has been received to an <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, future calls to this <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> for the same account will return a different <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
@@ -5531,7 +4845,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
     </tbody>
   </table>
 
-  <p><em>Result—a bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a></em></p>
+  <p><em>Result—a umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a></em></p>
 
   <table class="ntpd">
     <thead>
@@ -5571,13 +4885,6 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   </ul>
 
   <h5 id="getaccount">GetAccount</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaccount.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaccount.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaccount.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaccount.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getaccount" class="auto-link"><code>getaccount</code> RPC</a> returns the name of the account associated with the given <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
@@ -5639,13 +4946,6 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   </ul>
 
   <h5 id="getaddednodeinfo">GetAddedNodeInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaddednodeinfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaddednodeinfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaddednodeinfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaddednodeinfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getaddednodeinfo" class="auto-link"><code>getaddednodeinfo</code> RPC</a> returns information about the given added <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, or all added <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> (except onetry <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>). Only <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> which have been manually added using the <a href="/en/developer-reference.php#addnode" class="auto-link"><code>addnode</code> RPC</a> will have their information displayed.</p>
 
   <p><em>Parameter #1—whether to display connection information</em></p>
@@ -5761,11 +5061,11 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
 
   <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"addednode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"umkoind.example.com:8333"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"addednode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"umkoind.example.com:6333"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"connected"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nt">"addresses"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.2.113:8333"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.2.113:6333"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"connected"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"outbound"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
@@ -5780,13 +5080,6 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   </ul>
 
   <h5 id="getaddressesbyaccount">GetAddressesByAccount</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaddressesbyaccount.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaddressesbyaccount.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaddressesbyaccount.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getaddressesbyaccount.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getaddressesbyaccount" class="auto-link"><code>getaddressesbyaccount</code> RPC</a> returns a list of every <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> assigned to a particular account.</p>
@@ -5860,20 +5153,13 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
 
   <ul>
     <li><a href="/en/developer-reference.php#getaccount">GetAccount</a>: returns the name of the account associated with the given <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
-    <li><a href="/en/developer-reference.php#getbalance">GetBalance</a>: gets the balance in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> across all accounts or for a particular account.</li>
+    <li><a href="/en/developer-reference.php#getbalance">GetBalance</a>: gets the balance in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> across all accounts or for a particular account.</li>
   </ul>
 
   <h5 id="getbalance">GetBalance</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getbalance.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getbalance.md">Edit</a>
-| <a href="https://github.com/umkoin/bitcoin.mmits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getbalance.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getbalance.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
-  <p>The <a href="/en/developer-reference.php#getbalance" class="auto-link"><code>getbalance</code> RPC</a> gets the balance in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> across all accounts or for a particular account.</p>
+  <p>The <a href="/en/developer-reference.php#getbalance" class="auto-link"><code>getbalance</code> RPC</a> gets the balance in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> across all accounts or for a particular account.</p>
 
   <p><em>Parameter #1—an account name</em></p>
 
@@ -5900,7 +5186,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
 
   <p><em>Parameter #3—whether to include <a href="/en/glossary/watch-only-address" title="An address or pubkey script stored in the wallet without the corresponding private key, allowing the wallet to watch for outputs but not spend them." class="auto-link">watch-only addresses</a></em></p>
 
-  <p><em>Result—the balance in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></em></p>
+  <p><em>Result—the balance in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></em></p>
 
   <table class="ntpd">
     <thead>
@@ -5916,7 +5202,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td><code>result</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The balance of the account (or all accounts) in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The balance of the account (or all accounts) in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
     </tbody>
   </table>
@@ -5942,13 +5228,6 @@ that account.</p>
   </ul>
 
   <h5 id="getbestblockhash">GetBestBlockHash</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getbestblockhash.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getbestblockhash.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getbestblockhash.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getbestblockhash.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getbestblockhash" class="auto-link"><code>getbestblockhash</code> RPC</a> returns the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash of the most recent <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>.</p>
 
   <p><em>Parameters: none</em></p>
@@ -5990,13 +5269,6 @@ that account.</p>
   </ul>
 
   <h5 id="getblock">GetBlock</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblock.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblock.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblock.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblock.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code> RPC</a> gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> with a particular <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash from the local <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> database either as a JSON object or as a <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a>.</p>
 
   <p><em>Parameter #1—<a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash</em></p>
@@ -6180,7 +5452,7 @@ that account.</p>
         <td>→<br /><code>chainwork</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
+        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
       </tr>
       <tr>
         <td>→<br /><code>previousblockhash</code></td>
@@ -6253,13 +5525,6 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   </ul>
 
   <h5 id="getblockchaininfo">GetBlockChainInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockchaininfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockchaininfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockchaininfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockchaininfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getblockchaininfo" class="auto-link"><code>getblockchaininfo</code> RPC</a> provides information about the current state of the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>.</p>
 
   <p><em>Parameters: none</em></p>
@@ -6346,7 +5611,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td>→<br /><code>softforks</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
-        <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />An array of objects each describing a current or previous <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the bitcoin protocol  wherein only previously valid blocks/transactions  are made invalid. Sincodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft fork</a></td>
+        <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />An array of objects each describing a current or previous <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Sincodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft fork</a></td>
       </tr>
       <tr>
         <td>→ →<br />Softfork</td>
@@ -6530,19 +5795,12 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
     <li><a href="/en/developer-reference.php#getnetworkinfo">GetNetworkInfo</a>: returns information about the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> connection to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</li>
     <li><a href="/en/developer-reference.php#getwalletinfo">GetWalletInfo</a>: provides information about the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</li>
   </ul>
 
   <h5 id="getblockcount">GetBlockCount</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockcount.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockcount.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockcount.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=So0File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockcount.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getblockcount" class="auto-link"><code>getblockcount</code> RPC</a> returns the number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> in the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>.</p>
 
   <p><em>Parameters: none</em></p>
@@ -6584,13 +5842,6 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   </ul>
 
   <h5 id="getblockhash">GetBlockHash</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockhash.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockhash.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockhash.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockhash.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getblockhash" class="auto-link"><code>getblockhash</code> RPC</a> returns the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> at the given <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> in the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>.</p>
 
   <p><em>Parameter—a <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a></em></p>
@@ -6651,13 +5902,6 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   </ul>
 
   <h5 id="getblockheader">GetBlockHeader</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockheader.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockheader.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockheader.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblockheader.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#getblockheader" class="auto-link"><code>getblockheader</code> RPC</a> gets a <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> with a particular <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash from the local <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> database either as a JSON object or as a <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a>.</p>
@@ -6807,7 +6051,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td>→<br /><code>chainwork</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
+        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
       </tr>
       <tr>
         <td>→<br /><code>previousblockhash</code></td>
@@ -6871,14 +6115,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   </ul>
 
   <h5 id="getblocktemplate">GetBlockTemplate</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblocktemplate.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblocktemplate.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblocktemplate.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getblocktemplate.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p>The <a href="/en/developer-reference.php#getblocktemplate" class="auto-link"><code>getblocktemplate</code> RPC</a> gets a <a href="/en/glossary/block.php" title="One or mtransactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software. For more
+  <p>The <a href="/en/developer-reference.php#getblocktemplate" class="auto-link"><code>getblocktemplate</code> RPC</a> gets a <a href="/en/glossary/block.php" title="One or mtransactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software. For more
 information, please see the following resources:</p>
 
   <ul>
@@ -6891,19 +6128,12 @@ information, please see the following resources:</p>
 
   <ul>
     <li><a href="/en/developer-reference.php#setgenerate">SetGenerate</a>: was removed in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a>.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
-    <li><a href="/en/developer-reference.php#submitblock">SubmitBlock</a>: accepts a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, verifies it is a valid addition to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Extra parameters are ignored by Umkoin Core but may be used by <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools or other programs.</li>
-    <li><a href="/en/developer-reference.php#prioritisetransaction">PrioritiseTransaction</a>: adds virtual priority or fee to a transaction, allowing it to be accepted into <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> mined by this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> (or <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> which use this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.)</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#submitblock">SubmitBlock</a>: accepts a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, verifies it is a valid addition to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Extra parameters are ignored by Umkoin Core but may be used by <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools or other programs.</li>
+    <li><a href="/en/developer-reference.php#prioritisetransaction">PrioritiseTransaction</a>: adds virtual priority or fee to a transaction, allowing it to be accepted into <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> mined by this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> (or <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> which use this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.)</li>
   </ul>
 
   <h5 id="getchaintips">GetChainTips</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getchaintips.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getchaintips.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getchaintips.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getchaintips.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getchaintips" class="auto-link"><code>getchaintips</code> RPC</a> returns information about the highest-<a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> (tip) of each local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>.</p>
 
   <p><em>Parameters: none</em></p>
@@ -6993,13 +6223,6 @@ information, please see the following resources:</p>
   </ul>
 
   <h5 id="getconnectioncount">GetConnectionCount</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getconnectioncount.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getconnectioncount.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getconnectioncount.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getconnectioncount.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getconnectioncount" class="auto-link"><code>getconnectioncount</code> RPC</a> returns the number of connections to other <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.</p>
 
   <p><em>Parameters: none</em></p>
@@ -7042,13 +6265,6 @@ information, please see the following resources:</p>
   </ul>
 
   <h5 id="getdifficulty">GetDifficulty</h5>
-  <div class="subhead-links sourcefile" data-soe="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getdifficulty.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getdifficulty.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getdifficulty.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getdifficulty.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getdifficulty" class="auto-link"><code>getdifficulty</code> RPC</a></p>
 
   <p><em>Parameters: none</em></p>
@@ -7086,17 +6302,10 @@ information, please see the following resources:</p>
 
   <ul>
     <li><a href="/en/developer-reference.php#getnetworkhashps">GetNetworkHashPS</a>: returns the estimated current or historical <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> hashes per second based on the last <em>n</em> <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
   </ul>
 
   <h5 id="getgenerate">GetGenerate</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getgenerate.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getgenerate.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getgenerate.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getgenerate.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getgenerate" class="auto-link"><code>getgenerate</code> RPC</a> was removed in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a>. If you have an older
@@ -7107,17 +6316,10 @@ version of Umkoin Core, use <code>help getgenerate</code> to get help.</p>
   <ul>
     <li><a href="/en/developer-reference.php#generate">Generate</a>: nearly instantly generates <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</li>
     <li><a href="/en/developer-reference.php#generatetoaddress">GenerateToAddress</a>: mines <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> immediately to a specified <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
   </ul>
 
   <h5 id="gethashespersec">GetHashesPerSec</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/gethashespersec.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gethashespersec.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gethashespersec.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/gethashespersec.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#gethashespersec" class="auto-link"><code>gethashespersec</code> RPC</a> was removed in <a href="/en/release/v0.11.0" class="auto-link">Umkoin Core 0.11.0</a>. If you have an older
@@ -7127,17 +6329,10 @@ version of Umkoin Core, use <code>help gethashespersec</code> to get help.</p>
 
   <ul>
     <li><a href="/en/developer-reference.php#generate">Generate</a>: nearly instantly generates <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
   </ul>
 
   <h5 id="getinfo">GetInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getinfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getinfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getinfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getinfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getinfo" class="auto-link"><code>getinfo</code> RPC</a> prints various information about the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> and the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
 
   <p><a href="/en/developer-reference.php#getinfo" class="auto-link"><code>getinfo</code></a> will be removed in a later version of Umkoin
@@ -7185,7 +6380,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td>→<br /><code>balance</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Optional<br />(0 or 1)</td>
-        <td>The balance of the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Only returned if <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a> is enabled</td>
+        <td>The balance of the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Only returned if <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a> is enabled</td>
       </tr>
       <tr>
         <td>→<br /><code>blocks</code></td>
@@ -7291,19 +6486,12 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   <ul>
     <li><a href="/en/developer-reference.php#getblockchaininfo">GetBlockChainInfo</a>: provides information about the current state of the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>.</li>
     <li><a href="/en/developer-reference.php#getmempoolinfo">GetMemPoolInfo</a>: returns information about the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> current transaction memory pool.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
     <li><a href="/en/developer-reference.php#getnetworkinfo">GetNetworkInfo</a>: returns information about the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> connection to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</li>
     <li><a href="/en/developer-reference.php#getwalletinfo">GetWalletInfo</a>: provides information about the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</li>
   </ul>
 
   <h5 id="getmemoryinfo">GetMemoryInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmemoryinfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmemoryinfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmemoryinfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmemoryinfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#getmemoryinfo" class="auto-link"><code>getmemoryinfo</code> RPC</a> returns information about memory usage.</p>
@@ -7397,13 +6585,6 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   </ul>
 
   <h5 id="getmempoolancestors">GetMemPoolAncestors</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolancestors.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolancestors.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolancestors.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolancestors.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#getmempoolancestors" class="auto-link"><code>getmempoolancestors</code> RPC</a> returns all in-mempool ancestors for a transaction in the mempool.</p>
@@ -7510,13 +6691,13 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td>→ →<br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>time</code></td>
@@ -7659,13 +6840,6 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   </ul>
 
   <h5 id="getmempooldescendants">GetMemPoolDescendants</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempooldescendants.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempooldescendants.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempooldescendants.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempooldescendants.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#getmempooldescendants" class="auto-link"><code>getmempooldescendants</code> RPC</a> returns all in-mempool descendants for a transaction in the mempool.</p>
@@ -7773,13 +6947,13 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td>→ →<br /><code>fee</cotd>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>time</code></td>
@@ -7922,13 +7096,6 @@ ce1af1d255fda67a6e3bd63ba1d908c8c2 <span class="nb">true</span></code></pre></fi
   </ul>
 
   <h5 id="getmempoolentry">GetMemPoolEntry</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolentry.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolentry.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolentry.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolentry.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#getmempoolentry" class="auto-link"><code>getmempoolentry</code> RPC</a> returns mempool data for given transaction (must be in mempool).</p>
@@ -7982,13 +7149,13 @@ ce1af1d255fda67a6e3bd63ba1d908c8c2 <span class="nb">true</span></code></pre></fi
         <td>→<br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→<br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→<br /><code>time</code></td>
@@ -8099,13 +7266,6 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   </ul>
 
   <h5 id="getmempoolinfo">GetMemPoolInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolinfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolinfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolinfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmempoolinfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getmempoolinfo" class="auto-link"><code>getmempoolinfo</code> RPC</a> returns information about the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> current transaction memory pool.</p>
 
   <p><em>Parameters: none</em></p>
@@ -8184,18 +7344,11 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   </ul>
 
   <h5 id="getmininginfo">GetMiningInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmininginfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmininginfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmininginfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getmininginfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p>The <a href="/en/developer-reference.php#getmininginfo" class="auto-link"><code>getmininginfo</code> RPC</a> returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</p>
+  <p>The <a href="/en/developer-reference.php#getmininginfo" class="auto-link"><code>getmininginfo</code> RPC</a> returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</p>
 
   <p><em>Parameters: none</em></p>
 
-  <p><em>Result—various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information</em></p>
+  <p><em>Result—various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information</em></p>
 
   <table class="ntpd">
     <thead>
@@ -8211,7 +7364,7 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
         <td><code>result</code></td>
         <td>object</td>
         <td>Required<br />(exactly 1)</td>
-        <td>Various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information</td>
+        <td>Various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information</td>
       </tr>
       <tr>
         <td>→<br /><code>blocks</code></td>
@@ -8311,18 +7464,11 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   <ul>
     <li><a href="/en/developer-reference.php#getmempoolinfo">GetMemPoolInfo</a>: returns information about the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> current transaction memory pool.</li>
     <li><a href="/en/developer-reference.php#getrawmempool">GetRawMemPool</a>: returns all <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">transaction identifiers</a> (<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.</li>
-    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
+    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
     <li><a href="/en/developer-reference.php#generate">Generate</a>: nearly instantly generates <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</li>
   </ul>
 
   <h5 id="getnettotals">GetNetTotals</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnettotals.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnettotals.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnettotals.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnettotals.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getnettotals" class="auto-link"><code>getnettotals</code> RPC</a> returns information about <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> traffic, including bytesin, bytes out, and the current time.</p>
 
   <p><em>Parameters: none</em></p>
@@ -8436,13 +7582,6 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   </ul>
 
   <h5 id="getnetworkhashps">GetNetworkHashPS</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnetworkhashps.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnetworkhashps.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnetworkhashps.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnetworkhashps.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getnetworkhashps" class="auto-link"><code>getnetworkhashps</code> RPC</a> returns the estimated current or historical <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> hashes per second based on the last <em>n</em> <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</p>
 
   <p><em>Parameter #1—number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> to average</em></p>
@@ -8527,13 +7666,6 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   </ul>
 
   <h5 id="getnetworkinfo">GetNetworkInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnetworkinfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnetworkinfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnetworkinfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnetworkinfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getnetworkinfo" class="auto-link"><code>getnetworkinfo</code> RPC</a> returns information about the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> connection to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
 
   <p><em>Parameters: none</em></p>
@@ -8726,7 +7858,7 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   </span><span class="nt">"localaddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0600:3c03::f03c:91ff:fe89:dfc4"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">8333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6333</span><span class="p">,</span><span class="w">
       </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -8741,13 +7873,6 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   </ul>
 
   <h5 id="getnewaddress">GetNewAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnewaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnewaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnewaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getnewaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getnewaddress" class="auto-link"><code>getnewaddress</code> RPC</a> returns a new Umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> for receiving payments. If an account is specified, payments received with the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using heck to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> will be credited to that account.</p>
@@ -8773,7 +7898,7 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
     </tbody>
   </table>
 
-  <p><em>Result—a bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> never previously returned</em></p>
+  <p><em>Result—a umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> never previously returned</em></p>
 
   <table class="ntpd">
     <thead>
@@ -8809,17 +7934,10 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   <ul>
     <li><a href="/en/developer-reference.php#getaccountaddress">GetAccountAddress</a>: returns the current Umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> for receiving payments to this account. If the account doesn’t exist, it creates both the account and a new <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> for receiving payment. Once a payment has been received to an <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, future calls to this <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> for the same account will return a different <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
     <li><a href="/en/developer-reference.php#getrawchangeaddress">GetRawChangeAddress</a>: returns a new Umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> for receiving change. This is for use with <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a>, not normal use.</li>
-    <li><a href="/en/developer-reference.php#getbalance">GetBalance</a>: gets the balance in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> across all accounts or for a particular account.</li>
+    <li><a href="/en/developer-reference.php#getbalance">GetBalance</a>: gets the balance in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> across all accounts or for a particular account.</li>
   </ul>
 
   <h5 id="getpeerinfo">GetPeerInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getpeerinfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getpeerinfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getpeerinfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getpeerinfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getpeerinfo" class="auto-link"><code>getpeerinfo</code> RPC</a> returns data about each connected <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
 
   <p><em>Parameters: none</em></p>
@@ -8864,7 +7982,7 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
         <td>→ →<br /><code>addrlocal</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
-        <td>Our IP address and port number according to the remote <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. May be incorrect due to error or lying. Most <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block. The method is used by some lightweight Umkoin clients." class="auto-link">SPV nodes</a> set this to <code>127.0.0.1:8333</code></td>
+        <td>Our IP address and port number according to the remote <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. May be incorrect due to error or lying. Most <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block. The method is used by some lightweight Umkoin clients." class="auto-link">SPV nodes</a> set this to <code>127.0.0.1:6333</code></td>
       </tr>
       <tr>
         <td>→ →<br /><code>services</code></td>
@@ -9024,7 +8142,7 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
     </span><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="nt">"addr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.0.2.113:43132"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"addrlocal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1:8333"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"addrlocal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"127.0.0.1:6333"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"services"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"relaytxes"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"lastsend"</span><span class="p">:</span><span class="w"> </span><span class="mi">1481158534</span><span class="p">,</span><span class="w">
@@ -9073,13 +8191,6 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   </ul>
 
   <h5 id="getrawchangeaddress">GetRawChangeAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawchangeaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawchangeaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawchangeaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawchangeaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getrawchangeaddress" class="auto-link"><code>getrawchangeaddress</code> RPC</a> returns a new Umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> for receiving change. This is for use with <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transactions</a>, not normal use.</p>
@@ -9123,13 +8234,6 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   </ul>
 
   <h5 id="getrawmempool">GetRawMemPool</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawmempool.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawmempool.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawmempool.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawmempool.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getrawmempool" class="auto-link"><code>getrawmempool</code> RPC</a> returns all <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">transaction identifiers</a> (<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.</p>
 
   <p><em>Parameter—desired <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> format</em></p>
@@ -9214,13 +8318,13 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
         <td>→ →<br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>time</code></td>
@@ -9364,13 +8468,6 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
   <p>﻿</p>
 
   <h5 id="getrawtransaction">GetRawTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawtransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawtransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawtransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getrawtransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getrawtransaction" class="auto-link"><code>getrawtransaction</code> RPC</a> gets a hex-encoded <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> or a JSON object describing the transaction. By default, Umkoin Core only stores complete transaction data for <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a> and your own transactions, so the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> may fail on historic transactions unless you use the non-default <code>txindex=1</cour Umkoin Core startup settings.</p>
 
   <p><em>Parameter #1—the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction to get</em></p>
@@ -9580,13 +8677,6 @@ ef7c0cbf6ba5af68d2ea239bba709b26ff7b0b669839a63bb01c2cb8e8de481e <span class="se
   </ul>
 
   <h5 id="getreceivedbyaccount">GetReceivedByAccount</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getreceivedbyaccount.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getreceivedbyaccount.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getreceivedbyaccount.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getreceivedbyaccount.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getreceivedbyaccount" class="auto-link"><code>getreceivedbyaccount</code> RPC</a> returns the total amount received by <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">addresses</a> in a particular account from transactions with the specified number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>. It does not count <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transactions</a>.</p>
@@ -9617,7 +8707,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
 
   <p><em>Parameter #2—the minimum number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a></em></p>
 
-  <p><em>Result—the number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received</em></p>
+  <p><em>Result—the number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received</em></p>
 
   <table class="ntpd">
     <thead>
@@ -9633,14 +8723,14 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td><code>result</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by the account. May be <code>0</code></td>
+        <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by the account. May be <code>0</code></td>
       </tr>
     </tbody>
   </table>
 
   <p><em>Example from <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a></em></p>
 
-  <p>Get the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by the “doc test” account with six or more
+  <p>Get the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by the “doc test” account with six or more
 <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>:</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet getreceivedbyaccount <span class="s2">"doc test"</span> 6</code></pre></figure>
@@ -9658,13 +8748,6 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   </ul>
 
   <h5 id="getreceivedbyaddress">GetReceivedByAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getreceivedbyaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getreceivedbyaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getreceivedbyaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getreceivedbyaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet spport</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getreceivedbyaddress" class="auto-link"><code>getreceivedbyaddress</code> RPC</a> returns the total amount received by the specified <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> in transactions with the specified number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>. It does not count <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transactions</a>.</p>
@@ -9692,7 +8775,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
 
   <p><em>Parameter #2—the minimum number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a></em></p>
 
-  <p><em>Result—the number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received</em></p>
+  <p><em>Result—the number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received</em></p>
 
   <table class="ntpd">
     <thead>
@@ -9708,14 +8791,14 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td><code>result</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, excluding <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transactions</a>. May be <code>0</code></td>
+        <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, excluding <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transactions</a>. May be <code>0</code></td>
       </tr>
     </tbody>
   </table>
 
   <p><em>Example from <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a></em></p>
 
-  <p>Get the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received for a particular <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, only counting
+  <p>Get the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received for a particular <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, only counting
 transactions with six or more <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>:</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet getreceivedbyaddress mjSk1Ny9spzU2fouzYgLqGUD8U41iR35QN 6</code></pre></figure>
@@ -9733,13 +8816,6 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
   </ul>
 
   <h5 id="gettransaction">GetTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#gettransaction" class="auto-link"><code>gettransaction</code> RPC</a> gets detailed information about an in-<a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> transaction.</p>
@@ -9789,13 +8865,13 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
         <td>→<br /><a href="/en/developer-examples#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>A positive number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> if this transaction increased the total <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> balance; a negative number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> if this transaction decreased the total <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow use and receive satoshis." class="auto-link">wallet</a> balance, or <code>0</code> if the transaction had no net effect on <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> balance</td>
+        <td>A positive number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> if this transaction increased the total <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> balance; a negative number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> if this transaction decreased the total <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow use and receive satoshis." class="auto-link">wallet</a> balance, or <code>0</code> if the transaction had no net effect on <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> balance</td>
       </tr>
       <tr>
         <td>→<br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Optional<br />(0 or 1)</td>
-        <td>If an outgoing transaction, this is the fee paid by the transaction reported as negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>If an outgoing transaction, this is the fee paid by the transaction reported as negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ <br /><code>confirmations</code></td>
@@ -9909,7 +8985,7 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
         <td>→ →<br /><a href="/en/developer-examples#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>A negative bitcoin amount if sending payment; a positive bitcoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
+        <td>A negative umkoin amount if sending payment; a positive umkoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
       </tr>
       <tr>
         <td>→ →<br /><code>vout</code></td>
@@ -9921,7 +8997,7 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
         <td>→ →<br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Optional<br />(0 or 1)</td>
-        <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value. May be <code>0</code>. Not returned if receiving payment</td>
+        <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value. May be <code>0</code>. Not returned if receiving payment</td>
       </tr>
       <tr>
         <td>→ →<br /><code>abandoned</code></td>
@@ -9985,13 +9061,6 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
   </ul>
 
   <h5 id="gettxout">GetTxOut</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxout.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxout.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxout.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxout.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#gettxout" class="auto-link"><code>gettxout</code> RPC</a> returns details about an unspent transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> (<a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>).</p>
 
   <p><em>Parameter #1—the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> to get</em></p>
@@ -10091,7 +9160,7 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
         <td>→<br /><code>value</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The amount of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> spent to this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>. May be <code>0</code></td>
+        <td>The amount of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> spent to this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>. May be <code>0</code></td>
       </tr>
       <tr>
         <td>→<br /><code>scriptPubKey</code></td>
@@ -10186,13 +9255,6 @@ searching the memory pool if necessary.</p>
   </ul>
 
   <h5 id="gettxoutproof">GetTxOutProof</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxoutproof.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxoutproof.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxoutproof.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-cre/rpcs/rpcs/gettxoutproof.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#gettxoutproof" class="auto-link"><code>gettxoutproof</code> RPC</a> returns a hex-encoded proof that one or more specified transactions were included in a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.</p>
 
   <p>NOTE: By default this function only works when there is an
@@ -10308,13 +9370,6 @@ format used for the proof.</li>
   </ul>
 
   <h5 id="gettxoutsetinfo">GetTxOutSetInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxoutsetinfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxoutsetinfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxoutsetinfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/gettxoutsetinfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#gettxoutsetinfo" class="auto-link"><code>gettxoutsetinfo</code> RPC</a> returns statistics about the <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed</a> unspent transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> (<a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a>) set. Note that this call may take some time and that it only counts <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> from <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a>—it does not count <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> from the memory pool.</p>
 
   <p><em>Parameters: none</em></p>
@@ -10377,7 +9432,7 @@ format used for the proof.</li>
         <td>→<br /><code>total_amount</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> in the <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> set</td>
+        <td>The total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> in the <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> set</td>
       </tr>
     </tbody>
   </table>
@@ -10406,13 +9461,6 @@ format used for the proof.</li>
   </ul>
 
   <h5 id="getunconfirmedbalance">GetUnconfirmedBalance</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getunconfirmedbalance.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getunconfirmedbalance.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getunconfirmedbalance.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getunconfirmedbalance.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Reuires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getunconfirmedbalance" class="auto-link"><code>getunconfirmedbalance</code> RPC</a> returns the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet’s</a> total <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a> balance.</p>
@@ -10435,7 +9483,7 @@ format used for the proof.</li>
         <td><code>result</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> paid to this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> in <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a></td>
+        <td>The total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> paid to this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> in <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a></td>
       </tr>
     </tbody>
   </table>
@@ -10451,17 +9499,10 @@ format used for the proof.</li>
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#getbalance">GetBalance</a>: gets the balance in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> across all accounts or for a particular account.</li>
+    <li><a href="/en/developer-reference.php#getbalance">GetBalance</a>: gets the balance in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> across all accounts or for a particular account.</li>
   </ul>
 
   <h5 id="getwalletinfo">GetWalleo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getwalletinfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getwalletinfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getwalletinfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getwalletinfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#getwalletinfo" class="auto-link"><code>getwalletinfo</code> RPC</a> provides information about the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
@@ -10547,31 +9588,17 @@ format used for the proof.</li>
   </ul>
 
   <h5 id="getwork">GetWork</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/getwork.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getwork.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/getwork.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/getwork.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#getwork" class="auto-link"><code>getwork</code> RPC</a> was removed in <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a>. If you have an older
 version of Umkoin Core, use <code>help getwork</code> to get help.</p>
 
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
-    <li><a href="/en/developer-reference.php#submitblock">SubmitBlock</a>: accepts a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, verifies it is a valid addition to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Extra parameters are ignored by Umkoin Core but may be used by <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools or other programs.</li>
+    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
+    <li><a href="/en/developer-reference.php#submitblock">SubmitBlock</a>: accepts a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, verifies it is a valid addition to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Extra parameters are ignored by Umkoin Core but may be used by <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools or other programs.</li>
   </ul>
 
   <h5 id="help">Help</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/help.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/help.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/help.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/help.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#help" class="auto-link"><code>help</code> RPC</a> lists all available public <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> commands, or gets help for the specified <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>. Commands which are unavailable will not be listed, such as <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> if <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a> is disabled.</p>
 
   <p><em>Parameter—the name of the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> to get help for</em></p>
@@ -10641,13 +9668,6 @@ Result:
   </ul>
 
   <h5 id="importaddress">ImportAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/importaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/importaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#importaddress" class="auto-link"><code>importaddress</code> RPC</a> adds an <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> or <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> to the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> without the associated <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private key</a>, allowing you to watch for transactions affecting that <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> or <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent. Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> without being able to spend any of its <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>.</p>
@@ -10760,17 +9780,10 @@ matching it.</p>
 
   <ul>
     <li><a href="/en/developer-reference.php#importprivkey">ImportPrivKey</a>: adds a <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private key</a> to your <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>. The key should be formatted in the <a href="/en/glossary/wallet-import-format" title="A data interchange format designed to allow exporting and importing a single private key with a flag indicating whether or not it uses a compressed public key." class="auto-link">wallet import format</a> created by the <a href="/en/developer-reference.php#dumpprivkey" class="auto-link"><code>dumpprivkey</code> RPC</a>.</li>
-    <li<a href="/en/developer-reference.php#listreceivedbyaddress">ListReceivedByAddress</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
+    <li<a href="/en/developer-reference.php#listreceivedbyaddress">ListReceivedByAddress</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
   </ul>
 
   <h5 id="importmulti">ImportMulti</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/importmulti.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importmulti.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importmulti.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/importmulti.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a></em></p>
 
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">Wallet</a> must be unlocked.</em></p>
@@ -10850,7 +9863,7 @@ matching it.</p>
         <td>Stating whether matching <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> should be considered watched even when they’re not spendable. This is only allowed if keys are empty. The default is <code>false</code></td>
       </tr>
       <tr>
-        <td>→ →<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a bitcoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
+        <td>→ →<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Label to assign to the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, only allowed with <code>internal</code> set to <code>false</code>. The default is an empty string (“”)</td>
@@ -10928,7 +9941,7 @@ matching it.</p>
         <td>The error code</td>
       </tr>
       <tr>
-        <td>→ → → <br /><a href="/en/developer-guide.php#term-message" title="A parameter of bitcoin: URIs which allows the receiver to optionally specify a message to the spender" class="auto-link"><code>message</code></a></td>
+        <td>→ → → <br /><a href="/en/developer-guide.php#term-message" title="A parameter of umkoin: URIs which allows the receiver to optionally specify a message to the spender" class="auto-link"><code>message</code></a></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The error message</td>
@@ -10978,13 +9991,6 @@ matching it.</p>
   </ul>
 
   <h5 id="importprivkey">ImportPrivKey</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/importprivkey.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importprivkey.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importprivkey.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/importprivkey.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">Wallet</a> must be unlocked.</em></p>
 
   <p>The <a href="/en/developer-reference.php#importprivkey" class="auto-link"><code>importprivkey</code> RPC</a> adds a <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private key</a> to your <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>. The key should be formatted in the <a href="/en/glossary/wallet-import-format" title="A data interchange format designed to allow exporting and importing a single private key with a flag indicating whether or not it uses a compressed public key." class="auto-link">wallet import format</a> created by the <a href="/en/developer-reference.php#dumpprivkey" class="auto-link"><code>dumpprivkey</code> RPC</a>.</p>
@@ -11095,13 +10101,6 @@ entire <a href="/en/glossary/block-chain.php" title="A chain of blocks with each
   </ul>
 
   <h5 id="importprunedfunds">ImportPrunedFunds</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/importprunedfunds.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importprunedfunds.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importprunedfunds.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/importprunedfunds.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
@@ -11187,13 +10186,6 @@ The end-user is responsible to import additional transactions that subsequently 
   </ul>
 
   <h5 id="importwallet">ImportWallet</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/importwallet.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importwallet.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/importwallet.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/importwallet.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an
 <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted wallet</a>.</em></p>
 
@@ -11257,13 +10249,6 @@ The end-user is responsible to import additional transactions that subsequently 
   </ul>
 
   <h5 id="keypoolrefill">KeyPoolRefill</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/keypoolrefill.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/keypoolrefill.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/keypoolrefill.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/keypoolrefill.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted
 wallet</a>.</em></p>
 
@@ -11328,13 +10313,6 @@ wallet</a>.</em></p>
   </ul>
 
   <h5 id="listaccounts">ListAccounts</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listaccounts.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listaccounts.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listaccounts.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listaccounts.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#listaccounts" class="auto-link"><code>listaccounts</code> RPC</a> lists accounts and their balances.</p>
@@ -11406,7 +10384,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td>→<br />Account : Balance</td>
         <td>string : <a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(1 or more)</td>
-        <td>The name of an account as a string paired with the balance of the account as a number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> may be negative if the account has spent more <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> than it received. Accounts with zero balances and zero transactions will be displayed</td>
+        <td>The name of an account as a string paired with the balance of the account as a number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> may be negative if the account has spent more <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> than it received. Accounts with zero balances and zero transactions will be displayed</td>
       </tr>
     </tbody>
   </table>
@@ -11437,17 +10415,10 @@ included.</p>
   <ul>
     <li><a href="/en/developer-reference.php#getaccount">GetAccount</a>: returns the name of the account associated with the given <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
     <li><a href="/en/developer-reference.php#getaddressesbyaccount">GetAddressesByAccount</a>: returns a list of every <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> assigned to a particular account.</li>
-    <li><a href="/en/developer-reference.php#listreceivedbyaccount">ListReceivedByAccount</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each account.</li>
+    <li><a href="/en/developer-reference.php#listreceivedbyaccount">ListReceivedByAccount</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each account.</li>
   </ul>
 
   <h5 id="listaddressgroupings">ListAddressGroupings</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listaddressgroupings.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listaddressgroupings.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listaddressgroupings.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listaddressgroupings.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#listaddressgroupings" class="auto-link"><code>listaddressgroupings</code> RPC</a> lists groups of <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">addresses</a> that may have had their common ownership made public by common use as <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> in the same transaction or from being used as change from a previous transaction.</p>
@@ -11533,13 +10504,6 @@ included.</p>
   </ul>
 
   <h5 id="listbanned"tBanned</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listbanned.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listbanned.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listbanned.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listbanned.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#listbanned" class="auto-link"><code>listbanned</code> RPC</a> lists all banned IPs/Subnets.</p>
@@ -11628,13 +10592,6 @@ included.</p>
   </ul>
 
   <h5 id="listlockunspent">ListLockUnspent</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listlockunspent.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listlockunspent.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listlockunspent.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listlockunspent.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#listlockunspent" class="auto-link"><code>listlockunspent</code> RPC</a> returns a list of temporarily unspendable (locked) <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>.</p>
@@ -11696,20 +10653,13 @@ included.</p>
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#lockunspent">LockUnspent</a>: temporarily locks or unlocks specified transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>. A locked transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> will not be chosen by automatic coin selection when spending <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Locks are stored in memory only, so <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> start with zero locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> and the locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> list is always cleared when a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> stops or fails.</li>
+    <li><a href="/en/developer-reference.php#lockunspent">LockUnspent</a>: temporarily locks or unlocks specified transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>. A locked transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> will not be chosen by automatic coin selection when spending <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Locks are stored in memory only, so <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> start with zero locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> and the locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> list is always cleared when a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> stops or fails.</li>
   </ul>
 
   <h5 id="listreceivedbyaccount">ListReceivedByAccount</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listreceivedbyaccount.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listreceivedbyaccount.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listreceivedbyaccount.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listreceivedbyaccount.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
-  <p>The <a href="/en/developer-reference.php#listreceivedbyaccount" class="auto-link"><code>listreceivedbyaccount</code> RPC</a> lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each account.</p>
+  <p>The <a href="/en/developer-reference.php#listreceivedbyaccount" class="auto-link"><code>listreceivedbyaccount</code> RPC</a> lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each account.</p>
 
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" /> <strong>Warning:</strong> <a href="/en/developer-reference.php#listreceivedbyaccount" class="auto-link"><code>listreceivedbyaccount</code></a> will be removed in a later version of Umkoin
 Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> listed in the See Also subsection below instead.</p>
@@ -11817,7 +10767,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td>→ →<br /><code>amount</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The total amount received by this account in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The total amount received by this account in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>confirmations</code></td>
@@ -11853,22 +10803,15 @@ which have been <a href="/en/glossary/confirmation-score" title="A score indicat
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#listreceivedbyaddress">ListReceivedByAddress</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
+    <li><a href="/en/developer-reference.php#listreceivedbyaddress">ListReceivedByAddress</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
     <li><a href="/en/developer-reference.php#getreceivedbyaccount">GetReceivedByAccount</a>: returns the total amount received by <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">addresses</a> in a particular account from transactions with the specified number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>. It does not count <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transactions</a>.</li>
     <li><a href="/en/developer-reference.php#getreceivedbyaddress">GetReceivedByAddress</a>: returns the total amount received by the specified <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way usersnge payment information." class="auto-link">address</a> in transactions with the specified number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>. It does not count <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transactions</a>.</li>
   </ul>
 
   <h5 id="listreceivedbyaddress">ListReceivedByAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listreceivedbyaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listreceivedbyaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listreceivedbyaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listreceivedbyaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
-  <p>The <a href="/en/developer-reference.php#listreceivedbyaddress" class="auto-link"><code>listreceivedbyaddress</code> RPC</a> lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
+  <p>The <a href="/en/developer-reference.php#listreceivedbyaddress" class="auto-link"><code>listreceivedbyaddress</code> RPC</a> lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
 
   <p><em>Parameter #1—the minimum number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> a transaction must have to be counted</em></p>
 
@@ -11979,7 +10922,7 @@ which have been <a href="/en/glossary/confirmation-score" title="A score indicat
         <td>→ →<br /><a href="/en/developer-examples#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The total amount the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> has received in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The total amount the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> has received in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>confirmations</code></td>
@@ -11988,7 +10931,7 @@ which have been <a href="/en/glossary/confirmation-score" title="A score indicat
         <td>The number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> of the latest transaction to the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>. May be <code>0</code> for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a></td>
       </tr>
       <tr>
-        <td>→ →<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a bitcoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
+        <td>→ →<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The account the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> belongs to. May be the default account, an empty string (“”)</td>
@@ -12045,19 +10988,12 @@ which have been <a href="/en/glossary/confirmation-score" title="A score indicat
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#listreceivedbyaccount">ListReceivedByAccount</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each account.</li>
+    <li><a href="/en/developer-reference.php#listreceivedbyaccount">ListReceivedByAccount</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each account.</li>
     <li><a href="/en/developer-reference.php#getreceivedbyaddress">GetReceivedByAddress</a>: returns the total amount received by the specified <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> in transactions with the specified number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>. It does not count <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transactions</a>.</li>
     <li><a href="/en/developer-reference.php#getreceivedbyaccount">GetReceivedByAccount</a>: returns the total amount received by <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">addresses</a> in a particular account from transactions with the specified number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>. It does not count <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block. Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transactions</a>.</li>
   </ul>
 
   <h5 id="listsinceblock">ListSinceBlock</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listsinceblock.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listsinceblock.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listsinceblock.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listsinceblock.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#listsinceblock" class="auto-link"><code>listsinceblock</code> RPC</a> gets all transactions affecting the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> which have occurred since a particular <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, plus the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> at a particular depth.</p>
@@ -12183,7 +11119,7 @@ which have been <a href="/en/glossary/confirmation-score" title="A score indicat
         <td>→ → → <br /><a href="/en/developer-examples#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>A negative bitcoin amount if sending payment; a positive bitcoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
+        <td>A negative umkoin amount if sending payment; a positive umkoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
       </tr>
       <tr>
         <td>→ → → <br /><code>vout</code></td>
@@ -12195,7 +11131,7 @@ which have been <a href="/en/glossary/confirmation-score" title="A score indicat
         <td>→ → → <br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Optional<br />(0 or 1)</td>
-        <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value. May be <code>0</code>. Not returned if receiving payment</td>
+        <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value. May be <code>0</code>. Not returned if receiving payment</td>
       </tr>
       <tr>
         <td>→ → → <br /><code>confirmations</code></td>
@@ -12339,18 +11275,11 @@ transactions) and the <a href="/en/glossary/block-header.php" title="An 80-byte 
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#listreceivedbyaccount">ListReceivedByAccount</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each account.</li>
-    <li><a href="/en/developer-reference.php#listreceivedbyaddress">ListReceivedByAddress</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
+    <li><a href="/en/developer-reference.php#listreceivedbyaccount">ListReceivedByAccount</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each account.</li>
+    <li><a href="/en/developer-reference.php#listreceivedbyaddress">ListReceivedByAddress</a>: lists the total number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> received by each <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
   </ul>
 
   <h5 id="listtransactions">ListTransactions</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listtransactions.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listtransactions.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listtransactions.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listtransactions.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#listtransactions" class="auto-link"><code>listtransactions</code> RPC</a> returns the most recent transactions that affect the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
@@ -12485,10 +11414,10 @@ transactions) and the <a href="/en/glossary/block-header.php" title="An 80-byte 
         <td>→ →<br /><a href="/en/developer-examples#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>A negative bitcoin amount if sending payment; a positive bitcoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
+        <td>A negative umkoin amount if sending payment; a positive umkoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
       </tr>
       <tr>
-        <td>→ →<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a bitcoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
+        <td>→ →<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>A comment for the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>/transaction</td>
@@ -12503,7 +11432,7 @@ transactions) and the <a href="/en/glossary/block-header.php" title="An 80-byte 
         <td>→ →<br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Optional<br />(0 or 1)</td>
-        <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value. May be <code>0</code>. Not returned if receiving payment or for <em>move</em> category payments</td>
+        <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value. May be <code>0</code>. Not returned if receiving payment or for <em>move</em> category payments</td>
       </tr>
       <tr>
         <td>→ →<br /><code>confirmations</code></td>
@@ -12587,7 +11516,7 @@ transactions) and the <a href="/en/glossary/block-header.php" title="An 80-byte 
         <td>→ →<br /><code>otheraccount</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
-        <td>This is the account the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> were moved from or moved to, as indicated by a negative or positive <em>amount</em> field in this payment. Only returned by <em>move</em> category payments</td>
+        <td>This is the account the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> were moved from or moved to, as indicated by a negative or positive <em>amount</em> field in this payment. Only returned by <em>move</em> category payments</td>
       </tr>
       <tr>
         <td>→ →<br /><a href="/en/glossary/rbf" title="Replacing one version of an unconfirmed transaction with a different version of the transaction that pays a higher transaction fee. May use BP125 signaling." class="auto-link"><code>bip125-replaceable</code></a></td>
@@ -12643,13 +11572,6 @@ transactions) and the <a href="/en/glossary/block-header.php" title="An 80-byte 
   </ul>
 
   <h5 id="listunspent">ListUnspent</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/listunspent.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listunspent.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/listunspent.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/listunspent.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#listunspent" class="auto-link"><code>listunspent</code> RPC</a> returns an array of unspent transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> belonging to this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>. <strong>Note:</strong> as of <a href="/en/release/v0.10.0" class="auto-link">Umkoin
@@ -12789,7 +11711,7 @@ the <em>spendable</em> field in the results described below.</p>
         <td>→ →<br /><a href="/en/developer-examples#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The amount paid to the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The amount paid to the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>confirmations</code></td>
@@ -12842,20 +11764,13 @@ the <em>spendable</em> field in the results described below.</p>
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#listtransactions">ListTransactions</a>: returns the most recent transactions that affect the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a    <li><a href="/en/developer-reference.php#lockunspent">LockUnspent</a>: temporarily locks or unlocks specified transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>. A locked transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> will not be chosen by automatic coin selection when spending <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Locks are stored in memory only, so <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> start with zero locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> and the locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> list is always cleared when a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> stops or fails.</li>
+    <li><a href="/en/developer-reference.php#listtransactions">ListTransactions</a>: returns the most recent transactions that affect the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a    <li><a href="/en/developer-reference.php#lockunspent">LockUnspent</a>: temporarily locks or unlocks specified transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>. A locked transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> will not be chosen by automatic coin selection when spending <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Locks are stored in memory only, so <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> start with zero locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> and the locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> list is always cleared when a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> stops or fails.</li>
   </ul>
 
   <h5 id="lockunspent">LockUnspent</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/lockunspent.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/lockunspent.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/lockunspent.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/lockunspent.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
-  <p>The <a href="/en/developer-reference.php#lockunspent" class="auto-link"><code>lockunspent</code> RPC</a> temporarily locks or unlocks specified transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>. A locked transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> will not be chosen by automatic coin selection when spending <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Locks are stored in memory only, so <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> start with zero locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> and the locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> list is always cleared when a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> stops or fails.</p>
+  <p>The <a href="/en/developer-reference.php#lockunspent" class="auto-link"><code>lockunspent</code> RPC</a> temporarily locks or unlocks specified transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a>. A locked transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> will not be chosen by automatic coin selection when spending <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Locks are stored in memory only, so <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> start with zero locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> and the locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> list is always cleared when a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> stops or fails.</p>
 
   <p><em>Parameter #1—whether to lock or unlock the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a></em></p>
 
@@ -13012,13 +11927,6 @@ the <em>spendable</em> field in the results described below.</p>
   </ul>
 
   <h5 id="move">Move</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/move.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/move.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/move.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/move.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#move" class="auto-link"><code>move</code> RPC</a> moves a specified amount from one account in your <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> to another using an off-<a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block-chain</a> transaction.</p>
@@ -13028,8 +11936,8 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
 
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" /> <strong>Warning:</strong> it’s allowed to move more funds than are in an account,
 giving the sending account a negative balance and giving the receiving
-account a balance that may exceed the number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> in the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>
-(or the number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> in existence).</p>
+account a balance that may exceed the number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> in the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>
+(or the number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> in existence).</p>
 
   <p><em>Parameter #1—from account</em></p>
 
@@ -13089,7 +11997,7 @@ account a balance that may exceed the number of <a href="/en/glossary/denominati
         <td>Amount</td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The amount of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to move</td>
+        <td>The amount of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to move</td>
       </tr>
     </tbody>
   </table>
@@ -13159,7 +12067,7 @@ account a balance that may exceed the number of <a href="/en/glossary/denominati
 
   <p><em>Example from <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a></em></p>
 
-  <p>Move 0.1 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> from “doc test” to “test1”, giving the transaction the
+  <p>Move 0.1 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> from “doc test” to “test1”, giving the transaction the
 comment “Example move”:</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet move <span class="s2">"doc test"</span> <span class="s2">"test1"</span> 0.1 0 <span class="s2">"Example move"</span></code></pre></figure>
@@ -13172,18 +12080,11 @@ comment “Example move”:</p>
 
   <ul>
     <li><a href="/en/developer-reference.php#listaccounts">ListAccounts</a>: lists accounts and their balances.</li>
-    <li><a href="/en/developer-reference.php#sendfrom">SendFrom</a>: spends an amount from a local account to a bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
+    <li><a href="/en/developer-reference.php#sendfrom">SendFrom</a>: spends an amount from a local account to a umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
     <li><a href="/en/developer-reference.php#sndtoaddress">SendToAddress</a>: spends an amount to a given <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
   </ul>
 
   <h5 id="ping-rpc">Ping</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/ping.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/ping.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/ping.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/ping.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#ping-rpc" class="auto-link"><code>ping</code> RPC</a> sends a P2P ping message to all connected <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> to measure ping time. Results are provided by the <a href="/en/developer-reference.php#getpeerinfo" class="auto-link"><code>getpeerinfo</code> RPC</a> pingtime and pingwait fields as decimal seconds. The P2P <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> is handled in a queue with all other commands, so it measures processing backlog, not just <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> ping.</p>
 
   <p><em>Parameters: none</em></p>
@@ -13238,13 +12139,6 @@ comment “Example move”:</p>
   </ul>
 
   <h5 id="preciousblock">PreciousBlock</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/preciousblock.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/preciousblock.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/preciousblock.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/preciousblock.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#preciousblock" class="auto-link"><code>preciousblock</code> RPC</a> treats a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> as if it were received before others with the same work. A later <a href="/en/developer-reference.php#preciousblock" class="auto-link"><code>preciousblock</code></a> call can override the effect of an earlier one. The effects of <a href="/en/developer-reference.php#preciousblock" class="auto-link"><code>preciousblock</code></a> are not retained across restarts.</p>
@@ -13299,14 +12193,7 @@ comment “Example move”:</p>
   <p>Result (no <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> from <code>bitcoin-cli</code> because result is set to <code>null</code>).</p>
 
   <h5 id="prioritisetransaction">PrioritiseTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/prioritisetransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/prioritisetransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/prioritisetransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/prioritisetransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p>The <a href="/en/developer-reference.php#prioritisetransaction" class="auto-link"><code>prioritisetransaction</code> RPC</a> adds virtual priority or fee to a transaction, allowing it to be accepted into <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> mined by this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> (or <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> which use this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.)</p>
+  <p>The <a href="/en/developer-reference.php#prioritisetransaction" class="auto-link"><code>prioritisetransaction</code> RPC</a> adds virtual priority or fee to a transaction, allowing it to be accepted into <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> mined by this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> (or <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> which use this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.)</p>
 
   <p><em>Parameter #1—the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction to modify</em></p>
 
@@ -13345,7 +12232,7 @@ comment “Example move”:</p>
         <td>Priority</td>
         <td>number (real)</td>
         <td>Required<br />(exactly 1)</td>
-        <td>If positive, the priority to add to the transaction in addition to its computed priority; if negative, the priority to subtract from the transaction’s computed priory. Computed priority is the age of each <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> in days since it was added to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> as an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> (coinage) times the value of the <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> (value) divided by the size of the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> (size), which is <code>coinage * value / size</code></td>
+        <td>If positive, the priority to add to the transaction in addition to its computed priority; if negative, the priority to subtract from the transaction’s computed priory. Computed priority is the age of each <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> in days since it was added to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> as an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> (coinage) times the value of the <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> (value) divided by the size of the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> (size), which is <code>coinage * value / size</code></td>
       </tr>
     </tbody>
   </table>
@@ -13366,7 +12253,7 @@ comment “Example move”:</p>
         <td>Fee</td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
-        <td><strong>Warning:</strong> this value is in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>, not <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a><br /><br />If positive, the virtual fee to add to the actual fee paid by the transaction; if negative, the virtual fee to subtract from the actual fee paid by the transaction. No change is made to the actual fee paid by the transaction</td>
+        <td><strong>Warning:</strong> this value is in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>, not <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a><br /><br />If positive, the virtual fee to add to the actual fee paid by the transaction; if negative, the virtual fee to subtract from the actual fee paid by the transaction. No change is made to the actual fee paid by the transaction</td>
       </tr>
     </tbody>
   </table>
@@ -13406,17 +12293,10 @@ comment “Example move”:</p>
 
   <ul>
     <li><a href="/en/developer-reference.php#getrawmempool">GetRawMemPool</a>: returns all <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">transaction identifiers</a> (<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.</li>
-    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
+    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
   </ul>
 
   <h5 id="pruneblockchain">PruneBlockChain</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/pruneblockchain.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/pruneblockchain.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/pruneblockchain.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/pruneblockchain.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#pruneblockchain" class="auto-link"><code>pruneblockchain</code> RPC</a> prunes the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">blockchain</a> up to a specified <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> or timestamp. The <code>-prune</code> option needs to be enabled (disabled by default).</p>
@@ -13478,13 +12358,6 @@ comment “Example move”:</p>
   </ul>
 
   <h5 id="removeprunedfunds">RemovePrunedFunds</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/removeprunedfunds.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/removeprunedfunds.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/removeprunedfunds.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/removeprunedfunds.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p><em>Requires <a href="/en/developer-reference.php#tallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
@@ -13548,17 +12421,10 @@ ebf46446a512166eae7628734ea0a5</code></pre></figure>
   </ul>
 
   <h5 id="sendfrom">SendFrom</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendfrom.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendfrom.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendfrom.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendfrom.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an
 <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted wallet</a>.</em></p>
 
-  <p>The <a href="/en/developer-reference.php#sendfrom" class="auto-link"><code>sendfrom</code> RPC</a> spends an amount from a local account to a bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
+  <p>The <a href="/en/developer-reference.php#sendfrom" class="auto-link"><code>sendfrom</code> RPC</a> spends an amount from a local account to a umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
 
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" /> <strong>Warning:</strong> <a href="/en/developer-reference.php#sendfrom" class="auto-link"><code>sendfrom</code></a> will be removed in a later version of Umkoin
 Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> listed in the See Also subsection below instead.</p>
@@ -13579,7 +12445,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td>From Account</td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The name of the account from which the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> should be spent. Use an empty string (“”) for the default account</td>
+        <td>The name of the account from which the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> should be spent. Use an empty string (“”) for the default account</td>
       </tr>
     </tbody>
   </table>
@@ -13600,7 +12466,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td>To <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
-        <td>A P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> to which the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> should be sent</td>
+        <td>A P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> to which the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> should be sent</td>
       </tr>
     </tbody>
   </table>
@@ -13621,7 +12487,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
         <td>Amount</td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The amount to spend in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Umkoin Core will ensure the account has sufficient <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to pay this amount (but the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid is not included in the calculation, so an account can spend a total of its balance plus the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a>)</td>
+        <td>The amount to spend in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>. Umkoin Core will ensure the account has sufficient <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to pay this amount (but the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid is not included in the calculation, so an account can spend a total of its balance plus the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a>)</td>
       </tr>
     </tbody>
   </table>
@@ -13650,7 +12516,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" />
 <strong>Warning:</strong> if account1 receives an <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a> payment and transfers
 it to account2 with the <a href="/en/developer-reference.php#move" class="auto-link"><code>move</code> RPC</a>, account2 will be able to spend those
-<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> even if this parameter is set to <code>1</code> or higher.</p>
+<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> even if this parameter is set to <code>1</code> or higher.</p>
 
   <p><em>Parameter #5—a comment</em></p>
 
@@ -13717,7 +12583,7 @@ it to account2 with the <a href="/en/developer-reference.php#move" class="auto-l
 
   <p><em>Example from <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a></em></p>
 
-  <p>Spend 0.1 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> from the account “test” to the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> indicated below
+  <p>Spend 0.1 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> from the account “test” to the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> indicated below
 using only <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a> with at least six <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a>, giving the
 transaction the comment “Example spend” and labeling the spender
 “Example.com”:</p>
@@ -13741,13 +12607,6 @@ transaction the comment “Example spend” and labeling the spender
   </ul>
 
   <h5 id="sendmany">SendMany</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendmany.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendmany.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendmany.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendmany.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an
 <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted wallet</a>.</em></p>
 
@@ -13769,7 +12628,7 @@ transaction the comment “Example spend” and labeling the spender
         <td>From Account</td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
-        <td><em>Deprecated: will be removed in a later version of Umkoin Core</em><br /><br />The name of the account from which the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> should be spent. Use an empty string (“”) for the default account. Umkoin Core will ensure the account has sufficient <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to pay the total amount in the <em><a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a></em> field described below (but the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid is not included in the calculation, so an account can spend a total of its balance plus the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a>)</td>
+        <td><em>Deprecated: will be removed in a later version of Umkoin Core</em><br /><br />The name of the account from which the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> should be spent. Use an empty string (“”) for the default account. Umkoin Core will ensure the account has sufficient <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to pay the total amount in the <em><a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a></em> field described below (but the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid is not included in the calculation, so an account can spend a total of its balance plus the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a>)</td>
       </tr>
     </tbody>
   </table>
@@ -13796,7 +12655,7 @@ transaction the comment “Example spend” and labeling the spender
         <td>→<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">Address</a>/Amount</td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses. Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format. Not the same as other base58 implementations." class="auto-link">base58</a>) : <a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" clauto-link">number (umkoins)</a></td>
         <td>Required<br />(1 or more)</td>
-        <td>A key/value pair with a <a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses. Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format. Not the same as other base58 implementations." class="auto-link">base58check</a>-encoded string containing the P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> to pay as the key, and an amount of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to pay as the value</td>
+        <td>A key/value pair with a <a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses. Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format. Not the same as other base58 implementations." class="auto-link">base58check</a>-encoded string containing the P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> to pay as the key, and an amount of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to pay as the value</td>
       </tr>
     </tbody>
   </table>
@@ -13825,7 +12684,7 @@ transaction the comment “Example spend” and labeling the spender
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" />
 <strong>Warning:</strong> if account1 receives an <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a> payment and transfers
 it to account2 with the <a href="/en/developer-reference.php#move" class="auto-link"><code>move</code> RPC</a>, account2 will be able to spend those
-<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> even if this parameter is set to <code>1</code> or higher.</p>
+<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> even if this parameter is set to <code>1</code> or higher.</p>
 
   <p><em>Parameter #4—a comment</em></p>
 
@@ -13898,8 +12757,8 @@ it to account2 with the <a href="/en/developer-reference.php#move" class="auto-l
 
   <p><em>Example from <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a></em></p>
 
-  <p>From the account <em>test1</em>, send 0.1 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to the first <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> and 0.2
-<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to the second <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, with a comment of “Example Transaction”.</p>
+  <p>From the account <em>test1</em>, send 0.1 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to the first <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> and 0.2
+<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to the second <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>, with a comment of “Example Transaction”.</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet sendmany <span class="se">\</span>
   <span class="s2">"test1"</span> <span class="se">\</span>
@@ -13918,19 +12777,12 @@ it to account2 with the <a href="/en/developer-reference.php#move" class="auto-l
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#sendfrom">SendFrom</a>: spends an amount from a local account to a bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
+    <li><a href="/en/developer-reference.php#sendfrom">SendFrom</a>: spends an amount from a local account to a umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
     <li><a href="/en/developer-reference.php#sendtoaddress">SendToAddress</a>: spends an amount to a given <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
     <li><a href="/en/developer-reference.php#move">Move</a>: moves a specified amount from one account in your <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> to another using an off-<a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block-chain</a> transaction.</li>
   </ul>
 
   <h5 id="sendrawtransaction">SendRawTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendrawtransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendrawtransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendrawtransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendrawtransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#sendrawtransaction" class="auto-link"><code>sendrawtransaction</code> RPC</a> validates a transaction and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">peer-to-peer network</a>.</p>
 
   <p><em>Parameter #1—a <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in tbinary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> to broadcast</em></p>
@@ -14021,13 +12873,6 @@ ba52d1f13201210256d16d76a49e6c8e2edc1c265d600ec1a64a45153d45c29a<span class="se"
   </ul>
 
   <h5 id="sendtoaddress">SendToAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendtoaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendtoaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendtoaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/sendtoaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an
 <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted wallet</a>.</em></p>
 
@@ -14049,7 +12894,7 @@ ba52d1f13201210256d16d76a49e6c8e2edc1c265d600ec1a64a45153d45c29a<span class="se"
         <td>To <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
-        <td>A P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> to which the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> should be sent</td>
+        <td>A P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> to which the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> should be sent</td>
       </tr>
     </tbody>
   </table>
@@ -14070,7 +12915,7 @@ ba52d1f13201210256d16d76a49e6c8e2edc1c265d600ec1a64a45153d45c29a<span class="se"
         <td>Amount</td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Red<br />(exactly 1)</td>
-        <td>The amount to spent in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The amount to spent in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
     </tbody>
   </table>
@@ -14133,7 +12978,7 @@ ba52d1f13201210256d16d76a49e6c8e2edc1c265d600ec1a64a45153d45c29a<span class="se"
         <td>Subtract Fee From Amount</td>
         <td>boolean</td>
         <td>Optional<br />(0 or 1)</td>
-        <td>The fee will be deducted from the amount being sent. The recipient will receive less <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> than you enter in the amount field. Default is <code>false</code></td>
+        <td>The fee will be deducted from the amount being sent. The recipient will receive less <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> than you enter in the amount field. Default is <code>false</code></td>
       </tr>
     </tbody>
   </table>
@@ -14161,7 +13006,7 @@ ba52d1f13201210256d16d76a49e6c8e2edc1c265d600ec1a64a45153d45c29a<span class="se"
 
   <p><em>Example from <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a></em></p>
 
-  <p>Spend 0.1 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> below with the comment “sendtoaddress
+  <p>Spend 0.1 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> to the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> below with the comment “sendtoaddress
 example” and the comment-to “Nemo From Example.com”:</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet sendtoaddress mmXgiR6KAhZCyQ8ndr2BCfEq1wNG2UnyG6 <span class="se">\</span>
@@ -14174,19 +13019,12 @@ example” and the comment-to “Nemo From Example.com”:</p>
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#sendfrom">SendFrom</a>: spends an amount from a local account to a bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
+    <li><a href="/en/developer-reference.php#sendfrom">SendFrom</a>: spends an amount from a local account to a umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
     <li><a href="/en/developer-reference.php#sendmany">SendMany</a>: creates and broadcasts a transaction which sends <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> to multiple <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">addresses</a>.</li>
     <li><a href="/en/developer-reference.php#move">Move</a>: moves a specified amount from one account in your <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> to another using an off-<a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block-chain</a> transaction.</li>
   </ul>
 
   <h5 id="setaccount">SetAccount</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/setaccount.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/setaccount.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/setaccount.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/setaccount.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#setaccount" class="auto-link"><code>setaccount</code> RPC</a> puts the specified <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> in the given account.</p>
@@ -14194,7 +13032,7 @@ example” and the comment-to “Nemo From Example.com”:</p>
   <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" /> <strong>Warning:</strong> <a href="/en/developer-reference.php#setaccount" class="auto-link"><code>setaccount</code></a> will be removed in a later version of Umkoin
 Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> listed in the See Also subsection below instead.</p>
 
-  <p><em>Parameter #1—a bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a></em></p>
+  <p><em>Parameter #1—a umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a></em></p>
 
   <table class="ntpd">
     <thead>
@@ -14275,13 +13113,6 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   </ul>
 
   <h5 id="setban">SetBan</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/setban.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/setban.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/setban.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/setban.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#setban" class="auto-link"><code>setban</code> RPC</a> attempts add or remove a IP/Subnet from the banned list.</p>
@@ -14395,7 +13226,7 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
 
   <p>Ban the following <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet setban 192.0.2.113:18333 add 2592000</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet setban 192.0.2.113:16333 add 2592000</code></pre></figure>
 
   <p>Result (no <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> from <code>bitcoin-cli</code> because result is set to <code>null</code>).</p>
 
@@ -14407,37 +13238,23 @@ Core. Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" 
   </ul>
 
   <h5 id="setgenerate">SetGenerate</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/setgenerate.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/setgenerate.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/setgenerate.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/setgenerate.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#setgenerate" class="auto-link"><code>setgenerate</code> RPC</a> was removed in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a>. If you have an older
 version of Umkoin Core, use <code>help setgenerate</code> <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> to get help. For testing, 
-the generate call can still be used to <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mine</a> a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, and the <a href="/en/developer-reference.php#generatetoaddress" class="auto-link"><code>generatetoaddress</code> RPC</a> 
-call has been added to <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mine</a> to a specific <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>. This works with <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> disabled.</p>
+the generate call can still be used to <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mine</a> a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, and the <a href="/en/developer-reference.php#generatetoaddress" class="auto-link"><code>generatetoaddress</code> RPC</a> 
+call has been added to <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mine</a> to a specific <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>. This works with <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> disabled.</p>
 
   <p><em>See also</em></p>
 
   <ul>
     <li><a href="/en/developer-reference.php#generate">Generate</a>: nearly instantly generates <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</li>
     <li><a href="/en/developer-reference.php#generatetoaddress">GenerateToAddress</a>: mines <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> immediately to a specified <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</li>
-    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
-    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
+    <li><a href="/en/developer-reference.php#getmininginfo">GetMiningInfo</a>: returns various <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a>-related information.</li>
+    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
   </ul>
 
   <h5 id="setnetworkactive">SetNetworkActive</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/setnetworkactive.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/setnetworkactive.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/setnetworkactive.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/setnetworkactive.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#setnetworkactive" class="auto-link"><code>setnetworkactive</code> RPC</a> disables/enables all P2P <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> activity.</p>
@@ -14497,13 +13314,6 @@ call has been added to <a href="/en/glossary/mining" title="Mining is the act of
   </ul>
 
   <h5 id="settxfee">SetTxFee</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/settxfee.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/settxfee.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/settxfee.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/settxfee.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#settxfee" class="auto-link"><code>settxfee</code> RPC</a> sets the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> per kilobyte paid by transactions created by this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
@@ -14524,7 +13334,7 @@ call has been added to <a href="/en/glossary/mining" title="Mining is the act of
         <td><a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">Transaction Fee</a> Per Kilobyte</td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> to pay, in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>, for each kilobyte of transaction data. Be careful setting the fee too low—your transactions may not be relayed or included in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> to pay, in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>, for each kilobyte of transaction data. Be careful setting the fee too low—your transactions may not be relayed or included in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
       </tr>
     </tbody>
   </table>
@@ -14552,7 +13362,7 @@ call has been added to <a href="/en/glossary/mining" title="Mining is the act of
 
   <p><em>Example from <a href="/en/release/v0.10.0" class="auto-link">Umkoin Core 0.10.0</a></em></p>
 
-  <p>Set the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> per kilobyte to 100,000 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>.</p>
+  <p>Set the <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> per kilobyte to 100,000 <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>.</p>
 
   <figure class="highlight"><pre><code class="language-bash" data-lang="bash">bitcoin-cli -testnet settxfee 0.00100000</code></pre></figure>
 
@@ -14568,13 +13378,6 @@ call has been added to <a href="/en/glossary/mining" title="Mining is the act of
   </ul>
 
   <h5 id="signmessage">SignMessage</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/signmessage.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/signmessage.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/signmessage.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/signmessage.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a> or an
 <a href="/en/developer-reference.php#encryptwallet" title="A wallet that has not been encrypted with the encryptwallet RPC" class="auto-link">unencrypted wallet</a>.</em></p>
 
@@ -14661,13 +13464,6 @@ call has been added to <a href="/en/glossary/mining" title="Mining is the act of
   </ul>
 
   <h5 id="signmessagewithprivkey">SignMessageWithPrivKey</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/signmessagewithprivkey.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/signmessagewithprivkey.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/signmessagewithprivkey.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/signmessagewithprivkey.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
 
   <p>The <a href="/en/developer-reference.php#signmessagewithprivkey" class="auto-link"><code>signmessagewithprivkey</code> RPC</a> signs a message with a given <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private key</a>.</p>
@@ -14754,13 +13550,6 @@ call has been added to <a href="/en/glossary/mining" title="Mining is the act of
   </ul>
 
   <h5 id="signrawtransaction">SignRawTransaction</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/signrawtransaction.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/signrawtransaction.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/signrawtransaction.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/signrawtransaction.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#signrawtransaction" class="auto-link"><code>signrawtransaction</code> RPC</a> signs a transaction in the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> format using <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> stored in the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> or provided in the call.</p>
 
   <p><em>Parameter #1—the transaction to sign</em></p>
@@ -14936,13 +13725,6 @@ ffff01405dc600000000001976a9140dfc8bafc8419853b34d5e072ad37d1a51<span class="se"
   </ul>
 
   <h5 id="stop">Stop</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="evdocs/en/bitcoin-core/rpcs/rpcs/stop.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/stop.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/stop.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/stop.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#stop" class="auto-link"><code>stop</code> RPC</a> safely shuts down the Umkoin Core server.</p>
 
   <p><em>Parameters: none</em></p>
@@ -14979,14 +13761,7 @@ ffff01405dc600000000001976a9140dfc8bafc8419853b34d5e072ad37d1a51<span class="se"
   <p><em>See also: none</em></p>
 
   <h5 id="submitblock">SubmitBlock</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/submitblock.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/submitblock.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/submitblock.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/submitblock.md%0A%0A">Report Issue</a>
-
-
-</div>
-
-  <p>The <a href="/en/developer-reference.php#submitblock" class="auto-link"><code>submitblock</code> RPC</a> accepts a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, verifies it is a valid addition to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Extra parameters are ignored by Umkoin Core but may be used by <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools or other programs.</p>
+  <p>The <a href="/en/developer-reference.php#submitblock" class="auto-link"><code>submitblock</code> RPC</a> accepts a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, verifies it is a valid addition to the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Extra parameters are ignored by Umkoin Core but may be used by <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools or other programs.</p>
 
   <p><em>Parameter #1—the new <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> in <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a> format as hex</em></p>
 
@@ -15025,7 +13800,7 @@ ffff01405dc600000000001976a9140dfc8bafc8419853b34d5e072ad37d1a51<span class="se"
         <td>Parameters</td>
         <td>object</td>
         <td>Optional<br />(0 or 1)</td>
-        <td>A JSON object containing extra parameters. Not used directly by Umkoin Core and also not broadcast to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. This is available for use by <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools and other software. A common parameter is a <code>workid</code> string</td>
+        <td>A JSON object containing extra parameters. Not used directly by Umkoin Core and also not broadcast to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. This is available for use by <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> pools and other software. A common parameter is a <code>workid</code> string</td>
       </tr>
     </tbody>
   </table>
@@ -15071,17 +13846,10 @@ f0457bcb05865a94900ed11356d0b75228efb38c7785d6053ffff001d005d437<span class="se"
   <p><em>See also</em></p>
 
   <ul>
-    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
+    <li><a href="/en/developer-reference.php#getblocktemplate">GetBlockTemplate</a>: gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> template or proposal for use with <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> software.</li>
   </ul>
 
   <h5 id="validateaddress">ValidateAddress</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/validateaddress.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/validateaddress.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/validateaddress.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/validateaddress.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#validateaddress" class="auto-link"><code>validateaddress</code> RPC</a> returns information about the given Umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a>.</p>
 
   <p><em>Parameter #1—a P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a></em></p>
@@ -15133,7 +13901,7 @@ f0457bcb05865a94900ed11356d0b75228efb38c7785d6053ffff001d005d437<span class="se"
         <td>→<br /><code>address</code></td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses. Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format. Not the same as other base58 implementations." class="auto-link">base58</a>)</td>
         <td>Optional<br />(0 or 1)</td>
-        <td>The bitcoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> given as parameter</td>
+        <td>The umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> given as parameter</td>
       </tr>
       <tr>
         <td>→<br /><code>scriptPubKey</code></td>
@@ -15273,13 +14041,6 @@ f0457bcb05865a94900ed11356d0b75228efb38c7785d6053ffff001d005d437<span class="se"
   </ul>
 
   <h5 id="verifychain">VerifyChain</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifychain.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifychain.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifychain.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifychain.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#verifychain" class="auto-link"><code>verifychain</code> RPC</a> verifies each entry in the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> database.</p>
 
   <p><em>Parameter #1—how thoroughly to check each <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a></em></p>
@@ -15364,13 +14125,6 @@ would’ve taken much longer on <a href="/en/glossary/mainnet.php" title="The or
   </ul>
 
   <h5 id="verifymessage">VerifyMessage</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifymessage.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifymessage.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifymessage.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifymessage.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#verifymessage" class="auto-link"><code>verifymessage</code> RPC</a> verifies a signed message.</p>
 
   <p><em>Parameter #1—the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address. Currently the most common way users exchange payment information." class="auto-link">address</a> corresponding to the signing key</em></p>
@@ -15478,13 +14232,6 @@ would’ve taken much longer on <a href="/en/glossary/mainnet.php" title="The or
   </ul>
 
   <h5 id="verifytxoutproof">VerifyTxOutProof</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifytxoutproof.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifytxoutproof.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifytxoutproof.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/verifytxoutproof.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <a href="/en/developer-reference.php#verifytxoutproof" class="auto-link"><code>verifytxoutproof</code> RPC</a> verifies that a proof points to one or more transactions in a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, returning the transactions the proof commits to and throwing an <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> error if the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> is not in our <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>.</p>
 
   <p><em>Parameter #1—The hex-encoded proof generated by gettxoutproof</em></p>
@@ -15565,13 +14312,6 @@ format used for the proof.</li>
   </ul>
 
   <h5 id="walletlock">WalletLock</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletlock.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletlock.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletlock.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletlock.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an <a href="/en/developer-reference.php#walletpassphrase" title="An encrypted wallet that has been unlocked with the walletpassphrase RPC" class="auto-link">unlocked wallet</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#walletlock" class="auto-link"><code>walletlock</code> RPC</a> removes the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> encryption key from memory, locking the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>. After calling this method, you will need to call <a href="/en/developer-reference.php#walletpassphrase" class="auto-link"><code>walletpassphrase</code></a> again before being able to call any methods which require the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> to be unlocked.</p>
@@ -15614,13 +14354,6 @@ format used for the proof.</li>
   </ul>
 
   <h5 id="walletpassphrase">WalletPassphrase</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletpassphrase.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletpassphrase.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletpassphrase.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletpassphrase.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an encrypted <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#walletpassphrase" class="auto-link"><code>walletpassphrase</code> RPC</a> stores the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> decryption key in memory for the indicated number of seconds. Issuing the <a href="/en/developer-reference.php#walletpassphrase" class="auto-link"><code>walletpassphrase</code></a> command while the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> is already unlocked will set a new unlock time that overrides the old one.</p>
@@ -15709,13 +14442,6 @@ value of the passphrase parameter).</p>
   </ul>
 
   <h5 id="walletpassphrasechange">WalletPassphraseChange</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletpassphrasechange.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletpassphrasechange.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletpassphrasechange.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rpcs/rpcs/walletpassphrasechange.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>. Requires an encrypted <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</em></p>
 
   <p>The <a href="/en/developer-reference.php#walletpassphrasechange" class="auto-link"><code>walletpassphrasechange</code> RPC</a> changes the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> passphrase from ‘old passphrase’ to ‘new passphrase’.</p>
@@ -15804,17 +14530,10 @@ value of the passphrase parameter).</p>
   </ul>
 
   <h3 id="http-rest">HTTP REST</h3>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/intro.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/intro.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/intro.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/intro.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>As of <a href="/en/release/v0.10.0">version 0.10.0</a>, Umkoin Core provides
 an <strong>unauthenticated</strong> HTTP REST interface. The interface runs on the
-same port as the JSON-<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface, by default port 8332 for <a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> and
-port 18332 for <a href="/en/glossary/testnet.php" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a>. It must be enabled by either starting Umkoin
+same port as the JSON-<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface, by default port 6332 for <a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> and
+port 16332 for <a href="/en/glossary/testnet.php" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a>. It must be enabled by either starting Umkoin
 Core with the <code>-rest</code> option or by specifying <code>rest=1</code> in the
 configuration file. Make sure that the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface is also activated.
 Set <code>server=1</code> in <code>bitcoin.conf</code> or supply the <code>-server</code> argument when 
@@ -15835,13 +14554,6 @@ codes</a> and
 returns a plain-text description of errors for debugging.</p>
 
   <h4 id="rest-quick-reference">Quick Reference</h4>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/quick-reference.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/quick-reference.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/quick-reference.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/quick-reference.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <ul>
     <li><a href="/en/developer-reference.php#get-block">GET Block</a> gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> with a particular <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash from the local <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> database either as a JSON object or as a <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a>. <em><abbr title="Updated in Umkoin Core v0.13.0">Updated in 0.13.0</abbr></em></li>
     <li><a href="/en/developer-reference.php#get-blocknotxdetails">GET Block/NoTxDetails</a> gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> with a particular <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash from the local <a href="/en/glossary/block.php" title="Oneansactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> database either as a JSON object or as a <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a>. The JSON object includes <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> for transactions within the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> rather than the complete transactions <a href="/en/developer-reference.php#get-block">GET block</a> returns. <em><abbr title="Updated in Umkoin Core v0.13.0">Updated in 0.13.0</abbr></em></li>
@@ -15866,13 +14578,6 @@ treat block chain and memory pool data as an arbitrary input from an
 untrusted source.</p>
 
   <h5 id="get-block">GET Block</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/requests/get_block.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/requests/get_block.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/requests/get_block.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/requests/get_block.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>GET block</code> operation gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> with a particular <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash from the local <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> database either as a JSON object or as a <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a>.</p>
 
   <p><em>Request</em></p>
@@ -16116,7 +14821,7 @@ untrusted source.</p>
         <td>→ → → → →<br /><code>value</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> paid to this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>. May be <code>0</code></td>
+        <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> paid to this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>. May be <code>0</code></td>
       </tr>
       <tr>
         <td>→ → → → →<br /><code>n</code></td>
@@ -16200,7 +14905,7 @@ untrusted source.</p>
         <td>→<br /><code>chainwork</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining" title="Mining is he act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
+        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining.php" title="Mining is he act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
       </tr>
       <tr>
         <td>→<br /><code>previousblockhash</code></td>
@@ -16221,7 +14926,7 @@ untrusted source.</p>
 
   <p>Request a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> in hex-encoded <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a> format:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/block/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048.hex</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/block/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048.hex</code></pre></figure>
 
   <p>Result (wrapped):</p>
 
@@ -16235,7 +14940,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
 
   <p>Get the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> in JSON:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/block/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048.json </code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/block/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048.json </code></pre></figure>
 
   <p>Result (whitespaced added):</p>
 
@@ -16300,13 +15005,6 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   </ul>
 
   <h5 id="get-blocknotxdetails">GET Block/NoTxDetails</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/requests/get_block-notxdetails.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/requests/get_block-notxdetails.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/requests/get_block-notxdetails.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/requests/get_block-notxdetails.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>GET block/notxdetails</code> operation gets a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> with a particular <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash from the local <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> database either as a JSON object or as a <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a>. The JSON object includes <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> for transactions within the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> rather than the complete transactions <a href="/en/developer-reference.php#get-block">GET block</a> returns.</p>
 
   <p><em>Request</em></p>
@@ -16473,7 +15171,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td>→<br /><code>chainwork</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
+        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
       </tr>
       <tr>
         <td>→<br /><code>previousblockhash</code></td>
@@ -16494,7 +15192,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
 
   <p>Request a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> in hex-encoded <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a> format:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/block/notxdetails/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048.hex</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/block/notxdetails/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048.hex</code></pre></figure>
 
   <p>Result (wrapped):</p>
 
@@ -16508,7 +15206,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
 
   <p>Get the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> in JSON:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/block/notxdetails/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048.json</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/block/notxdetails/00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048.json</code></pre></figure>
 
   <p>Result (whitespaced added):</p>
 
@@ -16545,13 +15243,6 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   </ul>
 
   <h5 id="get-chaininfo">GET ChainInfo</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/requests/get_chaininfo.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/requests/get_chaininfo.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/requests/get_chaininfo.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/requests/get_chaininfo.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>GET chaininfo</code> operation returns information about the current state of the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>. Supports only <code>json</code> as <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> format.</p>
 
   <p><em>Request</em></p>
@@ -16642,7 +15333,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td>→<br /><code>softforks</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
-        <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />An array of objects each describing a current or previous <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the bitcoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft fork</a></td>
+        <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />An array of objects each describing a current or previous <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft fork</a></td>
       </tr>
       <tr>
         <td>→ →<br />Softfork</td>
@@ -16764,7 +15455,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
 
   <p>Get <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">blockchain</a> info in JSON:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/chaininfo.json</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/chaininfo.json</code></pre></figure>
 
   <p>Result (whitespaced added):</p>
 
@@ -16825,13 +15516,6 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   </ul>
 
   <h5 id="get-getutxos">GET GetUtxos</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/requests/get_getutxos.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/requests/get_getutxos.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/requests/get_getutxos.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/requests/get_getutxos.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>GET getutxos</code> operation returns an <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." c"auto-link">UTXO</a> set given a set of <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoints</a>.</p>
 
   <p><em>Request</em></p>
@@ -17016,7 +15700,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
 
   <p>Request the <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXO</a> set:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/getutxos/checkmempool/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120-0.hex</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/getutxos/checkmempool/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120-0.hex</code></pre></figure>
 
   <p>Result (wrapped):</p>
 
@@ -17026,7 +15710,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
 
   <p>Same request in JSON:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/getutxos/checkmempool/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120-0.json</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/getutxos/checkmempool/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120-0.json</code></pre></figure>
 
   <p>Result (whitespaced added):</p>
 
@@ -17059,13 +15743,6 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
   </ul>
 
   <h5 id="get-headers">GET Headers</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/requests/get_headers.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/requests/get_headers.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/requests/get_headers.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/requests/get_headers.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>GET headers</code> operation returns a specified amount of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a> in upward direction.</p>
 
   <p><em>Request</em></p>
@@ -17229,7 +15906,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td>→→<br /><code>chainwork</code><
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
-        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
+        <td>The estimated number of <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> hashes <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">miners</a> had to check from the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> to this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as big-endian hex</td>
       </tr>
       <tr>
         <td>→→<br /><code>previousblockhash</code></td>
@@ -17250,7 +15927,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
 
   <p>Request 5 <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a> in hex-encoded <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a> format:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/headers/5/000000000000000002538dfef658564662025e0687b0c65c6d5c9d765984ec5a.hex</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/headers/5/000000000000000002538dfef658564662025e0687b0c65c6d5c9d765984ec5a.hex</code></pre></figure>
 
   <p>Result (wrapped):</p>
 
@@ -17262,7 +15939,7 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
 
   <p>Get the same <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a> in JSON:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/headers/5/000000000000000002538dfef658564662025e0687b0c65c6d5c9d765984ec5a.json</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/headers/5/000000000000000002538dfef658564662025e0687b0c65c6d5c9d765984ec5a.json</code></pre></figure>
 
   <p>Result (whitespaced added):</p>
 
@@ -17311,13 +15988,6 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
   </ul>
 
   <h5 id="get-mempoolcontents">GET MemPool/Contents</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/requests/get_mempool-contents.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/requests/get_mempool-contents.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/requests/get_mempool-contents.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/requests/get_mempool-contents.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>GET mempool/contents</code> operation returns all transaction in the memory pool with detailed information. Supports only <code>json</code> as <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> format.</p>
 
   <p><em>Request</em></p>
@@ -17360,13 +16030,13 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
         <td>→ →<br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
+        <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
         <td>→ →<br /><code>time</code></td>
@@ -17447,7 +16117,7 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
 
   <p>Get all transactions in the memory pool in JSON:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/mempool/contents.json</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/mempool/contents.json</code></pre></figure>
 
   <p>Result (whitespaced added):</p>
 
@@ -17497,13 +16167,6 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
   </ul>
 
   <h5 id="get-mempoolinfo">GET MemPool/Info</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/requests/get_mempool-info.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/requests/get_mempool-info.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/requests/get_mempool-info.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/requests/get_mempool-info.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>GET mempool/info</code> operation returns information about the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> current transaction memory pool. Supports only <code>json</code> as <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> format.</p>
 
   <p><em>Request</em></p>
@@ -17567,7 +16230,7 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
 
   <p>Get memory pool info in JSON:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/mempool/info.json</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/mempool/info.json</code></pre></figure>
 
   <p>Result (whitespaced added):</p>
 
@@ -17587,13 +16250,6 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
   </ul>
 
   <h5 id="get-tx">GET Tx</h5>
-  <div class="subhead-links sourcefile" data-sourcefile="_data/devdocs/en/bitcoin-core/rest/requests/get_tx.md"><a href="https://github.com/umkoin/umkoin.org/edit/master/_data/devdocs/en/bitcoin-core/rest/requests/get_tx.md">Edit</a>
-| <a href="https://github.com/umkoin/umkoin.org/commits/master/_data/devdocs/en/bitcoin-core/rest/requests/get_tx.md">History</a>
-| <a href="https://github.com/umkoin/umkoin.org/issues/new?body=Source%20File%3A%20_data/devdocs/en/bitcoin-core/rest/requests/get_tx.md%0A%0A">Report Issue</a>
-
-
-</div>
-
   <p>The <code>GET tx</code> operation gets a hex-encoded <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> or a JSON object describing the transaction. By default, Umkoin Core only stores complete transaction data for <a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a> and your own transactions, so this method may fail on historic transactions unless you use the non-default <code>txindex=1</code> in your Umkoin Core startup settings.</p>
 
   <p>Note: if you begin using <code>txindex=1</code> after downloading the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>, you must rebuild your indexes by starting Umkoin Core with the option  <code>-reindex</code>. This may take several hours to complete, during which time your <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> will not process new <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> or transactions. This reindex only needs to be done once.</p>
@@ -17774,7 +16430,7 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
         <td>→ → →<br /><code>value</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
-        <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a bitcoin but sometimes measured in multiples of a satoshi. One bitcoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> paid to this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>. May be <code>0</code></td>
+        <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi. One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> paid to this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>. May be <code>0</code></td>
       </tr>
       <tr>
         <td>→ → →<br /><code>n</code></td>
@@ -17855,7 +16511,7 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
 
   <p>Request a transaction in hex-encoded <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> format:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/tx/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120.hex</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/tx/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120.hex</code></pre></figure>
 
   <p>Result (wrapped):</p>
 
@@ -17870,7 +16526,7 @@ cb6a325d2903b726980865210d2127de09710121023ee7a6437e9ad2957cd032\
 
   <p>Get the same transaction in JSON:</p>
 
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:8332/rest/tx/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120.json</code></pre></figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl http://localhost:6332/rest/tx/42f9df54a39026ccb54362141c41713968f19e1f14949ab6609b03ffa4b7f120.json</code></pre></figure>
 
   <p>Result (whitespaced added):</p>
 
