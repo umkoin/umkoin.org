@@ -1415,159 +1415,105 @@ bb3183301d7a1fb3bd174fcfa40a2b65 ... Hash #2
         </tbody>
       </table>
 
-  <p>Any time you begin processing a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> for the first time, a flag should be
-appended to the flag list. Never put a flag on the list at any other
-time, except when processing is complete to pad out the flag list to a
-byte boundary.</p>
+      <p>Any time you begin processing a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> for the first time, a flag should be appended to the flag list. Never put a flag on the list at any other time, except when processing is complete to pad out the flag list to a byte boundary.</p>
+      <p>When processing a child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, you may need to process its children (the grandchildren of the original <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) or further-descended <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> before returning to the parent <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. This is expected—keep processing depth first until you reach a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> which is neither a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> nor a match ancestor.</p>
+      <p>After you process a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> which is neither a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> nor a match ancestor, stop processing and begin to ascend the tree until you find a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a right child you haven’t processed yet. Descend into that right child and process it.</p>
+      <p>After you fully process the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> according to the instructions in the table above, processing is complete.  Pad your flag list to a byte boundary and construct the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> using the template near the beginning of this subsection.</p>
 
-  <p>When processing a child <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, you may need to process its children (the
-grandchildren of the original <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>) or further-descended <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> before
-returning to the parent <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>. This is expected—keep processing depth
-first until you reach a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> which is neither a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> nor
-a match ancestor.</p>
+      <h4 id="notfound">NotFound</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#notfound" title="A P2P protocol message sent to indicate that the requested data was not available" class="auto-link"><code>notfound</code> message</a> is a reply to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> which requested an object the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> does not have available for relay. (<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> are not expected to relay historic transactions which are no longer in the memory pool or relay set. <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> may also have pruned spent transactions from older <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>, making them unable to send those <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.)</p>
+      <p>The format and maximum size limitations of the <a href="/en/developer-reference.php#notfound" title="A P2P protocol message sent to indicate that the requested data was not available" class="auto-link"><code>notfound</code> message</a> are identical to the <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>; only the <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> differs.</p>
 
-  <p>After you process a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> or a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> which is neither a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> nor a
-match ancestor, stop processing and begin to ascend the tree until you
-find a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with a right child you haven’t processed yet. Descend into
-that right child and process it.</p>
+      <h4 id="tx">Tx</h4>
+      <p>The <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a> transmits a single transaction in the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> format. It can be sent in a variety of situations;</p>
 
-  <p>After you fully process the <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle root</a> <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> according to the
-instructions in the table above, processing is complete.  Pad your flag
-list to a byte boundary and construct the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> using the
-template near the beginning of this subsection.</p>
+      <ul>
+        <li>
+          <p><strong>Transaction Response:</strong> Umkoin Core and <a href="http://umkoinj.github.io" class="auto-link">UmkoinJ</a> will send it in response to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> that requests the transaction with an <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type of <a href="/en/developer-reference.php#term-msg_tx" title="The TXID data type identifier of an inventory on the P2P network" class="auto-link"><code>MSG_TX</code></a>.</p>
+        </li>
+        <li>
+          <p><strong>MerkleBlock Response:</strong> Umkoin Core will send it in response to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> that requests a <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle block</a> with an <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type of <code>MSG_MERKLEBLOCK</code>. (This is in addition to sending a <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>.) Each <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a> in this case provides a matched transaction from that <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.</p>
+        </li>
+      </ul>
 
-  <h4 id="notfound">NotFound</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a>.</em></p>
+      <p>For an example hexdump of the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> format, see the <a href="/en/developer-reference.php#raw-transaction-format">raw transaction section</a>.</p>
 
-  <p>The <a href="/en/developer-reference.php#notfound" title="A P2P protocol message sent to indicate that the requested data was not available" class="auto-link"><code>notfound</code> message</a> is a reply to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> which
-requested an object the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> does not have available for
-relay. (<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> are not expected to relay historic transactions which
-are no longer in the memory pool or relay set. <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> may also have
-pruned spent transactions from older <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>, making them unable to
-send those <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.)</p>
+      <h3 id="control-messages">Control Messages</h3>
+      <p>The following <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> messages all help control the connection between two <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> or allow them to advise each other about the rest of the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
+      <p><img src="/img/dev/en-p2p-control-messages.svg" alt="Overview Of P2P Protocol Control And Advisory Messages" /></p>
+      <p>Note that almost none of the control messages are authenticated in any way, meaning they can contain incorrect or intentionally harmful information. In addition, this section does not yet cover P2P protocol operation over the <a href="https://en.wikipedia.org/wiki/Tor_%28anonymity_network%29">Tor network</a>; if you would like to contribute information about Tor, please <a href="https://github.com/umkoin/umkoin.org/issues">open an issue</a>.</p>
 
-  <p>The format and maximum size limitations of the <a href="/en/developer-reference.php#notfound" title="A P2P protocol message sent to indicate that the requested data was not available" class="auto-link"><code>notfound</code> message</a> are
-identical to the <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>; only the <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> differs.</p>
+      <h4 id="addr">Addr</h4>
+      <p>The <code>addr</code> (IP address) message relays connection information for <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Each <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> which wants to accept incoming connections creates an <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a> providing its connection information and then sends that message to its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> unsolicited. Some of its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> send that information to their <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> (also unsolicited), some of which further distribute it, allowing decentralized <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> discovery for any program already on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
+      <p>An <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a> may also be sent in response to a <a href="/en/developer-reference.php#getaddr" title="A P2P protool message used to request an addr message containing connection information for other nodes" class="auto-link"><code>getaddr</code> message</a>.</p>
 
-  <h4 id="tx">Tx</h4>
-  <p>The <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a> transmits a single transaction in the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>
-format. It can be sent in a variety of situations;</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>IP address count</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>The number of IP address entries up to a maximum of 1,000.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>IP addresses</td>
+            <td><a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> IP address</td>
+            <td>IP address entries.  See the table below for the format of a Umkoin <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> IP address.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <ul>
-    <li>
-      <p><strong>Transaction Response:</strong> Umkoin Core and <a href="http://umkoinj.github.io" class="auto-link">UmkoinJ</a> will send it in
-response to a <a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> that requests the transaction with an
-<a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type of <a href="/en/developer-reference.php#term-msg_tx" title="The TXID data type identifier of an inventory on the P2P network" class="auto-link"><code>MSG_TX</code></a>.</p>
-    </li>
-    <li>
-      <p><strong>MerkleBlock Response:</strong> Umkoin Core will send it in response to a
-<a href="/en/developer-reference.php#getdata" title="A P2P protocol message used to request one or more transactions, blocks, or merkle blocks" class="auto-link"><code>getdata</code> message</a> that requests a <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle block</a> with an <a href="/en/glossary/inventory.php" title="A data type identifier and a hash; used to identify transactions and blocks available for download through the Umkoin P2P network." class="auto-link">inventory</a> type
-of <code>MSG_MERKLEBLOCK</code>. (This is in addition to sending a <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code>
-message</a>.) Each <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a> in this case provides a matched
-transaction from that <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.</p>
-    </li>
-    <li>
-      <p><strong>Unsolicited:</strong> <a href="http://umkoinj.github.io" class="auto-link">UmkoinJ</a> will send a <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a> unsolicited for
-transactions it originates.</p>
-    </li>
-  </ul>
+      <p>Each encapsulated <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> IP address currently uses the following structure:</p>
 
-  <p>For an example hexdump of the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> format, see the <a href="/en/developer-reference.php#raw-transaction-format">raw
-transaction section</a>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4</td>
+            <td>time</td>
+            <td>uint32</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 31402</a>.</em> <br /><br />A time in <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> format.  <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> advertising their own IP address set this to the current time.  <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> advertising IP addresses they’ve connected to set this to the last time they connected to that <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  Other <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> just relaying the IP address should not change the time.  <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> can use the time field to avoid relaying old <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> messages</a>.  <br /><br />Malicious <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> may change times or even set them in the future.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>services</td>
+            <td>uint64_t</td>
+            <td>The services the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> advertised in its <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>.</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>IP address</td>
+            <td>char</td>
+            <td>IPv6 address in <strong>big endian byte order</strong>. IPv4 addresses can be provided as <a href="http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4-mapped IPv6 addresses</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>port</td>
+            <td>uint16_t</td>
+            <td>Port number in <strong>big endian byte order</strong>.  Note that Umkoin Core will only connect to <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> with non-standard port numbers as a last resort for finding <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a>.  This is to prevent anyone from trying to use the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> to disrupt non-Umkoin services that run on other ports.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h3 id="control-messages">Control Messages</h3>
-  <p>The following <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> messages all help control the connection between
-two <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> or allow them to advise each other about the rest of the
-<a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
-
-  <p><img src="/img/dev/en-p2p-control-messages.svg" alt="Overview Of P2P Protocol Control And Advisory Messages" /></p>
-
-  <p>Note that almost none of the control messages are authenticated in any
-way, meaning they can contain incorrect or intentionally harmful
-information. In addition, this section does not yet cover P2P protocol
-operation over the <a href="https://en.wikipedia.org/wiki/Tor_%28anonymity_network%29">Tor network</a>; if you would like to contribute
-information about Tor, please <a href="https://github.com/umkoin/umkoin.org/issues">open an issue</a>.</p>
-
-  <h4 id="addr">Addr</h4>
-  <p>The <code>addr</code> (IP address) message relays connection information
-for <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>. Each <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> which wants to accept incoming
-connections creates an <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a> providing its connection
-information and then sends that message to its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> unsolicited. Some
-of its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> send that information to their <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> (also unsolicited),
-some of which further distribute it, allowing decentralized <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>
-discovery for any program already on the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</p>
-
-  <p>An <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a> may also be sent in response to a <a href="/en/developer-reference.php#getaddr" title="A P2P protool message used to request an addr message containing connection information for other nodes" class="auto-link"><code>getaddr</code> message</a>.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>IP address count</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>The number of IP address entries up to a maximum of 1,000.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>IP addresses</td>
-        <td><a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> IP address</td>
-        <td>IP address entries.  See the table below for the format of a Umkoin <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> IP address.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>Each encapsulated <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> IP address currently uses the following structure:</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>4</td>
-        <td>time</td>
-        <td>uint32</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 31402</a>.</em> <br /><br />A time in <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> format.  <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> advertising their own IP address set this to the current time.  <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> advertising IP addresses they’ve connected to set this to the last time they connected to that <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  Other <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> just relaying the IP address should not change the time.  <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">Nodes</a> can use the time field to avoid relaying old <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> messages</a>.  <br /><br />Malicious <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> may change times or even set them in the future.</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>services</td>
-        <td>uint64_t</td>
-        <td>The services the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> advertised in its <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>.</td>
-      </tr>
-      <tr>
-        <td>16</td>
-        <td>IP address</td>
-        <td>char</td>
-        <td>IPv6 address in <strong>big endian byte order</strong>. IPv4 addresses can be provided as <a href="http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4-mapped IPv6 addresses</a></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>port</td>
-        <td>uint16_t</td>
-        <td>Port number in <strong>big endian byte order</strong>.  Note that Umkoin Core will only connect to <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> with non-standard port numbers as a last resort for finding <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a>.  This is to prevent anyone from trying to use the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> to disrupt non-Umkoin services that run on other ports.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The following annotated hexdump shows part of an <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a>. (The
-<a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted and the actual IP address has been
-replaced with a <a href="http://tools.ietf.org/html/rfc5737">RFC5737</a> reserved IP address.)</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">fde803 ............................. Address count: 1000
+      <p>The following annotated hexdump shows part of an <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted and the actual IP address has been replaced with a <a href="http://tools.ietf.org/html/rfc5737">RFC5737</a> reserved IP address.)</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">fde803 ............................. Address count: 1000
 
 d91f4854 ........................... Epoch time: 1414012889
 0100000000000000 ................... Service bits: 01 (network node)
@@ -1576,351 +1522,200 @@ d91f4854 ........................... Epoch time: 1414012889
 
 [...] .............................. (999 more addresses omitted)</code></pre></figure>
 
-  <h4 id="alert">Alert</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 311</a>.</em>
-<em>Removed in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70013</a> and released in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
+      <h4 id="alert">Alert</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 311</a>.</em>
+      <em>Removed in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70013</a> and released in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em></p>
+      <p>The legacy p2p <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> alert messaging system has been retired; however, internal alerts, partition detection warnings and the <code>-alertnotify</code> option features remain. See <a href="https://umkoin.org/en/alert/2016-11-01-alert-retirement">Alert System Retirement</a> for details.</p>
 
-  <p>The legacy p2p <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> alert messaging system has been retired; however, internal alerts, partition detection warnings and the <code>-alertnotify</code> option features remain. See <a href="https://umkoin.org/en/alert/2016-11-01-alert-retirement">Alert System Retirement</a> for details.</p>
+      <h4 id="feefilter">FeeFilter</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70013</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0133.mediawiki" class="auto-link">BIP133</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#feefilter" title="The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate" class="auto-link"><code>feefilter</code> message</a> is a request to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to not relay any transaction inv messages to the sending <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> where the fee rate for the transaction is below the fee rate specified in the feefilter message.</p>
+      <p><code>feefilter</code> was introduced in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a> following the introduction of mempool limiting in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a>. Mempool limiting provides protection against attacks and spam transactions that have low fee rates and are unlikely to be included in mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>. The <a href="/en/developer-reference.php#feefilter" title="The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate" class="auto-link"><code>feefilter</code> messages</a> allows a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to inform its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> that it will not accept transactions below a specified fee rate into its mempool, and therefore that the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> can skip relaying inv messages for transactions below that fee rate to that <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
 
-  <h4 id="feefilter">FeeFilter</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70013</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0133.mediawiki" class="auto-link">BIP133</a>.</em></p>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>8</td>
+            <td>feerate</td>
+            <td>uint64_t</td>
+            <td>The fee rate (in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> per kilobyte) below which transactions should not be relayed to this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>The <a href="/en/developer-reference.php#feefilter" title="The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate" class="auto-link"><code>feefilter</code> message</a> is a request to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to not relay any
-transaction inv messages to the sending <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> where the fee rate for the
-transaction is below the fee rate specified in the feefilter message.</p>
+      <p>The receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> may choose to ignore the message and not filter transaction inv messages.</p>
+      <p>The fee filter is additive with <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filters</a>. If an <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block.  The method is used by some lightweight Umkoin clients." class="auto-link">SPV client</a> loads a <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a> and sends a feefilter message, transactions should only be relayed if they pass both filters.</p>
+      <p>Note however that feefilter has no effect on <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> propagation or responses to getdata messages. For example, if a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> requests a merkleblock from its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> by sending a getdata message with inv type MSG_FILTERED_BLOCK and it has previously sent a feefilter to that <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>, the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> should respond with a merkleblock containing <em>all</em> the transactions matching the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>, even if they are below the feefilter fee rate.</p>
+      <p>inv messages generated from a mempool message are subject to a fee filter if it exists.</p>
+      <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#feefilter" title="The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate" class="auto-link"><code>feefilter</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.)</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">7cbd000000000000 ... satoshis per kilobyte: 48,508</code></pre></figure>
 
-  <p><code>feefilter</code> was introduced in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a> following the introduction
-of mempool limiting in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a>. Mempool limiting provides protection against
-attacks and spam transactions that have low fee rates and are unlikely to be
-included in mined <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>. The <a href="/en/developer-reference.php#feefilter" title="The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate" class="auto-link"><code>feefilter</code> messages</a> allows a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to inform its
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> that it will not accept transactions below a specified fee rate into
-its mempool, and therefore that the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> can skip relaying inv messages for
-transactions below that fee rate to that <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
+      <h4 id="filteradd">FilterAdd</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to add a single element to a previously-set <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>, such as a new <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a>. The element is sent directly to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>; the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> then uses the parameters set in the <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> to add the element to the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.</p>
+      <p>Because the element is sent directly to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>, there is no obfuscation of the element and none of the plausible-deniability privacy provided by the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>. Clients that want to maintain greater privacy should recalculate the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a> themselves and send a new <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> with the recalculated <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>8</td>
-        <td>feerate</td>
-        <td>uint64_t</td>
-        <td>The fee rate (in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> per kilobyte) below which transactions should not be relayed to this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>.</td>
-      </tr>
-    </tbody>
-  </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>element bytes</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>The number of bytes in the following element field.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>element</td>
+            <td>uint8_t[]</td>
+            <td>The element to add to the current filter.  Maximum of 520 bytes, which is the maximum size of an element which can be pushed onto the stack in a <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkey</a> or <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a>.  Elements must be sent in the byte order they would use when appearing in a <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>; for example, hashes should be sent in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a>.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>The receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> may choose to ignore the message and not filter transaction
-inv messages.</p>
-
-  <p>The fee filter is additive with <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filters</a>. If an <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block.  The method is used by some lightweight Umkoin clients." class="auto-link">SPV client</a> loads a <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom
-filter</a> and sends a feefilter message, transactions should only be relayed if
-they pass both filters.</p>
-
-  <p>Note however that feefilter has no effect on <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> propagation or responses to
-getdata messages. For example, if a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> requests a merkleblock from its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>
-by sending a getdata message with inv type MSG_FILTERED_BLOCK and it has
-previously sent a feefilter to that <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>, the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> should respond with a
-merkleblock containing <em>all</em> the transactions matching the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>, even
-if they are below the feefilter fee rate.</p>
-
-  <p>inv messages generated from a mempool message are subject to a fee filter if it exists.</p>
-
-  <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#feefilter" title="The P2P network message which requests the receiving peer not relay any transactions below the specified fee rate" class="auto-link"><code>feefilter</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message
-header</a> has been omitted.)</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">7cbd000000000000 ... satoshis per kilobyte: 48,508</code></pre></figure>
-
-  <h4 id="filteradd">FilterAdd</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
-
-  <p>The <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to add a single element to
-a previously-set <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>, such as a new <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public key</a>. The element is
-sent directly to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>; the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> then uses the parameters set
-in the <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> to add the element to the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.</p>
-
-  <p>Because the element is sent directly to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>, there is no
-obfuscation of the element and none of the plausible-deniability privacy
-provided by the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>. Clients that want to maintain greater
-privacy should recalculate the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a> themselves and send a new
-<a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> with the recalculated <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>element bytes</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>The number of bytes in the following element field.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>element</td>
-        <td>uint8_t[]</td>
-        <td>The element to add to the current filter.  Maximum of 520 bytes, which is the maximum size of an element which can be pushed onto the stack in a <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkey</a> or <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a>.  Elements must be sent in the byte order they would use when appearing in a <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a>; for example, hashes should be sent in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a>.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>Note: a <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a> will not be accepted unless a filter was
-previously set with the <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a>.</p>
-
-  <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a> adding a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.
-(The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.) This <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> appears in the same
-<a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> used for the example hexdump in the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>; if that
-<a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> is re-sent after sending this <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a>,
-six hashes are returned instead of four.</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">20 ................................. Element bytes: 32
+      <p>Note: a <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a> will not be accepted unless a filter was previously set with the <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a>.</p>
+      <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a> adding a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.) This <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> appears in the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> used for the example hexdump in the <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a>; if that <a href="/en/developer-reference.php#merkleblock" title="A P2P protocol message used to request a filtered block useful for SPV proofs" class="auto-link"><code>merkleblock</code> message</a> is re-sent after sending this <a href="/en/developer-reference.php#filteradd" title="A P2P protocol message used to add a data element to an existing bloom filter." class="auto-link"><code>filteradd</code> message</a>, six hashes are returned instead of four.</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">20 ................................. Element bytes: 32
 fdacf9b3eb077412e7a968d2e4f11b9a
 9dee312d666187ed77ee7d26af16cb0b ... Element (A TXID)</code></pre></figure>
 
-  <h4 id="filterclear">FilterClear</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
+      <h4 id="filterclear">FilterClear</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to remove a previously-set <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.  This also undoes the effect of setting the relay field in the <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> to 0, allowing unfiltered access to <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> announcing new transactions.</p>
+      <p>Umkoin Core does not require a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a> before a replacement filter is loaded with <code>filterload</code>.  It also doesn’t require a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> before a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a>.</p>
+      <p>There is no payload in a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a>.  See the <a href="/en/developer-reference.php#message-headers">message header section</a> for an example of a message without a payload.</p>
 
-  <p>The <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to remove a
-previously-set <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.  This also undoes the effect of setting the
-relay field in the <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> to 0, allowing unfiltered access to
-<a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> announcing new transactions.</p>
+      <h4 id="filterload">FilterLoad</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to filter all relayed transactions and requested <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle blocks</a> through the provided filter. This allows clients to receive transactions relevant to their <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> plus a configurable rate of false positive transactions which can provide plausible-deniability privacy.</p>
 
-  <p>Umkoin Core does not require a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a> before a
-replacement filter is loaded with <code>filterload</code>.  It also doesn’t require
-a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> before a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>nFilterBytes</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>Number of bytes in the following filter bit field.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>filter</td>
+            <td>uint8_t[]</td>
+            <td>A bit field of arbitrary byte-aligned size. The maximum size is 36,000 bytes.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>nHashFuncs</td>
+            <td>uint32_t</td>
+            <td>The number of hash functions to use in this filter. The maximum value allowed in this field is 50.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>nTweak</td>
+            <td>uint32_t</td>
+            <td>An arbitrary value to add to the seed value in the hash function used by the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>nFlags</td>
+            <td>uint8_t</td>
+            <td>A set of flags that control how <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoints</a> corresponding to a matched <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> are added to the filter. See the table in the Updating A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a> subsection below.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>There is no payload in a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a>.  See the <a href="/en/developer-reference.php#message-headers">message header
-section</a> for an example of a message without a payload.</p>
-
-  <h4 id="filterload">FilterLoad</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em></p>
-
-  <p>The <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to filter all relayed
-transactions and requested <a href="/en/glossary/merkle-block" title="A partial merkle tree connecting transactions matching a bloom filter to the merkle root of a block." class="auto-link">merkle blocks</a> through the provided filter.
-This allows clients to receive transactions relevant to their <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>
-plus a configurable rate of false positive transactions which can
-provide plausible-deniability privacy.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>nFilterBytes</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>Number of bytes in the following filter bit field.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>filter</td>
-        <td>uint8_t[]</td>
-        <td>A bit field of arbitrary byte-aligned size. The maximum size is 36,000 bytes.</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>nHashFuncs</td>
-        <td>uint32_t</td>
-        <td>The number of hash functions to use in this filter. The maximum value allowed in this field is 50.</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>nTweak</td>
-        <td>uint32_t</td>
-        <td>An arbitrary value to add to the seed value in the hash function used by the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>nFlags</td>
-        <td>uint8_t</td>
-        <td>A set of flags that control how <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoints</a> corresponding to a matched <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> are added to the filter. See the table in the Updating A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a> subsection below.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message
-header</a> has been omitted.)  For an example of how this payload was
-created, see the <a href="/en/developer-examples.php#creating-a-bloom-filter">filterload example</a>.</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">02 ......... Filter bytes: 2
+      <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.)  For an example of how this payload was created, see the <a href="/en/developer-examples.php#creating-a-bloom-filter">filterload example</a>.</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">02 ......... Filter bytes: 2
 b50f ....... Filter: 1010 1101 1111 0000
 0b000000 ... nHashFuncs: 11
 00000000 ... nTweak: 0/none
 00 ......... nFlags: BLOOM_UPDATE_NONE</code></pre></figure>
 
-  <p><strong>Initializing A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a></strong></p>
+      <p><strong>Initializing A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a></strong></p>
+      <p>Filters have two core parameters: the size of the bit field and the number of hash functions to run against each data element. The following formulas from <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a> will allow you to automatically select appropriate values based on the number of elements you plan to insert into the filter (<em>n</em>) and the false positive rate (<em>p</em>) you desire to maintain plausible deniability.</p>
 
-  <p>Filters have two core parameters: the size of the bit field and the
-number of hash functions to run against each data element. The following
-formulas from <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a> will allow you to automatically select appropriate
-values based on the number of elements you plan to insert into the
-filter (<em>n</em>) and the false positive rate (<em>p</em>) you desire to maintain
-plausible deniability.</p>
+      <ul>
+        <li>
+          <p>Size of the bit field in bytes (<em>nFilterBytes</em>), up to a maximum of 36,000: <code>(-1 / log(2)**2 * n * log(p)) / 8</code></p>
+        </li>
+        <li>
+          <p>Hash functions to use (<em>nHashFuncs</em>), up to a maximum of 50: <code>nFilterBytes * 8 / n * log(2)</code></p>
+        </li>
+      </ul>
 
-  <ul>
-    <li>
-      <p>Size of the bit field in bytes (<em>nFilterBytes</em>), up to a maximum of
-36,000: <code>(-1 / log(2)**2 * n * log(p)) / 8</code></p>
-    </li>
-    <li>
-      <p>Hash functions to use (<em>nHashFuncs</em>), up to a maximum of 50:
-<code>nFilterBytes * 8 / n * log(2)</code></p>
-    </li>
-  </ul>
+      <p>Note that the filter matches parts of transactions (transaction elements), so the false positive rate is relative to the number of elements checked—not the number of transactions checked. Each normal transaction has a minimum of four matchable elements (described in the comparison subsection below), so a filter with a false-positive rate of 1 percent will match about 4 percent of all transactions at a minimum.</p>
+      <p>According to <a href="https://github.com/bitcoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>, the formulas and limits described above provide support for <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filters</a> containing 20,000 items with a false positive rate of less than 0.1 percent or 10,000 items with a false positive rate of less than 0.0001 percent.</p>
+      <p>Once the size of the bit field is known, the bit field should be initialized as all zeroes.</p>
+      <p><strong>Populating A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a></strong></p>
+      <p>The <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a> is populated using between 1 and 50 unique hash functions (the number specified per filter by the <em>nHashFuncs</em> field). Instead of using up to 50 different hash function implementations, a single implementation is used with a unique seed value for each function.</p>
+      <p>The seed is <code>nHashNum * 0xfba4c795 + nTweak</code> as a <em>uint32_t</em>, where the values are:</p>
 
-  <p>Note that the filter matches parts of transactions (transaction
-elements), so the false positive rate is relative to the number of
-elements checked—not the number of transactions checked. Each normal
-transaction has a minimum of four matchable elements (described in the
-comparison subsection below), so a filter with a false-positive rate of
-1 percent will match about 4 percent of all transactions at a minimum.</p>
+      <ul>
+        <li>
+          <p><strong>nHashNum</strong> is the sequence number for this hash function, starting at 0 for the first hash iteration and increasing up to the value of the <em>nHashFuncs</em> field (minus one) for the last hash iteration.</p>
+        </li>
+        <li>
+          <p><strong>0xfba4c795</strong> is a constant optimized to create large differences in the seed for different values of <em>nHashNum</em>.</p>
+        </li>
+        <li>
+          <p><strong>nTweak</strong> is a per-filter constant set by the client to require the use of an arbitrary set of hash functions.</p>
+        </li>
+      </ul>
 
-  <p>According to <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>, the formulas and limits described above provide
-support for <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filters</a> containing 20,000 items with a false positive
-rate of less than 0.1 percent or 10,000 items with a false positive rate
-of less than 0.0001 percent.</p>
+      <p>If the seed resulting from the formula above is larger than four bytes, it must be truncated to its four most significant bytes (for example, <code>0x8967452301 &amp; 0xffffffff ? 0x67452301</code>).</p>
+      <p>The actual hash function implementation used is the <a href="https://en.wikipedia.org/wiki/MurmurHash">32-bit Murmur3 hash function</a>.</p>
+      <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" /> <strong>Warning:</strong> the Murmur3 hash function has separate 32-bit and 64-bit versions that produce different results for the same <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>. Only the 32-bit Murmur3 version is used with Umkoin <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filters</a>.</p>
+      <p>The data to be hashed can be any transaction element which the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a> can match. See the next subsection for the list of transaction elements checked against the filter. The largest element which can be matched is a script data push of 520 bytes, so the data should never exceed 520 bytes.</p>
+      <p>The example below from Umkoin Core <a href="https://github.com/umkoin/umkoin/blob/cbf28c6619fe348a258dfd7d08bdbd2392d07511/src/bloom.cpp#L46">bloom.cpp</a> combines all the steps above to create the hash function template. The seed is the first parameter; the data to be hashed is the second parameter. The result is a uint32_t modulo the size of the bit field in bits.</p>
+      <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">MurmurHash3</span><span class="p">(</span><span class="n">nHashNum</span> <span class="o">*</span> <span class="mh">0xFBA4C795</span> <span class="o">+</span> <span class="n">nTweak</span><span class="p">,</span> <span class="n">vDataToHash</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">vData</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span></code></pre></figure>
+      <p>Each data element to be added to the filter is hashed by <em>nHashFuncs</em> number of hash functions. Each time a hash function is run, the result will be the index number (<em>nIndex</em>) of a bit in the bit field. That bit must be set to 1. For example if the filter bit field was <code>00000000</code> and the result is 5, the revised filter bit field is <code>00000100</code> (the first bit is bit 0).</p>
+      <p>It is expected that sometimes the same index number will be returned more than once when populating the bit field; this does not affect the algorithm—after a bit is set to 1, it is never changed back to 0.</p>
+      <p>After all data elements have been added to the filter, each set of eight bits is converted into a little-endian byte. These bytes are the value of the <em>filter</em> field.</p>
+      <p><strong>Comparing Transaction Elements To A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a></strong></p>
+      <p>To compare an arbitrary data element against the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>, it is hashed using the same parameters used to create the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>. Specifically, it is hashed <em>nHashFuncs</em> times, each time using the same <em>nTweak</em> provided in the filter, and the resulting <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> is modulo the size of the bit field provided in the <em>filter</em> field.  After each hash is performed, the filter is checked to see if the bit at that indexed location is set.  For example if the result of a hash is <code>5</code> and the filter is <code>01001110</code>, the bit is considered set.</p>
+      <p>If the result of every hash points to a set bit, the filter matches. If any of the results points to an unset bit, the filter does not match.</p>
+      <p>The following transaction elements are compared against <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filters</a>. All elements will be hashed in the byte order used in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> (for example, <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> will be in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a>).</p>
 
-  <p>Once the size of the bit field is known, the bit field should be
-initialized as all zeroes.</p>
+      <ul>
+        <li>
+          <p><strong><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>:</strong> the transaction’s SHA256(SHA256()) hash.</p>
+        </li>
+        <li>
+          <p><strong><a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">Outpoints</a>:</strong> each 36-byte <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> used this transaction’s <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> section is individually compared to the filter.</p>
+        </li>
+        <li>
+          <p><strong><a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">Signature Script</a> Data:</strong> each element pushed onto the stack by a <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">data-pushing opcode</a> in a <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> from this transaction is individually compared to the filter.  This includes data elements present in P2SH <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem scripts</a> when they are being spent.</p>
+        </li>
+        <li>
+          <p><strong><a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">PubKey Script</a> Data:</strong> each element pushed onto the the stack by a <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">data-pushing opcode</a> in any <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> from this transaction is individually compared to the filter. (If a <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> element matches the filter, the filter will be immediately updated if the <code>BLOOM_UPDATE_ALL</code> flag was set; if the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> is in the P2PKH format and matches the filter, the filter will be immediately updated if the <code>BLOOM_UPDATE_P2PUBKEY_ONLY</code> flag was set. See the subsection below for details.)</p>
+        </li>
+      </ul>
 
-  <p><strong>Populating A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a></strong></p>
-
-  <p>The <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a> is populated using between 1 and 50 unique hash
-functions (the number specified per filter by the <em>nHashFuncs</em>
-field). Instead of using up to 50 different hash function
-implementations, a single implementation is used with a unique seed
-value for each function.</p>
-
-  <p>The seed is <code>nHashNum * 0xfba4c795 + nTweak</code> as a <em>uint32_t</em>, where the values
-are:</p>
-
-  <ul>
-    <li>
-      <p><strong>nHashNum</strong> is the sequence number for this hash
-function, starting at 0 for the first hash iteration and increasing up
-to the value of the <em>nHashFuncs</em> field (minus one) for the last hash
-iteration.</p>
-    </li>
-    <li>
-      <p><strong>0xfba4c795</strong> is a constant optimized to create large differences in
-the seed for different values of <em>nHashNum</em>.</p>
-    </li>
-    <li>
-      <p><strong>nTweak</strong> is a per-filter constant set by the client to require the use
-of an arbitrary set of hash functions.</p>
-    </li>
-  </ul>
-
-  <p>If the seed resulting from the formula above is larger than four bytes,
-it must be truncated to its four most significant bytes (for example,
-<code>0x8967452301 &amp; 0xffffffff ? 0x67452301</code>).</p>
-
-  <p>The actual hash function implementation used is the <a href="https://en.wikipedia.org/wiki/MurmurHash">32-bit Murmur3 hash
-function</a>.</p>
-
-  <p><img src="/img/icons/icon_warning.svg" alt="Warning icon" />
-<strong>Warning:</strong> the Murmur3 hash function has separate 32-bit and 64-bit
-versions that produce different results for the same <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>.  Only the
-32-bit Murmur3 version is used with Umkoin <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filters</a>.</p>
-
-  <p>The data to be hashed can be any transaction element which the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom
-filter</a> can match. See the next subsection for the list of transaction
-elements checked against the filter. The largest element which can be
-matched is a script data push of 520 bytes, so the data should never
-exceed 520 bytes.</p>
-
-  <p>The example below from Umkoin Core <a href="https://github.com/umkoin/umkoin/blob/cbf28c6619fe348a258dfd7d08bdbd2392d07511/src/bloom.cpp#L46">bloom.cpp</a> combines
-all the steps above to create the hash function template. The seed is
-the first parameter; the data to be hashed is the second parameter. The
-result is a uint32_t modulo the size of the bit field in bits.</p>
-
-  <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">MurmurHash3</span><span class="p">(</span><span class="n">nHashNum</span> <span class="o">*</span> <span class="mh">0xFBA4C795</span> <span class="o">+</span> <span class="n">nTweak</span><span class="p">,</span> <span class="n">vDataToHash</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">vData</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span></code></pre></figure>
-
-  <p>Each data element to be added to the filter is hashed by <em>nHashFuncs</em>
-number of hash functions. Each time a hash function is run, the result
-will be the index number (<em>nIndex</em>) of a bit in the bit field. That bit
-must be set to 1. For example if the filter bit field was <code>00000000</code> and
-the result is 5, the revised filter bit field is <code>00000100</code> (the first bit
-is bit 0).</p>
-
-  <p>It is expected that sometimes the same index number will be returned
-more than once when populating the bit field; this does not affect the
-algorithm—after a bit is set to 1, it is never changed back to 0.</p>
-
-  <p>After all data elements have been added to the filter, each set of eight
-bits is converted into a little-endian byte. These bytes are the value
-of the <em>filter</em> field.</p>
-
-  <p><strong>Comparing Transaction Elements To A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a></strong></p>
-
-  <p>To compare an arbitrary data element against the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>, it is
-hashed using the same parameters used to create the <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filter</a>.
-Specifically, it is hashed <em>nHashFuncs</em> times, each time using the same
-<em>nTweak</em> provided in the filter, and the resulting <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> is modulo the
-size of the bit field provided in the <em>filter</em> field.  After each hash is
-performed, the filter is checked to see if the bit at that indexed
-location is set.  For example if the result of a hash is <code>5</code> and the
-filter is <code>01001110</code>, the bit is considered set.</p>
-
-  <p>If the result of every hash points to a set bit, the filter matches. If
-any of the results points to an unset bit, the filter does not match.</p>
-
-  <p>The following transaction elements are compared against <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">bloom filters</a>.
-All elements will be hashed in the byte order used in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> (for
-example, <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> will be in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a>).</p>
-
-  <ul>
-    <li>
-      <p><strong><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>:</strong> the transaction’s SHA256(SHA256()) hash.</p>
-    </li>
-    <li>
-      <p><strong><a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">Outpoints</a>:</strong> each 36-byte <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> used this transaction’s <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>
-section is individually compared to the filter.</p>
-    </li>
-    <li>
-      <p><strong><a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">Signature Script</a> Data:</strong> each element pushed onto the stack by a
-<a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">data-pushing opcode</a> in a <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> from this transaction is
-individually compared to the filter.  This includes data elements
-present in P2SH <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem scripts</a> when they are being spent.</p>
-    </li>
-    <li>
-      <p><strong><a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">PubKey Script</a> Data:</strong> each element pushed onto the the stack by a
-<a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">data-pushing opcode</a> in any <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> from this transaction is
-individually compared to the filter. (If a <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> element
-matches the filter, the filter will be immediately updated if the
-<code>BLOOM_UPDATE_ALL</code> flag was set; if the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> is in the P2PKH
-format and matches the filter, the filter will be immediately updated
-if the <code>BLOOM_UPDATE_P2PUBKEY_ONLY</code> flag was set. See the subsection
-below for details.)</p>
-    </li>
-  </ul>
-
-  <p>The following annotated hexdump of a transaction is from the <a href="/en/developer-reference.php#raw-transaction-format">raw
-transaction format section</a>; the elements which
-would be checked by the filter are emphasized in bold. Note that this
-transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> (<strong><code>01000000017b1eab[...]</code></strong>) would also be checked,
-and that the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> and index number below would be checked as a
-single 36-byte element.</p>
-
-  <pre><code>01000000 ................................... Version
+      <p>The following annotated hexdump of a transaction is from the <a href="/en/developer-reference.php#raw-transaction-format">raw transaction format section</a>; the elements which would be checked by the filter are emphasized in bold. Note that this transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> (<strong><code>01000000017b1eab[...]</code></strong>) would also be checked, and that the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> and index number below would be checked as a single 36-byte element.</p>
+      <pre><code>01000000 ................................... Version
 
 01 ......................................... Number of inputs
 |
@@ -1953,272 +1748,225 @@ single 36-byte element.</p>
 00000000 ................................... locktime: 0 (a block height)
 </code></pre>
 
-  <p><strong>Updating A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a></strong></p>
+      <p><strong>Updating A <a href="/en/glossary/bloom-filter" title="A filter used primarily by SPV clients to request only matching transactions and merkle blocks from full nodes." class="auto-link">Bloom Filter</a></strong></p>
+      <p>Clients will often want to track <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> that spend <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> (<a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoints</a>) relevant to their <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, so the filterload field <em>nFlags</em> can be set to allow the filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to update the filter when a match is found. When the filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> sees a <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> that pays a <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkey</a>, <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>, or other data element matching the filter, the filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> immediately updates the filter with the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> corresponding to that <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>.</p>
+      <p><img src="/img/dev/en-bloom-update.svg" alt="Automatically Updating Bloom Filters" /></p>
+      <p>If an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> later spends that <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a>, the filter will match it, allowing the filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to tell the client that one of its transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> has been spent.</p>
+      <p>The <em>nFlags</em> field has three allowed values:</p>
 
-  <p>Clients will often want to track <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> that spend <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> (<a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoints</a>)
-relevant to their <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, so the filterload field <em>nFlags</em> can be set to
-allow the filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to update the filter when a match is found.
-When the filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> sees a <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> that pays a <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkey</a>,
-<a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>, or other data element matching the filter, the filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>
-immediately updates the filter with the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> corresponding to that
-<a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Value</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0</td>
+            <td>BLOOM_UPDATE_NONE</td>
+            <td>The filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> should not update the filter.</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>BLOOM_UPDATE_ALL</td>
+            <td>If the filter matches any data element in a <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>, the corresponding <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> is added to the filter.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>BLOOM_UPDATE_P2PUBKEY_ONLY</td>
+            <td>If the filter matches any data element in a <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> and that script is either a P2PKH or non-P2SH pay-to-<a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> script, the corresponding <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> is added to the filter.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p><img src="/img/dev/en-bloom-update.svg" alt="Automatically Updating Bloom Filters" /></p>
+      <p>In addition, because the filter size stays the same even though additional elements are being added to it, the false positive rate increases. Each false positive can result in another element being added to the filter, creating a feedback loop that can (after a certain point) make the filter useless. For this reason, clients using automatic filter updates need to monitor the actual false positive rate and send a new filter when the rate gets too high.</p>
 
-  <p>If an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> later spends that <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a>, the filter will match it,
-allowing the filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to tell the client that one of its
-transaction <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> has been spent.</p>
+      <h4 id="getaddr">GetAddr</h4>
+      <p>The <a href="/en/developer-reference.php#getaddr" title="A P2P protool message used to request an addr message containing connection information for other nodes" class="auto-link"><code>getaddr</code> message</a> requests an <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a> from the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, preferably one with lots of IP addresses of other receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>. The transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> can use those IP addresses to quickly update its database of available <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> rather than waiting for unsolicited <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> messages</a> to arrive over time.</p>
+      <p>There is no payload in a <a href="/en/developer-reference.php#getaddr" title="A P2P protool message used to request an addr message containing connection information for other nodes" class="auto-link"><code>getaddr</code> message</a>.  See the <a href="/en/developer-reference.php#message-headers">message header section</a> for an example of a message without a payload.</p>
 
-  <p>The <em>nFlags</em> field has three allowed values:</p>
+      <h4 id="ping">Ping</h4>
+      <p>The <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> helps confirm that the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> is still connected. If a TCP/IP error is encountered when sending the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> (such as a connection timeout), the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> can assume that the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is disconnected. The response to a <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> is the <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a>.</p>
+      <p>Before <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60000</a>, the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> had no payload. As of <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60001</a> and all later versions, the message includes a single field, the nonce.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Value</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>0</td>
-        <td>BLOOM_UPDATE_NONE</td>
-        <td>The filtering <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> should not update the filter.</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>BLOOM_UPDATE_ALL</td>
-        <td>If the filter matches any data element in a <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>, the corresponding <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> is added to the filter.</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>BLOOM_UPDATE_P2PUBKEY_ONLY</td>
-        <td>If the filter matches any data element in a <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> and that script is either a P2PKH or non-P2SH pay-to-<a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">multisig</a> script, the corresponding <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> is added to the filter.</td>
-      </tr>
-    </tbody>
-  </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>8</td>
+            <td>nonce</td>
+            <td>uint64_t</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0031.mediawiki" class="auto-link">BIP31</a>.</em> <br /><br />Random nonce assigned to this <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>.  The responding <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> will include this nonce to identify the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> to which it is replying.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>In addition, because the filter size stays the same even though
-additional elements are being added to it, the false positive rate
-increases. Each false positive can result in another element being added
-to the filter, creating a feedback loop that can (after a certain point)
-make the filter useless. For this reason, clients using automatic filter
-updates need to monitor the actual false positive rate and send a new
-filter when the rate gets too high.</p>
+      <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.)</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">0094102111e2af4d ... Nonce</code></pre></figure>
 
-  <h4 id="getaddr">GetAddr</h4>
-  <p>The <a href="/en/developer-reference.php#getaddr" title="A P2P protool message used to request an addr message containing connection information for other nodes" class="auto-link"><code>getaddr</code> message</a> requests an <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code> message</a> from the receiving
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, preferably one with lots of IP addresses of other receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a>.
-The transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> can use those IP addresses to quickly update its
-database of available <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> rather than waiting for unsolicited <a href="/en/developer-reference.php#addr" title="The P2P network message which relays IP addresses and port numbers of active nodes to other nodes and clients, allowing decentralized peer discovery." class="auto-link"><code>addr</code>
-messages</a> to arrive over time.</p>
+      <h4 id="pong">Pong</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0031.mediawiki" class="auto-link">BIP31</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> replies to a <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>, proving to the pinging <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> that the ponging <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is still alive. Umkoin Core will, by default, disconnect from any clients which have not responded to a <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> within 20 minutes.</p>
+      <p>To allow <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> to keep track of latency, the <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> sends back the same nonce received in the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> it is replying to.</p>
+      <p>The format of the <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> is identical to the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>; only the <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> differs.</p>
 
-  <p>There is no payload in a <a href="/en/developer-reference.php#getaddr" title="A P2P protool message used to request an addr message containing connection information for other nodes" class="auto-link"><code>getaddr</code> message</a>.  See the <a href="/en/developer-reference.php#message-headers">message header
-section</a> for an example of a message without a payload.</p>
+      <h4 id="reject">Reject</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70002</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0061.mediawiki" class="auto-link">BIP61</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> message</a> informs the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> that one of its previous messages has been rejected.</p>
 
-  <h4 id="ping">Ping</h4>
-  <p>The <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> helps confirm that the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> is still
-connected. If a TCP/IP error is encountered when sending the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code>
-message</a> (such as a connection timeout), the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> can assume
-that the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is disconnected. The response to a <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code>
-message</a> is the <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>message bytes</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>The number of bytes in the following message field.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>message</td>
+            <td>string</td>
+            <td>The type of message rejected as ASCII text <em>without null padding</em>.  For example: “tx”, “<a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>”, or “version”.</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>code</td>
+            <td>char</td>
+            <td>The reject message code. See the table below.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>reason bytes</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>The number of bytes in the following reason field. May be 0x00 if a text reason isn’t provided.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>reason</td>
+            <td>string</td>
+            <td>The reason for the rejection in ASCII text. This should not be displayed to the user; it is only for debugging purposes.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>extra data</td>
+            <td><em>varies</em></td>
+            <td>Optional additional data provided with the rejection. For example, most rejections of <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> messages</a> or <a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> messages</a> include the hash of the rejected transaction or <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a>.  See the code table below.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>Before <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60000</a>, the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> had no payload. As of
-<a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60001</a> and all later versions, the message includes a
-single field, the nonce.</p>
+      <p>The following table lists message reject codes.  Codes are tied to the type of message they reply to; for example there is a 0x10 reject code for transactions and a 0x10 reject code for <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>8</td>
-        <td>nonce</td>
-        <td>uint64_t</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0031.mediawiki" class="auto-link">BIP31</a>.</em> <br /><br />Random nonce assigned to this <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>.  The responding <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> will include this nonce to identify the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> to which it is replying.</td>
-      </tr>
-    </tbody>
-  </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>In Reply To</th>
+            <th>Extra Bytes</th>
+            <th>Extra Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0x01</td>
+            <td><em>any message</em></td>
+            <td>0</td>
+            <td>N/A</td>
+            <td>Message could not be decoded.  Be careful of <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> message</a> feedback loops where two <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> each don’t understand each other’s <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> messages</a> and so keep sending them back and forth forever.</td>
+          </tr>
+          <tr>
+            <td>0x10</td>
+            <td><a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> message</a></td>
+            <td>32</td>
+            <td>char[32]</td>
+            <td><a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">Block</a> is invalid for some reason (invalid proof-of-work, invalid <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a>, etc).  Extra data may include the rejected <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block’s</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash.</td>
+          </tr>
+          <tr>
+            <td>0x10</td>
+            <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
+            <td>32</td>
+            <td>char[32]</td>
+            <td>Transaction is invalid for some reason (invalid <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a>, <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> value greater than <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, etc.).  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
+          </tr>
+          <tr>
+            <td>0x11</td>
+            <td><a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> message</a></td>
+            <td>32</td>
+            <td>char[32]</td>
+            <td>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> uses a version that is no longer supported.  Extra data may include the rejected <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block’s</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash.</td>
+          </tr>
+          <tr>
+            <td>0x11</td>
+            <td><a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a></td>
+            <td>0</td>
+            <td>N/A</td>
+            <td>Connecting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is using a protocol version that the rejecting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> considers obsolete and unsupported.</td>
+          </tr>
+          <tr>
+            <td>0x12</td>
+            <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
+            <td>32</td>
+            <td>char[32]</td>
+            <td>Duplicate <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> spend (<a href="/en/glossary/double-spend" title="A transaction that uses the same input as an already broadcast transaction. The attempt of duplication, deceit, or conversion,  will be adjudicated when only one of the transactions is recorded in the blockchain." class="auto-link">double spend</a>): the rejected transaction spends the same <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> as a previously-received transaction.  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
+          </tr>
+          <tr>
+            <td>0x12</td>
+            <td><a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a></td>
+            <td>0</td>
+            <td>N/A</td>
+            <td>More than one <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> received in this connection.</td>
+          </tr>
+          <tr>
+            <td>0x40</td>
+            <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
+            <td>32</td>
+            <td>char[32]</td>
+            <td>The transaction will not be mined or relayed because the rejecting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> considers it non-standard—a transaction type or version unknown by the server.  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
+          </tr>
+          <tr>
+            <td>0x41</td>
+            <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
+            <td>32</td>
+            <td>char[32]</td>
+            <td>One or more <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> amounts are below the dust threshold.  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
+          </tr>
+          <tr>
+            <td>0x42</td>
+            <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
+            <td> </td>
+            <td>char[32]</td>
+            <td>The transaction did not have a large enough fee or priority to be relayed or mined.  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
+          </tr>
+          <tr>
+            <td>0x43</td>
+            <td><a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> message</a></td>
+            <td>32</td>
+            <td>char[32]</td>
+            <td>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> belongs to a <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> which is not the same <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> as provided by a compiled-in checkpoint.  Extra data may include the rejected <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block’s</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message
-header</a> has been omitted.)</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">0094102111e2af4d ... Nonce</code></pre></figure>
-
-  <h4 id="pong">Pong</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0031.mediawiki" class="auto-link">BIP31</a>.</em></p>
-
-  <p>The <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> replies to a <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>, proving to the pinging
-<a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> that the ponging <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is still alive. Umkoin Core will, by
-default, disconnect from any clients which have not responded to a
-<a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> within 20 minutes.</p>
-
-  <p>To allow <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> to keep track of latency, the <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> sends back
-the same nonce received in the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a> it is replying to.</p>
-
-  <p>The format of the <a href="/en/developer-reference.php#pong" title="A P2P network message used to reply to a P2P network ping message" class="auto-link"><code>pong</code> message</a> is identical to the <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>;
-only the <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> differs.</p>
-
-  <h4 id="reject">Reject</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70002</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0061.mediawiki" class="auto-link">BIP61</a>.</em></p>
-
-  <p>The <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> message</a> informs the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> that one of its previous
-messages has been rejected.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>message bytes</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>The number of bytes in the following message field.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>message</td>
-        <td>string</td>
-        <td>The type of message rejected as ASCII text <em>without null padding</em>.  For example: “tx”, “<a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>”, or “version”.</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>code</td>
-        <td>char</td>
-        <td>The reject message code.  See the table below.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>reason bytes</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>The number of bytes in the following reason field.  May be 0x00 if a text reason isn’t provided.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>reason</td>
-        <td>string</td>
-        <td>The reason for the rejection in ASCII text.  This should not be displayed to the user; it is only for debugging purposes.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>extra data</td>
-        <td><em>varies</em></td>
-        <td>Optional additional data provided with the rejection.  For example, most rejections of <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> messages</a> or <a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> messages</a> include the hash of the rejected transaction or <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a>.  See the code table below.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The following table lists message reject codes.  Codes are tied to the
-type of message they reply to; for example there is a 0x10 reject code
-for transactions and a 0x10 reject code for <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Code</th>
-        <th>In Reply To</th>
-        <th>Extra Bytes</th>
-        <th>Extra Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>0x01</td>
-        <td><em>any message</em></td>
-        <td>0</td>
-        <td>N/A</td>
-        <td>Message could not be decoded.  Be careful of <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> message</a> feedback loops where two <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> each don’t understand each other’s <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> messages</a> and so keep sending them back and forth forever.</td>
-      </tr>
-      <tr>
-        <td>0x10</td>
-        <td><a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> message</a></td>
-        <td>32</td>
-        <td>char[32]</td>
-        <td><a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">Block</a> is invalid for some reason (invalid proof-of-work, invalid <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a>, etc).  Extra data may include the rejected <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block’s</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash.</td>
-      </tr>
-      <tr>
-        <td>0x10</td>
-        <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
-        <td>32</td>
-        <td>char[32]</td>
-        <td>Transaction is invalid for some reason (invalid <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signature</a>, <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> value greater than <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, etc.).  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
-      </tr>
-      <tr>
-        <td>0x11</td>
-        <td><a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> message</a></td>
-        <td>32</td>
-        <td>char[32]</td>
-        <td>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> uses a version that is no longer supported.  Extra data may include the rejected <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block’s</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash.</td>
-      </tr>
-      <tr>
-        <td>0x11</td>
-        <td><a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a></td>
-        <td>0</td>
-        <td>N/A</td>
-        <td>Connecting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is using a protocol version that the rejecting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> considers obsolete and unsupported.</td>
-      </tr>
-      <tr>
-        <td>0x12</td>
-        <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
-        <td>32</td>
-        <td>char[32]</td>
-        <td>Duplicate <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> spend (<a href="/en/glossary/double-spend" title="A transaction that uses the same input as an already broadcast transaction. The attempt of duplication, deceit, or conversion,  will be adjudicated when only one of the transactions is recorded in the blockchain." class="auto-link">double spend</a>): the rejected transaction spends the same <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> as a previously-received transaction.  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
-      </tr>
-      <tr>
-        <td>0x12</td>
-        <td><a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a></td>
-        <td>0</td>
-        <td>N/A</td>
-        <td>More than one <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> received in this connection.</td>
-      </tr>
-      <tr>
-        <td>0x40</td>
-        <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
-        <td>32</td>
-        <td>char[32]</td>
-        <td>The transaction will not be mined or relayed because the rejecting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> considers it non-standard—a transaction type or version unknown by the server.  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
-      </tr>
-      <tr>
-        <td>0x41</td>
-        <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
-        <td>32</td>
-        <td>char[32]</td>
-        <td>One or more <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> amounts are below the dust threshold.  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
-      </tr>
-      <tr>
-        <td>0x42</td>
-        <td><a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> message</a></td>
-        <td> </td>
-        <td>char[32]</td>
-        <td>The transaction did not have a large enough fee or priority to be relayed or mined.  Extra data may include the rejected transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>.</td>
-      </tr>
-      <tr>
-        <td>0x43</td>
-        <td><a href="/en/developer-reference.php#block" title="The P2P network message which sends a serialized block" class="auto-link"><code>block</code> message</a></td>
-        <td>32</td>
-        <td>char[32]</td>
-        <td>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> belongs to a <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> which is not the same <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> as provided by a compiled-in checkpoint.  Extra data may include the rejected <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block’s</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message
-header</a> has been omitted.)</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">02 ................................. Number of bytes in message: 2
+      <p>The annotated hexdump below shows a <a href="/en/developer-reference.php#reject" title="A P2P network message used to indicate a previously-received message was rejected for some reason" class="auto-link"><code>reject</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted.)</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">02 ................................. Number of bytes in message: 2
 7478 ............................... Type of message rejected: tx
 12 ................................. Reject code: 0x12 (duplicate)
 15 ................................. Number of bytes in reason: 21
@@ -2227,173 +1975,156 @@ header</a> has been omitted.)</p>
 394715fcab51093be7bfca5a31005972
 947baf86a31017939575fb2354222821 ... TXID</code></pre></figure>
 
-  <h4 id="sendheaders">SendHeaders</h4>
-  <p>The <a href="/en/developer-reference.php#sendheaders" title="A P2P network message used to request new blocks be announced through headers messages rather than inv messages" class="auto-link"><code>sendheaders</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to send new <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>
-announcements using a <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> rather than an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>.</p>
+      <h4 id="sendheaders">SendHeaders</h4>
+      <p>The <a href="/en/developer-reference.php#sendheaders" title="A P2P network message used to request new blocks be announced through headers messages rather than inv messages" class="auto-link"><code>sendheaders</code> message</a> tells the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> to send new <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> announcements using a <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> rather than an <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> message</a>.</p>
+      <p>There is no payload in a <a href="/en/developer-reference.php#sendheaders" title="A P2P network message used to request new blocks be announced through headers messages rather than inv messages" class="auto-link"><code>sendheaders</code> message</a>.  See the <a href="/en/developer-reference.php#message-headers">message header section</a> for an example of a message without a payload.</p>
 
-  <p>There is no payload in a <a href="/en/developer-reference.php#sendheaders" title="A P2P network message used to request new blocks be announced through headers messages rather than inv messages" class="auto-link"><code>sendheaders</code> message</a>.  See the <a href="/en/developer-reference.php#message-headers">message header
-section</a> for an example of a message without a payload.</p>
+      <h4 id="verack">VerAck</h4>
+      <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 209</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a> acknowledges a previously-received <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>, informing the connecting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> that it can begin to send other messages. The <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a> has no payload; for an example of a message with no payload, see the <a href="/en/developer-reference.php#message-headers">message headers section</a>.</p>
 
-  <h4 id="verack">VerAck</h4>
-  <p><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 209</a>.</em></p>
+      <h4 id="version">Version</h4>
+      <p>The <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> provides information about the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> at the beginning of a connection. Until both <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> have exchanged <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> messages</a>, no other messages will be accepted.</p>
+      <p>If a <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> is accepted, the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> should send a <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a>—but no <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> should send a <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a> before initializing its half of the connection by first sending a <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>.</p>
 
-  <p>The <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a> acknowledges a previously-received <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code>
-message</a>, informing the connecting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> that it can begin to send
-other messages. The <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a> has no payload; for an example
-of a message with no payload, see the <a href="/en/developer-reference.php#message-headers">message headers
-section</a>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Bytes</th>
+            <th>Name</th>
+            <th>Data Type</th>
+            <th>Required/Optional</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>4</td>
+            <td>version</td>
+            <td>int32_t</td>
+            <td>Required</td>
+            <td>The highest protocol version understood by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  See the <a href="/en/developer-reference.php#protocol-versions">protocol version section</a>.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>services</td>
+            <td>uint64_t</td>
+            <td>Required</td>
+            <td>The services supported by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> encoded as a bitfield.  See the list of service codes below.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>timestamp</td>
+            <td>int64_t</td>
+            <td>Required</td>
+            <td>The current <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> according to the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> clock.  Because <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> will reject <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> with timestamps more than two hours in the future, this field can help other <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> to determine that their clock is wrong.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>addr_recv services</td>
+            <td>uint64_t</td>
+            <td>Required</td>
+            <td>The services supported by the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> as perceived by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  Same format as the ‘services’ field above. Umkoin Core will attempt to provide accurate information.  <a href="http://umkoinj.github.io" class="auto-link">UmkoinJ</a> will, by default, always send 0.</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>addr_recv IP address</td>
+            <td>char</td>
+            <td>Required</td>
+            <td>The IPv6 address of the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> as perceived by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in <strong>big endian byte order</strong>. IPv4 addresses can be provided as <a href="http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4-mapped IPv6 addresses</a>. Umkoin Core will attempt to provide accurate information.  <a href="http://umkoinj.github.io" class="auto-link">UmkoinJ</a> will, by default, always return ::ffff:127.0.0.1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>addr_recv port</td>
+            <td>uint16_t</td>
+            <td>Required</td>
+            <td>The port number of the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> as perceived by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in <strong>big endian byte order</strong>.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>addr_trans services</td>
+            <td>uint64_t</td>
+            <td>Required</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />The services supported by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  Should be identical to the ‘services’ field above.</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>addr_trans IP address</td>
+            <td>char</td>
+            <td>Required</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />The IPv6 address of the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in <strong>big endian byte order</strong>. IPv4 addresses can be provided as <a href="http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4-mapped IPv6 addresses</a>.  Set to ::ffff:127.0.0.1 if unknown.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>addr_trans port</td>
+            <td>uint16_t</td>
+            <td>Required</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />The port number of the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in <strong>big endian byte order</strong>.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>nonce</td>
+            <td>uint64_t</td>
+            <td>Required</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />A random nonce which can help a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> detect a connection to itself.  If the nonce is 0, the nonce field is ignored.  If the nonce is anything else, a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> should terminate the connection on receipt of a <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> with a nonce it previously sent.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>user_agent bytes</td>
+            <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
+            <td>Required</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />Number of bytes in following user_agent field.  If 0x00, no user agent field is sent.</td>
+          </tr>
+          <tr>
+            <td><em>Varies</em></td>
+            <td>user_agent</td>
+            <td>string</td>
+            <td>Required if user_agent bytes &gt; 0</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>. Renamed in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60000</a>.</em> <br /><br />User agent as defined by <a href="https://github.com/umkoin/bips/blob/master/bip-0014.mediawiki" class="auto-link">BIP14</a>. Previously called subVer.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>start_height</td>
+            <td>int32_t</td>
+            <td>Required</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 209</a>.</em> <br /><br />The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> or, in the case of an <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block.  The method is used by some lightweight Umkoin clients." class="auto-link">SPV client</a>, best <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> <a href="/en/glossary/header-chain" title="A chain of block headers with each header linking to the header that preceded it; the most-difficult-to-recreate chain is the best header chain" class="auto-link">header chain</a>.</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>relay</td>
+            <td>bool</td>
+            <td>Optional</td>
+            <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em> <br /><br />Transaction relay flag.  If 0x00, no <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> or <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> messages</a> announcing new transactions should be sent to this client until it sends a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> or <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a>.  If the relay field is not present or is set to 0x01, this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> wants <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> and <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> messages</a> announcing new transactions.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <h4 id="version">Version</h4>
-  <p>The <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> provides information about the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>
-to the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> at the beginning of a connection. Until both <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a>
-have exchanged <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> messages</a>, no other messages will be accepted.</p>
+      <p>The following service identifiers have been assigned.</p>
 
-  <p>If a <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> is accepted, the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> should send a
-<a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a>—but no <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> should send a <a href="/en/developer-reference.php#verack" title="A P2P network message sent in reply to a version message to confirm a connection has been established" class="auto-link"><code>verack</code> message</a>
-before initializing its half of the connection by first sending a
-<a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Value</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0x00</td>
+            <td><em>Unnamed</em></td>
+            <td>This <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is not a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">full node</a>.  It may not be able to provide any data except for the transactions it originates.</td>
+          </tr>
+          <tr>
+            <td>0x01</td>
+            <td>NODE_NETWORK</td>
+            <td>This is a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">full node</a> and can be asked for full <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.  It should implement all protocol features available in its self-reported protocol version.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Bytes</th>
-        <th>Name</th>
-        <th>Data Type</th>
-        <th>Required/Optional</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>4</td>
-        <td>version</td>
-        <td>int32_t</td>
-        <td>Required</td>
-        <td>The highest protocol version understood by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  See the <a href="/en/developer-reference.php#protocol-versions">protocol version section</a>.</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>services</td>
-        <td>uint64_t</td>
-        <td>Required</td>
-        <td>The services supported by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> encoded as a bitfield.  See the list of service codes below.</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>timestamp</td>
-        <td>int64_t</td>
-        <td>Required</td>
-        <td>The current <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> according to the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> clock.  Because <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> will reject <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> with timestamps more than two hours in the future, this field can help other <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">nodes</a> to determine that their clock is wrong.</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>addr_recv services</td>
-        <td>uint64_t</td>
-        <td>Required</td>
-        <td>The services supported by the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> as perceived by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  Same format as the ‘services’ field above. Umkoin Core will attempt to provide accurate information.  <a href="http://umkoinj.github.io" class="auto-link">UmkoinJ</a> will, by default, always send 0.</td>
-      </tr>
-      <tr>
-        <td>16</td>
-        <td>addr_recv IP address</td>
-        <td>char</td>
-        <td>Required</td>
-        <td>The IPv6 address of the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> as perceived by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in <strong>big endian byte order</strong>. IPv4 addresses can be provided as <a href="http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4-mapped IPv6 addresses</a>. Umkoin Core will attempt to provide accurate information.  <a href="http://umkoinj.github.io" class="auto-link">UmkoinJ</a> will, by default, always return ::ffff:127.0.0.1</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>addr_recv port</td>
-        <td>uint16_t</td>
-        <td>Required</td>
-        <td>The port number of the receiving <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> as perceived by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in <strong>big endian byte order</strong>.</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>addr_trans services</td>
-        <td>uint64_t</td>
-        <td>Required</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />The services supported by the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  Should be identical to the ‘services’ field above.</td>
-      </tr>
-      <tr>
-        <td>16</td>
-        <td>addr_trans IP address</td>
-        <td>char</td>
-        <td>Required</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />The IPv6 address of the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in <strong>big endian byte order</strong>. IPv4 addresses can be provided as <a href="http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses">IPv4-mapped IPv6 addresses</a>.  Set to ::ffff:127.0.0.1 if unknown.</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>addr_trans port</td>
-        <td>uint16_t</td>
-        <td>Required</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />The port number of the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in <strong>big endian byte order</strong>.</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>nonce</td>
-        <td>uint64_t</td>
-        <td>Required</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />A random nonce which can help a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> detect a connection to itself.  If the nonce is 0, the nonce field is ignored.  If the nonce is anything else, a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> should terminate the connection on receipt of a <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a> with a nonce it previously sent.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>user_agent bytes</td>
-        <td><a href="/en/glossary/compactsize.php" title="A type of variable-length integer commonly used in the Umkoin P2P protocol and Umkoin serialized data structures." class="auto-link">compactSize uint</a></td>
-        <td>Required</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>.</em> <br /><br />Number of bytes in following user_agent field.  If 0x00, no user agent field is sent.</td>
-      </tr>
-      <tr>
-        <td><em>Varies</em></td>
-        <td>user_agent</td>
-        <td>string</td>
-        <td>Required if user_agent bytes &gt; 0</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 106</a>. Renamed in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 60000</a>.</em> <br /><br />User agent as defined by <a href="https://github.com/umkoin/bips/blob/master/bip-0014.mediawiki" class="auto-link">BIP14</a>. Previously called subVer.</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>start_height</td>
-        <td>int32_t</td>
-        <td>Required</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 209</a>.</em> <br /><br />The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of the transmitting <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> or, in the case of an <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block.  The method is used by some lightweight Umkoin clients." class="auto-link">SPV client</a>, best <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> <a href="/en/glossary/header-chain" title="A chain of block headers with each header linking to the header that preceded it; the most-difficult-to-recreate chain is the best header chain" class="auto-link">header chain</a>.</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>relay</td>
-        <td>bool</td>
-        <td>Optional</td>
-        <td><em>Added in <a href="/en/developer-reference.php#protocol-versions" class="auto-link">protocol version 70001</a> as described by <a href="https://github.com/umkoin/bips/blob/master/bip-0037.mediawiki" class="auto-link">BIP37</a>.</em> <br /><br />Transaction relay flag.  If 0x00, no <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> or <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> messages</a> announcing new transactions should be sent to this client until it sends a <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to send a filter to a remote peer, requesting that they only send transactions which match the filter." class="auto-link"><code>filterload</code> message</a> or <a href="/en/developer-reference.php#filterclear" title="A P2P protocol message used to remove an existing bloom filter." class="auto-link"><code>filterclear</code> message</a>.  If the relay field is not present or is set to 0x01, this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> wants <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> and <a href="/en/developer-reference.php#tx" title="A P2P protocol message which sends a single serialized transaction" class="auto-link"><code>tx</code> messages</a> announcing new transactions.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The following service identifiers have been assigned.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Value</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>0x00</td>
-        <td><em>Unnamed</em></td>
-        <td>This <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is not a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">full node</a>.  It may not be able to provide any data except for the transactions it originates.</td>
-      </tr>
-      <tr>
-        <td>0x01</td>
-        <td>NODE_NETWORK</td>
-        <td>This is a <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">full node</a> and can be asked for full <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>.  It should implement all protocol features available in its self-reported protocol version.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>The following annotated hexdump shows a <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>. (The
-<a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted and the actual IP addresses have been
-replaced with <a href="http://tools.ietf.org/html/rfc5737">RFC5737</a> reserved IP addresses.)</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">72110100 ........................... Protocol version: 70002
+      <p>The following annotated hexdump shows a <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>. (The <a href="/en/glossary/message-header.php" title="The four header fields prefixed to all messages on the Umkoin P2P network." class="auto-link">message header</a> has been omitted and the actual IP addresses have been replaced with <a href="http://tools.ietf.org/html/rfc5737">RFC5737</a> reserved IP addresses.)</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">72110100 ........................... Protocol version: 70002
 0100000000000000 ................... Services: NODE_NETWORK
 bc8f5e5400000000 ................... Epoch time: 1415463324
 
@@ -2413,313 +2144,224 @@ bc8f5e5400000000 ................... Epoch time: 1415463324
 cf050500 ........................... Start height: 329167
 01 ................................. Relay flag: true</code></pre></figure>
 
-  <h2 id="umkoin-core-apis">Umkoin Core APIs</h2>
+      <h2 id="umkoin-core-apis">Umkoin Core APIs</h2>
 
-  <h3 id="hash-byte-order">Hash Byte Order</h3>
-  <p>Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> accept and return the byte-wise reverse of computed
-SHA-256 hash values. For example, the Unix <code>sha256sum</code> command displays the
-SHA256(SHA256()) hash of <a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> 300,000’s <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> as:</p>
-
-  <pre><code>&gt; /bin/echo -n '020000007ef055e1674d2e6551dba41cd214debbee34aeb544c7ec670000000000000000d3998963f80c5bab43fe8c26228e98d030edf4dcbe48a666f5c39e2d7a885c9102c86d536c890019593a470d' | xxd -r -p | sha256sum -b | xxd -r -p | sha256sum -b
-5472ac8b1187bfcf91d6d218bbda1eb2405d7c55f1f8cc820000000000000000
-</code></pre>
-
-  <p>The result above is also how the hash appears in the
-previous-<a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a>-hash part of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> 300,001’s <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a>:</p>
-
-  <pre>02000000<b>5472ac8b1187bfcf91d6d218bbda1eb2405d7c55f1f8cc82000\
+      <h3 id="hash-byte-order">Hash Byte Order</h3>
+      <p>Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> accept and return the byte-wise reverse of computed SHA-256 hash values. For example, the Unix <code>sha256sum</code> command displays the SHA256(SHA256()) hash of <a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> 300,000’s <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> as:</p>
+      <pre><code>&gt; /bin/echo -n '020000007ef055e1674d2e6551dba41cd214debbee34aeb544c7ec670000000000000000d3998963f80c5bab43fe8c26228e98d030edf4dcbe48a666f5c39e2d7a885c9102c86d536c890019593a470d' | xxd -r -p | sha256sum -b | xxd -r -p | sha256sum -b 5472ac8b1187bfcf91d6d218bbda1eb2405d7c55f1f8cc820000000000000000</code></pre>
+      <p>The result above is also how the hash appears in the previous-<a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a>-hash part of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> 300,001’s <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a>:</p>
+      <pre>02000000<b>5472ac8b1187bfcf91d6d218bbda1eb2405d7c55f1f8cc82000\
 0000000000000</b>ab0aaa377ca3f49b1545e2ae6b0667a08f42e72d8c24ae\
 237140e28f14f3bb7c6bcc6d536c890019edd83ccf</pre>
-
-  <p>However, Umkoin Core’s <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> use the byte-wise reverse for hashes, so if you
-want to get information about <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> 300,000 using the <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code> RPC</a>,
-you need to reverse the requested hash:</p>
-
-  <pre><code>&gt; umkoin-cli getblock \
+      <p>However, Umkoin Core’s <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> use the byte-wise reverse for hashes, so if you want to get information about <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> 300,000 using the <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code> RPC</a>, you need to reverse the requested hash:</p>
+      <pre><code>&gt; umkoin-cli getblock \
   000000000000000082ccf8f1557c5d40b21edabb18d2d691cfbf87118bac7254
 </code></pre>
+      <p>(Note: hex representation uses two characters to display each byte of data, which is why the reversed string looks somewhat mangled.)</p>
+      <p>The rationale for the reversal is unknown, but it likely stems from Umkoin Core’s use of hashes (which are byte arrays in C++) as integers for the purpose of determining whether the hash is below the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a>. Whatever the reason for reversing <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hashes, the reversal also extends to other hashes used in <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a>, such as <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> and <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle roots</a>.</p>
+      <p>As <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hashes and <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> are widely used as global identifiers in other Umkoin software, this reversal of hashes has become the standard way to refer to certain objects. The table below should make clear where each byte order is used.</p>
 
-  <p>(Note: hex representation uses two characters to display each byte of
-data, which is why the reversed string looks somewhat mangled.)</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th><a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">Internal Byte Order</a></th>
+            <th><a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC Byte Order</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Example: SHA256(SHA256(0x00))</td>
+            <td>Hash: 1406…539a</td>
+            <td>Hash: 9a53…0614</td>
+          </tr>
+          <tr>
+            <td><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">Header</a> Hashes: SHA256(SHA256(<a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a>))</td>
+            <td>Used when constructing <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a></td>
+            <td>Used by <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> such as <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a>; widely used in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> explorers</td>
+          </tr>
+          <tr>
+            <td><a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">Merkle Roots</a>: SHA256(SHA256(<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> and merkle rows))</td>
+            <td>Used when constructing <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a></td>
+            <td>Returned by <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> such as <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a></td>
+          </tr>
+          <tr>
+            <td><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>: SHA256(SHA256(transaction))</td>
+            <td>Used in transaction <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a></td>
+            <td>Used by <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> such as <a href="/en/developer-reference.php#gettransaction" class="auto-link"><code>gettransaction</code></a> and transaction data parts of <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a>; widely used in <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> programs</td>
+          </tr>
+          <tr>
+            <td>P2PKH Hashes: RIPEMD160(SHA256(<a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkey</a>))</td>
+            <td>Used in both <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> and <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey scripts</a></td>
+            <td><strong>N/A:</strong> <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> use <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> which use <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a></td>
+          </tr>
+          <tr>
+            <td>P2SH Hashes: RIPEMD160(SHA256(<a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>))</td>
+            <td>Used in both <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> and <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey scripts</a></td>
+            <td><strong>N/A:</strong> <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> use <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> which use <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a></td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>The rationale for the reversal is unknown, but it likely stems from
-Umkoin Core’s use of hashes (which are byte arrays in C++) as integers
-for the purpose of determining whether the hash is below the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>
-<a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a>. Whatever the reason for reversing <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hashes, the reversal
-also extends to other hashes used in <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a>, such as <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> and <a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">merkle
-roots</a>.</p>
+      <p>Note: <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> which return raw results, such as <a href="/en/developer-reference.php#getrawtransaction" class="auto-link"><code>getrawtransaction</code></a> or the raw mode of <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a>, always display hashes as they appear in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> (<a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a>).</p>
+      <p>The code below may help you check byte order by generating hashes from raw hex.</p>
+      <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
 
-  <p>As <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hashes and <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> are widely used as global identifiers in
-other Umkoin software, this reversal of hashes has become the standard
-way to refer to certain objects. The table below should make clear where
-each byte order is used.</p>
+      <span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">byteorder</span>
+      <span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha256</span>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Data</th>
-        <th><a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">Internal Byte Order</a></th>
-        <th><a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC Byte Order</a></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Example: SHA256(SHA256(0x00))</td>
-        <td>Hash: 1406…539a</td>
-        <td>Hash: 9a53…0614</td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td><a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">Header</a> Hashes: SHA256(SHA256(<a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a>))</td>
-        <td>Used when constructing <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a></td>
-        <td>Used by <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> such as <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a>; widely used in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> explorers</td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td><a href="/en/glossary/merkle-root.php" title="The root node of a merkle tree, a descendant of all the hashed pairs in the tree.  Block headers must include a valid merkle root descended from all transactions in that block." class="auto-link">Merkle Roots</a>: SHA256(SHA256(<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> and merkle rows))</td>
-        <td>Used when constructing <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block headers</a></td>
-        <td>Returned by <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> such as <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a></td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a>: SHA256(SHA256(transaction))</td>
-        <td>Used in transaction <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a></td>
-        <td>Used by <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> such as <a href="/en/developer-reference.php#gettransaction" class="auto-link"><code>gettransaction</code></a> and transaction data parts of <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a>; widely used in <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> programs</td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td>P2PKH Hashes: RIPEMD160(SHA256(<a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkey</a>))</td>
-        <td>Used in both <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> and <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey scripts</a></td>
-        <td><strong>N/A:</strong> <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> use <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> which use <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a></td>
-      </tr>
-    </tbody>
-    <tbody>
-      <tr>
-        <td>P2SH Hashes: RIPEMD160(SHA256(<a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>))</td>
-        <td>Used in both <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> and <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey scripts</a></td>
-        <td><strong>N/A:</strong> <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> use <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> which use <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a></td>
-      </tr>
-    </tbody>
-  </table>
+      <span class="c">## You can put in $data an 80-byte block header to get its header hash,</span>
+      <span class="c">## or a raw transaction to get its txid</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="s">"00"</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"hex"</span><span class="p">)</span>
+      <span class="nb">hash</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="n">sha256</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">())</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
 
-  <p>Note: <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPCs</a> which return raw results, such as <a href="/en/developer-reference.php#getrawtransaction" class="auto-link"><code>getrawtransaction</code></a> or the
-raw mode of <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a>, always display hashes as they appear in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>
-(<a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a>).</p>
+      <span class="k">print</span> <span class="s">"Warning: this code only tested on a little-endian x86_64 arch"</span>
+      <span class="k">print</span>
+      <span class="k">print</span> <span class="s">"System byte order:"</span><span class="p">,</span> <span class="n">byteorder</span>
+      <span class="k">print</span> <span class="s">"Internal-Byte-Order Hash: "</span><span class="p">,</span> <span class="nb">hash</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'hex_codec'</span><span class="p">)</span>
+      <span class="k">print</span> <span class="s">"RPC-Byte-Order Hash:      "</span><span class="p">,</span> <span class="nb">hash</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'hex_codec'</span><span class="p">)</span></code></pre></figure>
 
-  <p>The code below may help you check byte order by generating hashes
-from raw hex.</p>
+      <h3 id="remote-procedure-calls-rpcs">Remote Procedure Calls (RPCs)</h3>
+      <p>Umkoin Core provides a remote procedure call (<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>) interface for various administrative tasks, <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> operations, and queries about <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> and <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> data.</p>
+      <p>If you start Umkoin Core using <code>umkoin-qt</code>, the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface is disabled by default. To enable it, set <code>server=1</code> in <code>umkoin.conf</code> or supply the <code>-server</code> argument when invoking the program. If you start Umkoin Core using <code>umkoind</code>, the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface is enabled by default.</p>
+      <p>The interface requires the user to provide a password for authenticating <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> requests. This password can be set either using the <code>rpcpassword</code> property in <code>umkoin.conf</code> or by supplying the <code>-rpcpassword</code> program argument. Optionally a username can be set using the <code>rpcuser</code> configuration value. See the <a href="/en/developer-examples.php">Examples Page</a> for more information about setting Umkoin Core configuration values.</p>
+      <p>Open-source client libraries for the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface are readily available in most modern programming languages, so you probably don’t need to write your own from scratch. Umkoin Core also ships with its own compiled C++ <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> client, <code>umkoin-cli</code>, located in the <code>bin</code> directory alongside <code>umkoind</code> and <code>umkoin-qt</code>. The <code>umkoin-cli</code> program can be used as a command-line interface (CLI) to Umkoin Core or for making <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls from applications written in languages lacking a suitable native client. The remainder of this section describes the Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> protocol in detail.</p>
+      <p>The Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service listens for HTTP <code>POST</code> requests on port 6332 in <a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> mode or 16332 in <a href="/en/glossary/testnet.php" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a> or <a href="/en/glossary/regression-test-mode.php" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>. The port number can be changed by setting <code>rpcport</code> in <code>umkoin.conf</code>. By default the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service binds to your server’s <a href="https://en.wikipedia.org/wiki/Localhost">localhost</a> loopback network interface so it’s not accessible from other servers. Authentication is implemented using <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">HTTP basic authentication</a>. <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> HTTP requests must include a <code>Content-Type</code> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> set to <code>text/plain</code> and a <code>Content-Length</code> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> set to the size of the request body.</p>
+      <p>The format of the request body and response data is based on <a href="http://json-rpc.org/wiki/specification">version 1.0 of the JSON-RPC specification</a>. Specifically, the HTTP <code>POST</code> data of a request must be a JSON object with the following format:</p>
 
-  <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/env python</span>
+      <table class="ntpd">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Presence</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Request</td>
+            <td>object</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>The JSON-RPC request object</td>
+          </tr>
+          <tr>
+            <td>→ <br /><code>jsonrpc</code></td>
+            <td>number (real)</td>
+            <td>Optional<br />(0 or 1)</td>
+            <td>Version indicator for the JSON-RPC request. Currently ignored by Umkoin Core.</td>
+          </tr>
+          <tr>
+            <td>→ <br /><code>id</code></td>
+            <td>string</td>
+            <td>Optional<br />(0 or 1)</td>
+            <td>An arbitrary string that will be returned with the response.  May be omitted or set to an empty string (“”)</td>
+          </tr>
+          <tr>
+            <td>→ <br /><code>method</code></td>
+            <td>string</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>The <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> method name (e.g. <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a>).  See the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> section for a list of available methods.</td>
+          </tr>
+          <tr>
+            <td>→ <br /><code>params</code></td>
+            <td>array</td>
+            <td>Optional<br />(0 or 1)</td>
+            <td>An array containing positional parameter values for the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>.  May be an empty array or omitted for <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls that don’t have any required parameters.</td>
+          </tr>
+          <tr>
+            <td>→ <br /><code>params</code></td>
+            <td>object</td>
+            <td>Optional<br />(0 or 1)</td>
+            <td>Starting from <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a> (replaces the <code>params</code> array above) An object containing named parameter values for the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>.  May be an empty object or omitted for <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls that don’t have any required parameters.</td>
+          </tr>
+          <tr>
+            <td>→→ <br />Parameter</td>
+            <td><em>any</em></td>
+            <td>Optional<br />(0 or more)</td>
+            <td>A parameter.  May be any JSON type allowed by the particular <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> method</td>
+          </tr>
+        </tbody>
+      </table>
 
-<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">byteorder</span>
-<span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha256</span>
+      <p>In the table above and in other tables describing <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> input and output, we use the following conventions</p>
 
-<span class="c">## You can put in $data an 80-byte block header to get its header hash,</span>
-<span class="c">## or a raw transaction to get its txid</span>
-<span class="n">data</span> <span class="o">=</span> <span class="s">"00"</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"hex"</span><span class="p">)</span>
-<span class="nb">hash</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="n">sha256</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">digest</span><span class="p">())</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+      <ul>
+        <li>
+          <p>“?” indicates an argument that is the child of a JSON array or JSON object. For example, “? ? Parameter” above means Parameter is the child of the <code>params</code> array which itself is a child of the Request object.</p>
+        </li>
+        <li>
+          <p>Plain-text names like “Request” are unnamed in the actual JSON object</p>
+        </li>
+        <li>
+          <p>Code-style names like <code>params</code> are literal strings that appear in the JSON object.</p>
+        </li>
+        <li>
+          <p>“Type” is the JSON data type and the specific Umkoin Core type.</p>
+        </li>
+        <li>
+          <p>“Presence” indicates whether or not a field must be present within its containing array or object. Note that an optional object may still have required children.</p>
+        </li>
+      </ul>
 
-<span class="k">print</span> <span class="s">"Warning: this code only tested on a little-endian x86_64 arch"</span>
-<span class="k">print</span>
-<span class="k">print</span> <span class="s">"System byte order:"</span><span class="p">,</span> <span class="n">byteorder</span>
-<span class="k">print</span> <span class="s">"Internal-Byte-Order Hash: "</span><span class="p">,</span> <span class="nb">hash</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'hex_codec'</span><span class="p">)</span>
-<span class="k">print</span> <span class="s">"RPC-Byte-Order Hash:      "</span><span class="p">,</span> <span class="nb">hash</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'hex_codec'</span><span class="p">)</span></code></pre></figure>
+      <p>The HTTP response data for a <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> request is a JSON object with the following format:</p>
 
-  <h3 id="remote-procedure-calls-rpcs">Remote Procedure Calls (RPCs)</h3>
-  <p>Umkoin Core provides a remote procedure call (<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>) interface for various
-administrative tasks, <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> operations, and queries about <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> and <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block
-chain</a> data.</p>
+      <table class="ntpd">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Presence</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Response</td>
+            <td>object</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>The JSON-RPC response object.</td>
+          </tr>
+          <tr>
+            <td>→ <br /><code>result</code></td>
+            <td><em>any</em></td>
+            <td>Required<br />(exactly 1)</td>
+            <td>The <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> output whose type varies by call.  Has value <code>null</code> if an error occurred.</td>
+          </tr>
+          <tr>
+            <td>→ <br /><code>error</code></td>
+            <td>null/object</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>An object describing the error if one occurred, otherwise <code>null</code>.</td>
+          </tr>
+          <tr>
+            <td>→→ <br /><code>code</code></td>
+            <td>number (int)</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>The error code returned by the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> function call. See <a href="https://github.com/umkoin/umkoin/blob/f914f1a746d7f91951c1da262a4a749dd3ebfa71/src/rpcprotocol.h">rpcprotocol.h</a> for a full list of error codes and their meanings.</td>
+          </tr>
+          <tr>
+            <td>→→ <br /><a href="/en/developer-guide.php#term-message" title="A parameter of umkoin: URIs which allows the receiver to optionally specify a message to the spender" class="auto-link"><code>message</code></a></td>
+            <td>string</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>A text description of the error.  May be an empty string (“”).</td>
+          </tr>
+          <tr>
+            <td>→ <br /><code>id</code></td>
+            <td>string</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>The value of <code>id</code> provided with the request. Has value <code>null</code> if the <code>id</code> field was omitted in the request.</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <p>If you start Umkoin Core using <code>umkoin-qt</code>, the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface is disabled by
-default. To enable it, set <code>server=1</code> in <code>umkoin.conf</code> or supply the <code>-server</code>
-argument when invoking the program. If you start Umkoin Core using <code>umkoind</code>,
-the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface is enabled by default.</p>
-
-  <p>The interface requires the user to provide a password for authenticating <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>
-requests. This password can be set either using the <code>rpcpassword</code> property in
-<code>umkoin.conf</code> or by supplying the <code>-rpcpassword</code> program argument. Optionally a
-username can be set using the <code>rpcuser</code> configuration value. See the <a href="/en/developer-examples.php">Examples
-Page</a> for more information about setting Umkoin Core configuration
-values.</p>
-
-  <p>Open-source client libraries for the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface are readily available in most
-modern programming languages, so you probably don’t need to write your own from
-scratch. Umkoin Core also ships with its own compiled C++ <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> client,
-<code>umkoin-cli</code>, located in the <code>bin</code> directory alongside <code>umkoind</code> and
-<code>umkoin-qt</code>. The <code>umkoin-cli</code> program can be used as a command-line interface
-(CLI) to Umkoin Core or for making <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls from applications written in
-languages lacking a suitable native client. The remainder of this section
-describes the Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> protocol in detail.</p>
-
-  <p>The Umkoin Core <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service listens for HTTP <code>POST</code> requests on port 6332 in
-<a href="/en/glossary/mainnet.php" title="The original and main network for Umkoin transactions, where satoshis have real economic value." class="auto-link">mainnet</a> mode or 16332 in <a href="/en/glossary/testnet.php" title="A global testing environment in which developers can obtain and spend satoshis that have no real-world value on a network that is very similar to the Umkoin mainnet." class="auto-link">testnet</a> or <a href="/en/glossary/regression-test-mode.php" title="A local testing environment in which developers can almost instantly generate blocks on demand for testing events, and can create private satoshis with no real-world value." class="auto-link">regtest mode</a>. The port number can be changed
-by setting <code>rpcport</code> in <code>umkoin.conf</code>. By default the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> service binds to your
-server’s <a href="https://en.wikipedia.org/wiki/Localhost">localhost</a> loopback
-network interface so it’s not accessible from other servers.
-Authentication is implemented using <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">HTTP basic
-authentication</a>. <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>
-HTTP requests must include a <code>Content-Type</code> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> set to <code>text/plain</code> and a
-<code>Content-Length</code> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> set to the size of the request body.</p>
-
-  <p>The format of the request body and response data is based on <a href="http://json-rpc.org/wiki/specification">version 1.0 of the
-JSON-RPC specification</a>. Specifically,
-the HTTP <code>POST</code> data of a request must be a JSON object with the following
-format:</p>
-
-  <table class="ntpd">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Presence</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Request</td>
-        <td>object</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>The JSON-RPC request object</td>
-      </tr>
-      <tr>
-        <td>? <br /><code>jsonrpc</code></td>
-        <td>number (real)</td>
-        <td>Optional<br />(0 or 1)</td>
-        <td>Version indicator for the JSON-RPC request. Currently ignored by Umkoin Core.</td>
-      </tr>
-      <tr>
-        <td>? <br /><code>id</code></td>
-        <td>string</td>
-        <td>Optional<br />(0 or 1)</td>
-        <td>An arbitrary string that will be returned with the response.  May be omitted or set to an empty string (“”)</td>
-      </tr>
-      <tr>
-        <td>? <br /><code>method</code></td>
-        <td>string</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> method name (e.g. <a href="/en/developer-reference.php#getblock" class="auto-link"><code>getblock</code></a>).  See the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> section for a list of available methods.</td>
-      </tr>
-      <tr>
-        <td>? <br /><code>params</code></td>
-        <td>array</td>
-        <td>Optional<br />(0 or 1)</td>
-        <td>An array containing positional parameter values for the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>.  May be an empty array or omitted for <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls that don’t have any required parameters.</td>
-      </tr>
-      <tr>
-        <td>? <br /><code>params</code></td>
-        <td>object</td>
-        <td>Optional<br />(0 or 1)</td>
-        <td>Starting from <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a> (replaces the <code>params</code> array above) An object containing named parameter values for the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a>.  May be an empty object or omitted for <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls that don’t have any required parameters.</td>
-      </tr>
-      <tr>
-        <td>? ? <br />Parameter</td>
-        <td><em>any</em></td>
-        <td>Optional<br />(0 or more)</td>
-        <td>A parameter.  May be any JSON type allowed by the particular <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> method</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>In the table above and in other tables describing <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> input and
-output, we use the following conventions</p>
-
-  <ul>
-    <li>
-      <p>“?” indicates an argument that is the child of a JSON array or JSON object.
-For example, “? ? Parameter” above means Parameter is the child of the
-<code>params</code> array which itself is a child of the Request object.</p>
-    </li>
-    <li>
-      <p>Plain-text names like “Request” are unnamed in the actual JSON object</p>
-    </li>
-    <li>
-      <p>Code-style names like <code>params</code> are literal strings that appear in the JSON
-object.</p>
-    </li>
-    <li>
-      <p>“Type” is the JSON data type and the specific Umkoin Core type.</p>
-    </li>
-    <li>
-      <p>“Presence” indicates whether or not a field must be present within its
- containing array or object. Note that an optional object may still have
- required children.</p>
-    </li>
-  </ul>
-
-  <p>The HTTP response data for a <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> request is a JSON object with the following
-format:</p>
-
-  <table class="ntpd">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Presence</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Response</td>
-        <td>object</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>The JSON-RPC response object.</td>
-      </tr>
-      <tr>
-        <td>? <br /><code>result</code></td>
-        <td><em>any</em></td>
-        <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> output whose type varies by call.  Has value <code>null</code> if an error occurred.</td>
-      </tr>
-      <tr>
-        <td>? <br /><code>error</code></td>
-        <td>null/object</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>An object describing the error if one occurred, otherwise <code>null</code>.</td>
-      </tr>
-      <tr>
-        <td>? ? <br /><code>code</code></td>
-        <td>number (int)</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>The error code returned by the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> function call. See <a href="https://github.com/umkoin/umkoin/blob/f914f1a746d7f91951c1da262a4a749dd3ebfa71/src/rpcprotocol.h">rpcprotocol.h</a> for a full list of error codes and their meanings.</td>
-      </tr>
-      <tr>
-        <td>? ? <br /><a href="/en/developer-guide.php#term-message" title="A parameter of umkoin: URIs which allows the receiver to optionally specify a message to the spender" class="auto-link"><code>message</code></a></td>
-        <td>string</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>A text description of the error.  May be an empty string (“”).</td>
-      </tr>
-      <tr>
-        <td>? <br /><code>id</code></td>
-        <td>string</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>The value of <code>id</code> provided with the request. Has value <code>null</code> if the <code>id</code> field was omitted in the request.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>As an example, here is the JSON-RPC request object for the hash of
-the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a>:</p>
-
-  <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getblockhash"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-  <p>The command to send this request using <code>umkoin-cli</code> is:</p>
-
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">umkoin-cli getblockhash 0</code></pre></figure>
-
-  <p>Alternatively, we could <code>POST</code> this request using the cURL command-line program
-as follows:</p>
-
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl --user <span class="s1">':my_secret_password'</span> --data-binary <span class="s1">'''
+      <p>As an example, here is the JSON-RPC request object for the hash of the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a>:</p>
+      <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w"></span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getblockhash"</span><span class="p">,</span><span class="w"></span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"></span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w"></span><span class="p">}</span></code></pre></figure>
+      <p>The command to send this request using <code>umkoin-cli</code> is:</p>
+      <figure class="highlight"><pre><code class="language-bash" data-lang="bash">umkoin-cli getblockhash 0</code></pre></figure>
+      <p>Alternatively, we could <code>POST</code> this request using the cURL command-line program as follows:</p>
+<!-- CONTINUE //-->
+      <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl --user <span class="s1">':my_secret_password'</span> --data-binary <span class="s1">'''
   {
       "method": "getblockhash",
       "params": [0],
@@ -3418,19 +3060,19 @@ if the <a href="/en/glossary/wallet.php" title="Software that stores private key
         <td>Additional options</td>
       </tr>
       <tr>
-        <td>? <br /><code>confTarget</code></td>
+        <td>→ <br /><code>confTarget</code></td>
         <td>numeric (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmation</a> <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a> in <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a>. Based on this value the new fee will be calculated using the same code as the <a href="/en/developer-reference.php#estimatefee" class="auto-link"><code>estimatefee</code> RPC</a>. If not set, the default <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a> of ?6? <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> will be used</td>
       </tr>
       <tr>
-        <td>? <br /><code>totalFee</code></td>
+        <td>→ <br /><code>totalFee</code></td>
         <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a>)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The total fee to pay in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">satoshis</a> (not the feerate). The actual fee can be higher in rare cases if the <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a> is close to the dust limit</td>
       </tr>
       <tr>
-        <td>? <br /><code>replaceable</code></td>
+        <td>→ <br /><code>replaceable</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Whether the new transaction should still be BIP 125 replaceable. Even if set to <code>false</code> the transaction may still be replacable, for example if it has <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a> ancestors which are replaceable. The default is <code>true</code></td>
@@ -3457,25 +3099,25 @@ if the <a href="/en/glossary/wallet.php" title="Software that stores private key
         <td>An object including information about the new transaction</td>
       </tr>
       <tr>
-        <td>? <br /><code>txid</code></td>
+        <td>→ <br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The id of the new transaction</td>
       </tr>
       <tr>
-        <td>? <br /><code>origfee</code></td>
+        <td>→ <br /><code>origfee</code></td>
         <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The fee of the replaced transaction</td>
       </tr>
       <tr>
-        <td>? <br /><code>fee</code></td>
+        <td>→ <br /><code>fee</code></td>
         <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The fee of the new transaction</td>
       </tr>
       <tr>
-        <td>? <br /><code>errors</code></td>
+        <td>→ <br /><code>errors</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>Errors encountered during processing (may be empty)</td>
@@ -3688,25 +3330,25 @@ one full <a href="/en/glossary/public-key.php" title="The public portion of a ke
         <td>An array of objects, each one to be used as an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> to the transaction</td>
       </tr>
       <tr>
-        <td>? <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Input</a></td>
+        <td>→ <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Input</a></td>
         <td>object</td>
         <td>Required<br />(1 or more)</td>
         <td>An object describing a particular <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>txid</code></td>
+        <td>→ → <br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> to be spent encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>vout</code></td>
+        <td>→ → <br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) of the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> to be spent; the first <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in a transaction is index <code>0</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>Sequence</code></td>
+        <td>→ → <br /><code>Sequence</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/sequence-number.php" title="Part of all transactions. A number intended to allow unconfirmed time-locked transactions to be updated before being finalized; not currently used except to disable locktime in a transaction" class="auto-link">sequence number</a> to use for the <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a></td>
@@ -3978,7 +3620,7 @@ ffb10d4b8ffffffff01b0a86a00000000001976a91401b81d5fa1e55e069e3cc<span class="se"
         <td>A <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> used in this script, or the computed <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> of any <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkeys</a> in this script.  This array will not be returned for <code>nonstandard</code> script types</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→ → <br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string</td>
         <td>Required<br />(1 or more)</td>
         <td>A <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a></td>
@@ -4482,49 +4124,49 @@ All existing <a href="/en/glossary/input.php" title="An input in a transaction w
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />Additional options</td>
       </tr>
       <tr>
-        <td>? <br /><code>changeAddress</code></td>
+        <td>→ <br /><code>changeAddress</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The umkoin <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to receive the change. If not set, the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> is chosen from <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> pool</td>
       </tr>
       <tr>
-        <td>? <br /><code>changePosition</code></td>
+        <td>→ <br /><code>changePosition</code></td>
         <td>nummeric (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The index of the <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a>. If not set, the change position is randomly chosen</td>
       </tr>
       <tr>
-        <td>? <br /><code>includeWatching</code></td>
+        <td>→ <br /><code>includeWatching</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td><a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Inputs</a> from <a href="/en/glossary/watch-only-address" title="An address or pubkey script stored in the wallet without the corresponding private key, allowing the wallet to watch for outputs but not spend them." class="auto-link">watch-only addresses</a> are also considered. The default is <code>false</code></td>
       </tr>
       <tr>
-        <td>? <br /><code>lockUnspents</code></td>
+        <td>→ <br /><code>lockUnspents</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The selected <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> are locked after running the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">rpc</a> call. The default is <code>false</code></td>
       </tr>
       <tr>
-        <td>? <br /><code>reserveChangeKey</code></td>
+        <td>→ <br /><code>reserveChangeKey</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td><em>Added in <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a></em><br /><br />Reserves the <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a> key from the keypool. The default is <code>true</code>. Before 0.14.0, the used keypool key was never marked as change-<a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> key and directly returned to the keypool (leading to <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> reuse).</td>
       </tr>
       <tr>
-        <td>? <br /><code>feeRate</code></td>
+        <td>→ <br /><code>feeRate</code></td>
         <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The specific feerate  you are willing to pay(BTC per KB). If not set, the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> determines the fee</td>
       </tr>
       <tr>
-        <td>? <br /><code>subtractFeeFromOutputs</code></td>
+        <td>→ <br /><code>subtractFeeFromOutputs</code></td>
         <td>array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>A json array of integers. The fee will be equally deducted from the amount of each specified <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>. The <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> are specified by their zero-based index, before any <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a> is added.</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">Output index</a></td>
+        <td>→ → <br /><a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">Output index</a></td>
         <td>numeric (int)</td>
         <td>Optional<br />(0 or more)</td>
         <td>A <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) from which the fee should be subtracted. If multiple vouts are provided, the total fee will be divided by the numer of vouts listed and each vout will have that amount subtracted from it</td>
@@ -4551,19 +4193,19 @@ All existing <a href="/en/glossary/input.php" title="An input in a transaction w
         <td>An object including information about the created transaction</td>
       </tr>
       <tr>
-        <td>? <br />hex</td>
+        <td>→ <br />hex</td>
         <td>string (hex)</td>
         <td>Required<br />(Exactly 1)</td>
         <td>The resulting unsigned <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">raw transaction</a> in <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> format encoded as hex</td>
       </tr>
       <tr>
-        <td>? <br />fee</td>
+        <td>→ <br />fee</td>
         <td>numeric (<a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a>)</td>
         <td>Required<br />(Exactly 1)</td>
         <td>Fee in BTC the resulting transaction pays</td>
       </tr>
       <tr>
-        <td>? <br />changepos</td>
+        <td>→ <br />changepos</td>
         <td>numeric (int)</td>
         <td>Required<br />(Exactly 1)</td>
         <td>The position of the added <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a>, or <code>-1</code> if no <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change output</a> was added</td>
@@ -5016,37 +4658,37 @@ Core.  Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs"
         <td>An object containing details about a single added <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>addednode</code></td>
+        <td>→ → <br /><code>addednode</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>An added <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in the same <code>&lt;IP address&gt;:&lt;port&gt;</code> format as used in the <a href="/en/developer-reference.php#addnode" class="auto-link"><code>addnode</code> RPC</a>.  This element is present for any added <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> whether or not the Details parameter was set to <code>true</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>connected</code></td>
+        <td>→ → <br /><code>connected</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>If the Details parameter was set to <code>true</code>, this will be set to <code>true</code> if the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is currently connected and <code>false</code> if it is not</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>addresses</code></td>
+        <td>→ → <br /><code>addresses</code></td>
         <td>array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>If the Details parameter was set to <code>true</code>, this will be an array of <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> belonging to the added <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→→ ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>object</td>
         <td>Optional<br />(0 or more)</td>
         <td>An object describing one of this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a></td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>address</code></td>
+        <td>→→ ? ?<br /><code>address</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>An IP address and port number of the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  If the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> was added using a DNS <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>, this will be the resolved IP address</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>connected</code></td>
+        <td>→→ ? ?<br /><code>connected</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>Whether or not the local <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> is connected to this addnode using this IP address.  Valid values are:<br />• <code>false</code> for not connected<br />• <code>inbound</code> if the addnode connected to us<br />• <code>outbound</code> if we connected to the addnode</td>
@@ -5414,7 +5056,7 @@ that account.</p>
         <td>An array containing the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of all transactions in this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.  The transactions appear in the array in the same order they appear in the <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→ → <br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string (hex)</td>
         <td>Required<br />(1 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a transaction in this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
@@ -5615,79 +5257,79 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />An array of objects each describing a current or previous <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft fork</a></td>
       </tr>
       <tr>
-        <td>? ?<br />Softfork</td>
+        <td>→ → <br />Softfork</td>
         <td>object</td>
         <td>Required<br />(3 or more)</td>
         <td>A specific softfork</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>id</code></td>
+        <td>→→ ?<br /><code>id</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The name of the softfork</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>version</code></td>
+        <td>→→ ?<br /><code>version</code></td>
         <td>numeric<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> version used for the softfork</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>enforce</code></td>
+        <td>→→ ?<br /><code>enforce</code></td>
         <td>string : object</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The progress toward enforcing the softfork rules for new-version <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>status</code></td>
+        <td>→→ ? ?<br /><code>status</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Indicates if the threshold was reached</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>found</code></td>
+        <td>→→ ? ?<br /><code>found</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that support the softfork</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>required</code></td>
+        <td>→→ ? ?<br /><code>required</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that are required to reach the threshold</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>window</code></td>
+        <td>→→ ? ?<br /><code>window</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The maximum size of examined window of recent <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>reject</code></td>
+        <td>→→ ?<br /><code>reject</code></td>
         <td>object</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The progress toward enforcing the softfork rules for new-version <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>status</code></td>
+        <td>→→ ? ?<br /><code>status</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Indicates if the threshold was reached</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>found</code></td>
+        <td>→→ ? ?<br /><code>found</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that support the softfork</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>required</code></td>
+        <td>→→ ? ?<br /><code>required</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that are required to reach the threshold</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>window</code></td>
+        <td>→→ ? ?<br /><code>window</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The maximum size of examined window of recent <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
@@ -5699,37 +5341,37 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td><em>Added in <a href="/en/release/v0.12.1" class="auto-link">Umkoin Core 0.12.1</a></em><br /><br />The status of <a href="https://github.com/umkoin/bips/blob/master/bip-0009.mediawiki" class="auto-link">BIP9</a> softforks in progress</td>
       </tr>
       <tr>
-        <td>? ?<br />Name</td>
+        <td>→ → <br />Name</td>
         <td>string : object</td>
         <td>Required<br />(2 or more)</td>
         <td>A specific <a href="https://github.com/umkoin/bips/blob/master/bip-0009.mediawiki" class="auto-link">BIP9</a> softfork</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>status</code></td>
+        <td>→→ ?<br /><code>status</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to one of the following reasons:<br />• <code>defined</code> if voting hasn’t started yet<br />• <code>started</code> if the voting has started <br />• <code>locked_in</code> if the voting was successful but the softfort hasn’t been activated yet<br />• <code>active</code> if the softfork was activated<br />• <code>failed</code> if the softfork has not receieved enough votes</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>bit</code></td>
+        <td>→→ ?<br /><code>bit</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The bit (0-28) in the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> version field used to signal this softfork.  Field is only shown when status is <code>started</code></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>startTime</code></td>
+        <td>→→ ?<br /><code>startTime</code></td>
         <td>numeric<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the softfork voting begins</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>timeout</code></td>
+        <td>→→ ?<br /><code>timeout</code></td>
         <td>numeric<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> at which the deployment is considered failed if not yet locked in</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>since</code></td>
+        <td>→→ ?<br /><code>since</code></td>
         <td>numeric<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.14.0" class="auto-link">Umkoin Core 0.14.0</a></em><br /><br />The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of the first <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> to which the status applies</td>
@@ -6164,25 +5806,25 @@ information, please see the following resources:</p>
         <td>An object describing a particular chain tip.  The first object will always describe the active chain (the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>height</code></td>
+        <td>→ → <br /><code>height</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of the highest <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> in the chain.  A new <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> with only the <a href="/en/glossary/genesis-block.php" title="The first block in the Umkoin block chain." class="auto-link">genesis block</a> will have a single tip with <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of 0</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>hash</code></td>
+        <td>→ → <br /><code>hash</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The hash of the highest <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> in the chain, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>branchlen</code></td>
+        <td>→ → <br /><code>branchlen</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that are on this chain but not on the main chain.  For the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>, this will be <code>0</code>; for all other chains, it will be at least <code>1</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>status</code></td>
+        <td>→ → <br /><code>status</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The status of this chain.  Valid values are:<br />• <code>active</code> for the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a><br />• <code>invalid</code> for a chain that contains one or more invalid <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a><br />• <code>headers-only</code> for a chain with valid <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> whose corresponding <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> both haven’t been validated and aren’t stored locally<br />• <code>valid-headers</code> for a chain with valid <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">headers</a> whose corresponding <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> are stored locally, but which haven’t been fully validated<br />• <code>valid-fork</code> for a chain which is fully validated but which isn’t part of the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> (it was probably the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> at some point)<br />• <code>unknown</code> for a chain whose reason for not being the active chain is unknown</td>
@@ -6684,91 +6326,91 @@ Core.  Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs"
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a transaction in the memory pool, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>size</code></td>
+        <td>→ → <br /><code>size</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The size of the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> in bytes</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>fee</code></td>
+        <td>→ → <br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>modifiedfee</code></td>
+        <td>→ → <br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>time</code></td>
+        <td>→ → <br /><code>time</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The time the transaction entered the memory pool, <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> format</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>height</code></td>
+        <td>→ → <br /><code>height</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> when the transaction entered the memory pool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>startingpriority</code></td>
+        <td>→ → <br /><code>startingpriority</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The priority of the transaction when it first entered the memory pool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>currentpriority</code></td>
+        <td>→ → <br /><code>currentpriority</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The current priority of the transaction</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantcount</code></td>
+        <td>→ → <br /><code>descendantcount</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of in-mempool descendant transactions (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantsize</code></td>
+        <td>→ → <br /><code>descendantsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The size of in-mempool descendants (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantfees</code></td>
+        <td>→ → <br /><code>descendantfees</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The modified fees (see <code>modifiedfee</code> above) of in-mempool descendants (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorcount</code></td>
+        <td>→ → <br /><code>ancestorcount</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of in-mempool ancestor transactions (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorsize</code></td>
+        <td>→ → <br /><code>ancestorsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The size of in-mempool ancestors (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorfees</code></td>
+        <td>→ → <br /><code>ancestorfees</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The modified fees (see <code>modifiedfee</code> above) of in-mempool ancestors (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>depends</code></td>
+        <td>→ → <br /><code>depends</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array holding <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon (parent transactions).  Those transactions must be part of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> before this transaction can be added to a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, although all transactions may be included in the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.  The array may be empty</td>
       </tr>
       <tr>
-        <td>? ? ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→→ ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string</td>
         <td>Optional (0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of any <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
@@ -6940,91 +6582,91 @@ Core.  Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs"
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a transaction in the memory pool, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>size</code></td>
+        <td>→ → <br /><code>size</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The size of the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> in bytes</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>fee</code></td>
+        <td>→ → <br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>modifiedfee</code></td>
+        <td>→ → <br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>time</code></td>
+        <td>→ → <br /><code>time</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The time the transaction entered the memory pool, <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> format</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>height</code></td>
+        <td>→ → <br /><code>height</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> when the transaction entered the memory pool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>startingpriority</code></td>
+        <td>→ → <br /><code>startingpriority</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The priority of the transaction when it first entered the memory pool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>currentpriority</code></td>
+        <td>→ → <br /><code>currentpriority</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The current priority of the transaction</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantcount</code></td>
+        <td>→ → <br /><code>descendantcount</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of in-mempool descendant transactions (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantsize</code></td>
+        <td>→ → <br /><code>descendantsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The size of in-mempool descendants (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantfees</code></td>
+        <td>→ → <br /><code>descendantfees</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The modified fees (see <code>modifiedfee</code> above) of in-mempool descendants (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorcount</code></td>
+        <td>→ → <br /><code>ancestorcount</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of in-mempool ancestor transactions (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorsize</code></td>
+        <td>→ → <br /><code>ancestorsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The size of in-mempool ancestors (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorfees</code></td>
+        <td>→ → <br /><code>ancestorfees</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The modified fees (see <code>modifiedfee</code> above) of in-mempool ancestors (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>depends</code></td>
+        <td>→ → <br /><code>depends</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array holding <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon (parent transactions).  Those transactions must be part of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> before this transaction can be added to a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, although all transactions may be included in the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.  The array may be empty</td>
       </tr>
       <tr>
-        <td>? ? ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→→ ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string</td>
         <td>Optional (0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of any <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
@@ -7226,7 +6868,7 @@ ce1af1d255fda67a6e3bd63ba1d908c8c2 <span class="nb">true</span></code></pre></fi
         <td>An array holding <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon (parent transactions).  Those transactions must be part of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> before this transaction can be added to a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, although all transactions may be included in the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.  The array may be empty</td>
       </tr>
       <tr>
-        <td>? ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→ → <br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string</td>
         <td>Optional (0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of any <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
@@ -7518,37 +7160,37 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
         <td>The upload traget information</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>timeframe</code></td>
+        <td>→ → <br /><code>timeframe</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>Length of the measuring timeframe in seconds.  The timeframe is currently set to <code>24</code> hours</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>target</code></td>
+        <td>→ → <br /><code>target</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The maximum allowed outbound traffic in bytes.  The default is <code>0</code>.  Can be changed with <code>-maxuploadtarget</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>target_reached</code></td>
+        <td>→ → <br /><code>target_reached</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Indicates if the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a> is reached.  If the <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a> is reached the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> won’t serve <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block.  The method is used by some lightweight Umkoin clients." class="auto-link">SPV</a> and historical <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> requests anymore</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>serve_historical_blocks</code></td>
+        <td>→ → <br /><code>serve_historical_blocks</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Indicates if historical <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> are served</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>bytes_left_in_cycle</code></td>
+        <td>→ → <br /><code>bytes_left_in_cycle</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>Amount of bytes left in current time cycle.  <code>0</code> is displayed if no upload <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a> is set</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>time_left_in_cycle</code></td>
+        <td>→ → <br /><code>time_left_in_cycle</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>Seconds left in current time cycle.  <code>0</code> is displayed if no upload <a href="/en/glossary/nbits.php" title="The target is the threshold below which a block header hash must be in order for the block to valid, and nBits is the encoded form of the target threshold as it appears in the block header." class="auto-link">target</a> is set</td>
@@ -7739,37 +7381,37 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
         <td>An array with three objects: one describing the IPv4 connection, one describing the IPv6 connection, and one describing the Tor hidden service (onion) connection</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">Network</a></td>
+        <td>→ → <br /><a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">Network</a></td>
         <td>object</td>
         <td>Optional<br />(0 to 3)</td>
         <td>An object describing a <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.  If the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> is unroutable, it will not be returned</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>name</code></td>
+        <td>→→ ?<br /><code>name</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The name of the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.  Either <code>ipv4</code>, <code>ipv6</code>, or <code>onion</code></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>limited</code></td>
+        <td>→→ ?<br /><code>limited</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to <code>true</code> if only connections to this <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> are allowed according to the <code>-onlynet</code> Umkoin Core command-line/configuration-file parameter.  Otherwise set to <code>false</code></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>reachable</code></td>
+        <td>→→ ?<br /><code>reachable</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to <code>true</code> if connections can be made to or from this <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.  Otherwise set to <code>false</code></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>proxy</code></td>
+        <td>→→ ?<br /><code>proxy</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The hostname and port of any proxy being used for this <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.  If a proxy is not in use, an empty string</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>proxy_randomize_credentials</code></td>
+        <td>→→ ?<br /><code>proxy_randomize_credentials</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.11.0" class="auto-link">Umkoin Core 0.11.0</a></em><br /><br />Set to <code>true</code> if randomized credentials are set for this proxy. Otherwise set to <code>false</code></td>
@@ -7787,25 +7429,25 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
         <td>An array of objects each describing the local <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> believes it listens on</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→ → <br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>object</td>
         <td>Optional<br />(0 or more)</td>
         <td>An object describing a particular <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> believes it listens on</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>address</code></td>
+        <td>→→ ?<br /><code>address</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>An IP address or .onion <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> believes it listens on.  This may be manually configured, auto detected, or based on <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> messages</a> this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> received from its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>port</code></td>
+        <td>→→ ?<br /><code>port</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The port number this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> believes it listens on for the associated <code>address</code>.  This may be manually configured, auto detected, or based on <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> messages</a> this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> received from its <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>score</code></td>
+        <td>→→ ?<br /><code>score</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of incoming connections during the uptime of this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> that have used this <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> in their <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a></td>
@@ -7969,163 +7611,163 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
         <td>An object describing a particular connected <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>id</code></td>
+        <td>→ → <br /><code>id</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> index number in the local <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> database</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>addr</code></td>
+        <td>→ → <br /><code>addr</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The IP address and port number used for the connection to the remote <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>addrlocal</code></td>
+        <td>→ → <br /><code>addrlocal</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Our IP address and port number according to the remote <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  May be incorrect due to error or lying.  Most <a href="/en/glossary/simplified-payment-verification" title="A method for verifying if particular transactions are included in a block without downloading the entire block.  The method is used by some lightweight Umkoin clients." class="auto-link">SPV nodes</a> set this to <code>127.0.0.1:6333</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>services</code></td>
+        <td>→ → <br /><code>services</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The services advertised by the remote <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> in its <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>lastsend</code></td>
+        <td>→ → <br /><code>lastsend</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when we last successfully sent data to the TCP socket for this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>lastrecv</code></td>
+        <td>→ → <br /><code>lastrecv</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when we last received data from this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>bytessent</code></td>
+        <td>→ → <br /><code>bytessent</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The total number of bytes we’ve sent to this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>bytesrecv</code></td>
+        <td>→ → <br /><code>bytesrecv</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The total number of bytes we’ve received from this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>conntime</code></td>
+        <td>→ → <br /><code>conntime</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when we connected to this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>timeoffset</code></td>
+        <td>→ → <br /><code>timeoffset</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The time offset in seconds</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>pingtime</code></td>
+        <td>→ → <br /><code>pingtime</code></td>
         <td>number (real)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of seconds this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> took to respond to our last P2P <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>minping</code></td>
+        <td>→ → <br /><code>minping</code></td>
         <td>number (real)</td>
         <td>Optional<br />(0 or 1)</td>
         <td><em>Updated in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The minimum observed ping time (if any at all)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>pingwait</code></td>
+        <td>→ → <br /><code>pingwait</code></td>
         <td>number (real)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The number of seconds we’ve been waiting for this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> to respond to a P2P <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a>.  Only shown if there’s an outstanding <a href="/en/developer-reference.php#ping" title="A P2P network message used to see if the remote host is still connected" class="auto-link"><code>ping</code> message</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>version</code></td>
+        <td>→ → <br /><code>version</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The protocol version number used by this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.  See the <a href="/en/developer-reference.php#protocol-versions">protocol versions section</a> for more information</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>subver</code></td>
+        <td>→ → <br /><code>subver</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The user agent this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> sends in its <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a>.  This string will have been sanitized to prevent corrupting the JSON results.  May be an empty string</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>inbound</code></td>
+        <td>→ → <br /><code>inbound</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to <code>true</code> if this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> connected to us; set to <code>false</code> if we connected to this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>startingheight</code></td>
+        <td>→ → <br /><code>startingheight</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of the remote <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node’s</a> <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> when it connected to us as reported in its <a href="/en/developer-reference.php#version" title="A P2P network message sent at the begining of a connection to allow protocol version negotiation" class="auto-link"><code>version</code> message</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>banscore</code></td>
+        <td>→ → <br /><code>banscore</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The ban score we’ve assigned the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> based on any misbehavior it’s made.  By default, Umkoin Core disconnects when the ban score reaches <code>100</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>synced_headers</code></td>
+        <td>→ → <br /><code>synced_headers</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The highest-<a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> we have in common with this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> based the last P2P <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> it sent us.  If a <a href="/en/developer-reference.php#headers" title="A P2P protocol message containing one or more block headers" class="auto-link"><code>headers</code> message</a> has not been received, this will be set to <code>-1</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>synced_blocks</code></td>
+        <td>→ → <br /><code>synced_blocks</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The highest-<a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> we have in common with this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> based on P2P <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> sent us.  If no <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> <a href="/en/developer-reference.php#inv" title="A P2P protocol message used to send inventories of transactions and blocks known to the transmitting peer" class="auto-link"><code>inv</code> messages</a> have been received from this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, this will be set to <code>-1</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>inflight</code></td>
+        <td>→ → <br /><code>inflight</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> which have been requested from this <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a>.  May be empty</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">Blocks</a></td>
+        <td>→→ ?<br /><a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">Blocks</a></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or more)</td>
         <td>The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> being requested from the remote <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>whitelisted</code></td>
+        <td>→ → <br /><code>whitelisted</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to <code>true</code> if the remote <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peer</a> has been whitelisted; otherwise, set to <code>false</code>.  Whitelisted <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> will not be banned if their ban score exceeds the maximum (100 by default).  By default, <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">peers</a> connecting from localhost are whitelisted</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>bytessent_per_msg</code></td>
+        <td>→ → <br /><code>bytessent_per_msg</code></td>
         <td>string : <br />object</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />Information about total sent bytes aggregated by message type</td>
       </tr>
       <tr>
-        <td>? ? ?<br />Message Type</td>
+        <td>→→ ?<br />Message Type</td>
         <td>number (int)</td>
         <td>Required<br />(1 or more)</td>
         <td>Total sent bytes aggregated by message type. One field for every used message type</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>bytesrecv_per_msg</code></td>
+        <td>→ → <br /><code>bytesrecv_per_msg</code></td>
         <td>string : <br />object</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />Information about total received bytes aggregated by message type</td>
       </tr>
       <tr>
-        <td>? ? ?<br />Message Type</td>
+        <td>→→ ?<br />Message Type</td>
         <td>number (int)</td>
         <td>Required<br />(1 or more)</td>
         <td>Total received bytes aggregated by message type. One field for every used message type</td>
@@ -8311,91 +7953,91 @@ d255fda67a6e3bd63ba1d908c8c2</code></pre></figure>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a transaction in the memory pool, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>size</code></td>
+        <td>→ → <br /><code>size</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The size of the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> in bytes</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>fee</code></td>
+        <td>→ → <br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>modifiedfee</code></td>
+        <td>→ → <br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>time</code></td>
+        <td>→ → <br /><code>time</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The time the transaction entered the memory pool, <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> format</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>height</code></td>
+        <td>→ → <br /><code>height</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> when the transaction entered the memory pool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>startingpriority</code></td>
+        <td>→ → <br /><code>startingpriority</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The priority of the transaction when it first entered the memory pool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>currentpriority</code></td>
+        <td>→ → <br /><code>currentpriority</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The current priority of the transaction</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantcount</code></td>
+        <td>→ → <br /><code>descendantcount</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The number of in-mempool descendant transactions (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantsize</code></td>
+        <td>→ → <br /><code>descendantsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The size of in-mempool descendants (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantfees</code></td>
+        <td>→ → <br /><code>descendantfees</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The modified fees (see <code>modifiedfee</code> above) of in-mempool descendants (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorcount</code></td>
+        <td>→ → <br /><code>ancestorcount</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The number of in-mempool ancestor transactions (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorsize</code></td>
+        <td>→ → <br /><code>ancestorsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The size of in-mempool ancestors (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorfees</code></td>
+        <td>→ → <br /><code>ancestorfees</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The modified fees (see <code>modifiedfee</code> above) of in-mempool ancestors (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>depends</code></td>
+        <td>→ → <br /><code>depends</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array holding <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon (parent transactions).  Those transactions must be part of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> before this transaction can be added to a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, although all transactions may be included in the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.  The array may be empty</td>
       </tr>
       <tr>
-        <td>? ? ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→→ ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string</td>
         <td>Optional (0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of any <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
@@ -8876,79 +8518,79 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
         <td>If an outgoing transaction, this is the fee paid by the transaction reported as negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? <br /><code>confirmations</code></td>
+        <td>→ <br /><code>confirmations</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> the transaction has received.  Will be <code>0</code> for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a> and <code>-1</code> for conflicted</td>
       </tr>
       <tr>
-        <td>? <br /><code>generated</code></td>
+        <td>→ <br /><code>generated</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Set to <code>true</code> if the transaction is a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a>.  Not returned for regular transactions</td>
       </tr>
       <tr>
-        <td>? <br /><code>blockhash</code></td>
+        <td>→ <br /><code>blockhash</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The hash of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> which includes this transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a>.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? <br /><code>blockindex</code></td>
+        <td>→ <br /><code>blockindex</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The index of the transaction in the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> that includes it.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? <br /><code>blocktime</code></td>
+        <td>→ <br /><code>blocktime</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> time (<a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a>) of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> which includes this transaction.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? <br /><code>txid</code></td>
+        <td>→ <br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? <br /><code>walletconflicts</code></td>
+        <td>→ <br /><code>walletconflicts</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array containing the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of other transactions that spend the same <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> (<a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a>) as this transaction.  Array may be empty</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→ → <br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a conflicting transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? <br /><code>time</code></td>
+        <td>→ <br /><code>time</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>A <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the transaction was added to the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a></td>
       </tr>
       <tr>
-        <td>? <br /><code>timereceived</code></td>
+        <td>→ <br /><code>timereceived</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>A <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the transaction was detected by the local <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, or the time of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> that included the transaction</td>
       </tr>
       <tr>
-        <td>? <br /><a href="/en/glossary/rbf" title="Replacing one version of an unconfirmed transaction with a different version of the transaction that pays a higher transaction fee.  May use BIP125 signaling." class="auto-link"><code>bip125-replaceable</code></a></td>
+        <td>→ <br /><a href="/en/glossary/rbf" title="Replacing one version of an unconfirmed transaction with a different version of the transaction that pays a higher transaction fee.  May use BIP125 signaling." class="auto-link"><code>bip125-replaceable</code></a></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />Indicates if a transaction is replaceable under BIP 125:<br />• <code>yes</code> is replaceable<br />• <code>no</code> not replaceable<br />• <code>unknown</code> for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> not in the mempool</td>
       </tr>
       <tr>
-        <td>? <br /><code>comment</code></td>
+        <td>→ <br /><code>comment</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>For transaction originating with this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, a locally-stored comment added to the transaction.  Only returned if a comment was added</td>
       </tr>
       <tr>
-        <td>? <br /><code>to</code></td>
+        <td>→ <br /><code>to</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>For transaction originating with this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, a locally-stored comment added to the transaction identifying who the transaction was sent to.  Only returned if a comment-to was added</td>
@@ -8960,49 +8602,49 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
         <td>An array containing one object for each <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> or <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in the transaction which affected the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a></td>
       </tr>
       <tr>
-        <td>? ? <br /><code>involvesWatchonly</code></td>
+        <td>→→ <br /><code>involvesWatchonly</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Set to <code>true</code> if the <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> or <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> involves a <a href="/en/glossary/watch-only-address" title="An address or pubkey script stored in the wallet without the corresponding private key, allowing the wallet to watch for outputs but not spend them." class="auto-link">watch-only address</a>.  Otherwise not returned</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>account</code></td>
+        <td>→ → <br /><code>account</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The account which the payment was credited to or debited from.  May be an empty string (“”) for the default account</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>address</code></td>
+        <td>→ → <br /><code>address</code></td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58</a>)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>If an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> paid (may be someone else’s <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> not belonging to this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>).  If an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> paid in the previous <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>.  May be empty if the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> is unknown, such as when paying to a non-standard <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>category</code></td>
+        <td>→ → <br /><code>category</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to one of the following values:<br />• <code>send</code> if sending payment<br />• <code>receive</code> if this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> received payment in a regular transaction<br />• <a href="/en/developer-reference.php#generate" class="auto-link"><code>generate</code></a> if a matured and spendable <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a><br />• <code>immature</code> if a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> that is not spendable yet<br />• <code>orphan</code> if a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> from a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> that’s not in the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
+        <td>→ → <br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>A negative umkoin amount if sending payment; a positive umkoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>vout</code></td>
+        <td>→ → <br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>For an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, the <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> (vout) for this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in this transaction.  For an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, the <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> for the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> being spent in its transaction.  Because <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> list the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> indexes from previous transactions, more than one entry in the details array may have the same <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>fee</code></td>
+        <td>→ → <br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Optional<br />(0 or 1)</td>
         <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value.  May be <code>0</code>.  Not returned if receiving payment</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>abandoned</code></td>
+        <td>→ → <br /><code>abandoned</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.1" class="auto-link">Umkoin Core 0.12.1</a></em><br /><br />Indicates if a transaction is was abandoned:<br />• <code>true</code> if it was abandoned (<a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> are respendable)<br />• <code>false</code>  if it was not abandoned<br />Only returned by <em>send</em> category payments</td>
@@ -9171,37 +8813,37 @@ transactions with six or more <a href="/en/glossary/confirmation-score" title="A
         <td>An object with information about the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>.  This may be <code>null</code> if there was no <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>asm</code></td>
+        <td>→ → <br /><code>asm</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> in decoded form with <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">non-data-pushing opcodes</a> listed</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>hex</code></td>
+        <td>→ → <br /><code>hex</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> encoded as hex</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>reqSigs</code></td>
+        <td>→ → <br /><code>reqSigs</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The number of <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required; this is always <code>1</code> for P2PK, P2PKH, and P2SH (including <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> because the <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> is not available in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>).  It may be greater than 1 for <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">bare multisig</a>.  This value will not be returned for <code>nulldata</code> or <code>nonstandard</code> script types (see the <code>type</code> key below)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>type</code></td>
+        <td>→ → <br /><code>type</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The type of script.  This will be one of the following:<br />• <code>pubkey</code> for a P2PK script<br />• <code>pubkeyhash</code> for a P2PKH script<br />• <code>scripthash</code> for a P2SH script<br />• <code>multisig</code> for a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">bare multisig</a> script<br />• <code>nulldata</code> for nulldata scripts<br />• <code>nonstandard</code> for unknown scripts</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>addresses</code></td>
+        <td>→ → <br /><code>addresses</code></td>
         <td>string : array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH addresses</a> used in this transaction, or the computed <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a> of any <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkeys</a> in this transaction.  This array will not be returned for <code>nulldata</code> or <code>nonstandard</code> script types</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→→ ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string</td>
         <td>Required<br />(1 or more)</td>
         <td>A P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a></td>
@@ -9811,61 +9453,61 @@ matching it.</p>
         <td>An array of JSON objects, each one being an <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> or script to be imported</td>
       </tr>
       <tr>
-        <td>? Import</td>
+        <td>→ Import</td>
         <td>object</td>
         <td>Required<br />(1 or more)</td>
         <td>A JSON object describing a particular import</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>scriptPubKey</code></td>
+        <td>→ → <br /><code>scriptPubKey</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The script (string) to be imported.  Must have either this field or <code>address</code> below</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>address</code></td>
+        <td>→ → <br /><code>address</code></td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58</a>)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> to be imported.  Must have either this field or <code>scriptPubKey</code> above</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>timestamp</code></td>
+        <td>→ → <br /><code>timestamp</code></td>
         <td>number (int) / string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The creation time of the key in <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> or the string “now” to substitute the current synced <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> time. The timestamp of the oldest key will determine how far back <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> rescans need to begin. Specify <code>now</code> to bypass scanning for keys which are known to never have been used.  Specify <code>0</code> to scan the entire <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a>. <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">Blocks</a> up to 2 hours before the earliest key creation time will be scanned</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>redeemscript</code></td>
+        <td>→ → <br /><code>redeemscript</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>A <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a>. Only allowed if either the <code>address</code> field is a <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> or the <code>scriptPubKey</code> field is a P2SH <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">scriptPubKey</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>pubkeys</code></td>
+        <td>→ → <br /><code>pubkeys</code></td>
         <td>array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Array of strings giving <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkeys</a> that must occur in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">scriptPubKey</a> or <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeemscript</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>keys</code></td>
+        <td>→ → <br /><code>keys</code></td>
         <td>array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Array of strings giving <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> whose corresponding <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">public keys</a> must occur in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">scriptPubKey</a> or <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeemscript</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>internal</code></td>
+        <td>→ → <br /><code>internal</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Stating whether matching <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> should be treated as change rather than incoming payments. The default is <code>false</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>watchonly</code></td>
+        <td>→ → <br /><code>watchonly</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Stating whether matching <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> should be considered watched even when they’re not spendable. This is only allowed if keys are empty. The default is <code>false</code></td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
+        <td>→ → <br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Label to assign to the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>, only allowed with <code>internal</code> set to <code>false</code>. The default is an empty string (“”)</td>
@@ -9892,7 +9534,7 @@ matching it.</p>
         <td>JSON object with options regarding the import</td>
       </tr>
       <tr>
-        <td>? <br /><code>rescan</code></td>
+        <td>→ <br /><code>rescan</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Set to <code>true</code> (the default) to rescan the entire local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> for transactions affecting any imported <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> or script. Set to <code>false</code> to not rescan after the import. Rescanning may take a considerable amount of time and may require re-downloading <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> if using <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block chain</a> pruning</td>
@@ -9919,31 +9561,31 @@ matching it.</p>
         <td>An array of JSON objects, with each object describing the execution result of each import</td>
       </tr>
       <tr>
-        <td>? Result</td>
+        <td>→ Result</td>
         <td>object</td>
         <td>Required<br />(1 or more)</td>
         <td>A JSON object describing the execution result of an imported <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> or script</td>
       </tr>
       <tr>
-        <td>? ? <br /><code>success</code></td>
+        <td>→→ <br /><code>success</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>Displays <code>true</code> if the import has been successful or <code>false</code> if it failed</td>
       </tr>
       <tr>
-        <td>? ? <br /><code>error</code></td>
+        <td>→→ <br /><code>error</code></td>
         <td>string : object</td>
         <td>Optional<br />(0 or 1)</td>
         <td>A JSON object containing details about the error. Only displayed if the import fails</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>code</code></td>
+        <td>→→ ? <br /><code>code</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The error code</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><a href="/en/developer-guide.php#term-message" title="A parameter of umkoin: URIs which allows the receiver to optionally specify a message to the spender" class="auto-link"><code>message</code></a></td>
+        <td>→→ ? <br /><a href="/en/developer-guide.php#term-message" title="A parameter of umkoin: URIs which allows the receiver to optionally specify a message to the spender" class="auto-link"><code>message</code></a></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The error message</td>
@@ -10452,25 +10094,25 @@ included.</p>
         <td>An array containing arrays of <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">addresses</a> which can be associated with each other</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a> Details</td>
+        <td>→ → <br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a> Details</td>
         <td>array</td>
         <td>Required<br />(1 or more)</td>
         <td>An array containing information about a particular <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→→ ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58</a>)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> in <a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58check</a> format</td>
       </tr>
       <tr>
-        <td>? ? ?<br />Balance</td>
+        <td>→→ ?<br />Balance</td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The current spendable balance of the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>, not counting <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br />Account</td>
+        <td>→→ ?<br />Account</td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td><em>Deprecated: will be removed in a later version of Umkoin Core</em><br /><br />The account the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> belongs to, if any.  This field will not be returned for <a href="/en/glossary/change-address" title="An output in a transaction which returns satoshis to the spender, thus preventing too much of the input value from going to transaction fees." class="auto-link">change addresses</a>.  The default account is an empty string (“”)</td>
@@ -10537,25 +10179,25 @@ included.</p>
         <td>A ban list entry</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>address</code></td>
+        <td>→ → <br /><code>address</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The IP/Subnet of the entry</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>banned_until</code></td>
+        <td>→ → <br /><code>banned_until</code></td>
         <td>number<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the entry was added to the ban list</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ban_created</code></td>
+        <td>→ → <br /><code>ban_created</code></td>
         <td>number<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> until the IP/Subnet is banned</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ban_reason</code></td>
+        <td>→ → <br /><code>ban_reason</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to one of the following reasons:<br />• <code>node misbehaving</code> if the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> was banned by the client because of DoS violations<br />• <code>manually added</code> if the <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a> was manually banned by the user</td>
@@ -10625,13 +10267,13 @@ included.</p>
         <td>An object describing a particular locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>txid</code></td>
+        <td>→ → <br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction containing the locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>vout</code></td>
+        <td>→ → <br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) of the locked <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> within the transaction.  <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">Output index</a> <code>0</code> is the first <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> within the transaction</td>
@@ -10754,25 +10396,25 @@ Core.  Use the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs"
         <td>An object describing an account</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>involvesWatchonly</code></td>
+        <td>→ → <br /><code>involvesWatchonly</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Set to <code>true</code> if the balance of this account includes a <a href="/en/glossary/watch-only-address" title="An address or pubkey script stored in the wallet without the corresponding private key, allowing the wallet to watch for outputs but not spend them." class="auto-link">watch-only address</a> which has received a spendable payment (that is, a payment with at least the specified number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> and which is not an immature <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a>).  Otherwise not returned</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>account</code></td>
+        <td>→ → <br /><code>account</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The name of the account</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>amount</code></td>
+        <td>→ → <br /><code>amount</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The total amount received by this account in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>confirmations</code></td>
+        <td>→ → <br /><code>confirmations</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> received by the last transaction received by this account.  May be <code>0</code></td>
@@ -10903,49 +10545,49 @@ which have been <a href="/en/glossary/confirmation-score" title="A score indicat
         <td>An object describing an <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>involvesWatchonly</code></td>
+        <td>→ → <br /><code>involvesWatchonly</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Set to <code>true</code> if this <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> is a <a href="/en/glossary/watch-only-address" title="An address or pubkey script stored in the wallet without the corresponding private key, allowing the wallet to watch for outputs but not spend them." class="auto-link">watch-only address</a> which has received a spendable payment (that is, a payment with at least the specified number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> and which is not an immature <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a>).  Otherwise not returned</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>address</code></td>
+        <td>→ → <br /><code>address</code></td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58</a>)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> being described encoded in <a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58check</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>account</code></td>
+        <td>→ → <br /><code>account</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Deprecated: will be removed in a later version of Umkoin Core</em><br /><br />The account the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> belongs to.  May be the default account, an empty string (“”)</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
+        <td>→ → <br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The total amount the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> has received in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>confirmations</code></td>
+        <td>→ → <br /><code>confirmations</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> of the latest transaction to the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>.  May be <code>0</code> for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
+        <td>→ → <br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The account the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> belongs to.  May be the default account, an empty string (“”)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>txids</code></td>
+        <td>→ → <br /><code>txids</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array of <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> belonging to transactions that pay the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→→ ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string</td>
         <td>Optional<br />(0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a transaction paying the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
@@ -11088,127 +10730,127 @@ which have been <a href="/en/glossary/confirmation-score" title="A score indicat
         <td>An array of objects each describing a particular <strong>payment</strong> to or from this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.  The objects in this array do not describe an actual transactions, so more than one object in this array may come from the same transaction.  This array may be empty</td>
       </tr>
       <tr>
-        <td>? ?<br />Payment</td>
+        <td>→ → <br />Payment</td>
         <td>object</td>
         <td>Optional<br />(0 or more)</td>
         <td>An payment which did not appear in the specified <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> or an earlier <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>involvesWatchonly</code></td>
+        <td>→→ ? <br /><code>involvesWatchonly</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Set to <code>true</code> if the payment involves a <a href="/en/glossary/watch-only-address" title="An address or pubkey script stored in the wallet without the corresponding private key, allowing the wallet to watch for outputs but not spend them." class="auto-link">watch-only address</a>.  Otherwise not returned</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>account</code></td>
+        <td>→→ ? <br /><code>account</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Deprecated: will be removed in a later version of Umkoin Core</em><br /><br />The account which the payment was credited to or debited from.  May be an empty string (“”) for the default account</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>address</code></td>
+        <td>→→ ? <br /><code>address</code></td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58</a>)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> paid in this payment, which may be someone else’s <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> not belonging to this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.  May be empty if the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> is unknown, such as when paying to a non-standard <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>category</code></td>
+        <td>→→ ? <br /><code>category</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to one of the following values:<br />• <code>send</code> if sending payment<br />• <code>receive</code> if this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> received payment in a regular transaction<br />• <a href="/en/developer-reference.php#generate" class="auto-link"><code>generate</code></a> if a matured and spendable <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a><br />• <code>immature</code> if a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> that is not spendable yet<br />• <code>orphan</code> if a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> from a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> that’s not in the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
+        <td>→→ ? <br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>A negative umkoin amount if sending payment; a positive umkoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>vout</code></td>
+        <td>→→ ? <br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>For an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, the <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> (vout) for this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in this transaction.  For an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, the <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> for the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> being spent in its transaction.  Because <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> list the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> indexes from previous transactions, more than one entry in the details array may have the same <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>fee</code></td>
+        <td>→→ ? <br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Optional<br />(0 or 1)</td>
         <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value.  May be <code>0</code>. Not returned if receiving payment</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>confirmations</code></td>
+        <td>→→ ? <br /><code>confirmations</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> the transaction has received.  Will be <code>0</code> for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a> and <code>-1</code> for conflicted</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>generated</code></td>
+        <td>→→ ? <br /><code>generated</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Set to <code>true</code> if the transaction is a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a>.  Not returned for regular transactions</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>blockhash</code></td>
+        <td>→→ ? <br /><code>blockhash</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The hash of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> which includes this transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a>.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>blockindex</code></td>
+        <td>→→ ? <br /><code>blockindex</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The index of the transaction in the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> that includes it.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>blocktime</code></td>
+        <td>→→ ? <br /><code>blocktime</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> time (<a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a>) of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> which includes this transaction.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>txid</code></td>
+        <td>→→ ? <br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>walletconflicts</code></td>
+        <td>→→ ? <br /><code>walletconflicts</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array containing the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of other transactions that spend the same <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> (<a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a>) as this transaction.  Array may be empty</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→→ ? ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a conflicting transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>time</code></td>
+        <td>→→ ? <br /><code>time</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>A <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the transaction was added to the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a></td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>timereceived</code></td>
+        <td>→→ ? <br /><code>timereceived</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>A <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the transaction was detected by the local <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, or the time of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> that included the transaction</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><a href="/en/glossary/rbf" title="Replacing one version of an unconfirmed transaction with a different version of the transaction that pays a higher transaction fee.  May use BIP125 signaling." class="auto-link"><code>bip125-replaceable</code></a></td>
+        <td>→→ ? <br /><a href="/en/glossary/rbf" title="Replacing one version of an unconfirmed transaction with a different version of the transaction that pays a higher transaction fee.  May use BIP125 signaling." class="auto-link"><code>bip125-replaceable</code></a></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />Indicates if a transaction is replaceable under BIP 125:<br />• <code>yes</code> is replaceable<br />• <code>no</code> not replaceable<br />• <code>unknown</code> for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> not in the mempool</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>comment</code></td>
+        <td>→→ ? <br /><code>comment</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>For transaction originating with this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, a locally-stored comment added to the transaction.  Only returned if a comment was added</td>
       </tr>
       <tr>
-        <td>? ? ? <br /><code>to</code></td>
+        <td>→→ ? <br /><code>to</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>For transaction originating with this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, a locally-stored comment added to the transaction identifying who the transaction was sent to.  Only returned if a comment-to was added</td>
@@ -11395,139 +11037,139 @@ transactions) and the <a href="/en/glossary/block-header.php" title="An 80-byte 
         <td>A payment or internal accounting entry</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>account</code></td>
+        <td>→ → <br /><code>account</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Deprecated: will be removed in a later version of Umkoin Core</em><br /><br />The account which the payment was credited to or debited from.  May be an empty string (“”) for the default account</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>address</code></td>
+        <td>→ → <br /><code>address</code></td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58</a>)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> paid in this payment, which may be someone else’s <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> not belonging to this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.  May be empty if the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> is unknown, such as when paying to a non-standard <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> or if this is in the <em>move</em> category</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>category</code></td>
+        <td>→ → <br /><code>category</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to one of the following values:<br />• <code>send</code> if sending payment<br />• <code>receive</code> if this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> received payment in a regular transaction<br />• <a href="/en/developer-reference.php#generate" class="auto-link"><code>generate</code></a> if a matured and spendable <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a><br />• <code>immature</code> if a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> that is not spendable yet<br />• <code>orphan</code> if a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> from a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> that’s not in the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a><br />• <a href="/en/developer-reference.php#move" class="auto-link"><code>move</code></a> if an off-<a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">block-chain</a> move made with the <a href="/en/developer-reference.php#move" class="auto-link"><code>move</code> RPC</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
+        <td>→ → <br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>A negative umkoin amount if sending payment; a positive umkoin amount if receiving payment (including <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbases</a>)</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
+        <td>→ → <br /><a href="/en/developer-guide.php#term-label" title="The label parameter of a umkoin: URI which provides the spender with the receiver's name (unauthenticated)" class="auto-link"><code>label</code></a></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>A comment for the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a>/transaction</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>vout</code></td>
+        <td>→ → <br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>For an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, the <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> (vout) for this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in this transaction.  For an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>, the <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> for the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> being spent in its transaction.  Because <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> list the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> indexes from previous transactions, more than one entry in the details array may have the same <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a>.  Not returned for <em>move</em> category payments</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>fee</code></td>
+        <td>→ → <br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Optional<br />(0 or 1)</td>
         <td>If sending payment, the fee paid as a negative <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> value.  May be <code>0</code>. Not returned if receiving payment or for <em>move</em> category payments</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>confirmations</code></td>
+        <td>→ → <br /><code>confirmations</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> the transaction has received.  Will be <code>0</code> for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed</a> and <code>-1</code> for conflicted.  Not returned for <em>move</em> category payments</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>trusted</code></td>
+        <td>→ → <br /><code>trusted</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Indicates whether we consider the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a> of this <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transaction</a> safe to spend.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>generated</code></td>
+        <td>→ → <br /><code>generated</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Set to <code>true</code> if the transaction is a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a>.  Not returned for regular transactions or <em>move</em> category payments</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>blockhash</code></td>
+        <td>→ → <br /><code>blockhash</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The hash of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> which includes this transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a>.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>blockindex</code></td>
+        <td>→ → <br /><code>blockindex</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The index of the transaction in the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> that includes it.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>blocktime</code></td>
+        <td>→ → <br /><code>blocktime</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">block header</a> time (<a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a>) of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> which includes this transaction.  Only returned for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmed transactions</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>txid</code></td>
+        <td>→ → <br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a>.  Not returned for <em>move</em> category payments</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>walletconflicts</code></td>
+        <td>→ → <br /><code>walletconflicts</code></td>
         <td>array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>An array containing the <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of other transactions that spend the same <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> (<a href="/en/glossary/unspent-transaction-output" title="An Unspent Transaction Output (UTXO) that can be spent as an input in a new transaction." class="auto-link">UTXOs</a>) as this transaction.  Array may be empty.  Not returned for <em>move</em> category payments</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→→ ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a conflicting transaction, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>time</code></td>
+        <td>→ → <br /><code>time</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>A <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the transaction was added to the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>timereceived</code></td>
+        <td>→ → <br /><code>timereceived</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>A <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the transaction was detected by the local <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>, or the time of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the local <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a> that included the transaction.  Not returned for <em>move</em> category payments</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>comment</code></td>
+        <td>→ → <br /><code>comment</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>For transaction originating with this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, a locally-stored comment added to the transaction.  Only returned in regular payments if a comment was added.  Always returned in <em>move</em> category payments.  May be an empty string</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>to</code></td>
+        <td>→ → <br /><code>to</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>For transaction originating with this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, a locally-stored comment added to the transaction identifying who the transaction was sent to.  Only returned if a comment-to was added.  Never returned by <em>move</em> category payments.  May be an empty string</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>otheraccount</code></td>
+        <td>→ → <br /><code>otheraccount</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>This is the account the <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> were moved from or moved to, as indicated by a negative or positive <em>amount</em> field in this payment.  Only returned by <em>move</em> category payments</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/rbf" title="Replacing one version of an unconfirmed transaction with a different version of the transaction that pays a higher transaction fee.  May use BIP125 signaling." class="auto-link"><code>bip125-replaceable</code></a></td>
+        <td>→ → <br /><a href="/en/glossary/rbf" title="Replacing one version of an unconfirmed transaction with a different version of the transaction that pays a higher transaction fee.  May use BIP125 signaling." class="auto-link"><code>bip125-replaceable</code></a></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />Indicates if a transaction is replaceable under <a href="https://github.com/umkoin/bips/blob/master/bip-0125.mediawiki" class="auto-link">BIP125</a>:<br />• <code>yes</code> replaceable<br />• <code>no</code> not replaceable<br />• <code>unknown</code> for <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> not in the mempool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>abandoned</code></td>
+        <td>→ → <br /><code>abandoned</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.1" class="auto-link">Umkoin Core 0.12.1</a></em><br /><br />Indicates if a transaction is was abandoned:<br />• <code>true</code> if it was abandoned (<a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> are respendable)<br />• <code>false</code>  if it was not abandoned<br />Only returned by <em>send</em> category payments</td>
@@ -11674,61 +11316,61 @@ the <em>spendable</em> field in the results described below.</p>
         <td>An object describing a particular unspent <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> belonging to this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>txid</code></td>
+        <td>→ → <br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction containing the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>vout</code></td>
+        <td>→ → <br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) of the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> within its containing transaction</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>address</code></td>
+        <td>→ → <br /><code>address</code></td>
         <td>string (<a href="/en/glossary/base58check.php" title="The method used in Umkoin for converting 160-bit hashes into P2PKH and P2SH addresses.  Also used in other parts of Umkoin, such as encoding private keys for backup in WIP format.  Not the same as other base58 implementations." class="auto-link">base58</a>)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a> the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> paid.  Only returned for P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH output</a> scripts</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>account</code></td>
+        <td>→ → <br /><code>account</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td><em>Deprecated: will be removed in a later version of Umkoin Core</em><br /><br />If the <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> returned belongs to an account, this is the account.  Otherwise not returned</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>scriptPubKey</code></td>
+        <td>→ → <br /><code>scriptPubKey</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> script paid, encoded as hex</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>redeemScript</code></td>
+        <td>→ → <br /><code>redeemScript</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>If the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> is a P2SH whose script belongs to this <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>, this is the <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
+        <td>→ → <br /><a href="/en/developer-examples.php#term-pp-amount" title="Part of the Output part of the PaymentDetails part of a payment protocol where receivers can specify the amount of satoshis they want paid to a particular pubkey script" class="auto-link"><code>amount</code></a></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The amount paid to the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>confirmations</code></td>
+        <td>→ → <br /><code>confirmations</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">confirmations</a> received for the transaction containing this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>spendable</code></td>
+        <td>→ → <br /><code>spendable</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to <code>true</code> if the <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private key</a> or keys needed to spend this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> are part of the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.  Set to <code>false</code> if not (such as for <a href="/en/glossary/watch-only-address" title="An address or pubkey script stored in the wallet without the corresponding private key, allowing the wallet to watch for outputs but not spend them." class="auto-link">watch-only addresses</a>)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>solvable</code></td>
+        <td>→ → <br /><code>solvable</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />Set to <code>true</code> if the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> knows how to spend this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>.  Set to <code>false</code> if the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> does not know how to spend the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>.  It is ignored if the <a href="/en/glossary/private-key.php" title="The private portion of a keypair which can create signatures that other people can verify using the public key." class="auto-link">private keys</a> are available</td>
@@ -11821,13 +11463,13 @@ the <em>spendable</em> field in the results described below.</p>
         <td>An object describing a particular <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>txid</code></td>
+        <td>→ → <br /><code>txid</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction containing the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> to lock or unlock, encoded as hex in <a href="/en/glossary/internal-byte-order.php" title="The standard order in which hash digests are displayed as strings---the same format used in serialized blocks and transactions." class="auto-link">internal byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>vout</code></td>
+        <td>→ → <br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) of the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> to lock or unlock.  The first <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in a transaction has an index of <code>0</code></td>
@@ -13592,25 +13234,25 @@ call has been added to <a href="/en/glossary/mining.php" title="Mining is the ac
         <td>An <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> being spent</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>txid</code></td>
+        <td>→ → <br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> appeared in.  The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> must be encoded in hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>vout</code></td>
+        <td>→ → <br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The index number of the <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> (vout) as it appeared in its transaction, with the first <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> being 0</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>scriptPubKey</code></td>
+        <td>→ → <br /><code>scriptPubKey</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output’s</a> <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> encoded as hex</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>redeemScript</code></td>
+        <td>→ → <br /><code>redeemScript</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>If the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> was a <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">script hash</a>, this must be the corresponding <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a></td>
@@ -13940,7 +13582,7 @@ f0457bcb05865a94900ed11356d0b75228efb38c7785d6053ffff001d005d437<span class="se"
         <td>Only returned for <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH addresses</a> belonging to the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.  A <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> used in this script, or the computed <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH addresses</a> of any <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkeys</a> in this script.  This array will be empty for <code>nonstandard</code> script types</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→ → <br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string</td>
         <td>Optional<br />(0 or more)</td>
         <td>A <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a></td>
@@ -14684,169 +14326,169 @@ untrusted source.</p>
         <td>An array containing all transactions in this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.  The transactions appear in the array in the same order they appear in the <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a></td>
       </tr>
       <tr>
-        <td>? ?<br />Transaction</td>
+        <td>→ → <br />Transaction</td>
         <td>object</td>
         <td>Required<br />(1 or more)</td>
         <td>An object describing a particular transaction within this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>txid</code></td>
+        <td>→→ ?<br /><code>txid</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The transaction’s <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>hash</code></td>
+        <td>→→ ?<br /><code>hash</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The transaction hash.  Differs from <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">txid</a> for witness transactions</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>size</code></td>
+        <td>→→ ?<br /><code>size</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> size</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>vsize</code></td>
+        <td>→→ ?<br /><code>vsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The virtual transaction size.  Differs from size for witness transactions</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>version</code></td>
+        <td>→→ ?<br /><code>version</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The transaction format version number</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>locktime</code></td>
+        <td>→→ ?<br /><code>locktime</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The transaction’s <a href="/en/glossary/locktime" title="Part of a transaction which indicates the earliest time or earliest block when that transaction may be added to the block chain." class="auto-link">locktime</a>: either a Unix epoch date or <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a>; see the <a href="/en/developer-guide.php#locktime_parsing_rules">Locktime parsing rules</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>vin</code></td>
+        <td>→→ ?<br /><code>vin</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array of objects with each object being an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> vector (vin) for this transaction.  <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Input</a> objects will have the same order within the array as they have in the transaction, so the first <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> listed will be <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> 0</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Input</a></td>
+        <td>→→ ? ?<br /><a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Input</a></td>
         <td>object</td>
         <td>Required<br />(1 or more)</td>
         <td>An object describing one of this transaction’s <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a>.  May be a regular <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> or a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a></td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>txid</code></td>
+        <td>→→ ? ? ?<br /><code>txid</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> being spent, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a>.  Not present if this is a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a></td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>vout</code></td>
+        <td>→→ ? ? ?<br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) of the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> being spent.  The first <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in a transaction has an index of <code>0</code>.  Not present if this is a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a></td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>scriptSig</code></td>
+        <td>→→ ? ? ?<br /><code>scriptSig</code></td>
         <td>object</td>
         <td>Optional<br />(0 or 1)</td>
         <td>An object describing the <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> of this <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>.  Not present if this is a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a></td>
       </tr>
       <tr>
-        <td>? ? ? ? ? ?<br /><code>asm</code></td>
+        <td>→→ ? ? ? ?<br /><code>asm</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> in decoded form with <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">non-data-pushing opcodes</a> listed</td>
       </tr>
       <tr>
-        <td>? ? ? ? ? ?<br /><code>hex</code></td>
+        <td>→→ ? ? ? ?<br /><code>hex</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> encoded as hex</td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>coinbase</code></td>
+        <td>→→ ? ? ?<br /><code>coinbase</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> (similar to the hex field of a <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">scriptSig</a>) encoded as hex.  Only present if this is a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a></td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>sequence</code></td>
+        <td>→→ ? ? ?<br /><code>sequence</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> <a href="/en/glossary/sequence-number.php" title="Part of all transactions. A number intended to allow unconfirmed time-locked transactions to be updated before being finalized; not currently used except to disable locktime in a transaction" class="auto-link">sequence number</a></td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>txinwitness</code></td>
+        <td>→→ ? ? ?<br /><code>txinwitness</code></td>
         <td>string : array</td>
         <td>Optional<br />(0 or 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />Hex-encoded witness data. Only for segregated witness transactions</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>vout</code></td>
+        <td>→→ ?<br /><code>vout</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array of objects each describing an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> vector (vout) for this transaction.  <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">Output</a> objects will have the same order within the array as they have in the transaction, so the first <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> listed will be <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> 0</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">Output</a></td>
+        <td>→→ ? ?<br /><a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">Output</a></td>
         <td>object</td>
         <td>Required<br />(1 or more)</td>
         <td>An object describing one of this transaction’s <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a></td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>value</code></td>
+        <td>→→ ? ? ?<br /><code>value</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> paid to this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>.  May be <code>0</code></td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>n</code></td>
+        <td>→→ ? ? ?<br /><code>n</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number of this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> within this transaction</td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><code>scriptPubKey</code></td>
+        <td>→→ ? ? ?<br /><code>scriptPubKey</code></td>
         <td>object</td>
         <td>Required<br />(exactly 1)</td>
         <td>An object describing the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a></td>
       </tr>
       <tr>
-        <td>? ? ? ? ? ?<br /><code>asm</code></td>
+        <td>→→ ? ? ? ?<br /><code>asm</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> in decoded form with <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">non-data-pushing opcodes</a> listed</td>
       </tr>
       <tr>
-        <td>? ? ? ? ? ?<br /><code>hex</code></td>
+        <td>→→ ? ? ? ?<br /><code>hex</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> encoded as hex</td>
       </tr>
       <tr>
-        <td>? ? ? ? ? ?<br /><code>reqSigs</code></td>
+        <td>→→ ? ? ? ?<br /><code>reqSigs</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The number of <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required; this is always <code>1</code> for P2PK, P2PKH, and P2SH (including <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> because the <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> is not available in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>).  It may be greater than 1 for <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">bare multisig</a>.  This value will not be returned for <code>nulldata</code> or <code>nonstandard</code> script types (see the <code>type</code> key below)</td>
       </tr>
       <tr>
-        <td>? ? ? ? ? ?<br /><code>type</code></td>
+        <td>→→ ? ? ? ?<br /><code>type</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The type of script.  This will be one of the following:<br />• <code>pubkey</code> for a P2PK script<br />• <code>pubkeyhash</code> for a P2PKH script<br />• <code>scripthash</code> for a P2SH script<br />• <code>multisig</code> for a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">bare multisig</a> script<br />• <code>nulldata</code> for nulldata scripts<br />• <code>nonstandard</code> for unknown scripts</td>
       </tr>
       <tr>
-        <td>? ? ? ? ? ?<br /><code>addresses</code></td>
+        <td>→→ ? ? ? ?<br /><code>addresses</code></td>
         <td>string : array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH addresses</a> used in this transaction, or the computed <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a> of any <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkeys</a> in this transaction.  This array will not be returned for <code>nulldata</code> or <code>nonstandard</code> script types</td>
       </tr>
       <tr>
-        <td>? ? ? ? ? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→→ ? ? ? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string</td>
         <td>Required<br />(1 or more)</td>
         <td>A P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a></td>
@@ -15112,7 +14754,7 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td>An array containing all transactions in this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.  The transactions appear in the array in the same order they appear in the <a href="/en/glossary/serialized-block" title="A complete block in its binary format---the same format used to calculate total block byte size; often represented using hexadecimal." class="auto-link">serialized block</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→ → <br /><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string (hex)</td>
         <td>Required<br />(1 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a transaction in this <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
@@ -15316,79 +14958,79 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />An array of objects each describing a current or previous <a href="/en/glossary/soft-fork.php" title="A softfork is a change to the umkoin protocol  wherein only previously valid blocks/transactions  are made invalid. Since old nodes will recognise  the new blocks as valid, a softfork is backward-compatible." class="auto-link">soft fork</a></td>
       </tr>
       <tr>
-        <td>? ?<br />Softfork</td>
+        <td>→ → <br />Softfork</td>
         <td>object</td>
         <td>Required<br />(3 or more)</td>
         <td>A specific softfork</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>id</code></td>
+        <td>→→ ?<br /><code>id</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The name of the softfork</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>version</code></td>
+        <td>→→ ?<br /><code>version</code></td>
         <td>numeric<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> version used for the softfork</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>enforce</code></td>
+        <td>→→ ?<br /><code>enforce</code></td>
         <td>string : object</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The progress toward enforcing the softfork rules for new-version <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>status</code></td>
+        <td>→→ ? ?<br /><code>status</code></td>
         <td>bool</td>
         <td>Required<br />(exactly 1)</td>
         <td>Indicates if the threshold was reached</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>found</code></td>
+        <td>→→ ? ?<br /><code>found</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that support the softfork</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>required</code></td>
+        <td>→→ ? ?<br /><code>required</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that are required to reach the threshold</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>window</code></td>
+        <td>→→ ? ?<br /><code>window</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The maximum size of examined window of recent <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>reject</code></td>
+        <td>→→ ?<br /><code>reject</code></td>
         <td>object</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The progress toward enforcing the softfork rules for new-version <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>status</code></td>
+        <td>→→ ? ?<br /><code>status</code></td>
         <td>bool</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Indicates if the threshold was reached</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>found</code></td>
+        <td>→→ ? ?<br /><code>found</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that support the softfork</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>required</code></td>
+        <td>→→ ? ?<br /><code>required</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Number of <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a> that are required to reach the threshold</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>window</code></td>
+        <td>→→ ? ?<br /><code>window</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The maximum size of examined window of recent <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">blocks</a></td>
@@ -15400,31 +15042,31 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td><em>Added in <a href="/en/release/v0.12.1" class="auto-link">Umkoin Core 0.12.1</a></em><br /><br />The status of <a href="https://github.com/umkoin/bips/blob/master/bip-0009.mediawiki" class="auto-link">BIP9</a> softforks in progress</td>
       </tr>
       <tr>
-        <td>? ?<br />Name</td>
+        <td>→ → <br />Name</td>
         <td>string : object</td>
         <td>Required<br />(2 or more)</td>
         <td>A specific <a href="https://github.com/umkoin/bips/blob/master/bip-0009.mediawiki" class="auto-link">BIP9</a> softfork</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>status</code></td>
+        <td>→→ ?<br /><code>status</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>Set to one of the following reasons:<br />• <code>defined</code> if voting hasn’t started yet<br />• <code>started</code> if the voting has started <br />• <code>locked_in</code> if the voting was successful but the softfort hasn’t been activated yet<br />• <code>active</code> if the softfork was activated<br />• <code>failed</code> if the softfork has not receieved enough votes</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>bit</code></td>
+        <td>→→ ?<br /><code>bit</code></td>
         <td>numeric<br />(int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The bit (0-28) in the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> version field used to signal this softfork.  Field is only shown when status is <code>started</code></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>startTime</code></td>
+        <td>→→ ?<br /><code>startTime</code></td>
         <td>numeric<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> when the softfork voting begins</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>timeout</code></td>
+        <td>→→ ?<br /><code>timeout</code></td>
         <td>numeric<br />(int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> at which the deployment is considered failed if not yet locked in</td>
@@ -15627,49 +15269,49 @@ e62294721166bf621e73a82cbf2342c858eeac00000000</code></pre></figure>
         <td>The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">height</a> of the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> containing the defining transaction, or 0x7FFFFFFF if the tx is in the mempool</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>value</code></td>
+        <td>→→ ?<br /><code>value</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The value of the transaction</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>scriptPubKey</code></td>
+        <td>→→ ?<br /><code>scriptPubKey</code></td>
         <td>object</td>
         <td>Required<br />(exactly 1)</td>
         <td>An object describing the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a></td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>asm</code></td>
+        <td>→→ ? ?<br /><code>asm</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> in decoded form with <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">non-data-pushing opcodes</a> listed</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>hex</code></td>
+        <td>→→ ? ?<br /><code>hex</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> encoded as hex</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>reqSigs</code></td>
+        <td>→→ ? ?<br /><code>reqSigs</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The number of <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required; this is always <code>1</code> for P2PK, P2PKH, and P2SH (including <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> because the <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> is not available in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>).  It may be greater than 1 for <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">bare multisig</a>.  This value will not be returned for <code>nulldata</code> or <code>nonstandard</code> script types (see the <code>type</code> key below)</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>type</code></td>
+        <td>→→ ? ?<br /><code>type</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The type of script.  This will be one of the following:<br />• <code>pubkey</code> for a P2PK script<br />• <code>pubkeyhash</code> for a P2PKH script<br />• <code>scripthash</code> for a P2SH script<br />• <code>multisig</code> for a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">bare multisig</a> script<br />• <code>nulldata</code> for nulldata scripts<br />• <code>nonstandard</code> for unknown scripts</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>addresses</code></td>
+        <td>→→ ? ?<br /><code>addresses</code></td>
         <td>string : array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>Array of P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH addresses</a> used in this transaction, or the computed <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a> of any <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkeys</a> in this transaction.  This array will not be returned for <code>nulldata</code> or <code>nonstandard</code> script types</td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→→ ? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string</td>
         <td>Required<br />(1 or more)</td>
         <td>A P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a></td>
@@ -16002,91 +15644,91 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of a transaction in the memory pool, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>size</code></td>
+        <td>→ → <br /><code>size</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The size of the <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal.  Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> in bytes</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>fee</code></td>
+        <td>→ → <br /><code>fee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> paid by the transaction in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>modifiedfee</code></td>
+        <td>→ → <br /><code>modifiedfee</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The <a href="/en/glossary/transaction-fee.php" title="The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block." class="auto-link">transaction fee</a> with fee deltas used for <a href="/en/glossary/mining.php" title="Mining is the act of creating valid Umkoin blocks, which requires demonstrating proof of work, and miners are devices that mine or people who own those devices." class="auto-link">mining</a> priority in decimal <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a></td>
       </tr>
       <tr>
-        <td>? ?<br /><code>time</code></td>
+        <td>→ → <br /><code>time</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The time the transaction entered the memory pool, <a href="https://en.wikipedia.org/wiki/Unix_time" class="auto-link">Unix epoch time</a> format</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>height</code></td>
+        <td>→ → <br /><code>height</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> when the transaction entered the memory pool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>startingpriority</code></td>
+        <td>→ → <br /><code>startingpriority</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The priority of the transaction when it first entered the memory pool</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>currentpriority</code></td>
+        <td>→ → <br /><code>currentpriority</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The current priority of the transaction</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantcount</code></td>
+        <td>→ → <br /><code>descendantcount</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The number of in-mempool descendant transactions (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantsize</code></td>
+        <td>→ → <br /><code>descendantsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The size of in-mempool descendants (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>descendantfees</code></td>
+        <td>→ → <br /><code>descendantfees</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.12.0" class="auto-link">Umkoin Core 0.12.0</a></em><br /><br />The modified fees (see <code>modifiedfee</code> above) of in-mempool descendants (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorcount</code></td>
+        <td>→ → <br /><code>ancestorcount</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The number of in-mempool ancestor transactions (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorsize</code></td>
+        <td>→ → <br /><code>ancestorsize</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The size of in-mempool ancestors (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>ancestorfees</code></td>
+        <td>→ → <br /><code>ancestorfees</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />The modified fees (see <code>modifiedfee</code> above) of in-mempool ancestors (including this one)</td>
       </tr>
       <tr>
-        <td>? ?<br /><code>depends</code></td>
+        <td>→ → <br /><code>depends</code></td>
         <td>array</td>
         <td>Required<br />(exactly 1)</td>
         <td>An array holding <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon (parent transactions).  Those transactions must be part of a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> before this transaction can be added to a <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>, although all transactions may be included in the same <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a>.  The array may be empty</td>
       </tr>
       <tr>
-        <td>? ? ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+        <td>→→ ?<br />Depends <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
         <td>string</td>
         <td>Optional (0 or more)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXIDs</a> of any <a href="/en/glossary/confirmation-score" title="A score indicating the number of blocks on the best block chain that would need to be modified to remove or modify a particular transaction. A confirmed transaction has a confirmation score of one or higher." class="auto-link">unconfirmed transactions</a> this transaction depends upon, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
@@ -16332,55 +15974,55 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
         <td>An array of objects with each object being an <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> vector (vin) for this transaction.  <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Input</a> objects will have the same order within the array as they have in the transaction, so the first <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> listed will be <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> 0</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Input</a></td>
+        <td>→ → <br /><a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">Input</a></td>
         <td>object</td>
         <td>Required<br />(1 or more)</td>
         <td>An object describing one of this transaction’s <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a>.  May be a regular <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> or a <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>txid</code></td>
+        <td>→→ ?<br /><code>txid</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> being spent, encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a>.  Not present if this is a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>vout</code></td>
+        <td>→→ ?<br /><code>vout</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number (vout) of the <a href="/en/glossary/outpoint.php" title="The data structure used to refer to a particular transaction output, consisting of a 32-byte TXID and a 4-byte output index number (vout)." class="auto-link">outpoint</a> being spent.  The first <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> in a transaction has an index of <code>0</code>.  Not present if this is a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>scriptSig</code></td>
+        <td>→→ ?<br /><code>scriptSig</code></td>
         <td>object</td>
         <td>Optional<br />(0 or 1)</td>
         <td>An object describing the <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> of this <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a>.  Not present if this is a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a></td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>asm</code></td>
+        <td>→→ ? ?<br /><code>asm</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> in decoded form with <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">non-data-pushing opcodes</a> listed</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>hex</code></td>
+        <td>→→ ? ?<br /><code>hex</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">signature script</a> encoded as hex</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>coinbase</code></td>
+        <td>→→ ?<br /><code>coinbase</code></td>
         <td>string (hex)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The <a href="/en/glossary/coinbase.php" title="A special field used as the sole input for coinbase transactions. The coinbase allows claiming the block reward and provides up to 100 bytes for arbitrary data." class="auto-link">coinbase</a> (similar to the hex field of a <a href="/en/glossary/signature-script.php" title="Data generated by a spender which is almost always used as variables to satisfy a pubkey script. Signature Scripts are called scriptSig in code." class="auto-link">scriptSig</a>) encoded as hex.  Only present if this is a <a href="/en/glossary/coinbase-transaction.php" title="The first transaction in a block.  Always created by a miner, it includes a single coinbase." class="auto-link">coinbase transaction</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>sequence</code></td>
+        <td>→→ ?<br /><code>sequence</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number.  The outpoint references a previous output and the signature script allows spending it." class="auto-link">input</a> <a href="/en/glossary/sequence-number.php" title="Part of all transactions. A number intended to allow unconfirmed time-locked transactions to be updated before being finalized; not currently used except to disable locktime in a transaction" class="auto-link">sequence number</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>txinwitness</code></td>
+        <td>→→ ?<br /><code>txinwitness</code></td>
         <td>string : array</td>
         <td>Optional<br />(0 or 1)</td>
         <td><em>Added in <a href="/en/release/v0.13.0" class="auto-link">Umkoin Core 0.13.0</a></em><br /><br />Hex-encoded witness data. Only for segregated witness transactions</td>
@@ -16392,61 +16034,61 @@ ca8fc508651b2b5776270618cb395012000000205aec8459769d5c6d5cc6b087<span class="se"
         <td>An array of objects each describing an <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> vector (vout) for this transaction.  <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">Output</a> objects will have the same order within the array as they have in the transaction, so the first <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> listed will be <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> 0</td>
       </tr>
       <tr>
-        <td>? ?<br /><a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">Output</a></td>
+        <td>→ → <br /><a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">Output</a></td>
         <td>object</td>
         <td>Required<br />(1 or more)</td>
         <td>An object describing one of this transaction’s <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">outputs</a></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>value</code></td>
+        <td>→→ ?<br /><code>value</code></td>
         <td><a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" class="auto-link">number (umkoins)</a></td>
         <td>Required<br />(exactly 1)</td>
         <td>The number of <a href="/en/glossary/denominations.php" title="Denominations of Umkoin value, usually measured in fractions of a umkoin but sometimes measured in multiples of a satoshi.  One umkoin equals 100,000,000 satoshis." class="auto-link">umkoins</a> paid to this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a>.  May be <code>0</code></td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>n</code></td>
+        <td>→→ ?<br /><code>n</code></td>
         <td>number (int)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/developer-guide.php#term-output-index" title="The sequentially-numbered index of outputs in a single transaction starting from 0" class="auto-link">output index</a> number of this <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> within this transaction</td>
       </tr>
       <tr>
-        <td>? ? ?<br /><code>scriptPubKey</code></td>
+        <td>→→ ?<br /><code>scriptPubKey</code></td>
         <td>object</td>
         <td>Required<br />(exactly 1)</td>
         <td>An object describing the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a></td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>asm</code></td>
+        <td>→→ ? ?<br /><code>asm</code></td>
         <td>string</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> in decoded form with <a href="/en/glossary/op-code.php" title="Operation codes from the Umkoin Script language which push data or perform functions within a pubkey script or signature script." class="auto-link">non-data-pushing opcodes</a> listed</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>hex</code></td>
+        <td>→→ ? ?<br /><code>hex</code></td>
         <td>string (hex)</td>
         <td>Required<br />(exactly 1)</td>
         <td>The <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a> encoded as hex</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>reqSigs</code></td>
+        <td>→→ ? ?<br /><code>reqSigs</code></td>
         <td>number (int)</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The number of <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required; this is always <code>1</code> for P2PK, P2PKH, and P2SH (including <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> because the <a href="/en/glossary/redeem-script.php" title="A script similar in function to a pubkey script. One copy of it is hashed to create a P2SH address (used in an actual pubkey script) and another copy is placed in the spending signature script to enforce its conditions." class="auto-link">redeem script</a> is not available in the <a href="/en/glossary/pubkey-script.php" title="A script included in outputs which sets the conditions that must be fulfilled for those satoshis to be spent.  Data for fulfilling the conditions can be provided in a signature script. Pubkey Scripts are called a scriptPubKey in code." class="auto-link">pubkey script</a>).  It may be greater than 1 for <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">bare multisig</a>.  This value will not be returned for <code>nulldata</code> or <code>nonstandard</code> script types (see the <code>type</code> key below)</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>type</code></td>
+        <td>→→ ? ?<br /><code>type</code></td>
         <td>string</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The type of script.  This will be one of the following:<br />• <code>pubkey</code> for a P2PK script<br />• <code>pubkeyhash</code> for a P2PKH script<br />• <code>scripthash</code> for a P2SH script<br />• <code>multisig</code> for a <a href="/en/glossary/multisig" title="A pubkey script that provides *n* number of pubkeys and requires the corresponding signature script provide *m* minimum number signatures corresponding to the provided pubkeys." class="auto-link">bare multisig</a> script<br />• <code>nulldata</code> for nulldata scripts<br />• <code>nonstandard</code> for unknown scripts</td>
       </tr>
       <tr>
-        <td>? ? ? ?<br /><code>addresses</code></td>
+        <td>→→ ? ?<br /><code>addresses</code></td>
         <td>string : array</td>
         <td>Optional<br />(0 or 1)</td>
         <td>The P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH addresses</a> used in this transaction, or the computed <a href="/en/glossary/p2pkh-address.php" title="A Umkoin payment address comprising a hashed public key, allowing the spender to create a standard pubkey script that Pays To PubKey Hash (P2PKH)." class="auto-link">P2PKH address</a> of any <a href="/en/glossary/public-key.php" title="The public portion of a keypair which can be used to verify signatures made with the private portion of the keypair." class="auto-link">pubkeys</a> in this transaction.  This array will not be returned for <code>nulldata</code> or <code>nonstandard</code> script types</td>
       </tr>
       <tr>
-        <td>? ? ? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
+        <td>→→ ? ? ?<br /><a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">Address</a></td>
         <td>string</td>
         <td>Required<br />(1 or more)</td>
         <td>A P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a></td>
