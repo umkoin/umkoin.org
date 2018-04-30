@@ -99,7 +99,7 @@ include 'page_head.php';
     <div class="resourcesmore">
       <div>
         <h2 id="additional-resources"><span class="fa fa-link fa-lg"></span> Дополнительные материалы</h2>
-        <p><a href="/uk/umkoin-paper.php"><span class="fa fa-external-link"></span> Bitcoin: A Peer-to-Peer Electronic Cash System</a> - Satoshi Nakamoto (English)</p>
+        <p><a href="https://bitcoin.org/en/bitcoin-paper" target="_blank"><span class="fa fa-external-link"></span> Bitcoin: A Peer-to-Peer Electronic Cash System</a> - Satoshi Nakamoto (English)</p>
         <p><a href="https://github.com/bitcoin/bips#readme"><span class="fa fa-external-link"></span> Bitcoin Improvement Proposals</a> - GitHub (English)</p>
         <p><a href="https://github.com/minium/Bitcoin-Spec"><span class="fa fa-external-link"></span> Bitcoin Developer Reference (working paper)</a> - Krzysztof Okupski (English)</p>
         <p><a href="https://bitcoinj.github.io/#documentation"><span class="fa fa-external-link"></span> Bitcoinj Developer Documentation</a> - bitcoinj.org (English)</p>
