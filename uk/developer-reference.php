@@ -2360,7 +2360,6 @@ cf050500 ........................... Start height: 329167
       <p>The command to send this request using <code>umkoin-cli</code> is:</p>
       <figure class="highlight"><pre><code class="language-bash" data-lang="bash">umkoin-cli getblockhash 0</code></pre></figure>
       <p>Alternatively, we could <code>POST</code> this request using the cURL command-line program as follows:</p>
-<!-- CONTINUE //-->
       <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl --user <span class="s1">':my_secret_password'</span> --data-binary <span class="s1">'''
   {
       "method": "getblockhash",
@@ -2369,83 +2368,53 @@ cf050500 ........................... Start height: 329167
   }'''</span> <span class="se">\</span>
   --header <span class="s1">'Content-Type: text/plain;'</span> localhost:6332</code></pre></figure>
 
-  <p>The HTTP response data for this request would be:</p>
+      <p>The HTTP response data for this request would be:</p>
 
-  <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+      <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
     </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
+    </span><span class="p">}</span></code></pre></figure>
 
-  <p>Note: In order to minimize its size, the raw JSON response from Umkoin Core
-doesn’t include any extraneous whitespace characters. Here we’ve added
-whitespace to make the object more readable. Speaking of which, <code>umkoin-cli</code>
-also transforms the raw response to make it more human-readable. It:</p>
+      <p>Note: In order to minimize its size, the raw JSON response from Umkoin Core doesn’t include any extraneous whitespace characters. Here we’ve added whitespace to make the object more readable. Speaking of which, <code>umkoin-cli</code> also transforms the raw response to make it more human-readable. It:</p>
 
-  <ul>
-    <li>Adds whitespace indentation to JSON objects</li>
-    <li>Expands escaped newline characters (“\n”) into actual newlines</li>
-    <li>Returns only the value of the <code>result</code> field if there’s no error</li>
-    <li>Strips the outer double-quotes around <code>result</code>s of type string</li>
-    <li>Returns only the <code>error</code> field if there’s an error</li>
-  </ul>
+      <ul>
+        <li>Adds whitespace indentation to JSON objects</li>
+        <li>Expands escaped newline characters (“\n”) into actual newlines</li>
+        <li>Returns only the value of the <code>result</code> field if there’s no error</li>
+        <li>Strips the outer double-quotes around <code>result</code>s of type string</li>
+        <li>Returns only the <code>error</code> field if there’s an error</li>
+      </ul>
 
-  <p>Continuing with the example above, the output from the <code>umkoin-cli</code>
-command would be simply:</p>
+      <p>Continuing with the example above, the output from the <code>umkoin-cli</code> command would be simply:</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</code></pre></figure>
+      <p>If there’s an error processing a request, Umkoin Core sets the <code>result</code> field to <code>null</code> and provides information about the error in the  <code>error</code> field. For example, a request for the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> hash at <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> -1 would be met with the following response (again, whitespace added for clarity):</p>
+      <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+      </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-8</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block height out of range"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w">
+      </span><span class="p">}</span></code></pre></figure>
+      <p>If <code>umkoin-cli</code> encounters an error, it exits with a non-zero status code and outputs the <code>error</code> field as text to the process’s standard error stream:</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">error: {"code": -8, "message": "Block height out of range"}</code></pre></figure>
+      <p>Starting in Umkoin Core version 0.7.0, the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface supports request batching as described in <a href="http://www.jsonrpc.org/specification#batch">version 2.0 of the JSON-RPC specification</a>. To initiate multiple <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> requests within a single HTTP request, a client can <code>POST</code> a JSON array filled with Request objects. The HTTP response data is then a JSON array filled with the corresponding Response objects. Depending on your usage pattern, request batching may provide significant performance gains. The <code>umkoin-cli</code> <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> client does not support batch requests.</p>
+      <p>To keep this documentation compact and readable, the examples for each of the available <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls will be given as <code>umkoin-cli</code> commands:</p>
+      <figure class="highlight"><pre><code class="language-text" data-lang="text">umkoin-cli [options] &lt;method name&gt; &lt;param1&gt; &lt;param2&gt; ...</code></pre></figure>
+      <p>This translates into an JSON-RPC Request object of the form:</p>
+      <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+      </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;method name&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"&lt;param1&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"&lt;param2&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"..."</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w">
+      </span><span class="p">}</span></code></pre></figure>
+      <p>[]<a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" id="term-proper-money-handling" class="term">proper money handling</a> if you write programs using the JSON-<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface, you must ensure they handle high-precision real numbers correctly.  See the <a href="https://en.bitcoin.it/wiki/Proper_Money_Handling_%28JSON-RPC%29">Proper Money Handling</a> Umkoin Wiki article for details and example code.</p>
 
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</code></pre></figure>
+      <h4 id="rpc-quick-reference">Quick Reference</h4>
 
-  <p>If there’s an error processing a request, Umkoin Core sets the <code>result</code> field
-to <code>null</code> and provides information about the error in the  <code>error</code> field. For
-example, a request for the <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> hash at <a href="/en/glossary/block-height.php" title="The number of blocks preceding a particular block on a block chain. For example, the genesis block has a height of zero because zero block preceded it." class="auto-link">block height</a> -1 would be met with the
-following response (again, whitespace added for clarity):</p>
-
-  <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">-8</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Block height out of range"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-  <p>If <code>umkoin-cli</code> encounters an error, it exits with a non-zero status code and
-outputs the <code>error</code> field as text to the process’s standard error
-stream:</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">error: {"code": -8, "message": "Block height out of range"}</code></pre></figure>
-
-  <p>Starting in Umkoin Core version 0.7.0, the <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface supports request
-batching as described in <a href="http://www.jsonrpc.org/specification#batch">version 2.0 of the JSON-RPC
-specification</a>. To initiate multiple
-<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> requests within a single HTTP request, a client can <code>POST</code> a JSON array
-filled with Request objects. The HTTP response data is then a JSON array filled
-with the corresponding Response objects. Depending on your usage pattern,
-request batching may provide significant performance gains. The <code>umkoin-cli</code>
-<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> client does not support batch requests.</p>
-
-  <p>To keep this documentation compact and readable, the examples for each of the
-available <a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> calls will be given as <code>umkoin-cli</code> commands:</p>
-
-  <figure class="highlight"><pre><code class="language-text" data-lang="text">umkoin-cli [options] &lt;method name&gt; &lt;param1&gt; &lt;param2&gt; ...</code></pre></figure>
-
-  <p>This translates into an JSON-RPC Request object of the form:</p>
-
-  <figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;method name&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"&lt;param1&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"&lt;param2&gt;"</span><span class="p">,</span><span class="w"> </span><span class="s2">"..."</span><span class="w"> </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="w">
-</span><span class="p">}</span></code></pre></figure>
-
-  <p>[]<a href="/en/developer-reference.php#term-proper-money-handling" title="Umkoin amounts need to be correctly processed without introducing rounding errors that could cause monetary loss" id="term-proper-money-handling" class="term">proper money handling</a> if you write
-programs using the JSON-<a href="/en/developer-reference.php#remote-procedure-calls-rpcs" class="auto-link">RPC</a> interface, you must ensure they handle high-precision
-real numbers correctly.  See the <a href="https://en.bitcoin.it/wiki/Proper_Money_Handling_%28JSON-RPC%29">Proper Money Handling</a>
-Umkoin Wiki article for details and example code.</p>
-
-  <h4 id="rpc-quick-reference">Quick Reference</h4>
-
-  <h4 class="no_toc" id="block-chain-rpcs">Block Chain RPCs</h4>
-  <!-- no subhead-links here -->
+      <h4 class="no_toc" id="block-chain-rpcs">Block Chain RPCs</h4>
+      <!-- no subhead-links here -->
+<!-- CONTINUE //-->
 
   <ul>
     <li><a href="/en/developer-reference.php#getbestblockhash">GetBestBlockHash</a>: returns the <a href="/en/glossary/block-header.php" title="An 80-byte header belonging to a single block which is hashed repeatedly to create proof of work." class="auto-link">header</a> hash of the most recent <a href="/en/glossary/block.php" title="One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain." class="auto-link">block</a> on the <a href="/en/glossary/block-chain.php" title="A chain of blocks with each block referencing the block that preceded it. The most-difficult-to-recreate chain is the best block chain." class="auto-link">best block chain</a>.</li>
