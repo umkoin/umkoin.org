@@ -2484,10 +2484,10 @@ cf050500 ........................... Start height: 329167
         <li><a href="/en/developer-reference.php#setnetworkactive">SetNetworkActive</a>: disables/enables all P2P <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a> activity. <strong><abbr title="New in Umkoin Core v0.14.0">New in 0.14.0</abbr></strong></li>
       </ul>
 
-<!-- CONTINUE //-->
+      <h4 class="no_toc" id="raw-transaction-rpcs">Raw Transaction RPCs</h4>
+      <!-- no subhead-links here -->
 
-  <h4 class="no_toc" id="raw-transaction-rpcs">Raw Transaction RPCs</h4>
-  <!-- no subhead-links here -->
+<!-- CONTINUE //-->
 
   <ul>
     <li><a href="/en/developer-reference.php#createrawtransaction">CreateRawTransaction</a>: creates an unsigned <a href="/en/glossary/serialized-transaction.php" title="Complete transactions in their binary format; often represented using hexadecimal. Sometimes called raw format because of the various Umkoin Core commands with &quot;raw&quot; in their names." class="auto-link">serialized transaction</a> that spends a previous <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> to a new <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> with a P2PKH or <a href="/en/glossary/p2sh-address.php" title="A Umkoin payment address comprising a hashed script, allowing the spender to create a standard pubkey script that Pays To Script Hash (P2SH). The script can be almost any valid pubkey script." class="auto-link">P2SH address</a>. The transaction is not stored in the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> or transmitted to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">network</a>.</li>
