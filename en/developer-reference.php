@@ -2581,28 +2581,28 @@ cf050500 ........................... Start height: 329167
       <p>The <a href="/en/developer-reference.php#abandontransaction" class="auto-link"><code>abandontransaction</code> RPC</a> marks an in-<a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> transaction and all its in-<a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a> descendants as abandoned. This allows their <a href="/en/glossary/input.php" title="An input in a transaction which contains three fields: an outpoint, a signature script, and a sequence number. The outpoint references a previous output and the signature script allows spending it." class="auto-link">inputs</a> to be respent.</p>
       <p><em>Parameter #1—a <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">transaction identifier</a> (<a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a>)</em></p>
 
+      <table class="ntpd">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Presence</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
+            <td>string (hex)</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction that you want to abandon. The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> must be encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><em>Result—<code>null</code> on success</em></p>
+
 <!-- CONTINUE //-->
-
-  <table class="ntpd">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Presence</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a></td>
-        <td>string (hex)</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> of the transaction that you want to abandon. The <a href="/en/glossary/txid.php" title="An identifier used to uniquely identify a particular transaction; specifically, the sha256d hash of the transaction." class="auto-link">TXID</a> must be encoded as hex in <a href="/en/glossary/rpc-byte-order" title="A hash digest displayed with the byte order reversed; used in Umkoin Core RPCs, many block explorers, and other software." class="auto-link">RPC byte order</a></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Result—<code>null</code> on success</em></p>
 
   <table class="ntpd">
     <thead>
