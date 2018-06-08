@@ -90,11 +90,11 @@ include 'page_head.php';
         <td>sha256</td>
       </tr>
       <tr>
-        <td>URL (скложность 16):</td>
+        <td>URL (скложность 32):</td>
         <td>stratum+tcp://pool.umkoin.org:3335</td>
       </tr>
       <tr>
-        <td>URL (сложность 512):</td>
+        <td>URL (сложность 2048):</td>
         <td>stratum+tcp://pool.umkoin.org:5335</td>
       </tr>
     </tbody>
