@@ -2602,47 +2602,41 @@ cf050500 ........................... Start height: 329167
 
       <p><em>Result—<code>null</code> on success</em></p>
 
+      <table class="ntpd">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Presence</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>result</code></td>
+            <td>null</td>
+            <td>Required<br />(exactly 1)</td>
+            <td>JSON <code>null</code> when the transaction and all descendants were abandoned</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><em>Example from <a href="/en/release/v0.13.1" class="auto-link">Umkoin Core 0.13.1</a></em></p>
+      <p>Abandons the transaction on your <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
+      <figure class="highlight"><pre><code class="language-bash" data-lang="bash">umkoin-cli abandontransaction fa3970c341c9f5de6ab13f128cbfec58d732e736a505fe32137ad551c799ecc4</code></pre></figure>
+      <p>Result (no <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> from <code>umkoin-cli</code> because result is set to <code>null</code>).</p>
+      <p><em>See also</em></p>
+
+      <ul>
+        <li><a href="/en/developer-reference.php#sendrawtransaction">SendRawTransaction</a>: validates a transaction and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">peer-to-peer network</a>.</li>
+      </ul>
+
+      <h5 id="addmultisigaddress">AddMultiSigAddress</h5>
+      <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
+      <p>The <a href="/en/developer-reference.php#addmultisigaddress" class="auto-link"><code>addmultisigaddress</code> RPC</a> adds a <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
+      <p><em>Parameter #1—the number of <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required</em></p>
+
 <!-- CONTINUE //-->
-
-  <table class="ntpd">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Presence</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>result</code></td>
-        <td>null</td>
-        <td>Required<br />(exactly 1)</td>
-        <td>JSON <code>null</code> when the transaction and all descendants were abandoned</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><em>Example from <a href="/en/release/v0.13.1" class="auto-link">Umkoin Core 0.13.1</a></em></p>
-
-  <p>Abandons the transaction on your <a href="/en/glossary/node.php" title="A computer that connects to the Umkoin network." class="auto-link">node</a>.</p>
-
-  <figure class="highlight"><pre><code class="language-bash" data-lang="bash">umkoin-cli abandontransaction fa3970c341c9f5de6ab13f128cbfec58d732e736a505fe32137ad551c799ecc4</code></pre></figure>
-
-  <p>Result (no <a href="/en/glossary/output.php" title="An output in a transaction which contains two fields: a value field for transferring zero or more satoshis and a pubkey script for indicating what conditions must be fulfilled for those satoshis to be further spent." class="auto-link">output</a> from <code>umkoin-cli</code> because result is set to <code>null</code>).</p>
-
-  <p><em>See also</em></p>
-
-  <ul>
-    <li><a href="/en/developer-reference.php#sendrawtransaction">SendRawTransaction</a>: validates a transaction and broadcasts it to the <a href="/en/developer-guide.php#term-network" title="The Umkoin P2P network which broadcasts transactions and blocks" class="auto-link">peer-to-peer network</a>.</li>
-  </ul>
-
-  <h5 id="addmultisigaddress">AddMultiSigAddress</h5>
-  <p><em>Requires <a href="/en/developer-reference.php#term-wallet-support" title="A Umkoin Core ./configure option that enables (default) or disables the wallet" class="auto-link">wallet support</a>.</em></p>
-
-  <p>The <a href="/en/developer-reference.php#addmultisigaddress" class="auto-link"><code>addmultisigaddress</code> RPC</a> adds a <a href="/en/glossary/p2sh-multisig" title="A P2SH output where the redeem script uses one of the multisig opcodes.  Up until Umkoin Core 0.10.0, P2SH multisig scripts were standard transactions, but most other P2SH scripts were not." class="auto-link">P2SH multisig</a> <a href="/en/glossary/address.php" title="A 20-byte hash formatted using base58check to produce either a P2PKH or P2SH Umkoin address.  Currently the most common way users exchange payment information." class="auto-link">address</a> to the <a href="/en/glossary/wallet.php" title="Software that stores private keys and monitors the block chain (sometimes as a client of a server that does the processing) to allow users to spend and receive satoshis." class="auto-link">wallet</a>.</p>
-
-  <p><em>Parameter #1—the number of <a href="/en/glossary/signature.php" title="A value related to a public key which could only have reasonably been created by someone who has the private key that created that public key. Used in Umkoin to authorize spending satoshis previously sent to a public key." class="auto-link">signatures</a> required</em></p>
 
   <table class="ntpd">
     <thead>
