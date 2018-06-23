@@ -90,11 +90,11 @@ include 'page_head.php';
         <td>sha256</td>
       </tr>
       <tr>
-        <td>URL (складність 8):</td>
+        <td>URL (складність 4):</td>
         <td>stratum+tcp://pool.umkoin.org:3335</td>
       </tr>
       <tr>
-        <td>URL (складність 2048):</td>
+        <td>URL (складність 1024):</td>
         <td>stratum+tcp://pool.umkoin.org:5335</td>
       </tr>
     </tbody>
