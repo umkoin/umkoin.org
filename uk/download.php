@@ -11,7 +11,7 @@
 <body>
 
 <?php
-$version = "0.16.0";
+$version = "0.16.1";
 $build =  "";
 include 'page_head.php';
 ?>
@@ -54,7 +54,6 @@ include 'page_head.php';
               <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win32.zip">32 bit</a></span>
           </span>
         </div>
-<!--
         <div>
           <img src="/img/os/med_osx.png" alt="osx">
           <span>
@@ -63,7 +62,6 @@ include 'page_head.php';
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx64.tar.gz">tar.gz</a></span>
           </span>
         </div>
-//-->
       </div>
       <div>
         <div>
@@ -84,7 +82,7 @@ include 'page_head.php';
         </div>
       </div>
       <p class="downloadmore">
-        <a href="https://github.com/umkoin/umkoin"><i class="fa fa-code"></i> Source code</a>
+        <a href="https://github.com/umkoin/umkoin"><i class="fa fa-code"></i> Вихідний код</a>
       </p>
     </div>
 

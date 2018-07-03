@@ -30,7 +30,7 @@ include 'page_head.php';
       <div class="callout">
         <p><a href="/en/download.php">Download Umkoin Core</a>
         <img src="/img/os/windows.png" alt="Windows" />
-<!--        <img src="/img/os/mac.png" alt="Mac" /> //-->
+        <img src="/img/os/mac.png" alt="Mac" />
         <img src="/img/os/linux.png" alt="Linux" />
         </p>
       </div>
@@ -47,7 +47,7 @@ include 'page_head.php';
         <ul class="fa-ul">
           <li>
             <p><span class="fa-li fa fa-download fa-2x"></span>
-            <b><a href="/en/download.php">Download</a></b><br />Download Umkoin Core 0.16.0</p>
+            <b><a href="/en/download.php">Download</a></b><br />Download Umkoin Core 0.16.1</p>
           </li>
           <li>
             <p><span class="fa-li fa fa-rocket fa-2x"></span>
@@ -64,6 +64,9 @@ include 'page_head.php';
 
       <h3>News</h3>
       <ul>
+        <li>
+          <p>2018-06-19 - Umkoin Core version 0.16.1 released</p>
+        </li>
         <li>
           <p>2018-01-22 - Umkoin Core version 0.16.0 released</p>
         </li>
