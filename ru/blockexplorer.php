@@ -203,7 +203,7 @@ include 'page_head.php';
           <span title="Длительность добычи последнего блока."><i class="fa fa-hourglass-start"></i> <?php print(gmdate("H:i:s", $block->getsolvetime())); ?></span>
         </td>
         <td >
-          <?php ($block->getUnconfirmedTxCount() > 0) ? print("<span title='Неподтвержденные Транзакции'><i class='fa fa-refresh'></i> В черзі - " . $block->getUnconfirmedTxCount() . "</span>") : false; ?>
+          <?php ($block->getUnconfirmedTxCount() > 0) ? print("<span title='Неподтвержденные Транзакции'><i class='fa fa-refresh'></i> В очереди - " . $block->getUnconfirmedTxCount() . "</span>") : false; ?>
         </td>
         <td></td>
         <td></td>
