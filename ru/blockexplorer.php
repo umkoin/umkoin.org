@@ -4,6 +4,21 @@
 require "../include/config.php";
 
 
+/**
+   Check which Network shell we provide information on
+
+   By default, assume it is Mainnet on default RPC port TCP 6332,
+   otherwise, set port to 16332 for the Testnet. No need to pro-
+   vide information on Regtest network.
+**/
+if(isset($_GET['net'])) {
+  $network = $_GET['net'];
+  $port = ($network == "testnet") ? 16332 : $port;
+} else {
+  $network = "mainnet";
+}
+
+
 /* Autoload and register any classes not previously loaded */
 spl_autoload_register(function ($class_name){
   $classFile = "../include/" . $class_name . ".php";
@@ -67,7 +82,7 @@ function displayTxTableInOut($block, $hash, $flag = "vout") {
         }
         $str .= "<tr>" .
                 "<td style='word-wrap: normal;'>" . $block->getTxVinAmount($res[$flag][$i]["txid"], $res[$flag][$i]["vout"]) . " УМК</td>" .
-                "<td style='word-wrap: break-word; word-break: break-all; white-space: normal;'><a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?txid=" . $res[$flag][$i]["txid"] . "'>" . $res[$flag][$i]["txid"] . "</a></td>" .
+                "<td style='word-wrap: break-word; word-break: break-all; white-space: normal;'><a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network . "&txid=" . $res[$flag][$i]["txid"] . "'>" . $res[$flag][$i]["txid"] . "</a></td>" .
                 "<td>" . (isset($addresses_str) ? $addresses_str : "") . "</td>" .
                 "</tr>";
       } else {
@@ -111,6 +126,7 @@ function displayTxTableInOut($block, $hash, $flag = "vout") {
 function displaySearch(type) {
 
   htmlString = "<form method='get' action='blockexplorer.php'>" +
+               "<input hidden name='net' value='<?php echo $network; ?>'>" +
                "<input name='" + type + "' placeholder='Искать в цепочке блоков'>" +
                "<button type='submit'><span><i class='fa fa-search'></i></span> Поиск</button>" +
                "</form>";
@@ -159,7 +175,23 @@ include 'page_head.php';
 
     <h1><i class="fa fa-search"></i> Исследование Блока Умкойн</h1>
 
-    <h2>Краткая Статистика</h2>
+    <?php
+    $holder = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network;
+
+    if(!empty($_SERVER['QUERY_STRING'])) {
+        $holder = $_SERVER['REQUEST_URI'];
+    }
+
+    $h2str = "<h2>Краткая Статистика " .
+             "<select style='border:0' onchange='if (this.value) window.location.href=this.value'>" .
+             "    <option " . (($network == "mainnet") ? 'selected' : '') . " value='" . str_replace('testnet','mainnet',$holder) . "'>mainnet</option>" .
+             "    <option " . (($network == "testnet") ? 'selected' : '') . " value='" . str_replace('mainnet','testnet',$holder) . "'>testnet</option>" .
+             "</select>" .
+             "</h2>";
+
+    print($h2str);
+    ?>
+
     <table width="100%">
     <thead>
       <tr style="text-align: center">
@@ -172,7 +204,7 @@ include 'page_head.php';
     <tbody>
       <tr>
         <td>
-          <span title="Текущее количество добытых блоков начиная с нулевого."><i class="fa fa-signal"></i> <?php print("<a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?block=" . $block->getblockcount() . "'>" . $block->getblockcount() . "</a>"); ?></span>
+          <span title="Текущее количество добытых блоков начиная с нулевого."><i class="fa fa-signal"></i> <?php print("<a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network . "&block=" . $block->getblockcount() . "'>" . $block->getblockcount() . "</a>"); ?></span>
         </td>
         <td>
           <span title="Количество транзакций в сети за секунду."><i class="fa fa-dashboard"></i> <?php print(round($block->getTxRate(), 4)); ?></span>
@@ -332,7 +364,7 @@ include 'page_head.php';
                 "<div title='Размер транзакции в байтах.'><i class='fa fa-arrows-h'></i> Размер: " . $block->getTxSize($reqval) . "</div>" .
 
                 "<h3><i class='fa fa-cube'></i> В блоке</h3>" .
-                "<div><i class='fa fa-paw'></i> Хеш: <a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?block=" . $block->getBlockHashByTxid($reqval) . "'>" . $block->getBlockHashByTxid($reqval) . "</a></div>" .
+                "<div><i class='fa fa-paw'></i> Хеш: <a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network . "&block=" . $block->getBlockHashByTxid($reqval) . "'>" . $block->getBlockHashByTxid($reqval) . "</a></div>" .
                 "<div><i class='fa fa-signal'></i> Блок: " . $block->getBlockHeight($reqval, "txid") . "</div>" .
                 "<div><i class='fa fa-clock-o'></i> Отметка времени: " . date("M d, Y H:i:s", $block->getBlockTime($reqval, "txid")) . "</div>" .
 

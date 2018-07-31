@@ -67,7 +67,7 @@ function displayTxTableInOut($block, $hash, $flag = "vout") {
         }
         $str .= "<tr>" .
                 "<td>" . $block->getTxVinAmount($res[$flag][$i]["txid"], $res[$flag][$i]["vout"]) . " UMK</td>" .
-                "<td style='word-wrap: break-word; word-break: break-all; white-space: normal;'><a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?txid=" . $res[$flag][$i]["txid"] . "'>" . $res[$flag][$i]["txid"] . "</a></td>" .
+                "<td style='word-wrap: break-word; word-break: break-all; white-space: normal;'><a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network . "&txid=" . $res[$flag][$i]["txid"] . "'>" . $res[$flag][$i]["txid"] . "</a></td>" .
                 "<td>" . (isset($addresses_str) ? $addresses_str : "") . "</td>" .
                 "</tr>";
       } else {
@@ -111,6 +111,7 @@ function displayTxTableInOut($block, $hash, $flag = "vout") {
 function displaySearch(type) {
 
   htmlString = "<form method='get' action='blockexplorer.php'>" +
+               "<input hidden name='net' value='<?php echo $network; ?>'>" +
                "<input name='" + type + "' placeholder='Search for " + type + " in Blockchain'>" +
                "<button type='submit'><span><i class='fa fa-search'></i></span> Search</button>" +
                "</form>";
@@ -159,7 +160,23 @@ include 'page_head.php';
 
     <h1><i class="fa fa-search"></i> Umkoin Block Explorer</h1>
 
-    <h2>Schnelle Statistiken</h2>
+    <?php
+    $holder = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network;
+
+    if(!empty($_SERVER['QUERY_STRING'])) {
+        $holder = $_SERVER['REQUEST_URI'];
+    }
+
+    $h2str = "<h2>Schnelle Statistiken " .
+             "<select style='border:0' onchange='if (this.value) window.location.href=this.value'>" .
+             "    <option " . (($network == "mainnet") ? 'selected' : '') . " value='" . str_replace('testnet','mainnet',$holder) . "'>mainnet</option>" .
+             "    <option " . (($network == "testnet") ? 'selected' : '') . " value='" . str_replace('mainnet','testnet',$holder) . "'>testnet</option>" .
+             "</select>" .
+             "</h2>";
+
+    print($h2str);
+    ?>
+
     <table width="100%">
     <thead>
       <tr style="text-align: center">
@@ -172,7 +189,7 @@ include 'page_head.php';
     <tbody>
       <tr>
         <td>
-          <span title="Blockchain-Höhe, Gesamtanzahl der Blöcke beginnend bei Null."><i class="fa fa-signal"></i> Höhe - <?php print("<a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?block=" . $block->getblockcount() . " '>" . $block->getblockcount() . "</a>"); ?></span>
+          <span title="Blockchain-Höhe, Gesamtanzahl der Blöcke beginnend bei Null."><i class="fa fa-signal"></i> Höhe - <?php print("<a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network . "&block=" . $block->getblockcount() . " '>" . $block->getblockcount() . "</a>"); ?></span>
         </td>
         <td>
           <span title="Die Anzahl der Transaktionen pro Sekunde im Netzwerk."><i class="fa fa-dashboard"></i> Rate - <?php print(round($block->getTxRate(), 4)); ?></span>
@@ -332,7 +349,7 @@ include 'page_head.php';
                 "<div title='Größe der Transaktion in Bytes.'><i class='fa fa-arrows-h'></i> Größe: " . $block->getTxSize($reqval) . "</div>" .
 
                 "<h3><i class='fa fa-cube'></i> Im Block</h3>" .
-                "<div><i class='fa fa-paw'></i> Hash: <a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?block=" . $block->getBlockHashByTxid($reqval) . "'>" . $block->getBlockHashByTxid($reqval) . "</a></div>" .
+                "<div><i class='fa fa-paw'></i> Hash: <a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network . "&block=" . $block->getBlockHashByTxid($reqval) . "'>" . $block->getBlockHashByTxid($reqval) . "</a></div>" .
                 "<div><i class='fa fa-signal'></i> Höhe: " . $block->getBlockHeight($reqval, "txid") . "</div>" .
                 "<div><i class='fa fa-clock-o'></i> Zeitstempel: " . date("M d, Y H:i:s", $block->getBlockTime($reqval, "txid")) . "</div>" .
 
