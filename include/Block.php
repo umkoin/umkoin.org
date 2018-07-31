@@ -9,10 +9,14 @@
  * Date:   14 Jan 2018
  *
  * Version_Major: 0
- * Version_Minor: 0
- * Version_Build: 4
+ * Version_Minor: 1
+ * Version_Build: 0
  *
  * Changelog:
+ *
+ * v0.1.0 (2018-07-31)
+ * Update getblocktransactionshtml(). Accept extra
+ * argument $network defaulting to mainnet.
  *
  * v0.0.4 (2018-02-27)
  * Update getTxFee(). Strip return value, so that
@@ -227,7 +231,7 @@ class Block extends Api {
   /*
    * Return html representation of transactions in a given block.
    */
-  public function getblocktransactionshtml($hash) {
+  public function getblocktransactionshtml($hash, $network = "mainnet") {
 
     $res = $this->getblock($hash);
     $html_str = "";
@@ -253,7 +257,7 @@ class Block extends Api {
 
       $html_str .= "<tr>" .
                    "<td style='word-wrap: break-word; word-break: break-all; white-space: normal;'>" .
-                   "<a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?txid=" . $tx_raw["txid"] . "'>" . $tx_raw["hash"] . "</a>" .
+                   "<a href='http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network . "&txid=" . $tx_raw["txid"] . "'>" . $tx_raw["hash"] . "</a>" .
                    "</td><td>" .
                      $tx_fee .
                    "</td><td>" .
