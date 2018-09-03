@@ -69,6 +69,7 @@ include 'page_head.php';
     <h3 id="service_contributors">Сервисы-участники</h3>
     <div class="credit">
       <p><a href="https://github.com/">GitHub</a><span>хостинг ропозитория</span></p>
+      <p><a href="https://www.transifex.com/">Transifex</a><span>средства перевода</span></p>
       <p><a href="https://travis-ci.org/">Travis CI</a><span>беспрерывная интеграция</span></p>
     </div>
 
@@ -82,6 +83,7 @@ include 'page_head.php';
     <h3 id="owners">Владельцы домена</h3>
     <div class="credit">
       <p><a href="https://github.com/vmta">vmta</a><span>владелец</span></p>
+      <p><a href="https://youpic.com/photographer/jDtnt/">jDtnt</a><span>дизайн логотипа</span></p>
     </div>
 
     <h3 id="github">Участники на GitHub</h3>

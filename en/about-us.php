@@ -89,6 +89,7 @@ include 'page_head.php';
     <h3 id="owners">Domain Owners</h3>
     <div class="credit">
       <p><a href="https://github.com/vmta">vmta</a><span>Owner</span></p>
+      <p><a href="https://youpic.com/photographer/jDtnt/">jDtnt</a><span>logo design</span></p>
     </div>
 
     <h3 id="github">Contributors on GitHub</h3>
