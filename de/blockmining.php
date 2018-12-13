@@ -90,12 +90,12 @@ include 'page_head.php';
         <td>sha256</td>
       </tr>
       <tr>
-        <td>URL (Schwierigkeit 4):</td>
-        <td>stratum+tcp://pool.umkoin.org:3335</td>
+        <td>URL (Mainnet):</td>
+        <td>stratum+tcp://pool.umkoin.org:6334</td>
       </tr>
       <tr>
-        <td>URL (Schwierigkeit 1024):</td>
-        <td>stratum+tcp://pool.umkoin.org:5335</td>
+        <td>URL (Testnet):</td>
+        <td>stratum+tcp://pool.umkoin.org:16334</td>
       </tr>
     </tbody>
     </table>
