@@ -288,7 +288,7 @@ include 'page_head.php';
                   "</tr>" .
                 "</thead>" .
                 "<tbody>" .
-                  $block->getblocktransactionshtml($reqval) .
+                  $block->getblocktransactionshtml($reqval, $network) .
                 "</tbody>" .
                 "</table>" .
 
