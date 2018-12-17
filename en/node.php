@@ -66,17 +66,6 @@ function decode_services( $flags ) {
     return $set;
 }
 
-// $getpeerinfo = $api->getpeerinfo();
-// $listbanned = $api->listbanned();
-// $getbcinfo = $api->getblockchaininfo();
-// $getnettotals = $api->getnettotals();
-// $getmpinfo = $api->getmempoolinfo();
-// $uptime = $api->uptime();
-
-//$pruned = $api->getblockchaininfo()['pruned'] ? 'true' : 'false';
-// $cpeers = count( $api->getpeerinfo() );
-// $bpeers = count( $api->listbanned() );
-
 $localservbits  = hexdec('0x'.$api->getnetworkinfo()['localservices']);
 $localservnames = decode_services($localservbits);
 
@@ -90,6 +79,16 @@ $localservnames = decode_services($localservbits);
 <head>
 <?php include 'head'; ?>
 <title>Node Status - Umkoin</title>
+
+<style>
+fieldset {
+    font-size: 13px;
+}
+
+legend {
+    font-weight: bold;
+}
+</style>
 </head>
 
 
@@ -109,190 +108,142 @@ $localservnames = decode_services($localservbits);
 
 
     <fieldset>
-        <legend><h4>Node Info</h4></legend>
-		<table style="width: 100%; font-size: 13px;">
-		<tbody>
-		    <tr>
-                <td>Node version:</td>
-		        <td><?php echo $api->getnetworkinfo()['version'].' ('.$api->getnetworkinfo()['protocolversion'].')';?></td>
-           </tr><tr>
-		        <td>Subversion:</td>
-			    <td><?php echo $api->getnetworkinfo()['subversion']; ?></td>
-		    </tr><tr>
-                <td>Local services:</td>
-			    <td><?php printf("%s (0x%s)", $localservnames, dechex($localservbits)); ?></td>
-		    </tr><tr>
-                <td>Relay fee:</td>
-			    <td><?php echo $api->getnetworkinfo()['relayfee']; ?></td>
-		    </tr><tr>
-                <td>Uptime:</td>
-			    <td><?php echo seconds_to_time( $api->uptime() ); ?></td>
-		    </tr>
-		</tbody>
-		</table>
+    <legend>Node Info</legend>
+        Node version: <?php echo $api->getnetworkinfo()['version'].' ('.$api->getnetworkinfo()['protocolversion'].')'; ?><br />
+        Subversion: <?php echo $api->getnetworkinfo()['subversion']; ?><br />
+        Local services: <?php printf("%s (0x%s)", $localservnames, dechex($localservbits)); ?><br />
+        Relay fee: <?php echo $api->getnetworkinfo()['relayfee']; ?><br />
+        Uptime: <?php echo seconds_to_time( $api->uptime() ); ?><br />
     </fieldset>
 
+    <br />
 
     <fieldset>
-        <legend><h4>Blockchain Info</h4></legend>
-		<table style="width: 100%; font-size: 13px;">
-		<tbody>
-		    <tr>
-                <td>Chain:</td>
-			    <td><?php echo $api->getblockchaininfo()['chain'];?></td>
-		    </tr><tr>
-               <td>Blocks:</td>
-			    <td><?php echo $api->getblockchaininfo()['blocks']; ?></td>
-		    </tr><tr>
-                <td>Headers:</td>
-			    <td><?php echo $api->getblockchaininfo()['headers']; ?></td>
-		    </tr><tr>
-                <td>Difficulty:</td>
-		        	<td><?php echo $api->getblockchaininfo()['difficulty']; ?></td>
-		    </tr><tr>
-                <td>Median time:</td>
-			    <td><?php echo date('d/m/Y H:i:s', $api->getblockchaininfo()['mediantime'] ); ?></td>
-		    </tr>
-                <?php
-                if(isset($api->getblockchaininfo()['size_on_disk'])) {
-                    printf("<tr><td>Size on disk:</td><td>%s</td></tr>\n", format_bytes($api->getblockchaininfo()['size_on_disk']));
+    <legend>Blockchain Info</legend>
+        Chain: <?php echo $api->getblockchaininfo()['chain'];?><br />
+        Blocks: <?php echo $api->getblockchaininfo()['blocks']; ?><br />
+        Headers: <?php echo $api->getblockchaininfo()['headers']; ?><br />
+        Difficulty: <?php echo $api->getblockchaininfo()['difficulty']; ?><br />
+        Median time: <?php echo date('d/m/Y H:i:s', $api->getblockchaininfo()['mediantime'] ); ?><br />
+        <?php
+        if(isset($api->getblockchaininfo()['size_on_disk'])) {
+            printf("Size on disk: %s<br />\n", format_bytes($api->getblockchaininfo()['size_on_disk']));
+        }
+        ?>
+        Pruned: <?php echo $api->getblockchaininfo()['pruned'] ? 'true' : 'false'; ?><br />
+    </fieldset>
+
+    <br />
+
+    <fieldset>
+    <legend>TX Memory Pool Info</legend>
+        Transactions: <?php echo $api->getmempoolinfo()['size']; ?><br />
+        <?php printf("Size: %s<br />\n", ( $api->getmempoolinfo()['size'] == 0) ? 'empty' : format_bytes( $api->getmempoolinfo()['bytes']) ); ?>
+
+        Size: <?php
+                if( $api->getmempoolinfo()['size'] == 0 ) {
+                    echo "empty";
+                } else {
+                    echo format_bytes( $api->getmempoolinfo()['bytes'] );
                 }
-                ?>
-		    <tr>
-                <td>Pruned:</td>
-			    <td><?php echo $api->getblockchaininfo()['pruned'] ? 'true' : 'false'; ?></td>
-		    </tr>
-		</tbody>
-		</table>
+                ?><br />
     </fieldset>
 
-
-    <table style="width: 100%;">
-	<tbody>
-	    <tr>
-            <td>
-			<fieldset>
-                <legend><h4>TX Memory Pool Info</h4></legend>
-		        <table style="width: 100%; font-size: 13px;">
-		        <tbody>
-		            <tr>
-                        <td>Transactions:</td>
-		    	            <td><?php echo $api->getmempoolinfo()['size']; ?></td>
-		            </tr><tr>
-                       <td>Size:</td>
-			           <td>
-			                <?php
-                           if( $api->getmempoolinfo()['size'] == 0 ) {
-                                echo "empty";
-                            } else {
-                                echo format_bytes( $api->getmempoolinfo()['bytes'] );
-                            }
-                            ?>
-			            </td>
-		            </tr>
-		        </tbody>
-		        </table>
-            </fieldset>
-			</td>
-
-            <td>
-			<fieldset>
-                <legend><h4>Network Usage</h4></legend>
-		        <table style="width: 100%; font-size: 13px;">
-		        <tbody>
-		            <tr>
-                        <td>Total received:</td>
-			            <td><?php echo format_bytes( $api->getnettotals()['totalbytesrecv'] ); ?></td>
-  		            </tr><tr>
-                        <td>Total sent:</td>
-			            <td><?php echo format_bytes( $api->getnettotals()['totalbytessent'] ); ?></td>
-		            </tr>
-		        </tbody>
-		        </table>
-            </fieldset>
-			</td>
-	    </tr>
-	</tbody>
-	</table>
-
+    <br />
 
     <fieldset>
-        <legend><h4><?php printf( 'Connected Peers (%s)', count( $api->getpeerinfo() ) ); ?></h4></legend>
+    <legend>Network Usage</legend>
+        Total received: <?php echo format_bytes( $api->getnettotals()['totalbytesrecv'] ); ?></br t>
+        Total sent: <?php echo format_bytes( $api->getnettotals()['totalbytessent'] ); ?><br />
+    </fieldset>
+
+    <br />
+
+    <fieldset>
+    <legend><?php printf( 'Connected Peers (%s)', count( $api->getpeerinfo() ) ); ?></legend>
         <table style="width: 100%; font-size: 12px;">
-		<thead style="text-align: center;">
+        <thead style="text-align: center;">
             <tr>
                 <th>Address</th>
                 <th>Services</th>
                 <th>Connection time</th>
-                <th>Version</th>
                 <th>Subversion</th>
                 <th>Inbound</th>
-				<th>Synced blocks</th>
-				<th>Synced headers</th>
+                <th>Synced blocks/headers</th>
+                <th>Bytes in/out</th>
                 <th>Ban score</th>
             </tr>
-		</thead>
-		<tbody>
+        </thead>
+        <tbody>
             <?php
             $tinbound = 0; $toutbound = 0;
 
             foreach( $api->getpeerinfo() as $peer ) {
-			
+
                 $inbound = $peer['inbound'] ? 'true' : 'false';
                 $conntime = date('d/m/Y H:i:s', $peer['conntime'] );
 
                 $servbits  = hexdec('0x' . $peer['services']);
                 $servnames = decode_services($servbits);
-				
-				$banscore = $peer['banscore'];
-				$bgcolor = "#ffffff";
+
+                $banscore = $peer['banscore'];
+                $bgcolor = "#ffffff";
 
                 if ( $banscore > 0 ) {
-				    $bgcolor = "#ffffe6";
-				} elseif ($banscore > 50 ) {
-					$bgcolor = "ffe6e6";
-				}
-				
-				echo '<tr style="background-color: '.$bgcolor.';">';
+                    $bgcolor = "#ffffe6";
+                } elseif ($banscore > 50 ) {
+                    $bgcolor = "ffe6e6";
+                }
+
+                $bsynced = '<font color="red">false</font>';
+                if ( in_array( $api->getblockchaininfo()['blocks'], array( $peer['startingheight'], $peer['synced_blocks'] ) ) ) {
+                    $bsynced = '<font color="green">true</font>';
+                }
+
+                $hsynced = '<font color="red">false</font>';
+                if ( in_array( $api->getblockchaininfo()['blocks'], array( $peer['startingheight'], $peer['synced_headers'] ) ) ) {
+                    $hsynced = '<font color="green">true</font>';
+                }
+
+                printf( '<tr style="background-color: %s;">', $bgcolor );
                 printf( '<td>%s</td>', $peer['addr'] );
                 printf( '<td title="%s">0x%s</td>', $servnames, dechex($servbits) );
                 printf( '<td title="%s">%s</td>', $peer['conntime'], $conntime );
-                printf( '<td>%s</td>', $peer['version'] );
-                printf( '<td>%s</td>', $peer['subver'] );
+                printf( '<td title="%s">%s</td>', $peer['version'], $peer['subver'] );
                 printf( '<td>%s</td>', $inbound );
-                printf( '<td>%s</td>', $peer['synced_blocks'] );
-				printf( '<td>%s</td>', $peer['synced_headers'] );
-				printf( '<td>%s</td>', $banscore );
-                echo '</tr>';
+                printf( '<td>%s/%s</td>', $bsynced, $hsynced );
+                printf( '<td>%s/%s</td>', format_bytes( $peer['bytesrecv'] ), format_bytes( $peer['bytessent'] ) );
+                printf( '<td>%s</td>', $banscore );
+                printf( '</tr>' );
 
                 $peer['inbound'] ? $tinbound++ : $toutbound++;
             }
 
             ?>
-		    <tr>
-                <td colspan="9">Total inbound/outbound: <?php echo "$tinbound/$toutbound"; ?></td>
-		    </tr>
-		</tbody>
+        </tbody>
         </table>
+        <br />
+        Total inbound/outbound: <?php echo "$tinbound/$toutbound"; ?><br />
     </fieldset>
 
+    <br />
 
     <fieldset>
-        <legend><h4><?php printf( 'Banned Peers (%s)', count( $api->listbanned() ) ); ?></h4></legend>
+    <legend><?php printf( 'Banned Peers (%s)', count( $api->listbanned() ) ); ?></legend>
         <table style="width: 100%; font-size: 12px;">
-		<thead style="text-align: center;">
+        <thead style="text-align: center;">
             <tr>
                 <th>Address</th>
                 <th>Since</th>
                 <th>Until</th>
                 <th>Reason</th>
             </tr>
-			</thead>
-			<tbody>
+        </thead>
+        <tbody>
             <?php
 
             foreach( $api->listbanned() as $peer ) {
-			
+
                 $bansince = date('d/m/Y H:i:s', $peer['ban_created'] );
                 $banuntil = date('d/m/Y H:i:s', $peer['banned_until'] );
 
@@ -305,7 +256,7 @@ $localservnames = decode_services($localservbits);
             }
 
             ?>
-			</tbody>
+        </tbody>
         </table>
     </fieldset>
 
@@ -316,7 +267,7 @@ $localservnames = decode_services($localservbits);
 
 <?php
 include 'page_footer.php';
-echo '<center><span style="font-size: 9px">Generated in '.number_format(microtime(true) - $script_exec_start, 5).' seconds.</span></center';
+printf( '<center><span style="font-size: 10px;">Generated in %s seconds.</span></center>', number_format( microtime( true ) - $script_exec_start, 5 ) );
 ?>
 
 </body>
