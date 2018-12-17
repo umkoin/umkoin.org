@@ -31,7 +31,7 @@ $api = new Api( $server, $auth, $debug );
 /* Extra function for byte-size human readability */
 function format_bytes( $size, $precision = 2 ) {
     $base = log( $size, 1024 );
-    $suffixes = array( '', 'KB', 'MB', 'GB', 'TB' );
+    $suffixes = array( '', 'Kb', 'Mb', 'Gb', 'Tb' );
 
     return round( pow( 1024, $base - floor( $base ) ), $precision ) .' '. $suffixes[ floor( $base ) ];
 }
@@ -137,23 +137,17 @@ legend {
 
     <fieldset>
     <legend>TX Memory Pool Info</legend>
-        Transactions: <?php echo $api->getmempoolinfo()['size']; ?><br />
-        <?php printf("Size: %s<br />\n", ( $api->getmempoolinfo()['size'] == 0) ? 'empty' : format_bytes( $api->getmempoolinfo()['bytes']) ); ?>
-
-        Size: <?php
-                if( $api->getmempoolinfo()['size'] == 0 ) {
-                    echo "empty";
-                } else {
-                    echo format_bytes( $api->getmempoolinfo()['bytes'] );
-                }
-                ?><br />
+        <?php
+        printf("Transactions: %s<br />", $api->getmempoolinfo()['size'] );
+        printf("Size: %s<br />", ( $api->getmempoolinfo()['size'] == 0) ? 'empty' : format_bytes( $api->getmempoolinfo()['bytes']) );
+        ?>
     </fieldset>
 
     <br />
 
     <fieldset>
     <legend>Network Usage</legend>
-        Total received: <?php echo format_bytes( $api->getnettotals()['totalbytesrecv'] ); ?></br t>
+        Total received: <?php echo format_bytes( $api->getnettotals()['totalbytesrecv'] ); ?><br />
         Total sent: <?php echo format_bytes( $api->getnettotals()['totalbytessent'] ); ?><br />
     </fieldset>
 
@@ -168,10 +162,8 @@ legend {
                 <th>Services</th>
                 <th>Connection time</th>
                 <th>Subversion</th>
-                <th>Inbound</th>
-                <th>Synced blocks/headers</th>
+                <th>Sync</th>
                 <th>Bytes in/out</th>
-                <th>Ban score</th>
             </tr>
         </thead>
         <tbody>
@@ -180,40 +172,33 @@ legend {
 
             foreach( $api->getpeerinfo() as $peer ) {
 
-                $inbound = $peer['inbound'] ? 'true' : 'false';
                 $conntime = date('d/m/Y H:i:s', $peer['conntime'] );
 
                 $servbits  = hexdec('0x' . $peer['services']);
                 $servnames = decode_services($servbits);
 
                 $banscore = $peer['banscore'];
-                $bgcolor = "#ffffff";
-
-                if ( $banscore > 0 ) {
-                    $bgcolor = "#ffffe6";
-                } elseif ($banscore > 50 ) {
-                    $bgcolor = "ffe6e6";
+                if ( $banscore < 25 ) {
+                    $bgcolor = "#ffffff";
+                } elseif ( $banscore  < 50 ) {
+                    $bgcolor = "#ffcccc";
+                } elseif ( $banscore  < 75 ) {
+                    $bgcolor = "#ff9999";
+                } else {
+                    $bgcolor = "#ff6666";
                 }
 
-                $bsynced = '<font color="red">false</font>';
-                if ( in_array( $api->getblockchaininfo()['blocks'], array( $peer['startingheight'], $peer['synced_blocks'] ) ) ) {
-                    $bsynced = '<font color="green">true</font>';
-                }
-
-                $hsynced = '<font color="red">false</font>';
-                if ( in_array( $api->getblockchaininfo()['blocks'], array( $peer['startingheight'], $peer['synced_headers'] ) ) ) {
-                    $hsynced = '<font color="green">true</font>';
-                }
+                $bsynced = ( in_array( $api->getblockchaininfo()['blocks'], array( $peer['startingheight'], $peer['synced_blocks'] ) ) ) ? true : false;
+                $hsynced = ( in_array( $api->getblockchaininfo()['headers'], array( $peer['startingheight'], $peer['synced_headers'] ) ) ) ? true : false;
+                $fsynced = ( $bsynced  ? ( $hsynced  ? '<font color="green">full</font>' : 'blocks' ) : ( $hsynced ? 'headers' : '<font color="red">none</font>' ) );
 
                 printf( '<tr style="background-color: %s;">', $bgcolor );
-                printf( '<td>%s</td>', $peer['addr'] );
+                printf( '<td title="Ban score: %s">%s %s</td>', $banscore, $peer['inbound'] ? '<font title="inbound" color="green">=></font>' : '<font title="outbound" color="red"><=</font>', $peer['addr'] );
                 printf( '<td title="%s">0x%s</td>', $servnames, dechex($servbits) );
-                printf( '<td title="%s">%s</td>', $peer['conntime'], $conntime );
-                printf( '<td title="%s">%s</td>', $peer['version'], $peer['subver'] );
-                printf( '<td>%s</td>', $inbound );
-                printf( '<td>%s/%s</td>', $bsynced, $hsynced );
-                printf( '<td>%s/%s</td>', format_bytes( $peer['bytesrecv'] ), format_bytes( $peer['bytessent'] ) );
-                printf( '<td>%s</td>', $banscore );
+                printf( '<td title="Conntime: %s">%s</td>', $peer['conntime'], $conntime );
+                printf( '<td title="Version: %s">%s</td>', $peer['version'], $peer['subver'] );
+                printf( '<td>%s</td>', $fsynced );
+                printf( '<td title="Sent: %s | Recv: %s">%s</td>', format_bytes( $peer['bytessent'] ), format_bytes( $peer['bytesrecv'] ), format_bytes( $peer['bytessent'] + $peer['bytesrecv'] ) );
                 printf( '</tr>' );
 
                 $peer['inbound'] ? $tinbound++ : $toutbound++;

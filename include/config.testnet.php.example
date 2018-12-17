@@ -12,7 +12,7 @@
  */
 $proto = "http";
 $host = "127.0.0.1";
-$port = 6332;
+$port = 16332;
 $rpcuser = "rpcuser";
 $rpcpass = "rpcpass";
 
