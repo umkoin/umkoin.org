@@ -1,22 +1,17 @@
 <?php
 
-/* Load configuration file */
-require "../include/config.php";
+
+/**
+   Check which Network shall information be provided on.
+   By default use Mainnet.
+**/
+$network = (isset($_GET['net']) && $_GET['net'] == 'testnet') ? "testnet" : "mainnet";
 
 
 /**
-   Check which Network shell we provide information on
-
-   By default, assume it is Mainnet on default RPC port TCP 6332,
-   otherwise, set port to 16332 for the Testnet. No need to pro-
-   vide information on Regtest network.
+   Load configuration file corresponding to chosen Network.
 **/
-if(isset($_GET['net'])) {
-  $network = $_GET['net'];
-  $port = ($network == "testnet") ? 16332 : $port;
-} else {
-  $network = "mainnet";
-}
+require "../include/config.$network.php";
 
 
 /* Autoload and register any classes not previously loaded */

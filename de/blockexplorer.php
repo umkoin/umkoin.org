@@ -1,7 +1,17 @@
 <?php
 
-/* Load configuration file */
-require "../include/config.php";
+
+/**
+   Check which Network shall information be provided on.
+   By default use Mainnet.
+**/
+$network = (isset($_GET['net']) && $_GET['net'] == 'testnet') ? "testnet" : "mainnet";
+
+
+/**
+   Load configuration file corresponding to chosen Network.
+**/
+require "../include/config.$network.php";
 
 
 /* Autoload and register any classes not previously loaded */
