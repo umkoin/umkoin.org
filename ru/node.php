@@ -87,7 +87,7 @@ $localservnames = decode_services($localservbits);
 
 <head>
 <?php include 'head'; ?>
-<title>Node Status - Umkoin (<?php echo $network; ?>)</title>
+<title>Статус Узла - Umkoin (<?php echo $network; ?>)</title>
 
 <style>
 fieldset {
@@ -117,33 +117,33 @@ legend {
 
   <div id="content" class="content">
 
-    <h1><img src="/img/icons/ico_mining.svg"> Umkoin Node Status</h1>
+    <h1><img src="/img/icons/ico_mining.svg"> Umkoin Статус Узла</h1>
 
 
     <fieldset>
-    <legend>Node Info (<?php echo $network; ?>)</legend>
-        Node version: <?php echo $api->getnetworkinfo()['version'].' ('.$api->getnetworkinfo()['protocolversion'].')'; ?><br />
-        Subversion: <?php echo $api->getnetworkinfo()['subversion']; ?><br />
-        Local services: <?php printf("%s (0x%s)", $localservnames, dechex($localservbits)); ?><br />
-        Relay fee: <?php echo $api->getnetworkinfo()['relayfee']; ?><br />
-        Uptime: <?php echo seconds_to_time( $api->uptime() ); ?><br />
+    <legend>Информация узла (<?php echo $network; ?>)</legend>
+        Версия: <?php echo $api->getnetworkinfo()['version'].' ('.$api->getnetworkinfo()['protocolversion'].')'; ?><br />
+        Субверсия: <?php echo $api->getnetworkinfo()['subversion']; ?><br />
+        Локальные сервисы: <?php printf("%s (0x%s)", $localservnames, dechex($localservbits)); ?><br />
+        Комиссия: <?php echo $api->getnetworkinfo()['relayfee']; ?><br />
+        Время в сети: <?php echo seconds_to_time( $api->uptime() ); ?><br />
     </fieldset>
 
     <br />
 
     <fieldset>
-    <legend>Blockchain Info</legend>
-        Chain: <?php echo $api->getblockchaininfo()['chain'];?><br />
-        Blocks: <?php echo $api->getblockchaininfo()['blocks']; ?><br />
-        Headers: <?php echo $api->getblockchaininfo()['headers']; ?><br />
-        Difficulty: <?php echo $api->getblockchaininfo()['difficulty']; ?><br />
-        Median time: <?php echo date('d/m/Y H:i:s', $api->getblockchaininfo()['mediantime'] ); ?><br />
+    <legend>Информация блокчейна</legend>
+        Цепочка: <?php echo $api->getblockchaininfo()['chain'];?><br />
+        Блоки: <?php echo $api->getblockchaininfo()['blocks']; ?><br />
+        Заголовки: <?php echo $api->getblockchaininfo()['headers']; ?><br />
+        Сложность: <?php echo $api->getblockchaininfo()['difficulty']; ?><br />
+        Среднее время: <?php echo date('d/m/Y H:i:s', $api->getblockchaininfo()['mediantime'] ); ?><br />
         <?php
         if(isset($api->getblockchaininfo()['size_on_disk'])) {
-            printf("Size on disk: %s<br />\n", format_bytes($api->getblockchaininfo()['size_on_disk']));
+            printf("Место на диске: %s<br />\n", format_bytes($api->getblockchaininfo()['size_on_disk']));
         }
         ?>
-        Pruned: <?php echo $api->getblockchaininfo()['pruned'] ? 'true' : 'false'; ?><br />
+        Сокращена: <?php echo $api->getblockchaininfo()['pruned'] ? 'да' : 'нет'; ?><br />
     </fieldset>
 
     <br />
@@ -151,32 +151,32 @@ legend {
     <fieldset>
     <legend>TX Memory Pool Info</legend>
         <?php
-        printf("Transactions: %s<br />", $api->getmempoolinfo()['size'] );
-        printf("Size: %s<br />", ( $api->getmempoolinfo()['size'] == 0) ? 'empty' : format_bytes( $api->getmempoolinfo()['bytes']) );
+        printf("Транзакции: %s<br />", $api->getmempoolinfo()['size'] );
+        printf("Размер: %s<br />", ( $api->getmempoolinfo()['size'] == 0 ) ? 'пусто' : format_bytes( $api->getmempoolinfo()['bytes']) );
         ?>
     </fieldset>
 
     <br />
 
     <fieldset>
-    <legend>Network Usage</legend>
-        Total received: <?php echo format_bytes( $api->getnettotals()['totalbytesrecv'] ); ?><br />
-        Total sent: <?php echo format_bytes( $api->getnettotals()['totalbytessent'] ); ?><br />
+    <legend>Использование Сетевых ресурсов</legend>
+        Получено: <?php echo format_bytes( $api->getnettotals()['totalbytesrecv'] ); ?><br />
+        Отправлено: <?php echo format_bytes( $api->getnettotals()['totalbytessent'] ); ?><br />
     </fieldset>
 
     <br />
 
     <fieldset>
-    <legend><?php printf( 'Connected Peers (%s)', count( $api->getpeerinfo() ) ); ?></legend>
+    <legend><?php printf( 'Подключенные узлы (%s)', count( $api->getpeerinfo() ) ); ?></legend>
         <table style="width: 100%; font-size: 12px;">
         <thead style="text-align: center;">
             <tr>
-                <th>Address</th>
-                <th>Services</th>
-                <th>Connection time</th>
-                <th>Subversion</th>
-                <th>Sync</th>
-                <th>Bytes in/out</th>
+                <th>Адрес</th>
+                <th>Сервисы</th>
+                <th>Время подключения</th>
+                <th>Субверсия</th>
+                <th>Синхронизация</th>
+                <th>Байты вход/выход</th>
             </tr>
         </thead>
         <tbody>
@@ -206,12 +206,12 @@ legend {
                 $fsynced = ( $bsynced  ? ( $hsynced  ? '<font color="green">full</font>' : 'blocks' ) : ( $hsynced ? 'headers' : '<font color="red">none</font>' ) );
 
                 printf( '<tr style="background-color: %s;">', $bgcolor );
-                printf( '<td title="Ban score: %s">%s %s</td>', $banscore, $peer['inbound'] ? '<font title="inbound" color="green">=></font>' : '<font title="outbound" color="red"><=</font>', $peer['addr'] );
+                printf( '<td title="Очки бана: %s">%s %s</td>', $banscore, $peer['inbound'] ? '<font title="вход" color="green">=></font>' : '<font title="выход" color="red"><=</font>', $peer['addr'] );
                 printf( '<td title="%s">0x%s</td>', $servnames, dechex($servbits) );
                 printf( '<td title="Conntime: %s">%s</td>', $peer['conntime'], $conntime );
-                printf( '<td title="Version: %s">%s</td>', $peer['version'], $peer['subver'] );
+                printf( '<td title="Версия: %s">%s</td>', $peer['version'], $peer['subver'] );
                 printf( '<td>%s</td>', $fsynced );
-                printf( '<td title="Sent: %s | Recv: %s">%s</td>', format_bytes( $peer['bytessent'] ), format_bytes( $peer['bytesrecv'] ), format_bytes( $peer['bytessent'] + $peer['bytesrecv'] ) );
+                printf( '<td title="Отправлено: %s | Получено: %s">%s</td>', format_bytes( $peer['bytessent'] ), format_bytes( $peer['bytesrecv'] ), format_bytes( $peer['bytessent'] + $peer['bytesrecv'] ) );
                 printf( '</tr>' );
 
                 $peer['inbound'] ? $tinbound++ : $toutbound++;
@@ -221,20 +221,20 @@ legend {
         </tbody>
         </table>
         <br />
-        Total inbound/outbound: <?php echo "$tinbound/$toutbound"; ?><br />
+        Всего входящих/исходящих: <?php echo "$tinbound/$toutbound"; ?><br />
     </fieldset>
 
     <br />
 
     <fieldset>
-    <legend><?php printf( 'Banned Peers (%s)', count( $api->listbanned() ) ); ?></legend>
+    <legend><?php printf( 'Заблокированые узлы (%s)', count( $api->listbanned() ) ); ?></legend>
         <table style="width: 100%; font-size: 12px;">
         <thead style="text-align: center;">
             <tr>
-                <th>Address</th>
-                <th>Since</th>
-                <th>Until</th>
-                <th>Reason</th>
+                <th>Адрес</th>
+                <th>Начало</th>
+                <th>Окончание</th>
+                <th>Причина</th>
             </tr>
         </thead>
         <tbody>
@@ -265,7 +265,7 @@ legend {
 
 <?php
 include 'page_footer.php';
-printf( '<center><span style="font-size: 10px;">Generated in %s seconds.</span></center>', number_format( microtime( true ) - $script_exec_start, 5 ) );
+printf( '<center><span style="font-size: 10px;">Сгенерировано за %s секунд.</span></center>', number_format( microtime( true ) - $script_exec_start, 5 ) );
 ?>
 
 </body>
