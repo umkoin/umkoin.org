@@ -63,7 +63,7 @@ function prettynum($val, $index = "K", $precision = 4) {
 /*
  * Prepare transaction inputs/outputs table.
  */
-function displayTxTableInOut($block, $hash, $flag = "vout") {
+function displayTxTableInOut($block, $hash, $flag = "vout", $network) {
 
   $str = "";
   $res = $block->getrawtransaction($hash, true);
@@ -373,7 +373,7 @@ include 'page_head.php';
                   "</tr>" .
                 "</thead>" .
                 "<tbody>" .
-                  displayTxTableInOut($block, $reqval, "vin") .
+                  displayTxTableInOut($block, $reqval, "vin", $network) .
                 "</tbody>" .
                 "</table>" .
 
@@ -388,7 +388,7 @@ include 'page_head.php';
                   "</tr>" .
                 "</thead>" .
                 "<tbody>" .
-                  displayTxTableInOut($block, $reqval, "vout") .
+                  displayTxTableInOut($block, $reqval, "vout", $network) .
                 "</tbody>" .
                 "</table>" .
 
