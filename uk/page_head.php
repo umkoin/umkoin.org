@@ -82,6 +82,7 @@
         <ul>
           <li><a href="/uk/support-umkoin.php">Підтримка Умкойн</a>
           <li><a href="/uk/development.php">Розробка</a></li>
+          <li><a href="/uk/lifecycle.php">Життєвий цикл</a></li>
         </ul>
       </li>
 
