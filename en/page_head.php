@@ -84,6 +84,7 @@
         <ul>
           <li><a href="/en/support-umkoin.php">Support Umkoin</a>
           <li><a href="/en/development.php">Development</a></li>
+          <li><a href="/en/lifecycle.php">Software Life Cycle</a></li>
         </ul>
       </li>
 
