@@ -11,7 +11,7 @@
 <body>
 
 <?php
-$version = "0.18.1rc1";
+$version = "0.18.1";
 $build =  "";
 include 'page_head.php';
 ?>
