@@ -1,8 +1,6 @@
 .htaccess
 bin
 bin/*
-cfields
-cfields/*
 Dockerfile*
 include/config.php
 php.ini
