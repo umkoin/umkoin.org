@@ -1,6 +1,5 @@
 .htaccess
 bin
 bin/*
-Dockerfile*
 include/config.php
 php.ini
