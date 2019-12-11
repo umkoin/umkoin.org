@@ -7,7 +7,6 @@ RUN mv php.ini /usr/local/etc/php/ && \
     mv include/config.mainnet.php.global include/config.mainnet.php&& \
     mv include/config.testnet.php.global include/config.testnet.php && \
 # Cleanup
-    rm Docker* && \
     rm include/config.mainnet.php.example && \
     rm include/config.mainnet.php.local && \
     rm include/config.testnet.php.example && \
