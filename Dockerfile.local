@@ -1,0 +1,17 @@
+FROM php:7.2-apache
+MAINTAINER vmta <vmta@yahoo.com>
+
+# Copy software from host to container
+COPY . /var/www/html/
+RUN mv php.ini /usr/local/etc/php/ && \
+    mv include/config.mainnet.php.local include/config.mainnet.php && \
+    mv include/config.testnet.php.local include/config.testnet.php && \
+# Cleanup
+    rm Docker* && \
+    rm include/config.mainnet.php.example && \
+    rm include/config.mainnet.php.global && \
+    rm include/config.testnet.php.example && \
+    rm include/config.testnet.php.global
+
+# Open ports
+EXPOSE 80
