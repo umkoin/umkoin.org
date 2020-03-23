@@ -37,51 +37,60 @@ include 'page_head.php';
 
       <div class="downloadbox">
       <p>Выберите свою операционную систему</p>
+
       <div>
+
         <div>
-          <img src="/img/os/med_win.png" alt="windows">
+          <img src="/img/os/med_win.png" alt="Microsoft Windows">
           <span>
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64-setup.exe">Windows</a>
-            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64-setup.exe">64 bit</a></span>
+            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64-setup.exe">exe</a> -
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64.zip">zip</a></span>
           </span>
         </div>
         <div>
-          <img src="/img/os/med_win.png" alt="windows">
-          <span>
-            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64.zip">Windows (zip)</a>
-            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64.zip">64 bit</a></span>
-          </span>
-        </div>
-        <div>
-          <img src="/img/os/med_osx.png" alt="osx">
+          <img src="/img/os/med_osx.png" alt="Mac OS X">
           <span>
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx.dmg">Mac OS X</a>
             <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx.dmg">dmg</a> -
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx64.tar.gz">tar.gz</a></span>
           </span>
         </div>
-      </div>
-      <div>
         <div>
-          <img src="/img/os/med_linux.png" alt="linux">
+          <img src="/img/os/med_linux.png" alt="Linux">
           <span>
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">Linux (tgz)</a>
             <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">64 bit</a> -
-              <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-i686-pc-linux-gnu.tar.gz">32 bit</a></span>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-i686-pc-linux-gnu.tar.gz">32 bit</a></span>
+          </span>
+        </div>
+
+      </div>
+
+      <div>
+
+        <div>
+          <img src="/img/os/med_riscv.svg" alt="RISC-V Linux">
+          <span>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-riscv64-linux-gnu.tar.gz">RISC-V Linux</a>
+            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-riscv64-linux-gnu.tar.gz">64 bit</a></span>
           </span>
         </div>
         <div>
           <img src="/img/os/arm.png" alt="ARM Linux">
           <span>
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-arm-linux-gnueabihf.tar.gz">ARM Linux</a>
-            	<span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-aarch64-linux-gnu.tar.gz">64 bit</a> -
-              	<a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-arm-linux-gnueabihf.tar.gz">32 bit</a></span>
+            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-aarch64-linux-gnu.tar.gz">64 bit</a> -
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-arm-linux-gnueabihf.tar.gz">32 bit</a></span>
           </span>
         </div>
+
       </div>
+
       <p class="downloadmore">
         <a href="https://github.com/umkoin/umkoin"><i class="fa fa-code"></i> Исходный код</a>
       </p>
+
     </div>
 
     <h2><img src="/img/icons/note.svg" class="warningicon" alt="note">Проверьте ширину канала и место на диске</h2>
