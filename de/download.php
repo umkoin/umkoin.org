@@ -11,7 +11,7 @@
 <body>
 
 <?php
-$version = "0.19.1";
+$version = "0.20.0";
 $build =  "";
 include 'page_head.php';
 ?>
@@ -41,7 +41,7 @@ include 'page_head.php';
       <div>
 
         <div>
-          <img src="/img/os/med_win.png" alt="MIcrosoft Windows">
+          <img src="/img/os/med_win.png" alt="Microsoft Windows">
           <span>
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64-setup.exe">Windows</a>
             <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-win64-setup.exe">exe</a> -
@@ -60,8 +60,7 @@ include 'page_head.php';
           <img src="/img/os/med_linux.png" alt="Linux">
           <span>
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">Linux (tgz)</a>
-            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">64 bit</a> -
-              <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-i686-pc-linux-gnu.tar.gz">32 bit</a></span>
+            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">64 bit</a></span>
           </span>
         </div>
 

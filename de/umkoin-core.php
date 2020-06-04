@@ -49,7 +49,7 @@ include 'page_head.php';
         <ul class="fa-ul">
           <li>
             <p><span class="fa-li fa fa-download fa-2x"></span>
-            <b><a href="/de/download.php">Herunterladen</a></b><br />Herunterladen Umkoin Core 0.19.1</p>
+            <b><a href="/de/download.php">Herunterladen</a></b><br />Herunterladen Umkoin Core 0.20.0</p>
           </li>
           <li>
             <p><span class="fa-li fa fa-rocket fa-2x"></span>
@@ -66,6 +66,9 @@ include 'page_head.php';
 
       <h3>News</h3>
       <ul>
+        <li>
+          <p>2020-06-04 - Umkoin Core version 0.20.0 veröffentlicht</p>
+        </li>
         <li>
           <p>2020-03-08 - Umkoin Core version 0.19.1 veröffentlicht</p>
         </li>
