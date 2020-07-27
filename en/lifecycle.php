@@ -69,11 +69,11 @@ include 'page_head.php';
         <td>0.17</td>
         <td>2018-10-02</td>
         <td>2019-11-09</td>
-        <td>TBA</td>
+        <td>2020-06-04</td>
     </tr><tr>
         <td>0.18</td>
         <td>2019-05-02</td>
-        <td>after v0.20</td>
+        <td>2020-06-04</td>
         <td>TBA</td>
     </tr><tr>
         <td>0.19</td>
@@ -82,8 +82,13 @@ include 'page_head.php';
         <td>TBA</td>
     </tr><tr>
         <td>0.20</td>
-        <td>TBA</td>
+        <td>2020-06-04</td>
         <td>after v0.22</td>
+        <td>TBA</td>
+    </tr><tr>
+        <td>0.21</td>
+        <td>TBA</td>
+        <td>after v0.23</td>
         <td>TBA</td>
     </tr>
     </tbody>
