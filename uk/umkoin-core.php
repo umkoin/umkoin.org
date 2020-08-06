@@ -46,7 +46,7 @@ include 'page_head.php';
         <ul class="fa-ul">
           <li>
             <p><span class="fa-li fa fa-download fa-2x"></span>
-            <b><a href="/uk/download.php">Завантажити</a></b><br />Умкойн Core 0.20.0</p>
+            <b><a href="/uk/download.php">Завантажити</a></b><br />Умкойн Core 0.20.1</p>
           </li>
           <li>
             <p><span class="fa-li fa fa-rocket fa-2x"></span>
@@ -63,6 +63,9 @@ include 'page_head.php';
 
       <h3>Новини</h3>
       <ul>
+        <li>
+          <p>2020-08-03 - випуск Умкойн Core версії 0.20.1</p>
+        </li>
         <li>
           <p>2020-06-04 - випуск Умкойн Core версії 0.20.0</p>
         </li>
