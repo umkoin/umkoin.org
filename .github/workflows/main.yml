@@ -1,0 +1,14 @@
+name: lint
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  phplint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Lint PHP code with PHP-Lint
+        uses: michaelw90/PHP-Lint@master
