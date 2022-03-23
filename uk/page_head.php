@@ -22,14 +22,6 @@
                 $str = str_replace($transition_from, $transition_to_en, $_SERVER['REQUEST_URI']);
               }
               echo "<li><a href='" . $str . "'>English</a></li>";
-
-              $transition_from = "/uk/";
-              $transition_to_ru = "/ru/";
-              $str = "";
-              if ($_SERVER['REQUEST_URI'] != "") {
-                $str = str_replace($transition_from, $transition_to_ru, $_SERVER['REQUEST_URI']);
-              }
-              echo "<li><a href='" . $str . "'>Русский</a></li>";
               ?>
 
               <li><a href="/uk/" class="active">Українська</a></li>
