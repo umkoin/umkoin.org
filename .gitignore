@@ -1,5 +1,4 @@
 .htaccess
 bin
 bin/*
-include/config.php
 php.ini

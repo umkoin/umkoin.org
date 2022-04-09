@@ -11,7 +11,7 @@ $network = (isset($_GET['net']) && $_GET['net'] == 'testnet') ? "testnet" : "mai
 /**
    Load configuration file corresponding to chosen Network.
 **/
-require "../include/config.$network.php";
+require "../include/config/$network.php";
 
 
 $url = "http://" . $poolhost . ":" . $poolport . "/api/stats";
