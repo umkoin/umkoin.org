@@ -84,21 +84,26 @@ include 'page_head.php';
         <td>0.20</td>
         <td>2020-06-04</td>
         <td>2021-10-07</td>
-        <td>TBA</td>
+        <td>2022-05-05</td>
     </tr><tr>
         <td>0.21</td>
         <td>2021-01-16</td>
-        <td>after v0.23</td>
+        <td>2022-05-05</td>
         <td>TBA</td>
     </tr><tr>
-        <td>0.22</td>
+        <td>22.0</td>
         <td>2021-10-07</td>
-        <td>after v0.24</td>
+        <td>after v24.0</td>
         <td>TBA</td>
     </tr><tr>
-        <td>0.23</td>
+        <td>23.0</td>
+        <td>2022-05-05</td>
+        <td>after v25.0</td>
         <td>TBA</td>
-        <td>after v0.25</td>
+    </tr><tr>
+        <td>24.0</td>
+        <td>TBA</td>
+        <td>after v26.0</td>
         <td>TBA</td>
     </tr>
     </tbody>

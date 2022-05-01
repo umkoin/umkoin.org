@@ -11,7 +11,7 @@
 <body>
 
 <?php
-$version = "22.0";
+$version = "23.0";
 $build =  "";
 include 'page_head.php';
 ?>
@@ -49,18 +49,19 @@ include 'page_head.php';
           </span>
         </div>
         <div>
-          <img src="/img/os/med_osx.png" alt="Mac OS X">
+          <img src="/img/os/med_osx.png" alt="Mac OS X (x86_64)">
           <span>
-            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx.dmg">Mac OS X</a>
-            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx.dmg">dmg</a> -
-            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-osx64.tar.gz">tar.gz</a></span>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-apple-darwin.dmg">Mac OS X</a>
+            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-apple-darwin.dmg">dmg</a> -
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-apple-darwin.tar.gz">tar.gz</a></span>
           </span>
         </div>
         <div>
-          <img src="/img/os/med_linux.png" alt="Linux">
+          <img src="/img/os/med_osx.png" alt="Mac OS X (arm64)">
           <span>
-            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">Linux (tgz)</a>
-            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">64 bit</a></span>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-arm64-apple-darwin.dmg">Mac OS X</a>
+            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-arm64-apple-darwin.dmg">dmg</a> -
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-arm64-apple-darwin.tar.gz">tar.gz</a></span>
           </span>
         </div>
 
@@ -69,7 +70,7 @@ include 'page_head.php';
       <div>
 
         <div>
-          <img src="/img/os/med_riscv.svg" alt="linux">
+          <img src="/img/os/med_riscv.svg" alt="RISC-V Linux">
           <span>
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-riscv64-linux-gnu.tar.gz">RISC-V Linux</a>
             <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-riscv64-linux-gnu.tar.gz">64 bit</a></span>
@@ -81,6 +82,15 @@ include 'page_head.php';
             <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-arm-linux-gnueabihf.tar.gz">ARM Linux</a>
             	<span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-aarch64-linux-gnu.tar.gz">64 bit</a> -
               	<a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-arm-linux-gnueabihf.tar.gz">32 bit</a></span>
+          </span>
+        </div>
+        <div>
+          <img src="/img/os/med_linux.png" alt="Linux">
+          <span>
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">Linux (tgz)</a>
+            <span><a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-x86_64-linux-gnu.tar.gz">64 bit</a> -
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-powerpc64-linux-gnu.tar.gz">ppc64</a> -
+            <a href="/bin/umkoin-core-<?php print($version); ?>/umkoin-<?php print($version . $build); ?>-powerpc64le-linux-gnu.tar.gz">ppc64le</a></span>
           </span>
         </div>
 
