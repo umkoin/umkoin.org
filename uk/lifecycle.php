@@ -89,11 +89,11 @@ include 'page_head.php';
         <td>0.21</td>
         <td>2021-01-16</td>
         <td>2022-05-18</td>
-        <td>TBA</td>
+        <td>2022-12-12</td>
     </tr><tr>
         <td>22.0</td>
         <td>2021-10-07</td>
-        <td>after v24.0</td>
+        <td>2022-12-12</td>
         <td>TBA</td>
     </tr><tr>
         <td>23.0</td>
@@ -102,8 +102,13 @@ include 'page_head.php';
         <td>TBA</td>
     </tr><tr>
         <td>24.0</td>
-        <td>TBA</td>
+        <td>2022-12-12</td>
         <td>after v26.0</td>
+        <td>TBA</td>
+    </tr><tr>
+        <td>25.0</td>
+        <td>TBA</td>
+        <td>after v27.0</td>
         <td>TBA</td>
     </tr>
     </tbody>
