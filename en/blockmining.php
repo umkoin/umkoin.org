@@ -6,6 +6,7 @@
    By default use Mainnet.
 **/
 $network = (isset($_GET['net']) && $_GET['net'] == 'testnet') ? "testnet" : "mainnet";
+$coin = (isset($_GET['net']) && $_GET['net'] == 'testnet') ? "umkoint" : "umkoinm";
 
 
 /**
@@ -27,9 +28,9 @@ curl_close($ch);
 
 $strdecoded = json_decode($str, true);
 
-$workers = $strdecoded["pools"]["umkoin"]["workers"];
-$workercount = $strdecoded["pools"]["umkoin"]["workerCount"];
-$poolhashrate = $strdecoded["pools"]["umkoin"]["hashrateString"];
+$workers = $strdecoded["pools"][$coin]["workers"];
+$workercount = $strdecoded["pools"][$coin]["workerCount"];
+$poolhashrate = $strdecoded["pools"][$coin]["hashrateString"];
 
 ?>
 
