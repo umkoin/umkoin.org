@@ -64,7 +64,22 @@ include 'page_head.php';
     <h2>Mining Pool</h2>
     <p>In order to process transactions and secure the Umkoin network, we have set up a mining pool for general public. Feel free to join and contribute to the Umkoin network and get some umkoins.</p>
 
-    <h2>Quick Statistics</h2>
+    <?php
+    $holder = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . "?net=" . $network;
+
+    if(!empty($_SERVER['QUERY_STRING'])) {
+        $holder = $_SERVER['REQUEST_URI'];
+    }
+
+    $h2str = "<h2>Quick Statistics " .
+             "<select style='border:0' onchange='if (this.value) window.location.href=this.value'>" .
+             "    <option " . (($network == "mainnet") ? 'selected' : '') . " value='" . str_replace('testnet','mainnet',$holder) . "'>mainnet</option>" .
+             "    <option " . (($network == "testnet") ? 'selected' : '') . " value='" . str_replace('mainnet','testnet',$holder) . "'>testnet</option>" .
+             "</select>" .
+             "</h2>";
+
+    print($h2str);
+    ?>
     <table>
     <thead>
       <tr style="text-align: center">
